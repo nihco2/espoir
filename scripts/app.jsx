@@ -1,5 +1,5 @@
 import React from 'react';
-import MyComponent from './components/mycomponent.jsx';
+import MyComponent from './components/player.jsx';
 
 window.React = React;
 

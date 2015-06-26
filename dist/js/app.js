@@ -19821,15 +19821,15 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _componentsMycomponentJsx = require('./components/mycomponent.jsx');
+var _componentsPlayerJsx = require('./components/player.jsx');
 
-var _componentsMycomponentJsx2 = _interopRequireDefault(_componentsMycomponentJsx);
+var _componentsPlayerJsx2 = _interopRequireDefault(_componentsPlayerJsx);
 
 window.React = _react2['default'];
 
-_react2['default'].render(_react2['default'].createElement(_componentsMycomponentJsx2['default'], null), document.getElementById('content'));
+_react2['default'].render(_react2['default'].createElement(_componentsPlayerJsx2['default'], null), document.getElementById('content'));
 
-},{"./components/mycomponent.jsx":159,"react":157}],159:[function(require,module,exports){
+},{"./components/player.jsx":159,"react":157}],159:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -19857,16 +19857,121 @@ var Mycomponent = _react2['default'].createClass({
 
     return _react2['default'].createElement(
       'div',
-      null,
+      { className: 'player-container' },
       _react2['default'].createElement(
-        'h1',
-        { className: 'Mycomponent' },
-        'Welcome to ⚛ React Starterify'
+        'video',
+        { id: 'video' },
+        _react2['default'].createElement('source', { src: video, type: 'video/mp4' }),
+        _react2['default'].createElement('source', { src: 'movie-hd.mp4', type: 'video/mp4' })
       ),
       _react2['default'].createElement(
-        'span',
-        null,
-        video
+        'div',
+        { className: 'player' },
+        _react2['default'].createElement(
+          'div',
+          { className: 'play-pause play' },
+          _react2['default'].createElement(
+            'span',
+            { className: 'play-button' },
+            '►'
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'pause-button' },
+            _react2['default'].createElement(
+              'span',
+              null,
+              ' '
+            ),
+            _react2['default'].createElement(
+              'span',
+              null,
+              ' '
+            )
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'progress' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'progress-bar' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'button-holder' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'progress-button' },
+                ' '
+              )
+            ),
+            '\''
+          ),
+          '\'',
+          _react2['default'].createElement(
+            'div',
+            { className: 'time' },
+            '\'',
+            _react2['default'].createElement(
+              'span',
+              { className: 'ctime' },
+              '00:00'
+            ),
+            _react2['default'].createElement(
+              'span',
+              { className: 'stime' },
+              ' / '
+            ),
+            _react2['default'].createElement(
+              'span',
+              { className: 'ttime' },
+              '00:00'
+            )
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'volume' },
+          _react2['default'].createElement(
+            'div',
+            { className: 'volume-holder' },
+            _react2['default'].createElement(
+              'div',
+              { className: 'volume-bar-holder' },
+              _react2['default'].createElement(
+                'div',
+                { className: 'volume-bar' },
+                _react2['default'].createElement(
+                  'div',
+                  { className: 'volume-button-holder' },
+                  _react2['default'].createElement(
+                    'div',
+                    { className: 'volume-button' },
+                    ' '
+                  )
+                )
+              )
+            )
+          ),
+          _react2['default'].createElement(
+            'div',
+            { className: 'volume-icon v-change-0' },
+            _react2['default'].createElement(
+              'span',
+              null,
+              ' '
+            )
+          )
+        ),
+        _react2['default'].createElement(
+          'div',
+          { className: 'fullscreen' },
+          _react2['default'].createElement(
+            'a',
+            { href: '#' },
+            ' '
+          )
+        )
       )
     );
   }
