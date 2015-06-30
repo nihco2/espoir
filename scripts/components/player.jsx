@@ -1,12 +1,12 @@
-import React from 'react';
-import json from '../../assets/assets.json';
+var React = require('react');
+var assets = require('../../assets/assets.json');
 
-let Mycomponent = React.createClass({
+let Player = React.createClass({
   returnSomething(something) {
     return something;
   },
   render() {
-    let video = json.video;
+    let video = assets.video;
     
     return (
       <div className="player-container">
@@ -57,4 +57,4 @@ let Mycomponent = React.createClass({
   }
 });
 
-export default Mycomponent;
+export default Player;

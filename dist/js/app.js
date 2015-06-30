@@ -19835,71 +19835,63 @@ _react2['default'].render(_react2['default'].createElement(_componentsPlayerJsx2
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
+var React = require('react');
+var assets = require('../../assets/assets.json');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _assetsAssetsJson = require('../../assets/assets.json');
-
-var _assetsAssetsJson2 = _interopRequireDefault(_assetsAssetsJson);
-
-var Mycomponent = _react2['default'].createClass({
-  displayName: 'Mycomponent',
+var Player = React.createClass({
+  displayName: 'Player',
 
   returnSomething: function returnSomething(something) {
     return something;
   },
   render: function render() {
-    var video = _assetsAssetsJson2['default'].video;
+    var video = assets.video;
 
-    return _react2['default'].createElement(
+    return React.createElement(
       'div',
       { className: 'player-container' },
-      _react2['default'].createElement(
+      React.createElement(
         'video',
         { id: 'video' },
-        _react2['default'].createElement('source', { src: video, type: 'video/mp4' }),
-        _react2['default'].createElement('source', { src: 'movie-hd.mp4', type: 'video/mp4' })
+        React.createElement('source', { src: video, type: 'video/mp4' }),
+        React.createElement('source', { src: 'movie-hd.mp4', type: 'video/mp4' })
       ),
-      _react2['default'].createElement(
+      React.createElement(
         'div',
         { className: 'player' },
-        _react2['default'].createElement(
+        React.createElement(
           'div',
           { className: 'play-pause play' },
-          _react2['default'].createElement(
+          React.createElement(
             'span',
             { className: 'play-button' },
             '►'
           ),
-          _react2['default'].createElement(
+          React.createElement(
             'div',
             { className: 'pause-button' },
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               null,
               ' '
             ),
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               null,
               ' '
             )
           )
         ),
-        _react2['default'].createElement(
+        React.createElement(
           'div',
           { className: 'progress' },
-          _react2['default'].createElement(
+          React.createElement(
             'div',
             { className: 'progress-bar' },
-            _react2['default'].createElement(
+            React.createElement(
               'div',
               { className: 'button-holder' },
-              _react2['default'].createElement(
+              React.createElement(
                 'div',
                 { className: 'progress-button' },
                 ' '
@@ -19908,43 +19900,43 @@ var Mycomponent = _react2['default'].createClass({
             '\''
           ),
           '\'',
-          _react2['default'].createElement(
+          React.createElement(
             'div',
             { className: 'time' },
             '\'',
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               { className: 'ctime' },
               '00:00'
             ),
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               { className: 'stime' },
               ' / '
             ),
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               { className: 'ttime' },
               '00:00'
             )
           )
         ),
-        _react2['default'].createElement(
+        React.createElement(
           'div',
           { className: 'volume' },
-          _react2['default'].createElement(
+          React.createElement(
             'div',
             { className: 'volume-holder' },
-            _react2['default'].createElement(
+            React.createElement(
               'div',
               { className: 'volume-bar-holder' },
-              _react2['default'].createElement(
+              React.createElement(
                 'div',
                 { className: 'volume-bar' },
-                _react2['default'].createElement(
+                React.createElement(
                   'div',
                   { className: 'volume-button-holder' },
-                  _react2['default'].createElement(
+                  React.createElement(
                     'div',
                     { className: 'volume-button' },
                     ' '
@@ -19953,20 +19945,20 @@ var Mycomponent = _react2['default'].createClass({
               )
             )
           ),
-          _react2['default'].createElement(
+          React.createElement(
             'div',
             { className: 'volume-icon v-change-0' },
-            _react2['default'].createElement(
+            React.createElement(
               'span',
               null,
               ' '
             )
           )
         ),
-        _react2['default'].createElement(
+        React.createElement(
           'div',
           { className: 'fullscreen' },
-          _react2['default'].createElement(
+          React.createElement(
             'a',
             { href: '#' },
             ' '
@@ -19977,7 +19969,7 @@ var Mycomponent = _react2['default'].createClass({
   }
 });
 
-exports['default'] = Mycomponent;
+exports['default'] = Player;
 module.exports = exports['default'];
 
 },{"../../assets/assets.json":1,"react":157}]},{},[158]);

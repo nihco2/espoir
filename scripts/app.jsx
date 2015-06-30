@@ -1,6 +1,6 @@
 import React from 'react';
-import MyComponent from './components/player.jsx';
+import Player from './components/player.jsx';
 
 window.React = React;
 
-React.render(<MyComponent />, document.getElementById('content'));
+React.render(<Player />, document.getElementById('content'));
