@@ -6,21 +6,18 @@ let Player = React.createClass({
     return something;
   },
   render() {
-    let video = assets.video;
-    
+    let video = assets.video,
+				poster = assets.poster;
+		
     return (
       <div className="player-container">
-        <video id="video">
+        <video id="video" poster={poster}>
           <source src={video} type="video/mp4" />
           <source src="movie-hd.mp4" type="video/mp4" />
         </video>
         <div className="player">
-       <div className="play-pause play">
-         <span className="play-button">&#9658;</span>
-         <div className="pause-button">
-           <span> </span>
-           <span> </span>
-         </div>
+       <div className="play">
+        
        </div>
        <div className="progress">
          <div className="progress-bar">
@@ -35,22 +32,9 @@ let Player = React.createClass({
          </div>
        </div>
        <div className="volume">
-         <div className="volume-holder">
-           <div className="volume-bar-holder">
-             <div className="volume-bar">
-               <div className="volume-button-holder">
-                 <div className="volume-button"> </div>
-               </div>
-             </div>
-           </div>
-         </div>
-         <div className="volume-icon v-change-0">
-           <span> </span>
-         </div>
+        
        </div>
-       <div className="fullscreen">
-        <a href="#"> </a>
-       </div>
+   
       </div>
       </div>
     );
