@@ -19834,73 +19834,188 @@ _react2['default'].render(_react2['default'].createElement(_componentsPlayerJsx2
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
 });
 var React = require('react');
 var assets = require('../../assets/assets.json');
 
 var Player = React.createClass({
-  displayName: 'Player',
+	displayName: 'Player',
 
-  returnSomething: function returnSomething(something) {
-    return something;
-  },
-  render: function render() {
-    var video = assets.video,
-        poster = assets.poster;
+	getDuration: function getDuration() {
+		return this.getVideo().duration;
+	},
 
-    return React.createElement(
-      'div',
-      { className: 'player-container' },
-      React.createElement(
-        'video',
-        { id: 'video', poster: poster },
-        React.createElement('source', { src: video, type: 'video/mp4' }),
-        React.createElement('source', { src: 'movie-hd.mp4', type: 'video/mp4' })
-      ),
-      React.createElement(
-        'div',
-        { className: 'player' },
-        React.createElement('div', { className: 'play' }),
-        React.createElement(
-          'div',
-          { className: 'progress' },
-          React.createElement(
-            'div',
-            { className: 'progress-bar' },
-            React.createElement(
-              'div',
-              { className: 'button-holder' },
-              React.createElement(
-                'div',
-                { className: 'progress-button' },
-                ' '
-              )
-            ),
-            '\''
-          ),
-          React.createElement(
-            'div',
-            { className: 'time' },
-            React.createElement(
-              'span',
-              { className: 'ctime' },
-              '00:00'
-            ),
-            React.createElement(
-              'span',
-              { className: 'ttime' },
-              '00:00'
-            )
-          )
-        ),
-        React.createElement('div', { className: 'volume' })
-      )
-    );
-  }
+	getBuffered: function getBuffered() {
+		return this.getVideo().buffered;
+	},
+
+	getVolume: function getVolume() {
+		return this.getVideo().volume;
+	},
+
+	getVideo: function getVideo(something) {
+		return document.getElementById('video');
+	},
+
+	getCurrentTime: function getCurrentTime() {
+		this.getVideo().currentTime;
+	},
+
+	play: function play() {
+		this.getVideo().play();
+	},
+
+	pause: function pause() {
+		this.getVideo().pause();
+	},
+
+	timeUpdate: function timeUpdate($ignore) {
+
+		var progWidth = $that.find('.progress').width();
+
+		// Le temps actuel de la vidéo, basé sur la barre de progression
+		var time = Math.round($('.progress-bar').width() / progWidth * this.getDuration());
+
+		// Le temps "réel" de la vidéo
+		var curTime = this.getCurrentTime();
+
+		// Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
+		// tminutes et tseconds sont les minutes et secondes totales
+		var seconds = 0,
+		    minutes = Math.floor(time / 60),
+		    tminutes = Math.round(this.getDuration() / 60),
+		    tseconds = Math.round(this.getDuration() - tminutes * 60);
+
+		// Si le temps existe (enfin, la durée de la vidéo !)
+		if (time) {
+			// Les secondes valent la durée moins les minutes
+			seconds = Math.round(time) - 60 * minutes;
+
+			// Si nous avons plus de 59 secondes
+			if (seconds > 59) {
+				// On augmente les minutes et on soustrait les secondes en trop
+				seconds = Math.round(time) - 60 * minutes;
+				if (seconds == 60) {
+					minutes = Math.round(time / 60);
+					seconds = 0;
+				}
+			}
+		}
+
+		// Mise à jour de la barre de progression
+		updProgWidth = curTime / this.getDuration() * progWidth;
+
+		// Ajout des zéros initiaux pour les valeurs inférieures à 10
+		if (seconds < 10) {
+			seconds = '0' + seconds;
+		}
+		if (tseconds < 10) {
+			tseconds = '0' + tseconds;
+		}
+
+		// Une variable que nous verrons plus tard
+		if ($ignore != true) {
+			$that.find('.progress-bar').css({
+				'width': updProgWidth + 'px'
+			});
+			$that.find('.progress-button').css({
+				'left': updProgWidth - $that.find('.progress-button').width() + 'px'
+			});
+		}
+
+		// Ajustement des durées
+		$that.find('.ctime').html(minutes + ':' + seconds);
+		$that.find('.ttime').html(tminutes + ':' + tseconds);
+
+		// En mode lecture, mise à jour des valeurs du tampon
+		if ($spc.currentTime > 0 && $spc.paused == false && $spc.ended == false) {
+			bufferLength();
+		}
+	},
+	componentDidMount: function componentDidMount() {},
+	render: function render() {
+		var video = assets.video,
+		    poster = assets.poster;
+
+		return React.createElement(
+			'div',
+			{ className: 'player-container' },
+			React.createElement(
+				'video',
+				{ id: 'video',
+					poster: poster },
+				React.createElement('source', { src: video,
+					type: 'video/mp4' }),
+				React.createElement('source', { src: 'movie-hd.mp4',
+					type: 'video/mp4' })
+			),
+			' ',
+			React.createElement(
+				'div',
+				{ className: 'player' },
+				' ',
+				React.createElement(
+					'div',
+					{ className: 'play' },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: 'progress' },
+					' ',
+					React.createElement(
+						'div',
+						{ className: 'progress-bar' },
+						React.createElement(
+							'div',
+							{ className: 'button-holder' },
+							React.createElement(
+								'div',
+								{ className: 'progress-button' },
+								' '
+							),
+							' '
+						),
+						' \' '
+					),
+					' ',
+					React.createElement(
+						'div',
+						{ className: 'time' },
+						' ',
+						React.createElement(
+							'span',
+							{ className: 'ctime' },
+							' 00: 00 '
+						),
+						' ',
+						React.createElement(
+							'span',
+							{ className: 'ttime' },
+							' 00: 00 '
+						),
+						' '
+					),
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: 'volume' },
+					' '
+				),
+				' '
+			),
+			' '
+		);
+	}
 });
 
 exports['default'] = Player;
 module.exports = exports['default'];
+
+//this.play();
 
 },{"../../assets/assets.json":1,"react":157}]},{},[158]);
