@@ -19879,20 +19879,13 @@ var Player = React.createClass({
             ),
             '\''
           ),
-          '\'',
           React.createElement(
             'div',
             { className: 'time' },
-            '\'',
             React.createElement(
               'span',
               { className: 'ctime' },
               '00:00'
-            ),
-            React.createElement(
-              'span',
-              { className: 'stime' },
-              ' / '
             ),
             React.createElement(
               'span',

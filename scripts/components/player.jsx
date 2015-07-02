@@ -16,26 +16,20 @@ let Player = React.createClass({
           <source src="movie-hd.mp4" type="video/mp4" />
         </video>
         <div className="player">
-       <div className="play">
-        
-       </div>
-       <div className="progress">
-         <div className="progress-bar">
-           <div className="button-holder">
-             <div className="progress-button"> </div>
-           </div>'
-         </div>'
-         <div className="time">'
-           <span className="ctime">00:00</span>
-           <span className="stime"> / </span>
-           <span className="ttime">00:00</span>
-         </div>
-       </div>
-       <div className="volume">
-        
-       </div>
-   
-      </div>
+					<div className="play"></div>
+       		<div className="progress">
+						<div className="progress-bar">
+							<div className="button-holder">
+								<div className="progress-button"> </div>
+							</div>'
+						</div>
+						 <div className="time">
+							 <span className="ctime">00:00</span>
+							 <span className="ttime">00:00</span>
+						 </div>
+       		</div>
+       		<div className="volume"></div>
+      	</div>
       </div>
     );
   }
