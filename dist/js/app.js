@@ -1,8 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-  "video":"http://inserthtml.developpez.com/tutoriels/javascript/lecteur-video-personnalise/fichiers/movie.mp4",
-	"poster":"assets/genet.jpg"
+	"video": "assets/videos/sociodrame.mp4",
+	"poster": "assets/genet.jpg"
 }
+
 },{}],2:[function(require,module,exports){
 // shim for using process in browser
 
@@ -19870,12 +19871,16 @@ var Player = React.createClass({
 		this.getVideo().pause();
 	},
 
+	metaDataLoaded: function metaDataLoaded() {
+		console.log('metaDataLoaded', document.getElementById('video').duration);
+	},
+
 	timeUpdate: function timeUpdate($ignore) {
 
-		var progWidth = $that.find('.progress').width();
+		var progWidth = document.querySelector('.progress').offsetWidth;
 
 		// Le temps actuel de la vidéo, basé sur la barre de progression
-		var time = Math.round($('.progress-bar').width() / progWidth * this.getDuration());
+		var time = Math.round(document.querySelector('.progress-bar').offsetWidth / progWidth * this.getDuration());
 
 		// Le temps "réel" de la vidéo
 		var curTime = this.getCurrentTime();
@@ -19886,7 +19891,7 @@ var Player = React.createClass({
 		    minutes = Math.floor(time / 60),
 		    tminutes = Math.round(this.getDuration() / 60),
 		    tseconds = Math.round(this.getDuration() - tminutes * 60);
-
+		console.log(document.querySelector('.progress-bar').offsetWidth, this.getDuration(), this.getBuffered());
 		// Si le temps existe (enfin, la durée de la vidéo !)
 		if (time) {
 			// Les secondes valent la durée moins les minutes
@@ -19904,7 +19909,7 @@ var Player = React.createClass({
 		}
 
 		// Mise à jour de la barre de progression
-		updProgWidth = curTime / this.getDuration() * progWidth;
+		var updProgWidth = curTime / this.getDuration() * progWidth;
 
 		// Ajout des zéros initiaux pour les valeurs inférieures à 10
 		if (seconds < 10) {
@@ -19916,24 +19921,22 @@ var Player = React.createClass({
 
 		// Une variable que nous verrons plus tard
 		if ($ignore != true) {
-			$that.find('.progress-bar').css({
-				'width': updProgWidth + 'px'
-			});
-			$that.find('.progress-button').css({
-				'left': updProgWidth - $that.find('.progress-button').width() + 'px'
-			});
+			document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
+			document.querySelector('.progress-button').style.width = updProgWidth - document.querySelector('.progress-button').offsetWidth + 'px';
 		}
 
 		// Ajustement des durées
-		$that.find('.ctime').html(minutes + ':' + seconds);
-		$that.find('.ttime').html(tminutes + ':' + tseconds);
+		document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
+		document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
 		// En mode lecture, mise à jour des valeurs du tampon
-		if ($spc.currentTime > 0 && $spc.paused == false && $spc.ended == false) {
-			bufferLength();
-		}
+		if (this.getVideo().currentTime > 0 && this.getVideo().paused == false && this.getVideo().ended == false) {}
 	},
-	componentDidMount: function componentDidMount() {},
+	componentDidMount: function componentDidMount() {
+		this.getVideo().addEventListener('timeupdate', this.timeUpdate());
+		this.getVideo().addEventListener('loadedmetadata', this.metaDataLoaded());
+		//this.play();
+	},
 	render: function render() {
 		var video = assets.video,
 		    poster = assets.poster;
@@ -20016,6 +20019,6 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-//this.play();
+//bufferLength();
 
 },{"../../assets/assets.json":1,"react":157}]},{},[158]);

@@ -31,12 +31,16 @@ let Player = React.createClass({
 		this.getVideo().pause();
 	},
 
+	metaDataLoaded: function () {
+		console.log('metaDataLoaded', document.getElementById('video').duration)
+	},
+
 	timeUpdate: function ($ignore) {
 
-		var progWidth = $that.find('.progress').width();
+		var progWidth = document.querySelector('.progress').offsetWidth;
 
 		// Le temps actuel de la vidéo, basé sur la barre de progression
-		var time = Math.round(($('.progress-bar').width() / progWidth) * this.getDuration());
+		var time = Math.round((document.querySelector('.progress-bar').offsetWidth / progWidth) * this.getDuration());
 
 		// Le temps "réel" de la vidéo
 		var curTime = this.getCurrentTime();
@@ -47,8 +51,8 @@ let Player = React.createClass({
 			minutes = Math.floor(time / 60),
 			tminutes = Math.round(this.getDuration() / 60),
 			tseconds = Math.round((this.getDuration()) - (tminutes * 60));
-
-		// Si le temps existe (enfin, la durée de la vidéo !)
+		console.log(document.querySelector('.progress-bar').offsetWidth, this.getDuration(), this.getBuffered())
+			// Si le temps existe (enfin, la durée de la vidéo !)
 		if (time) {
 			// Les secondes valent la durée moins les minutes
 			seconds = Math.round(time) - (60 * minutes);
@@ -66,7 +70,7 @@ let Player = React.createClass({
 		}
 
 		// Mise à jour de la barre de progression
-		updProgWidth = (curTime / this.getDuration()) * progWidth
+		var updProgWidth = (curTime / this.getDuration()) * progWidth
 
 		// Ajout des zéros initiaux pour les valeurs inférieures à 10
 		if (seconds < 10) {
@@ -78,25 +82,23 @@ let Player = React.createClass({
 
 		// Une variable que nous verrons plus tard
 		if ($ignore != true) {
-			$that.find('.progress-bar').css({
-				'width': updProgWidth + 'px'
-			});
-			$that.find('.progress-button').css({
-				'left': (updProgWidth - $that.find('.progress-button').width()) + 'px'
-			});
+			document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
+			document.querySelector('.progress-button').style.width = (updProgWidth - document.querySelector('.progress-button').offsetWidth) + 'px';
 		}
 
 		// Ajustement des durées
-		$that.find('.ctime').html(minutes + ':' + seconds)
-		$that.find('.ttime').html(tminutes + ':' + tseconds);
+		document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
+		document.querySelector('.ttime').innerHTML = (tminutes + ':' + tseconds);
 
 		// En mode lecture, mise à jour des valeurs du tampon
-		if ($spc.currentTime > 0 && $spc.paused == false && $spc.ended == false) {
-			bufferLength();
+		if (this.getVideo().currentTime > 0 && this.getVideo().paused == false && this.getVideo().ended == false) {
+			//bufferLength();
 		}
 
 	},
 	componentDidMount: function () {
+		this.getVideo().addEventListener('timeupdate', this.timeUpdate());
+		this.getVideo().addEventListener('loadedmetadata', this.metaDataLoaded());
 		//this.play();
 	},
 	render() {
