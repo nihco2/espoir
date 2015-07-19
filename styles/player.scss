@@ -1,3 +1,7 @@
+@font-face {
+	font-family: DancingScriptOT;
+	src: url("/assets/fonts/DancingScript-Regular.otf") format('truetype');
+}
 $grayDark:#737373;
 $white:#fff;
 .player-container {
@@ -7,6 +11,7 @@ $white:#fff;
 	width: 100%;
 	height: 100%;
 	position: relative;
+	cursor: pointer;
 	.play {
 		background: url('/assets/sprite.png') no-repeat;
 		background-position: 10px 10px;
@@ -20,7 +25,7 @@ $white:#fff;
 		cursor: pointer;
 	}
 	.progress {
-		width: 80%;
+		width: 100%;
 		height: 2px;
 		background: transparent;
 		box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.1);
@@ -31,29 +36,32 @@ $white:#fff;
 		left: 50%;
 		margin-left: -35%;
 		position: absolute;
+		width: 990px;
 		.progress-bar {
 			background: url('/assets/sprite.png') no-repeat;
 			background-position: 0px -268px;
 			position: relative;
 			z-index: 999;
 			bottom: 10px;
-			width: 1140px;
+			width: 990px;
 			margin: 0 auto;
+			left: 30px;
 		}
 		.time {
 			color: $white;
 			font-weight: bold;
-			font-size: 1.2em;
+			font-size: 1em;
 			position: absolute;
 			right: 0;
 			top: -10px;
 			left: -20px;
+			font-family: DancingScriptOT;
 			.stime {
 				float: left;
 			}
 			.ttime {
 				float: right;
-				margin-right: 75px;
+				margin-right: -55px;
 			}
 		}
 		.progress-button {
@@ -62,7 +70,6 @@ $white:#fff;
 			width: 50px;
 			height: 50px;
 			margin-top: -3px;
-			margin-left: 30px;
 			position: absolute;
 		}
 	}
