@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
 	"video": "assets/videos/sociodrame.mp4",
-	"poster": "assets/genet.jpg"
+	"poster": "assets/images/genet.jpg"
 }
 
 },{}],2:[function(require,module,exports){
@@ -32068,43 +32068,58 @@ var Homepage = React.createClass({
 			'div',
 			{ className: 'homepage' },
 			React.createElement(
-				'h1',
-				null,
-				' ',
-				texts.h1,
-				' '
-			),
-			' ',
-			React.createElement(
-				'h2',
-				null,
-				' ',
-				texts.h2,
-				' '
-			),
-			' ',
-			React.createElement(
-				'h3',
-				null,
-				' ',
-				texts.h3,
-				' '
-			),
-			' ',
-			React.createElement(
-				'h4',
-				null,
-				' ',
-				texts.h4,
-				' '
-			),
-			'  ',
-			React.createElement(
-				'p',
-				null,
-				' ',
-				texts.description,
-				' '
+				'div',
+				{ className: 'container' },
+				React.createElement(
+					'div',
+					{ className: 'intro' },
+					React.createElement(
+						'h1',
+						null,
+						' ',
+						texts.h1,
+						' '
+					),
+					' ',
+					React.createElement(
+						'h2',
+						null,
+						' ',
+						texts.h2,
+						' '
+					),
+					' ',
+					React.createElement(
+						'h3',
+						null,
+						' ',
+						texts.h3,
+						' '
+					),
+					' ',
+					React.createElement(
+						'h4',
+						null,
+						' ',
+						texts.h4,
+						' '
+					),
+					'  ',
+					React.createElement(
+						'p',
+						null,
+						' ',
+						texts.description,
+						' '
+					),
+					' ',
+					React.createElement(
+						Link,
+						{ to: '/player' },
+						texts.go
+					),
+					' '
+				)
 			),
 			' '
 		);
@@ -32176,65 +32191,63 @@ var Player = React.createClass({
 
 	componentDidMount: function componentDidMount() {
 		var self = this;
-		window.addEventListener('load', function () {
-			self.getVideo().addEventListener('loadedmetadata', function () {
-				self.getVideo().addEventListener('timeupdate', function () {
-					var progWidth = document.querySelector('.progress').offsetWidth - 50;
+		self.getVideo().addEventListener('loadedmetadata', function () {
+			self.getVideo().addEventListener('timeupdate', function () {
+				var progWidth = document.querySelector('.progress').offsetWidth - 50;
 
-					// Le temps actuel de la vidéo, basé sur la barre de progression
-					var time = Math.round(document.querySelector('.progress-bar').offsetWidth / progWidth * self.getDuration());
+				// Le temps actuel de la vidéo, basé sur la barre de progression
+				var time = Math.round(document.querySelector('.progress-bar').offsetWidth / progWidth * self.getDuration());
 
-					// Le temps "réel" de la vidéo
-					var curTime = self.getVideo().currentTime;
+				// Le temps "réel" de la vidéo
+				var curTime = self.getVideo().currentTime;
 
-					// Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
-					// tminutes et tseconds sont les minutes et secondes totales
-					var seconds = 0,
-					    minutes = Math.floor(self.getVideo().currentTime / 60),
-					    //Math.floor(time / 60),
-					tminutes = Math.round(self.getDuration() / 60),
-					    tseconds = Math.round(self.getDuration() - tminutes * 60);
+				// Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
+				// tminutes et tseconds sont les minutes et secondes totales
+				var seconds = 0,
+				    minutes = Math.floor(self.getVideo().currentTime / 60),
+				    //Math.floor(time / 60),
+				tminutes = Math.round(self.getDuration() / 60),
+				    tseconds = Math.round(self.getDuration() - tminutes * 60);
 
-					// Si le temps existe (enfin, la durée de la vidéo !)
-					if (time) {
-						// Les secondes valent la durée moins les minutes
-						seconds = Math.floor(self.getVideo().currentTime) - 60 * minutes;
+				// Si le temps existe (enfin, la durée de la vidéo !)
+				if (time) {
+					// Les secondes valent la durée moins les minutes
+					seconds = Math.floor(self.getVideo().currentTime) - 60 * minutes;
 
-						// Si nous avons plus de 59 secondes
-						if (seconds > 59) {
-							// On augmente les minutes et on soustrait les secondes en trop
-							seconds = Math.round(time) - 60 * minutes;
-							if (seconds == 60) {
-								minutes = Math.round(time / 60);
-								seconds = 0;
-							}
+					// Si nous avons plus de 59 secondes
+					if (seconds > 59) {
+						// On augmente les minutes et on soustrait les secondes en trop
+						seconds = Math.round(time) - 60 * minutes;
+						if (seconds == 60) {
+							minutes = Math.round(time / 60);
+							seconds = 0;
 						}
 					}
+				}
 
-					// Mise à jour de la barre de progression
-					var updProgWidth = curTime / self.getDuration() * progWidth;
+				// Mise à jour de la barre de progression
+				var updProgWidth = curTime / self.getDuration() * progWidth;
 
-					// Ajout des zéros initiaux pour les valeurs inférieures à 10
-					if (seconds < 10) {
-						seconds = '0' + seconds;
-					}
-					if (minutes < 10) {
-						minutes = '0' + minutes;
-					}
-					if (tseconds < 10) {
-						tseconds = '0' + tseconds;
-					}
+				// Ajout des zéros initiaux pour les valeurs inférieures à 10
+				if (seconds < 10) {
+					seconds = '0' + seconds;
+				}
+				if (minutes < 10) {
+					minutes = '0' + minutes;
+				}
+				if (tseconds < 10) {
+					tseconds = '0' + tseconds;
+				}
 
-					//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-					document.querySelector('.progress-button').style.left = updProgWidth + 'px';
+				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
+				document.querySelector('.progress-button').style.left = updProgWidth + 'px';
 
-					// Ajustement des durées
-					document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
-					document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
+				// Ajustement des durées
+				document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
+				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
-					// En mode lecture, mise à jour des valeurs du tampon
-					if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
-				});
+				// En mode lecture, mise à jour des valeurs du tampon
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
 			});
 		});
 	},
@@ -32285,6 +32298,7 @@ var Player = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'button-holder' },
+							' ',
 							React.createElement(
 								'div',
 								{ className: 'progress-button' },
