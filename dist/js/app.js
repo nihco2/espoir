@@ -32193,7 +32193,7 @@ var Player = React.createClass({
 		var self = this;
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
-				var progWidth = document.querySelector('.progress').offsetWidth - 50;
+				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
 
 				// Le temps actuel de la vidéo, basé sur la barre de progression
 				var time = Math.round(document.querySelector('.progress-bar').offsetWidth / progWidth * self.getDuration());
