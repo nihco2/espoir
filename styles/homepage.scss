@@ -1,18 +1,18 @@
 @font-face {
 	font-family: FeENrm28C;
-	src: url("/assets/fonts/FeENrm28C.otf") format('truetype');
+	src: url("../../assets/fonts/FeENrm28C.otf") format('truetype');
 }
 @font-face {
 	font-family: FeENit27C;
-	src: url("/assets/fonts/FeENit27C.otf") format('truetype');
+	src: url("../../assets/fonts/FeENit27C.otf") format('truetype');
 }
 @font-face {
 	font-family: DancingScriptOT;
-	src: url("/assets/fonts/DancingScript-Regular.otf") format('truetype');
+	src: url("../../assets/fonts/DancingScript-Regular.otf") format('truetype');
 }
 $white:#fff;
 .homepage {
-	background: url('/assets/images/hp_accueil_foret.jpg') no-repeat;
+	background: url('../../assets/images/hp_accueil_foret.jpg') no-repeat;
 	background-size: cover;
 	height: 100%;
 	h1,
