@@ -11,7 +11,9 @@ module.exports={
 	"h3": "100 ans de politiques publiques",
 	"h4": "100 ans d'ESPOIR",
 	"description": "Nunc consequat sed ligula sit amet tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer malesuada urna magna, a volutpat leo dapibus eget. Donec dictum molestie mauris sit amet euismod.",
-	"go": "Entrez"
+	"go": "Entrez",
+	"resources": "Resources",
+	"credits": "Crédits"
 }
 
 },{}],3:[function(require,module,exports){
@@ -32009,6 +32011,14 @@ var _componentsHomepageJsx = require('./components/homepage.jsx');
 
 var _componentsHomepageJsx2 = _interopRequireDefault(_componentsHomepageJsx);
 
+var _componentsResourcesJsx = require('./components/resources.jsx');
+
+var _componentsResourcesJsx2 = _interopRequireDefault(_componentsResourcesJsx);
+
+var _componentsCreditsJsx = require('./components/credits.jsx');
+
+var _componentsCreditsJsx2 = _interopRequireDefault(_componentsCreditsJsx);
+
 var _reactRouter = require('react-router');
 
 var _reactRouter2 = _interopRequireDefault(_reactRouter);
@@ -32023,7 +32033,14 @@ var routes = _react2['default'].createElement(
 	_react2['default'].createElement(Route, { path: 'player',
 		handler: _componentsPlayerJsx2['default']
 	}),
-	' > ',
+	' ',
+	_react2['default'].createElement(Route, { path: 'resources',
+		handler: _componentsResourcesJsx2['default']
+	}),
+	'  ',
+	_react2['default'].createElement(Route, { path: 'credits',
+		handler: _componentsCreditsJsx2['default']
+	}),
 	_react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
 	}),
 	' '
@@ -32040,9 +32057,43 @@ var App = _react2['default'].createClass({
 _reactRouter2['default'].run(routes, function (Root) {
 	_react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
-//React.render( < Player / > , document.getElementById('content'));
 
-},{"./components/homepage.jsx":200,"./components/player.jsx":201,"react":198,"react-router":29}],200:[function(require,module,exports){
+},{"./components/credits.jsx":200,"./components/homepage.jsx":201,"./components/player.jsx":202,"./components/resources.jsx":203,"react":198,"react-router":29}],200:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+var texts = require('../../assets/texts.json');
+
+var Link = _reactRouter2['default'].Link;
+
+var Credits = React.createClass({
+	displayName: 'Credits',
+
+	render: function render() {
+		return React.createElement(
+			'h1',
+			null,
+			' ',
+			texts.credits,
+			' '
+		);
+	}
+});
+
+exports['default'] = Credits;
+module.exports = exports['default'];
+
+},{"../../assets/texts.json":2,"react":198,"react-router":29}],201:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32068,11 +32119,32 @@ var Homepage = React.createClass({
 			'div',
 			{ className: 'homepage' },
 			React.createElement(
+				'nav',
+				null,
+				' ',
+				React.createElement(
+					Link,
+					{ to: '/resources' },
+					' ',
+					texts.resources,
+					' '
+				),
+				React.createElement(
+					Link,
+					{ to: '/credits' },
+					texts.credits
+				),
+				' '
+			),
+			' ',
+			React.createElement(
 				'div',
 				{ className: 'container' },
+				' ',
 				React.createElement(
 					'div',
 					{ className: 'intro' },
+					' ',
 					React.createElement(
 						'h1',
 						null,
@@ -32115,7 +32187,7 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						Link,
-						{ to: '/player' },
+						{ to: '/player', className: 'go' },
 						texts.go
 					),
 					' '
@@ -32129,7 +32201,7 @@ var Homepage = React.createClass({
 exports['default'] = Homepage;
 module.exports = exports['default'];
 
-},{"../../assets/texts.json":2,"react":198,"react-router":29}],201:[function(require,module,exports){
+},{"../../assets/texts.json":2,"react":198,"react-router":29}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32290,6 +32362,12 @@ var Player = React.createClass({
 						{ className: 'progress-bar',
 							onMouseDown: this.handleProgressBarMouseDown },
 						React.createElement(
+							'nav',
+							null,
+							' '
+						),
+						' ',
+						React.createElement(
 							'div',
 							{ className: 'mask' },
 							' '
@@ -32346,4 +32424,39 @@ module.exports = exports['default'];
 
 //bufferLength();
 
-},{"../../assets/assets.json":1,"jquery":4,"react":198}]},{},[199]);
+},{"../../assets/assets.json":1,"jquery":4,"react":198}],203:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+var texts = require('../../assets/texts.json');
+
+var Link = _reactRouter2['default'].Link;
+
+var Resources = React.createClass({
+	displayName: 'Resources',
+
+	render: function render() {
+		return React.createElement(
+			'h1',
+			null,
+			' ',
+			texts.resources,
+			' '
+		);
+	}
+});
+
+exports['default'] = Resources;
+module.exports = exports['default'];
+
+},{"../../assets/texts.json":2,"react":198,"react-router":29}]},{},[199]);

@@ -15,33 +15,48 @@ $white:#fff;
 	background: url('/assets/images/hp_accueil_foret.jpg') no-repeat;
 	background-size: cover;
 	height: 100%;
+	h1,
+	h2,
+	h3,
+	h4,
+	p,
+	a {
+		color: $white;
+	}
+	h1,
+	p,
+	a {
+		font-family: FeENrm28C;
+	}
+	h2 {
+		font-family: FeENrm28C;
+		text-transform: uppercase;
+	}
+	h3,
+	h4 {
+		font-family: DancingScriptOT;
+	}
+	nav {
+		float: right;
+		margin-top: 20px;
+		margin-right: 20px;
+		a {
+			margin: 10px;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+	}
 	.container {
 		width: 1024px;
 		margin: 0 auto;
+		.intro {
+			width: 40%;
+			padding-top: 100px;
+		}
+		.go {
+			text-transform: uppercase;
+			font-size: 40px;
+			text-decoration: none;
+		}
 	}
-	.intro {
-		width: 40%;
-		padding-top: 100px;
-	}
-}
-h1,
-h2,
-h3,
-h4,
-p,
-a {
-	color: $white;
-}
-h1,
-p,
-a {
-	font-family: FeENrm28C;
-}
-h2 {
-	font-family: FeENrm28C;
-	text-transform: uppercase;
-}
-h3,
-h4 {
-	font-family: DancingScriptOT;
 }

@@ -141,7 +141,7 @@ let Player = React.createClass({
 			onMouseDown = {
 				this.handleProgressBarMouseDown
 			} >
-			< div className = "mask" > < /div> < div className = "button-holder" > < div className = "progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
+			< nav > < /nav> < div className = "mask" > < /div > < div className = "button-holder" > < div className = "progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
 		);
 	}
 });

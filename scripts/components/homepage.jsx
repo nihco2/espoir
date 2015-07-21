@@ -5,11 +5,13 @@ import ReactRouter from 'react-router';
 var Link = ReactRouter.Link;
 
 let Homepage = React.createClass({
-	render() {
-		return ( < div className = "homepage" >
-			< div className = "container" >
-			< div className = "intro" >
-			< h1 > {
+		render() {
+			return ( < div className = "homepage" >
+				< nav > < Link to = {
+					'\/resources'
+				} > {
+					texts.resources
+				} < /Link ><Link to={'\/credits'}>{texts.credits}</Link > < /nav> < div className = "container" > < div className = "intro" > < h1 > {
 				texts.h1
 			} < /h1> < h2 > {
 			texts.h2
@@ -19,7 +21,7 @@ let Homepage = React.createClass({
 	texts.h4
 } < /h4>  < p > {
 texts.description
-} < /p> <Link to={'\/player'}>{texts.go}</Link > < /div>< /div > < /div > );
+} < /p> <Link to={'\/player'} className="go">{texts.go}</Link > < /div>< /div > < /div > );
 }
 });
 
