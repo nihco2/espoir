@@ -7,12 +7,11 @@ import Router from 'react-router';
 
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
-window.React = React;
 
 var routes = ( < Route handler = {
 	App
 } >
-< Route path = "player"
+< Route path = "player/:periode"
 handler = {
 	Player
 }

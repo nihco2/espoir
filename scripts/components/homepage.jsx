@@ -1,13 +1,16 @@
 var React = require('react');
 var texts = require('../../assets/texts.json');
+var routes = require('../../assets/routes.json');
 import ReactRouter from 'react-router';
 
 var Link = ReactRouter.Link;
 
 let Homepage = React.createClass({
+		getInitialState: function () {
+			return routes;
+		},
 		render() {
-			return ( < div className = "homepage" >
-				< nav > < Link to = {
+			return ( < div className = "homepage" > < nav > < Link to = {
 					'\/resources'
 				} > {
 					texts.resources
@@ -21,7 +24,7 @@ let Homepage = React.createClass({
 	texts.h4
 } < /h4>  < p > {
 texts.description
-} < /p> <Link to={'\/player'} className="go">{texts.go}</Link > < /div>< /div > < /div > );
+} < /p> <Link to={`\/player\/${this.state.periodes.period1}`} className="go">{texts.go}</Link > < /div>< /div > < /div > );
 }
 });
 

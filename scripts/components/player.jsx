@@ -1,8 +1,15 @@
 var React = require('react');
 var $ = require('jquery');
 var assets = require('../../assets/assets.json');
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
+var routes = require('../../assets/routes.json');
+var texts = require('../../assets/texts.json');
 
 let Player = React.createClass({
+	getInitialState: function () {
+		return routes;
+	},
 
 	getDuration: function () {
 		return this.getVideo().duration;
@@ -122,28 +129,39 @@ let Player = React.createClass({
 			poster = assets.poster;
 
 		return ( < div className = "player-container" >
-			< video id = "video"
-			poster = {
-				poster
+			< nav > < Link to = {
+				`\/player\/${this.state.periodes.period2}`
 			}
-			preload = "metadata" >
+			className = "left-nav" > {
+				this.state.periodes.period2
+			} < /Link >< Link to = {
+			`\/player\/${this.state.periodes.period2}`
+		}
+		className = "right-nav" > {
+				this.state.periodes.period4
+			} < /Link > < /nav >
+			< video id = "video"
+		poster = {
+			poster
+		}
+		preload = "metadata" >
 			< source src = {
 				video
 			}
 
-			type = "video/mp4" / >
+		type = "video/mp4" / >
 			< source src = "movie-hd.mp4"
-			type = "video/mp4" / >
+		type = "video/mp4" / >
 			< /video> < div className = "player" onClick={this.handleClickPause}>  < div className = "play"
-			onClick = {
-				this.handleClickPlay
-			} > < /div >  < div className = "progress" > < div className = "progress-bar"
-			onMouseDown = {
+		onClick = {
+			this.handleClickPlay
+		} > < /div >  < div className = "progress" > < div className = "progress-bar"
+		onMouseDown = {
 				this.handleProgressBarMouseDown
 			} >
-			< nav > < /nav> < div className = "mask" > < /div > < div className = "button-holder" > < div className = "progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
-		);
-	}
+			< div className = "mask" > < /div > < div className = "button-holder" > < div className = "progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
+	);
+}
 });
 
 export default Player;

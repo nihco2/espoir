@@ -1,5 +1,10 @@
 {
 	"periodes": {
-		"period1": "periode1"
+		"period1": "1914-1945",
+		"period2": "1945-1965",
+		"period3": "1965-1985",
+		"period4": "1985-1995",
+		"period5": "1995-2005",
+		"period6": "2005-2015"
 	}
 }
