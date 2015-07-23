@@ -7,6 +7,25 @@ var routes = require('../../assets/routes.json');
 var texts = require('../../assets/texts.json');
 
 let Player = React.createClass({
+	getCurrentRoute: function () {
+		return location.hash.split('/').pop();
+	},
+	configPrevNextRoutes: function (prevOrNext) {
+		console.log(this.getCurrentRoute(), this.state.periodes)
+		let prevRoute,
+			nextRoute;
+		for (var route in this.state.periodes) {
+			console.log(this.state.periodes[route]);
+			if (this.state.periodes[route] === this.getCurrentRoute()) {
+				break;
+			}
+			prevRoute = this.state.periodes[route];
+			Object.getOwnPropertyNames(this.state.periodes).forEach(function (val, idx, array) {
+				console.log(val + " -> " + Object.getOwnPropertyNames(this.state.periodes), this.state.periodes[val], array);
+			}.bind(this));
+			console.log('prevRoute', prevRoute);
+		}
+	},
 	getInitialState: function () {
 		return routes;
 	},
@@ -60,6 +79,7 @@ let Player = React.createClass({
 
 	componentDidMount: function () {
 		var self = this;
+		self.configPrevNextRoutes();
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';

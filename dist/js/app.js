@@ -8,11 +8,11 @@ module.exports={
 module.exports={
 	"periodes": {
 		"period1": "1914-1945",
-		"period2": "1945-1965",
-		"period3": "1965-1985",
-		"period4": "1985-1995",
-		"period5": "1995-2005",
-		"period6": "2005-2015"
+		"period2": "1945-1960",
+		"period3": "1960-1975",
+		"period4": "1975-1985",
+		"period5": "1985-2002",
+		"period6": "2002-2015"
 	}
 }
 
@@ -32234,6 +32234,25 @@ var texts = require('../../assets/texts.json');
 var Player = React.createClass({
 	displayName: 'Player',
 
+	getCurrentRoute: function getCurrentRoute() {
+		return location.hash.split('/').pop();
+	},
+	configPrevNextRoutes: function configPrevNextRoutes(prevOrNext) {
+		console.log(this.getCurrentRoute(), this.state.periodes);
+		var prevRoute = undefined,
+		    nextRoute = undefined;
+		for (var route in this.state.periodes) {
+			console.log(this.state.periodes[route]);
+			if (this.state.periodes[route] === this.getCurrentRoute()) {
+				break;
+			}
+			prevRoute = this.state.periodes[route];
+			Object.getOwnPropertyNames(this.state.periodes).forEach((function (val, idx, array) {
+				console.log(val + ' -> ' + Object.getOwnPropertyNames(this.state.periodes), this.state.periodes[val], array);
+			}).bind(this));
+			console.log('prevRoute', prevRoute);
+		}
+	},
 	getInitialState: function getInitialState() {
 		return routes;
 	},
@@ -32287,6 +32306,7 @@ var Player = React.createClass({
 
 	componentDidMount: function componentDidMount() {
 		var self = this;
+		self.configPrevNextRoutes();
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
