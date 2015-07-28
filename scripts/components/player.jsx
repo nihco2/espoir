@@ -10,24 +10,29 @@ let Player = React.createClass({
 	getCurrentRoute: function () {
 		return location.hash.split('/').pop();
 	},
-	configPrevNextRoutes: function (prevOrNext) {
-		console.log(this.getCurrentRoute(), this.state.periodes)
-		let prevRoute,
-			nextRoute;
-		for (var route in this.state.periodes) {
-			console.log(this.state.periodes[route]);
-			if (this.state.periodes[route] === this.getCurrentRoute()) {
-				break;
-			}
-			prevRoute = this.state.periodes[route];
-			Object.getOwnPropertyNames(this.state.periodes).forEach(function (val, idx, array) {
-				console.log(val + " -> " + Object.getOwnPropertyNames(this.state.periodes), this.state.periodes[val], array);
-			}.bind(this));
-			console.log('prevRoute', prevRoute);
-		}
+
+	initRoutes: function () {
+		var routesArray = routes.periodes;
+		var current = this.getCurrentRoute();
+		var currentIndex = routesArray.indexOf(current);
+
+		console.log('current', current, routesArray, currentIndex);
+
+		var prevRoute = routes.periodes[routesArray[currentIndex - 1]];
+		var nextRoute = routes.periodes[routesArray[currentIndex + 1]];
+
+		console.log(routesArray[currentIndex - 1]);
+		console.log(routesArray[currentIndex]);
+		console.log(routesArray[currentIndex + 1]);
+
+		return {
+			prevRoute: prevRoute,
+			nextRoute: nextRoute
+		};
 	},
+
 	getInitialState: function () {
-		return routes;
+		return this.initRoutes();
 	},
 
 	getDuration: function () {
@@ -77,9 +82,13 @@ let Player = React.createClass({
 		this.getVideo().currentTime = currentTime;
 	},
 
+	hashDidChanged: function () {
+		this.setState(this.initRoutes());
+	},
+
 	componentDidMount: function () {
 		var self = this;
-		self.configPrevNextRoutes();
+		window.addEventListener('hashchange', this.hashDidChanged);
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
@@ -150,15 +159,15 @@ let Player = React.createClass({
 
 		return ( < div className = "player-container" >
 			< nav > < Link to = {
-				`\/player\/${this.state.periodes.period2}`
+				`\/player\/${this.state.prevRoute}`
 			}
 			className = "left-nav" > {
-				this.state.periodes.period2
+				this.state.prevRoute
 			} < /Link >< Link to = {
-			`\/player\/${this.state.periodes.period2}`
+			`\/player\/${this.state.nextRoute}`
 		}
 		className = "right-nav" > {
-				this.state.periodes.period4
+				this.state.nextRoute
 			} < /Link > < /nav >
 			< video id = "video"
 		poster = {

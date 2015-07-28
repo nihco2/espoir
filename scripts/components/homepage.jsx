@@ -7,7 +7,9 @@ var Link = ReactRouter.Link;
 
 let Homepage = React.createClass({
 		getInitialState: function () {
-			return routes;
+			return {
+				firstPeriode: routes.periodes[0]
+			};
 		},
 		render() {
 			return ( < div className = "homepage" > < nav > < Link to = {
@@ -24,7 +26,7 @@ let Homepage = React.createClass({
 	texts.h4
 } < /h4>  < p > {
 texts.description
-} < /p> <Link to={`\/player\/${this.state.periodes.period1}`} className="go">{texts.go}</Link > < /div>< /div > < /div > );
+} < /p> <Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > );
 }
 });
 

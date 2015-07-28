@@ -6,14 +6,7 @@ module.exports={
 
 },{}],2:[function(require,module,exports){
 module.exports={
-	"periodes": {
-		"period1": "1914-1945",
-		"period2": "1945-1960",
-		"period3": "1960-1975",
-		"period4": "1975-1985",
-		"period5": "1985-2002",
-		"period6": "2002-2015"
-	}
+	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"]
 }
 
 },{}],3:[function(require,module,exports){
@@ -32127,7 +32120,9 @@ var Homepage = React.createClass({
 	displayName: 'Homepage',
 
 	getInitialState: function getInitialState() {
-		return routes;
+		return {
+			firstPeriode: routes.periodes[0]
+		};
 	},
 	render: function render() {
 		return React.createElement(
@@ -32203,7 +32198,7 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						Link,
-						{ to: '/player/' + this.state.periodes.period1, className: 'go' },
+						{ to: '/player/' + this.state.firstPeriode, className: 'go' },
 						texts.go
 					),
 					' '
@@ -32237,24 +32232,29 @@ var Player = React.createClass({
 	getCurrentRoute: function getCurrentRoute() {
 		return location.hash.split('/').pop();
 	},
-	configPrevNextRoutes: function configPrevNextRoutes(prevOrNext) {
-		console.log(this.getCurrentRoute(), this.state.periodes);
-		var prevRoute = undefined,
-		    nextRoute = undefined;
-		for (var route in this.state.periodes) {
-			console.log(this.state.periodes[route]);
-			if (this.state.periodes[route] === this.getCurrentRoute()) {
-				break;
-			}
-			prevRoute = this.state.periodes[route];
-			Object.getOwnPropertyNames(this.state.periodes).forEach((function (val, idx, array) {
-				console.log(val + ' -> ' + Object.getOwnPropertyNames(this.state.periodes), this.state.periodes[val], array);
-			}).bind(this));
-			console.log('prevRoute', prevRoute);
-		}
+
+	initRoutes: function initRoutes() {
+		var routesArray = routes.periodes;
+		var current = this.getCurrentRoute();
+		var currentIndex = routesArray.indexOf(current);
+
+		console.log('current', current, routesArray, currentIndex);
+
+		var prevRoute = routes.periodes[routesArray[currentIndex - 1]];
+		var nextRoute = routes.periodes[routesArray[currentIndex + 1]];
+
+		console.log(routesArray[currentIndex - 1]);
+		console.log(routesArray[currentIndex]);
+		console.log(routesArray[currentIndex + 1]);
+
+		return {
+			prevRoute: prevRoute,
+			nextRoute: nextRoute
+		};
 	},
+
 	getInitialState: function getInitialState() {
-		return routes;
+		return this.initRoutes();
 	},
 
 	getDuration: function getDuration() {
@@ -32304,9 +32304,13 @@ var Player = React.createClass({
 		this.getVideo().currentTime = currentTime;
 	},
 
+	hashDidChanged: function hashDidChanged() {
+		this.setState(this.initRoutes());
+	},
+
 	componentDidMount: function componentDidMount() {
 		var self = this;
-		self.configPrevNextRoutes();
+		window.addEventListener('hashchange', this.hashDidChanged);
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
@@ -32380,18 +32384,18 @@ var Player = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.periodes.period2,
+					{ to: '/player/' + this.state.prevRoute,
 						className: 'left-nav' },
 					' ',
-					this.state.periodes.period2,
+					this.state.prevRoute,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.periodes.period2,
+					{ to: '/player/' + this.state.nextRoute,
 						className: 'right-nav' },
 					' ',
-					this.state.periodes.period4,
+					this.state.nextRoute,
 					' '
 				),
 				' '
