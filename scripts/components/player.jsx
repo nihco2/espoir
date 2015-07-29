@@ -18,13 +18,24 @@ let Player = React.createClass({
 
 		console.log('current', current, routesArray, currentIndex);
 
-		var prevRoute = routes.periodes[routesArray[currentIndex - 1]];
-		var nextRoute = routes.periodes[routesArray[currentIndex + 1]];
+		var prevRoute = routesArray[currentIndex - 1];
+		var nextRoute = routesArray[currentIndex + 1];
 
-		console.log(routesArray[currentIndex - 1]);
+		/*console.log(routesArray[currentIndex - 1]);
 		console.log(routesArray[currentIndex]);
-		console.log(routesArray[currentIndex + 1]);
+		console.log(routesArray[currentIndex + 1]);*/
 
+		if (!prevRoute) {
+			console.log('+++', prevRoute)
+			$('.left-nav').hide();
+		} else if ($('.left-nav').is(':hidden')) {
+			$('.left-nav').show();
+		}
+		if (!nextRoute) {
+			$('.right-nav').hide();
+		} else if ($('.right-nav').is(':hidden')) {
+			$('.right-nav').show();
+		}
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute
@@ -32,6 +43,7 @@ let Player = React.createClass({
 	},
 
 	getInitialState: function () {
+		console.log(this.initRoutes())
 		return this.initRoutes();
 	},
 
@@ -89,6 +101,7 @@ let Player = React.createClass({
 	componentDidMount: function () {
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
+		this.initRoutes();
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';

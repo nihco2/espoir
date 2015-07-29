@@ -32034,15 +32034,15 @@ var Route = _reactRouter2['default'].Route;
 var routes = _react2['default'].createElement(
 	Route,
 	{ handler: App },
-	_react2['default'].createElement(Route, { path: 'player/:periode',
+	_react2['default'].createElement(Route, { path: "player/:periode",
 		handler: _componentsPlayerJsx2['default']
 	}),
 	' ',
-	_react2['default'].createElement(Route, { path: 'resources',
+	_react2['default'].createElement(Route, { path: "resources",
 		handler: _componentsResourcesJsx2['default']
 	}),
 	'  ',
-	_react2['default'].createElement(Route, { path: 'credits',
+	_react2['default'].createElement(Route, { path: "credits",
 		handler: _componentsCreditsJsx2['default']
 	}),
 	_react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
@@ -32127,7 +32127,7 @@ var Homepage = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: 'homepage' },
+			{ className: "homepage" },
 			' ',
 			React.createElement(
 				'nav',
@@ -32135,14 +32135,14 @@ var Homepage = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/resources' },
+					{ to: '\/resources' },
 					' ',
 					texts.resources,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '/credits' },
+					{ to: '\/credits' },
 					texts.credits
 				),
 				' '
@@ -32150,11 +32150,11 @@ var Homepage = React.createClass({
 			' ',
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				' ',
 				React.createElement(
 					'div',
-					{ className: 'intro' },
+					{ className: "intro" },
 					' ',
 					React.createElement(
 						'h1',
@@ -32198,7 +32198,7 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						Link,
-						{ to: '/player/' + this.state.firstPeriode, className: 'go' },
+						{ to: '/player/' + this.state.firstPeriode, className: "go" },
 						texts.go
 					),
 					' '
@@ -32240,13 +32240,24 @@ var Player = React.createClass({
 
 		console.log('current', current, routesArray, currentIndex);
 
-		var prevRoute = routes.periodes[routesArray[currentIndex - 1]];
-		var nextRoute = routes.periodes[routesArray[currentIndex + 1]];
+		var prevRoute = routesArray[currentIndex - 1];
+		var nextRoute = routesArray[currentIndex + 1];
 
-		console.log(routesArray[currentIndex - 1]);
-		console.log(routesArray[currentIndex]);
-		console.log(routesArray[currentIndex + 1]);
+		/*console.log(routesArray[currentIndex - 1]);
+  console.log(routesArray[currentIndex]);
+  console.log(routesArray[currentIndex + 1]);*/
 
+		if (!prevRoute) {
+			console.log('+++', prevRoute);
+			$('.left-nav').hide();
+		} else if ($('.left-nav').is(':hidden')) {
+			$('.left-nav').show();
+		}
+		if (!nextRoute) {
+			$('.right-nav').hide();
+		} else if ($('.right-nav').is(':hidden')) {
+			$('.right-nav').show();
+		}
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute
@@ -32254,6 +32265,7 @@ var Player = React.createClass({
 	},
 
 	getInitialState: function getInitialState() {
+		console.log(this.initRoutes());
 		return this.initRoutes();
 	},
 
@@ -32311,6 +32323,7 @@ var Player = React.createClass({
 	componentDidMount: function componentDidMount() {
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
+		this.initRoutes();
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
@@ -32367,7 +32380,9 @@ var Player = React.createClass({
 				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
 				// En mode lecture, mise à jour des valeurs du tampon
-				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
+					//bufferLength();
+				}
 			});
 		});
 	},
@@ -32377,7 +32392,7 @@ var Player = React.createClass({
 
 		return React.createElement(
 			'div',
-			{ className: 'player-container' },
+			{ className: "player-container" },
 			React.createElement(
 				'nav',
 				null,
@@ -32385,7 +32400,7 @@ var Player = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.prevRoute,
-						className: 'left-nav' },
+						className: "left-nav" },
 					' ',
 					this.state.prevRoute,
 					' '
@@ -32393,7 +32408,7 @@ var Player = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.nextRoute,
-						className: 'right-nav' },
+						className: "right-nav" },
 					' ',
 					this.state.nextRoute,
 					' '
@@ -32402,48 +32417,48 @@ var Player = React.createClass({
 			),
 			React.createElement(
 				'video',
-				{ id: 'video',
+				{ id: "video",
 					poster: poster,
-					preload: 'metadata' },
+					preload: "metadata" },
 				React.createElement('source', { src: video,
 
-					type: 'video/mp4' }),
-				React.createElement('source', { src: 'movie-hd.mp4',
-					type: 'video/mp4' })
+					type: "video/mp4" }),
+				React.createElement('source', { src: "movie-hd.mp4",
+					type: "video/mp4" })
 			),
 			' ',
 			React.createElement(
 				'div',
-				{ className: 'player', onClick: this.handleClickPause },
+				{ className: "player", onClick: this.handleClickPause },
 				'  ',
 				React.createElement(
 					'div',
-					{ className: 'play',
+					{ className: "play",
 						onClick: this.handleClickPlay },
 					' '
 				),
 				'  ',
 				React.createElement(
 					'div',
-					{ className: 'progress' },
+					{ className: "progress" },
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'progress-bar',
+						{ className: "progress-bar",
 							onMouseDown: this.handleProgressBarMouseDown },
 						React.createElement(
 							'div',
-							{ className: 'mask' },
+							{ className: "mask" },
 							' '
 						),
 						' ',
 						React.createElement(
 							'div',
-							{ className: 'button-holder' },
+							{ className: "button-holder" },
 							' ',
 							React.createElement(
 								'div',
-								{ className: 'progress-button' },
+								{ className: "progress-button" },
 								' '
 							),
 							' '
@@ -32453,17 +32468,17 @@ var Player = React.createClass({
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'time' },
+						{ className: "time" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'ctime' },
+							{ className: "ctime" },
 							' 00: 00 '
 						),
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'ttime' },
+							{ className: "ttime" },
 							' 00: 00 '
 						),
 						' '
@@ -32473,7 +32488,7 @@ var Player = React.createClass({
 				' ',
 				React.createElement(
 					'div',
-					{ className: 'volume' },
+					{ className: "volume" },
 					' '
 				),
 				' '
@@ -32485,8 +32500,6 @@ var Player = React.createClass({
 
 exports['default'] = Player;
 module.exports = exports['default'];
-
-//bufferLength();
 
 },{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"jquery":5,"react":199,"react-router":30}],204:[function(require,module,exports){
 'use strict';
