@@ -1,4 +1,12 @@
 {
-	"video": "assets/videos/sociodrame.mp4",
-	"poster": "assets/images/genet.jpg"
+	"videos": [
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster1.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster1.jpg"
+		}
+		]
 }

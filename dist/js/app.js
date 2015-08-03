@@ -1,7 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-	"video": "assets/videos/sociodrame.mp4",
-	"poster": "assets/images/genet.jpg"
+	"videos": [
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster1.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster1.jpg"
+		}
+		]
 }
 
 },{}],2:[function(require,module,exports){
@@ -32242,10 +32250,10 @@ var Player = React.createClass({
 
 		var prevRoute = routesArray[currentIndex - 1];
 		var nextRoute = routesArray[currentIndex + 1];
-
-		/*console.log(routesArray[currentIndex - 1]);
-  console.log(routesArray[currentIndex]);
-  console.log(routesArray[currentIndex + 1]);*/
+		var currentVideo = assets.videos[currentIndex].video;
+		var currentPoster = assets.videos[currentIndex].poster;
+		console.log(assets.videos, currentIndex + 1);
+		var nextPoster = assets.videos[currentIndex + 1].poster;
 
 		if (!prevRoute) {
 			console.log('+++', prevRoute);
@@ -32260,7 +32268,10 @@ var Player = React.createClass({
 		}
 		return {
 			prevRoute: prevRoute,
-			nextRoute: nextRoute
+			nextRoute: nextRoute,
+			currentVideo: currentVideo,
+			currentPoster: currentPoster,
+			nextPoster: nextPoster
 		};
 	},
 
@@ -32317,6 +32328,7 @@ var Player = React.createClass({
 	},
 
 	hashDidChanged: function hashDidChanged() {
+		$('#video').addClass('slide');
 		this.setState(this.initRoutes());
 	},
 
@@ -32324,6 +32336,7 @@ var Player = React.createClass({
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
 		this.initRoutes();
+
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
@@ -32387,8 +32400,6 @@ var Player = React.createClass({
 		});
 	},
 	render: function render() {
-		var video = assets.video,
-		    poster = assets.poster;
 
 		return React.createElement(
 			'div',
@@ -32416,21 +32427,26 @@ var Player = React.createClass({
 				' '
 			),
 			React.createElement(
-				'video',
-				{ id: "video",
-					poster: poster,
-					preload: "metadata" },
-				React.createElement('source', { src: video,
+				'section',
+				{ className: "wrapper" },
+				React.createElement(
+					'video',
+					{ id: "video",
+						poster: this.state.currentPoster,
+						preload: "metadata" },
+					React.createElement('source', { src: this.state.currentVideo,
 
-					type: "video/mp4" }),
-				React.createElement('source', { src: "movie-hd.mp4",
-					type: "video/mp4" })
+						type: "video/mp4" }),
+					React.createElement('source', { src: "movie-hd.mp4",
+						type: "video/mp4" })
+				)
 			),
 			' ',
 			React.createElement(
 				'div',
-				{ className: "player", onClick: this.handleClickPause },
-				'  ',
+				{ className: "player",
+					onClick: this.handleClickPause },
+				' ',
 				React.createElement(
 					'div',
 					{ className: "play",

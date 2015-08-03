@@ -20,10 +20,10 @@ let Player = React.createClass({
 
 		var prevRoute = routesArray[currentIndex - 1];
 		var nextRoute = routesArray[currentIndex + 1];
-
-		/*console.log(routesArray[currentIndex - 1]);
-		console.log(routesArray[currentIndex]);
-		console.log(routesArray[currentIndex + 1]);*/
+		var currentVideo = assets.videos[currentIndex].video;
+		var currentPoster = assets.videos[currentIndex].poster;
+		console.log(assets.videos, currentIndex + 1)
+		var nextPoster = assets.videos[currentIndex + 1].poster;
 
 		if (!prevRoute) {
 			console.log('+++', prevRoute)
@@ -38,7 +38,10 @@ let Player = React.createClass({
 		}
 		return {
 			prevRoute: prevRoute,
-			nextRoute: nextRoute
+			nextRoute: nextRoute,
+			currentVideo: currentVideo,
+			currentPoster: currentPoster,
+			nextPoster: nextPoster
 		};
 	},
 
@@ -95,6 +98,7 @@ let Player = React.createClass({
 	},
 
 	hashDidChanged: function () {
+		$('#video').addClass('slide');
 		this.setState(this.initRoutes());
 	},
 
@@ -102,6 +106,7 @@ let Player = React.createClass({
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
 		this.initRoutes();
+
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
@@ -167,8 +172,6 @@ let Player = React.createClass({
 		});
 	},
 	render() {
-		let video = assets.video,
-			poster = assets.poster;
 
 		return ( < div className = "player-container" >
 			< nav > < Link to = {
@@ -182,19 +185,23 @@ let Player = React.createClass({
 		className = "right-nav" > {
 				this.state.nextRoute
 			} < /Link > < /nav >
+			< section className = "wrapper" >
 			< video id = "video"
 		poster = {
-			poster
+			this.state.currentPoster
 		}
 		preload = "metadata" >
 			< source src = {
-				video
+				this.state.currentVideo
 			}
 
 		type = "video/mp4" / >
 			< source src = "movie-hd.mp4"
 		type = "video/mp4" / >
-			< /video> < div className = "player" onClick={this.handleClickPause}>  < div className = "play"
+			< /video>< /section > < div className = "player"
+		onClick = {
+			this.handleClickPause
+		} > < div className = "play"
 		onClick = {
 			this.handleClickPlay
 		} > < /div >  < div className = "progress" > < div className = "progress-bar"
