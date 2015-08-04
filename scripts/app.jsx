@@ -8,6 +8,8 @@ import Router from 'react-router';
 var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 
+window.jQuery = require('jquery');
+
 var routes = ( < Route handler = {
 	App
 } >

@@ -1,5 +1,4 @@
 var React = require('react');
-var $ = require('jquery');
 var assets = require('../../assets/assets.json');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
@@ -15,18 +14,14 @@ let Player = React.createClass({
 		var routesArray = routes.periodes;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
-
-		console.log('current', current, routesArray, currentIndex);
-
-		var prevRoute = routesArray[currentIndex - 1];
-		var nextRoute = routesArray[currentIndex + 1];
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
 		var currentVideo = assets.videos[currentIndex].video;
 		var currentPoster = assets.videos[currentIndex].poster;
-		console.log(assets.videos, currentIndex + 1)
-		var nextPoster = assets.videos[currentIndex + 1].poster;
+		var nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
+		var prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
 
 		if (!prevRoute) {
-			console.log('+++', prevRoute)
 			$('.left-nav').hide();
 		} else if ($('.left-nav').is(':hidden')) {
 			$('.left-nav').show();
@@ -36,17 +31,18 @@ let Player = React.createClass({
 		} else if ($('.right-nav').is(':hidden')) {
 			$('.right-nav').show();
 		}
+
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute,
 			currentVideo: currentVideo,
 			currentPoster: currentPoster,
-			nextPoster: nextPoster
+			nextPoster: nextPoster,
+			prevPoster: prevPoster
 		};
 	},
 
 	getInitialState: function () {
-		console.log(this.initRoutes())
 		return this.initRoutes();
 	},
 
@@ -89,16 +85,23 @@ let Player = React.createClass({
 		}
 
 		// Position x de la souris lors du clic
-		var x = e.pageX - $('.progress').offset().left - 50;
-		var progWidth = document.querySelector('.progress').offsetWidth;
+		var x = e.pageX - $('.js-progress').offset().left - 50;
+		var progWidth = document.querySelector('.js-progress').offsetWidth;
 		// Mise à jour du temps actuel
 		var currentTime = (x / progWidth) * this.getDuration();
 
 		this.getVideo().currentTime = currentTime;
 	},
 
-	hashDidChanged: function () {
-		$('#video').addClass('slide');
+	hashDidChanged: function (event) {
+		var oldURL = parseInt(event.oldURL.split('/').pop());
+		var newURL = parseInt(event.newURL.split('/').pop());
+		if (oldURL > newURL) {
+			$('.carousel').carousel('prev');
+		} else {
+			$('.carousel').carousel('next');
+		}
+
 		this.setState(this.initRoutes());
 	},
 
@@ -106,13 +109,15 @@ let Player = React.createClass({
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
 		this.initRoutes();
-
+		$('.carousel').carousel({
+			interval: false
+		});
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
-				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
+				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
 				// Le temps actuel de la vidéo, basé sur la barre de progression
-				var time = Math.round((document.querySelector('.progress-bar').offsetWidth / progWidth) * self.getDuration());
+				var time = Math.round((document.querySelector('.js-progress-bar').offsetWidth / progWidth) * self.getDuration());
 
 				// Le temps "réel" de la vidéo
 				var curTime = self.getVideo().currentTime;
@@ -157,7 +162,7 @@ let Player = React.createClass({
 
 
 				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-				document.querySelector('.progress-button').style.left = updProgWidth + 'px';
+				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
 
 
 				// Ajustement des durées
@@ -185,7 +190,11 @@ let Player = React.createClass({
 		className = "right-nav" > {
 				this.state.nextRoute
 			} < /Link > < /nav >
-			< section className = "wrapper" >
+			< section className = "carousel slide" >
+			< div className = "carousel-inner"
+		role = "listbox" >
+
+			< div className = "item active" >
 			< video id = "video"
 		poster = {
 			this.state.currentPoster
@@ -198,17 +207,31 @@ let Player = React.createClass({
 		type = "video/mp4" / >
 			< source src = "movie-hd.mp4"
 		type = "video/mp4" / >
-			< /video>< /section > < div className = "player"
+			< /video></div >
+			< div className = "item" >
+			< video
+		poster = {
+				this.state.prevPoster
+			} >
+
+			< /video></div >
+			< div className = "item" >
+			< video
+		poster = {
+				this.state.nextPoster
+			} >
+
+			< /video></div > < /div> < /section > < div className = "player"
 		onClick = {
 			this.handleClickPause
 		} > < div className = "play"
 		onClick = {
 			this.handleClickPlay
-		} > < /div >  < div className = "progress" > < div className = "progress-bar"
+		} > < /div >  < div className = "n-progress js-progress" > < div className = "n-progress-bar js-progress-bar"
 		onMouseDown = {
 				this.handleProgressBarMouseDown
 			} >
-			< div className = "mask" > < /div > < div className = "button-holder" > < div className = "progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
+			< div className = "mask" > < /div > < div className = "button-holder" > < div className = "js-progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
 	);
 }
 });

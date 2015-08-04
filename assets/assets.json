@@ -6,7 +6,23 @@
 		},
 		{
 			"video": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
+			"poster": "assets/images/poster2.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster3.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster4.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster5.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster6.jpg"
 		}
 		]
 }

@@ -7,7 +7,23 @@ module.exports={
 		},
 		{
 			"video": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
+			"poster": "assets/images/poster2.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster3.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster4.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster5.jpg"
+		},
+		{
+			"video": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster6.jpg"
 		}
 		]
 }
@@ -32039,6 +32055,8 @@ var _reactRouter2 = _interopRequireDefault(_reactRouter);
 var DefaultRoute = _reactRouter2['default'].DefaultRoute;
 var Route = _reactRouter2['default'].Route;
 
+window.jQuery = require('jquery');
+
 var routes = _react2['default'].createElement(
 	Route,
 	{ handler: App },
@@ -32070,7 +32088,7 @@ _reactRouter2['default'].run(routes, function (Root) {
 	_react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
 
-},{"./components/credits.jsx":201,"./components/homepage.jsx":202,"./components/player.jsx":203,"./components/resources.jsx":204,"react":199,"react-router":30}],201:[function(require,module,exports){
+},{"./components/credits.jsx":201,"./components/homepage.jsx":202,"./components/player.jsx":203,"./components/resources.jsx":204,"jquery":5,"react":199,"react-router":30}],201:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32227,7 +32245,6 @@ Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 var React = require('react');
-var $ = require('jquery');
 var assets = require('../../assets/assets.json');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
@@ -32245,18 +32262,14 @@ var Player = React.createClass({
 		var routesArray = routes.periodes;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
-
-		console.log('current', current, routesArray, currentIndex);
-
-		var prevRoute = routesArray[currentIndex - 1];
-		var nextRoute = routesArray[currentIndex + 1];
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
 		var currentVideo = assets.videos[currentIndex].video;
 		var currentPoster = assets.videos[currentIndex].poster;
-		console.log(assets.videos, currentIndex + 1);
-		var nextPoster = assets.videos[currentIndex + 1].poster;
+		var nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
+		var prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
 
 		if (!prevRoute) {
-			console.log('+++', prevRoute);
 			$('.left-nav').hide();
 		} else if ($('.left-nav').is(':hidden')) {
 			$('.left-nav').show();
@@ -32266,17 +32279,18 @@ var Player = React.createClass({
 		} else if ($('.right-nav').is(':hidden')) {
 			$('.right-nav').show();
 		}
+
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute,
 			currentVideo: currentVideo,
 			currentPoster: currentPoster,
-			nextPoster: nextPoster
+			nextPoster: nextPoster,
+			prevPoster: prevPoster
 		};
 	},
 
 	getInitialState: function getInitialState() {
-		console.log(this.initRoutes());
 		return this.initRoutes();
 	},
 
@@ -32319,16 +32333,23 @@ var Player = React.createClass({
 		}
 
 		// Position x de la souris lors du clic
-		var x = e.pageX - $('.progress').offset().left - 50;
-		var progWidth = document.querySelector('.progress').offsetWidth;
+		var x = e.pageX - $('.js-progress').offset().left - 50;
+		var progWidth = document.querySelector('.js-progress').offsetWidth;
 		// Mise à jour du temps actuel
 		var currentTime = x / progWidth * this.getDuration();
 
 		this.getVideo().currentTime = currentTime;
 	},
 
-	hashDidChanged: function hashDidChanged() {
-		$('#video').addClass('slide');
+	hashDidChanged: function hashDidChanged(event) {
+		var oldURL = parseInt(event.oldURL.split('/').pop());
+		var newURL = parseInt(event.newURL.split('/').pop());
+		if (oldURL > newURL) {
+			$('.carousel').carousel('prev');
+		} else {
+			$('.carousel').carousel('next');
+		}
+
 		this.setState(this.initRoutes());
 	},
 
@@ -32336,13 +32357,15 @@ var Player = React.createClass({
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
 		this.initRoutes();
-
+		$('.carousel').carousel({
+			interval: false
+		});
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
-				var progWidth = document.querySelector('.progress') ? document.querySelector('.progress').offsetWidth - 50 : '';
+				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
 				// Le temps actuel de la vidéo, basé sur la barre de progression
-				var time = Math.round(document.querySelector('.progress-bar').offsetWidth / progWidth * self.getDuration());
+				var time = Math.round(document.querySelector('.js-progress-bar').offsetWidth / progWidth * self.getDuration());
 
 				// Le temps "réel" de la vidéo
 				var curTime = self.getVideo().currentTime;
@@ -32386,7 +32409,7 @@ var Player = React.createClass({
 				}
 
 				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-				document.querySelector('.progress-button').style.left = updProgWidth + 'px';
+				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
 
 				// Ajustement des durées
 				document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
@@ -32428,18 +32451,41 @@ var Player = React.createClass({
 			),
 			React.createElement(
 				'section',
-				{ className: "wrapper" },
+				{ className: "carousel slide" },
 				React.createElement(
-					'video',
-					{ id: "video",
-						poster: this.state.currentPoster,
-						preload: "metadata" },
-					React.createElement('source', { src: this.state.currentVideo,
+					'div',
+					{ className: "carousel-inner",
+						role: "listbox" },
+					React.createElement(
+						'div',
+						{ className: "item active" },
+						React.createElement(
+							'video',
+							{ id: "video",
+								poster: this.state.currentPoster,
+								preload: "metadata" },
+							React.createElement('source', { src: this.state.currentVideo,
 
-						type: "video/mp4" }),
-					React.createElement('source', { src: "movie-hd.mp4",
-						type: "video/mp4" })
-				)
+								type: "video/mp4" }),
+							React.createElement('source', { src: "movie-hd.mp4",
+								type: "video/mp4" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "item" },
+						React.createElement('video', {
+							poster: this.state.prevPoster })
+					),
+					React.createElement(
+						'div',
+						{ className: "item" },
+						React.createElement('video', {
+							poster: this.state.nextPoster })
+					),
+					' '
+				),
+				' '
 			),
 			' ',
 			React.createElement(
@@ -32456,11 +32502,11 @@ var Player = React.createClass({
 				'  ',
 				React.createElement(
 					'div',
-					{ className: "progress" },
+					{ className: "n-progress js-progress" },
 					' ',
 					React.createElement(
 						'div',
-						{ className: "progress-bar",
+						{ className: "n-progress-bar js-progress-bar",
 							onMouseDown: this.handleProgressBarMouseDown },
 						React.createElement(
 							'div',
@@ -32474,7 +32520,7 @@ var Player = React.createClass({
 							' ',
 							React.createElement(
 								'div',
-								{ className: "progress-button" },
+								{ className: "js-progress-button" },
 								' '
 							),
 							' '
@@ -32517,7 +32563,7 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"jquery":5,"react":199,"react-router":30}],204:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],204:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
