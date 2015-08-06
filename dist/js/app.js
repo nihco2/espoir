@@ -32437,7 +32437,7 @@ var Player = React.createClass({
 			{ className: "player-container" },
 			React.createElement(
 				'nav',
-				null,
+				{ className: "h-nav" },
 				' ',
 				React.createElement(
 					Link,
@@ -32447,6 +32447,7 @@ var Player = React.createClass({
 					this.state.prevRoute,
 					' '
 				),
+				' ',
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.nextRoute,
@@ -32455,8 +32456,28 @@ var Player = React.createClass({
 					this.state.nextRoute,
 					' '
 				),
+				'  '
+			),
+			' ',
+			React.createElement(
+				'nav',
+				{ className: "v-nav" },
+				React.createElement(
+					Link,
+					{ to: '/player/' + this.state.nextRoute,
+						className: "top-nav" },
+					' '
+				),
+				' ',
+				React.createElement(
+					Link,
+					{ to: '/player/' + this.state.nextRoute,
+						className: "bottom-nav" },
+					' '
+				),
 				' '
 			),
+			' ',
 			React.createElement(
 				'section',
 				{ className: "carousel slide" },

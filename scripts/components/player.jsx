@@ -189,56 +189,62 @@ let Player = React.createClass({
 	render() {
 
 		return ( < div className = "player-container" >
-			< nav > < Link to = {
+			< nav className = "h-nav" > < Link to = {
 				`\/player\/${this.state.prevRoute}`
 			}
 			className = "left-nav" > {
 				this.state.prevRoute
-			} < /Link >< Link to = {
+			} < /Link > < Link to = {
 			`\/player\/${this.state.nextRoute}`
 		}
 		className = "right-nav" > {
 				this.state.nextRoute
-			} < /Link > < /nav >
-			< section className = "carousel slide" >
-			< div className = "carousel-inner"
-		role = "listbox" >
-			< div className = "item" >
-			< video poster = {
-				this.state.prevPoster
-			} >
-			< /video></div >
-			< div className = "item active" >
-			< video id = "video"
-		poster = {
-			this.state.currentPoster
-		}
-		preload = "metadata" >
-			< source src = {
-				this.state.currentVideo
+			} < /Link >  < /nav > < nav className = "v-nav" >
+			< Link to = {
+				`\/player\/${this.state.nextRoute}`
 			}
+		className = "top-nav" > < /Link > < Link to = {
+		`\/player\/${this.state.nextRoute}`
+	}
+	className = "bottom-nav" > < /Link > < /nav > < section className = "carousel slide" >
+	< div className = "carousel-inner"
+	role = "listbox" >
+	< div className = "item" >
+	< video poster = {
+		this.state.prevPoster
+	} >
+	< /video></div >
+	< div className = "item active" >
+	< video id = "video"
+	poster = {
+		this.state.currentPoster
+	}
+	preload = "metadata" >
+	< source src = {
+		this.state.currentVideo
+	}
 
-		type = "video/mp4" / >
-			< source src = "movie-hd.mp4"
-		type = "video/mp4" / >
-			< /video></div >
-			< div className = "item" >
-			< video poster = {
-				this.state.nextPoster
-			} >
-			< /video></div >
-			< /div> < /section > < div className = "player"
-		onClick = {
-			this.handleClickPause
-		} > < div className = "play"
-		onClick = {
-			this.handleClickPlay
-		} > < /div >  < div className = "n-progress js-progress" > < div className = "n-progress-bar js-progress-bar"
-		onMouseDown = {
-				this.handleProgressBarMouseDown
-			} >
-			< div className = "mask" > < /div > < div className = "button-holder" > < div className = "js-progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
-	);
+	type = "video/mp4" / >
+	< source src = "movie-hd.mp4"
+	type = "video/mp4" / >
+	< /video></div >
+	< div className = "item" >
+	< video poster = {
+		this.state.nextPoster
+	} >
+	< /video></div >
+	< /div> < /section > < div className = "player"
+	onClick = {
+		this.handleClickPause
+	} > < div className = "play"
+	onClick = {
+		this.handleClickPlay
+	} > < /div >  < div className = "n-progress js-progress" > < div className = "n-progress-bar js-progress-bar"
+	onMouseDown = {
+		this.handleProgressBarMouseDown
+	} >
+	< div className = "mask" > < /div > < div className = "button-holder" > < div className = "js-progress-button" > < /div > < /div > ' < /div > < div className = "time" > < span className = "ctime" > 00: 00 < /span> < span className = "ttime" > 00: 00 < /span > < /div> < /div > < div className = "volume" > < /div> < /div > < /div>
+);
 }
 });
 
