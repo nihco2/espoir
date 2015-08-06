@@ -10,7 +10,7 @@ let Player = React.createClass({
 		return location.hash.split('/').pop();
 	},
 
-	initRoutes: function () {
+	initRoutes: function (prevOrNext) {
 		var routesArray = routes.periodes;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
@@ -18,8 +18,12 @@ let Player = React.createClass({
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
 		var currentVideo = assets.videos[currentIndex].video;
 		var currentPoster = assets.videos[currentIndex].poster;
-		var nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
-		var prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
+		var nextPoster, prevPoster;
+
+
+		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
+		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
+
 
 		if (!prevRoute) {
 			$('.left-nav').hide();
@@ -96,13 +100,19 @@ let Player = React.createClass({
 	hashDidChanged: function (event) {
 		var oldURL = parseInt(event.oldURL.split('/').pop());
 		var newURL = parseInt(event.newURL.split('/').pop());
+
 		if (oldURL > newURL) {
 			$('.carousel').carousel('prev');
 		} else {
 			$('.carousel').carousel('next');
 		}
+		$('.carousel').on('slid.bs.carousel', function () {
 
-		this.setState(this.initRoutes());
+			this.setState(this.initRoutes());
+
+			$('.active').removeClass('active');
+			$('#video').parents('.item').addClass('active');
+		}.bind(this));
 	},
 
 	componentDidMount: function () {
@@ -193,7 +203,11 @@ let Player = React.createClass({
 			< section className = "carousel slide" >
 			< div className = "carousel-inner"
 		role = "listbox" >
-
+			< div className = "item" >
+			< video poster = {
+				this.state.prevPoster
+			} >
+			< /video></div >
 			< div className = "item active" >
 			< video id = "video"
 		poster = {
@@ -209,19 +223,11 @@ let Player = React.createClass({
 		type = "video/mp4" / >
 			< /video></div >
 			< div className = "item" >
-			< video
-		poster = {
-				this.state.prevPoster
-			} >
-
-			< /video></div >
-			< div className = "item" >
-			< video
-		poster = {
+			< video poster = {
 				this.state.nextPoster
 			} >
-
-			< /video></div > < /div> < /section > < div className = "player"
+			< /video></div >
+			< /div> < /section > < div className = "player"
 		onClick = {
 			this.handleClickPause
 		} > < div className = "play"

@@ -32258,7 +32258,7 @@ var Player = React.createClass({
 		return location.hash.split('/').pop();
 	},
 
-	initRoutes: function initRoutes() {
+	initRoutes: function initRoutes(prevOrNext) {
 		var routesArray = routes.periodes;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
@@ -32266,8 +32266,10 @@ var Player = React.createClass({
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
 		var currentVideo = assets.videos[currentIndex].video;
 		var currentPoster = assets.videos[currentIndex].poster;
-		var nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
-		var prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
+		var nextPoster, prevPoster;
+
+		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
+		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
 
 		if (!prevRoute) {
 			$('.left-nav').hide();
@@ -32344,13 +32346,19 @@ var Player = React.createClass({
 	hashDidChanged: function hashDidChanged(event) {
 		var oldURL = parseInt(event.oldURL.split('/').pop());
 		var newURL = parseInt(event.newURL.split('/').pop());
+
 		if (oldURL > newURL) {
 			$('.carousel').carousel('prev');
 		} else {
 			$('.carousel').carousel('next');
 		}
+		$('.carousel').on('slid.bs.carousel', (function () {
 
-		this.setState(this.initRoutes());
+			this.setState(this.initRoutes());
+
+			$('.active').removeClass('active');
+			$('#video').parents('.item').addClass('active');
+		}).bind(this));
 	},
 
 	componentDidMount: function componentDidMount() {
@@ -32458,6 +32466,11 @@ var Player = React.createClass({
 						role: "listbox" },
 					React.createElement(
 						'div',
+						{ className: "item" },
+						React.createElement('video', { poster: this.state.prevPoster })
+					),
+					React.createElement(
+						'div',
 						{ className: "item active" },
 						React.createElement(
 							'video',
@@ -32474,16 +32487,8 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "item" },
-						React.createElement('video', {
-							poster: this.state.prevPoster })
-					),
-					React.createElement(
-						'div',
-						{ className: "item" },
-						React.createElement('video', {
-							poster: this.state.nextPoster })
-					),
-					' '
+						React.createElement('video', { poster: this.state.nextPoster })
+					)
 				),
 				' '
 			),
