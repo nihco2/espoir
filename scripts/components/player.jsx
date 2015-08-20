@@ -12,18 +12,19 @@ let Player = React.createClass({
 
 	initRoutes: function (prevOrNext) {
 		var routesArray = routes.periodes;
+		var cardsArray = routes.cards;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-		var currentVideo = assets.videos[currentIndex].video;
-		var currentPoster = assets.videos[currentIndex].poster;
+		var currentRoute = routesArray[currentIndex] ? routesArray[currentIndex] : undefined;
+		var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
+		var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
+		var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
 		var nextPoster, prevPoster;
-
 
 		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
 		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
-
 
 		if (!prevRoute) {
 			$('.left-nav').hide();
@@ -39,10 +40,12 @@ let Player = React.createClass({
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute,
+			currentRoute: currentRoute,
 			currentVideo: currentVideo,
 			currentPoster: currentPoster,
 			nextPoster: nextPoster,
-			prevPoster: prevPoster
+			prevPoster: prevPoster,
+			currentCard: currentCard
 		};
 	},
 
@@ -100,6 +103,14 @@ let Player = React.createClass({
 	hashDidChanged: function (event) {
 		var oldURL = parseInt(event.oldURL.split('/').pop());
 		var newURL = parseInt(event.newURL.split('/').pop());
+
+		if (isNaN(oldURL) || isNaN(newURL)) {
+			$('.carousel').addClass('vertical');
+			$('.h-nav').hide();
+		} else {
+			$('.carousel').removeClass('vertical');
+			$('.h-nav').show();
+		}
 
 		if (oldURL > newURL) {
 			$('.carousel').carousel('prev');
@@ -170,10 +181,8 @@ let Player = React.createClass({
 					tseconds = '0' + tseconds;
 				}
 
-
 				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
 				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
-
 
 				// Ajustement des durées
 				document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
@@ -201,10 +210,10 @@ let Player = React.createClass({
 				this.state.nextRoute
 			} < /Link >  < /nav > < nav className = "v-nav" >
 			< Link to = {
-				`\/player\/${this.state.nextRoute}`
+				`\/player\/${this.state.currentRoute}\/${this.state.currentCard}`
 			}
 		className = "top-nav" > < /Link > < Link to = {
-		`\/player\/${this.state.nextRoute}`
+		`\/player\/${this.state.currentRoute}`
 	}
 	className = "bottom-nav" > < /Link > < /nav > < section className = "carousel slide" >
 	< div className = "carousel-inner"

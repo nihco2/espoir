@@ -30,9 +30,9 @@ module.exports={
 
 },{}],2:[function(require,module,exports){
 module.exports={
-	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"]
+	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"],
+	"cards": ["fiche1", "fiche2", "fiche3"]
 }
-
 },{}],3:[function(require,module,exports){
 module.exports={
 	"h1": "Enfants en danger",
@@ -32048,6 +32048,10 @@ var _componentsCreditsJsx = require('./components/credits.jsx');
 
 var _componentsCreditsJsx2 = _interopRequireDefault(_componentsCreditsJsx);
 
+var _componentsCardJsx = require('./components/card.jsx');
+
+var _componentsCardJsx2 = _interopRequireDefault(_componentsCardJsx);
+
 var _reactRouter = require('react-router');
 
 var _reactRouter2 = _interopRequireDefault(_reactRouter);
@@ -32060,9 +32064,15 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
 	Route,
 	{ handler: App },
-	_react2['default'].createElement(Route, { path: "player/:periode",
-		handler: _componentsPlayerJsx2['default']
-	}),
+	_react2['default'].createElement(
+		Route,
+		{ path: "player/:periode",
+			handler: _componentsPlayerJsx2['default'] },
+		' ',
+		_react2['default'].createElement(Route, { path: ":card",
+			handler: _componentsCardJsx2['default']
+		})
+	),
 	' ',
 	_react2['default'].createElement(Route, { path: "resources",
 		handler: _componentsResourcesJsx2['default']
@@ -32088,7 +32098,40 @@ _reactRouter2['default'].run(routes, function (Root) {
 	_react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
 
-},{"./components/credits.jsx":201,"./components/homepage.jsx":202,"./components/player.jsx":203,"./components/resources.jsx":204,"jquery":5,"react":199,"react-router":30}],201:[function(require,module,exports){
+},{"./components/card.jsx":201,"./components/credits.jsx":202,"./components/homepage.jsx":203,"./components/player.jsx":204,"./components/resources.jsx":205,"jquery":5,"react":199,"react-router":30}],201:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+var texts = require('../../assets/texts.json');
+
+var Link = _reactRouter2['default'].Link;
+
+var Card = React.createClass({
+	displayName: 'Card',
+
+	render: function render() {
+		return React.createElement(
+			'h1',
+			null,
+			' toto '
+		);
+	}
+});
+
+exports['default'] = Card;
+module.exports = exports['default'];
+
+},{"../../assets/texts.json":3,"react":199,"react-router":30}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32123,7 +32166,7 @@ var Credits = React.createClass({
 exports['default'] = Credits;
 module.exports = exports['default'];
 
-},{"../../assets/texts.json":3,"react":199,"react-router":30}],202:[function(require,module,exports){
+},{"../../assets/texts.json":3,"react":199,"react-router":30}],203:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32230,6 +32273,48 @@ var Homepage = React.createClass({
 					' '
 				)
 			),
+			' ',
+			React.createElement(
+				'aside',
+				null,
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item1" },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item2" },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item3" },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item4" },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item5" },
+					' '
+				),
+				' ',
+				React.createElement(
+					'div',
+					{ className: "home-menu item6" },
+					' '
+				),
+				' '
+			),
 			' '
 		);
 	}
@@ -32238,7 +32323,7 @@ var Homepage = React.createClass({
 exports['default'] = Homepage;
 module.exports = exports['default'];
 
-},{"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],203:[function(require,module,exports){
+},{"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],204:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32260,12 +32345,15 @@ var Player = React.createClass({
 
 	initRoutes: function initRoutes(prevOrNext) {
 		var routesArray = routes.periodes;
+		var cardsArray = routes.cards;
 		var current = this.getCurrentRoute();
 		var currentIndex = routesArray.indexOf(current);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-		var currentVideo = assets.videos[currentIndex].video;
-		var currentPoster = assets.videos[currentIndex].poster;
+		var currentRoute = routesArray[currentIndex] ? routesArray[currentIndex] : undefined;
+		var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
+		var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
+		var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
 		var nextPoster, prevPoster;
 
 		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
@@ -32285,10 +32373,12 @@ var Player = React.createClass({
 		return {
 			prevRoute: prevRoute,
 			nextRoute: nextRoute,
+			currentRoute: currentRoute,
 			currentVideo: currentVideo,
 			currentPoster: currentPoster,
 			nextPoster: nextPoster,
-			prevPoster: prevPoster
+			prevPoster: prevPoster,
+			currentCard: currentCard
 		};
 	},
 
@@ -32346,6 +32436,14 @@ var Player = React.createClass({
 	hashDidChanged: function hashDidChanged(event) {
 		var oldURL = parseInt(event.oldURL.split('/').pop());
 		var newURL = parseInt(event.newURL.split('/').pop());
+
+		if (isNaN(oldURL) || isNaN(newURL)) {
+			$('.carousel').addClass('vertical');
+			$('.h-nav').hide();
+		} else {
+			$('.carousel').removeClass('vertical');
+			$('.h-nav').show();
+		}
 
 		if (oldURL > newURL) {
 			$('.carousel').carousel('prev');
@@ -32464,14 +32562,14 @@ var Player = React.createClass({
 				{ className: "v-nav" },
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.nextRoute,
+					{ to: '/player/' + this.state.currentRoute + '/' + this.state.currentCard,
 						className: "top-nav" },
 					' '
 				),
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.nextRoute,
+					{ to: '/player/' + this.state.currentRoute,
 						className: "bottom-nav" },
 					' '
 				),
@@ -32589,7 +32687,7 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],204:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],205:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

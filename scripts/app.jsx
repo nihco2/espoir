@@ -3,6 +3,7 @@ import Player from './components/player.jsx';
 import Homepage from './components/homepage.jsx';
 import Resources from './components/resources.jsx';
 import Credits from './components/credits.jsx';
+import Card from './components/card.jsx';
 import Router from 'react-router';
 
 var DefaultRoute = Router.DefaultRoute;
@@ -16,8 +17,11 @@ var routes = ( < Route handler = {
 < Route path = "player/:periode"
 handler = {
 	Player
+} > < Route path = ":card"
+handler = {
+	Card
 }
-/> < Route path = "resources"
+/></Route > < Route path = "resources"
 handler = {
 	Resources
 }

@@ -26,7 +26,7 @@ let Homepage = React.createClass({
 	texts.h4
 } < /h4>  < p > {
 texts.description
-} < /p> <Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > );
+} < /p> <Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < aside > < div className = "home-menu item1" > < /div> < div className = "home-menu item2" > < /div > < div className = "home-menu item3" > < /div > < div className = "home-menu item4" > < /div > < div className = "home-menu item5" > < /div > < div className = "home-menu item6" > < /div > < /aside > < /div > );
 }
 });
 
