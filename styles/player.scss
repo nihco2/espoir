@@ -3,6 +3,7 @@
 	font-family: DancingScriptOT;
 	src: url("../../assets/fonts/DancingScript-Regular.otf") format('truetype');
 }
+
 $grayDark:#737373;
 $white:#fff;
 .player-container {
@@ -71,6 +72,7 @@ $white:#fff;
 		}
 	}
 }
+
 .player {
 	width: 100%;
 	height: 100%;
@@ -146,6 +148,7 @@ $white:#fff;
 		height: 100%;
 	}
 }
+
 #video {
 	position: absolute;
 	top: 50%;
@@ -157,14 +160,17 @@ $white:#fff;
 	z-index: -100;
 	@include transform(translateX(-50%) translateY(0));
 }
+
 .carousel,
 .carousel-inner {
 	height: 100%;
 	background: black;
 }
+
 .vertical .carousel-inner {
 	height: 100%;
 }
+
 .carousel.vertical .item {
 	-webkit-transition: 0.6s ease-in-out top;
 	-moz-transition: 0.6s ease-in-out top;
@@ -172,28 +178,36 @@ $white:#fff;
 	-o-transition: 0.6s ease-in-out top;
 	transition: 0.6s ease-in-out top;
 }
+
 .carousel.vertical .active {
 	top: 0;
 }
+
 .carousel.vertical .next {
 	top: 100%
 }
+
 .carousel.vertical .prev {
 	top: -100%;
 }
+
 .carousel.vertical .next.left,
 .carousel.vertical .prev.right {
 	top: 0;
 }
+
 .carousel.vertical .active.left {
 	top: -100%;
 }
+
 .carousel.vertical .active.right {
 	top: 100%;
 }
+
 .carousel.vertical .item {
 	left: 0;
 }
+
 @include keyframes(slide) {
 	from {
 		@include transform(translateY(-50%));

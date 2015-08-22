@@ -6,5 +6,18 @@
 	"description": "Nunc consequat sed ligula sit amet tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer malesuada urna magna, a volutpat leo dapibus eget. Donec dictum molestie mauris sit amet euismod.",
 	"go": "Entrez",
 	"resources": "Resources",
-	"credits": "Crédits"
+	"credits": "Crédits",
+	"periode1": "1914-1945",
+	"periode1Title": "Lorem ipsum dolor",
+	"periode2": "1945-1960",
+	"periode2Title": "Lorem ipsum dolor",
+	"periode3": "1960-1975",
+	"periode3Title": "Lorem ipsum dolor",
+	"periode4": "1975-1985",
+	"periode4Title": "Lorem ipsum dolor",
+	"periode5": "1985-2002",
+	"periode5Title": "Lorem ipsum dolor",
+	"periode6": "2002-2015",
+	"periode6Title": "Lorem ipsum dolor",
+	"periodes": "Les periodes"
 }

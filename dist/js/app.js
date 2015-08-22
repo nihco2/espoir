@@ -42,9 +42,21 @@ module.exports={
 	"description": "Nunc consequat sed ligula sit amet tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer malesuada urna magna, a volutpat leo dapibus eget. Donec dictum molestie mauris sit amet euismod.",
 	"go": "Entrez",
 	"resources": "Resources",
-	"credits": "Crédits"
+	"credits": "Crédits",
+	"periode1": "1914-1945",
+	"periode1Title": "Lorem ipsum dolor",
+	"periode2": "1945-1960",
+	"periode2Title": "Lorem ipsum dolor",
+	"periode3": "1960-1975",
+	"periode3Title": "Lorem ipsum dolor",
+	"periode4": "1975-1985",
+	"periode4Title": "Lorem ipsum dolor",
+	"periode5": "1985-2002",
+	"periode5Title": "Lorem ipsum dolor",
+	"periode6": "2002-2015",
+	"periode6Title": "Lorem ipsum dolor",
+	"periodes": "Les periodes"
 }
-
 },{}],4:[function(require,module,exports){
 // shim for using process in browser
 
@@ -32190,7 +32202,8 @@ var Homepage = React.createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			firstPeriode: routes.periodes[0]
+			firstPeriode: routes.periodes[0],
+			texts: texts
 		};
 	},
 	render: function render() {
@@ -32216,60 +32229,79 @@ var Homepage = React.createClass({
 				),
 				' '
 			),
-			' ',
+			'  ',
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: "home" },
 				' ',
 				React.createElement(
 					'div',
-					{ className: "intro" },
+					{ className: "container" },
 					' ',
 					React.createElement(
-						'h1',
-						null,
+						'div',
+						{ className: "intro" },
 						' ',
-						texts.h1,
-						' '
-					),
-					' ',
-					React.createElement(
-						'h2',
-						null,
+						React.createElement(
+							'h1',
+							null,
+							' ',
+							texts.h1,
+							' '
+						),
 						' ',
-						texts.h2,
-						' '
-					),
-					' ',
-					React.createElement(
-						'h3',
-						null,
+						React.createElement(
+							'h2',
+							null,
+							' ',
+							texts.h2,
+							' '
+						),
 						' ',
-						texts.h3,
-						' '
-					),
-					' ',
-					React.createElement(
-						'h4',
-						null,
+						React.createElement(
+							'h3',
+							null,
+							' ',
+							texts.h3,
+							' '
+						),
 						' ',
-						texts.h4,
-						' '
-					),
-					'  ',
-					React.createElement(
-						'p',
-						null,
+						React.createElement(
+							'h4',
+							null,
+							' ',
+							texts.h4,
+							' '
+						),
+						'  ',
+						React.createElement(
+							'p',
+							null,
+							' ',
+							texts.description,
+							' '
+						),
 						' ',
-						texts.description,
+						React.createElement(
+							Link,
+							{ to: '/player/' + this.state.firstPeriode, className: "go" },
+							texts.go
+						),
 						' '
-					),
-					' ',
-					React.createElement(
-						Link,
-						{ to: '/player/' + this.state.firstPeriode, className: "go" },
-						texts.go
-					),
+					)
+				),
+				' '
+			),
+			' ',
+			React.createElement(
+				'div',
+				{ className: "menutitle" },
+				' ',
+				texts.periodes,
+				' ',
+				React.createElement(
+					'span',
+					{ className: "arrow" },
 					' '
 				)
 			),
@@ -32279,38 +32311,153 @@ var Homepage = React.createClass({
 				null,
 				' ',
 				React.createElement(
-					'div',
-					{ className: "home-menu item1" },
+					Link,
+					{ to: '/player/' + this.state.texts.periode1 },
+					' ',
+					React.createElement(
+						'div',
+						{ className: "home-menu item1" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode1,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode1Title,
+								' '
+							)
+						),
+						' '
+					)
+				),
+				React.createElement(
+					Link,
+					{ to: '/player/' + this.state.texts.periode2 },
+					React.createElement(
+						'div',
+						{ className: "home-menu item2" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode2,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode2Title,
+								' '
+							)
+						),
+						' '
+					),
 					' '
 				),
-				' ',
 				React.createElement(
-					'div',
-					{ className: "home-menu item2" },
+					Link,
+					{ to: '/player/' + this.state.texts.periode3 },
+					React.createElement(
+						'div',
+						{ className: "home-menu item3" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode3,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode3Title,
+								' '
+							)
+						),
+						' '
+					),
 					' '
 				),
-				' ',
 				React.createElement(
-					'div',
-					{ className: "home-menu item3" },
+					Link,
+					{ to: '/player/' + this.state.texts.periode4 },
+					React.createElement(
+						'div',
+						{ className: "home-menu item4" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode4,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode4Title,
+								' '
+							)
+						),
+						' '
+					),
 					' '
 				),
-				' ',
 				React.createElement(
-					'div',
-					{ className: "home-menu item4" },
+					Link,
+					{ to: '/player/' + this.state.texts.periode5 },
+					React.createElement(
+						'div',
+						{ className: "home-menu item5" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode5,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode5Title,
+								' '
+							)
+						),
+						' '
+					),
 					' '
 				),
-				' ',
 				React.createElement(
-					'div',
-					{ className: "home-menu item5" },
-					' '
-				),
-				' ',
-				React.createElement(
-					'div',
-					{ className: "home-menu item6" },
+					Link,
+					{ to: '/player/' + this.state.texts.periode6 },
+					React.createElement(
+						'div',
+						{ className: "home-menu item6" },
+						' ',
+						React.createElement(
+							'span',
+							{ className: "periode" },
+							' ',
+							texts.periode6,
+							' ',
+							React.createElement(
+								'span',
+								{ className: "periodeTitle" },
+								' ',
+								texts.periode6Title,
+								' '
+							)
+						),
+						' '
+					),
 					' '
 				),
 				' '
