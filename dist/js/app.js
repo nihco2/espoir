@@ -31,8 +31,9 @@ module.exports={
 },{}],2:[function(require,module,exports){
 module.exports={
 	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"],
-	"cards": ["fiche1", "fiche2", "fiche3"]
+	"cards": ["resources", "cards/fiche2", "cards/fiche3"]
 }
+
 },{}],3:[function(require,module,exports){
 module.exports={
 	"h1": "Enfants en danger",
@@ -55,8 +56,10 @@ module.exports={
 	"periode5Title": "Lorem ipsum dolor",
 	"periode6": "2002-2015",
 	"periode6Title": "Lorem ipsum dolor",
-	"periodes": "Les periodes"
+	"periodes": "Les periodes",
+	"portrait": "Portait des revons"
 }
+
 },{}],4:[function(require,module,exports){
 // shim for using process in browser
 
@@ -32076,20 +32079,18 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
 	Route,
 	{ handler: App },
-	_react2['default'].createElement(
-		Route,
-		{ path: "player/:periode",
-			handler: _componentsPlayerJsx2['default'] },
-		' ',
-		_react2['default'].createElement(Route, { path: ":card",
-			handler: _componentsCardJsx2['default']
-		})
-	),
-	' ',
+	_react2['default'].createElement(Route, { path: "player/:periode",
+		handler: _componentsPlayerJsx2['default']
+	}),
+	'  ',
 	_react2['default'].createElement(Route, { path: "resources",
 		handler: _componentsResourcesJsx2['default']
 	}),
-	'  ',
+	' ',
+	_react2['default'].createElement(Route, { path: "cards",
+		handler: _componentsCardJsx2['default']
+	}),
+	' ',
 	_react2['default'].createElement(Route, { path: "credits",
 		handler: _componentsCreditsJsx2['default']
 	}),
@@ -32128,19 +32129,21 @@ var texts = require('../../assets/texts.json');
 
 var Link = _reactRouter2['default'].Link;
 
-var Card = React.createClass({
-	displayName: 'Card',
+var Cards = React.createClass({
+	displayName: 'Cards',
 
 	render: function render() {
 		return React.createElement(
 			'h1',
 			null,
-			' toto '
+			' ',
+			texts.portrait,
+			' '
 		);
 	}
 });
 
-exports['default'] = Card;
+exports['default'] = Cards;
 module.exports = exports['default'];
 
 },{"../../assets/texts.json":3,"react":199,"react-router":30}],202:[function(require,module,exports){
@@ -32585,10 +32588,10 @@ var Player = React.createClass({
 		var newURL = parseInt(event.newURL.split('/').pop());
 
 		if (isNaN(oldURL) || isNaN(newURL)) {
-			$('.carousel').addClass('vertical');
+			//$('.carousel').addClass('vertical');
 			$('.h-nav').hide();
 		} else {
-			$('.carousel').removeClass('vertical');
+			//$('.carousel').removeClass('vertical');
 			$('.h-nav').show();
 		}
 
@@ -32709,14 +32712,14 @@ var Player = React.createClass({
 				{ className: "v-nav" },
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.currentRoute + '/' + this.state.currentCard,
+					{ to: "/cards",
 						className: "top-nav" },
 					' '
 				),
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/player/' + this.state.currentRoute,
+					{ to: '/cards ',
 						className: "bottom-nav" },
 					' '
 				),
@@ -32791,7 +32794,7 @@ var Player = React.createClass({
 							' ',
 							React.createElement(
 								'div',
-								{ className: "js-progress-button" },
+								{ className: "js-progress-button progress-button" },
 								' '
 							),
 							' '

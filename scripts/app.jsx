@@ -17,15 +17,16 @@ var routes = ( < Route handler = {
 < Route path = "player/:periode"
 handler = {
 	Player
-} > < Route path = ":card"
-handler = {
-	Card
 }
-/></Route > < Route path = "resources"
+/>  < Route path = "resources"
 handler = {
 	Resources
 }
-/>  < Route path = "credits"
+/> < Route path = "cards"
+handler = {
+	Card
+}
+/> < Route path = "credits"
 handler = {
 	Credits
 }

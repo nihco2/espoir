@@ -4,10 +4,12 @@ import ReactRouter from 'react-router';
 
 var Link = ReactRouter.Link;
 
-let Card = React.createClass({
+let Cards = React.createClass({
 			render() {
-				return ( < h1 > toto < /h1> );
+				return ( < h1 > {
+						texts.portrait
+					} < /h1> );
 				}
 			});
 
-		export default Card;
+		export default Cards;

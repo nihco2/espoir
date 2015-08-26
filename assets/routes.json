@@ -1,4 +1,4 @@
 {
 	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"],
-	"cards": ["fiche1", "fiche2", "fiche3"]
+	"cards": ["resources", "cards/fiche2", "cards/fiche3"]
 }
