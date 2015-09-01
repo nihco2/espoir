@@ -14,26 +14,31 @@ window.jQuery = require('jquery');
 var routes = ( < Route handler = {
 	App
 } >
-< Route path = "player/:periode"
+<Route path = "player/:periode"
 handler = {
 	Player
 }
-/>  < Route path = "resources"
-handler = {
-	Resources
-}
-/> < Route path = "cards"
-handler = {
-	Card
-}
-/> < Route path = "credits"
-handler = {
-	Credits
-}
-/>< DefaultRoute handler = {
-Homepage
-}
-/> < /Route >
+/>
+  <Route path = "resources"
+  handler = {
+      Resources
+  }
+  /> 
+  <Route path = "cards/:periode/:nav/:card"
+  handler = {
+      Card
+  }
+  /> 
+  <Route path = "credits"
+  handler = {
+      Credits
+  }
+  />
+  <DefaultRoute handler = {
+  Homepage
+  }
+  />
+</Route>
 
 );
 
