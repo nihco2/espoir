@@ -32078,16 +32078,16 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
   Route,
   { handler: App },
-  _react2['default'].createElement(Route, { path: "player/:periode",
+  _react2['default'].createElement(Route, { path: 'player/:periode',
     handler: _componentsPlayerJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "resources",
+  _react2['default'].createElement(Route, { path: 'resources',
     handler: _componentsResourcesJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "cards/:periode/:nav/:card",
+  _react2['default'].createElement(Route, { path: 'cards/:periode/:nav/:card',
     handler: _componentsCardJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "credits",
+  _react2['default'].createElement(Route, { path: 'credits',
     handler: _componentsCreditsJsx2['default']
   }),
   _react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
@@ -32110,7 +32110,7 @@ _reactRouter2['default'].run(routes, function (Root) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -32124,29 +32124,44 @@ var React = require('react');
 var Link = _reactRouter2['default'].Link;
 
 var Cards = React.createClass({
-	displayName: 'Cards',
+  displayName: 'Cards',
 
-	mixins: [_reactRouter2['default'].State],
-	getInitialState: function getInitialState() {
-		console.log(this.getParams());
-		var texts = require('../../assets/texts.json');
-		return texts;
-	},
-	render: function render() {
-		return React.createElement(
-			'h1',
-			null,
-			' ',
-			this.state.portrait,
-			' '
-		);
-	}
+  mixins: [_reactRouter2['default'].State],
+  getInitialState: function getInitialState() {
+    return {
+      texts: null
+    };
+  },
+  componentWillMount: function componentWillMount() {
+    $.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.getParams().nav + '/' + this.getParams().card + '.json', (function (result) {
+      if (this.isMounted()) {
+        this.setState({
+          texts: result
+        });
+      }
+    }).bind(this));
+  },
+  render: function render() {
+    if (this.state.texts) {
+      return React.createElement(
+        'h1',
+        null,
+        this.state.texts.title,
+        ' '
+      );
+    }
+    return React.createElement(
+      'div',
+      null,
+      'Loading...'
+    );
+  }
 });
 
 exports['default'] = Cards;
 module.exports = exports['default'];
 
-},{"../../assets/texts.json":3,"react":199,"react-router":30}],202:[function(require,module,exports){
+},{"react":199,"react-router":30}],202:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32212,7 +32227,7 @@ var Homepage = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: "homepage" },
+			{ className: 'homepage' },
 			' ',
 			React.createElement(
 				'nav',
@@ -32220,14 +32235,14 @@ var Homepage = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '\/resources' },
+					{ to: '/resources' },
 					' ',
 					texts.resources,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '\/credits' },
+					{ to: '/credits' },
 					texts.credits
 				),
 				' '
@@ -32235,15 +32250,15 @@ var Homepage = React.createClass({
 			'  ',
 			React.createElement(
 				'div',
-				{ className: "home" },
+				{ className: 'home' },
 				' ',
 				React.createElement(
 					'div',
-					{ className: "container" },
+					{ className: 'container' },
 					' ',
 					React.createElement(
 						'div',
-						{ className: "intro" },
+						{ className: 'intro' },
 						' ',
 						React.createElement(
 							'h1',
@@ -32287,7 +32302,7 @@ var Homepage = React.createClass({
 						' ',
 						React.createElement(
 							Link,
-							{ to: '/player/' + this.state.firstPeriode, className: "go" },
+							{ to: '/player/' + this.state.firstPeriode, className: 'go' },
 							texts.go
 						),
 						' '
@@ -32298,13 +32313,13 @@ var Homepage = React.createClass({
 			' ',
 			React.createElement(
 				'div',
-				{ className: "menutitle" },
+				{ className: 'menutitle' },
 				' ',
 				texts.periodes,
 				' ',
 				React.createElement(
 					'span',
-					{ className: "arrow" },
+					{ className: 'arrow' },
 					' '
 				)
 			),
@@ -32319,17 +32334,17 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						'div',
-						{ className: "home-menu item1" },
+						{ className: 'home-menu item1' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode1,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode1Title,
 								' '
@@ -32343,17 +32358,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode2 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item2" },
+						{ className: 'home-menu item2' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode2,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode2Title,
 								' '
@@ -32368,17 +32383,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode3 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item3" },
+						{ className: 'home-menu item3' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode3,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode3Title,
 								' '
@@ -32393,17 +32408,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode4 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item4" },
+						{ className: 'home-menu item4' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode4,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode4Title,
 								' '
@@ -32418,17 +32433,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode5 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item5" },
+						{ className: 'home-menu item5' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode5,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode5Title,
 								' '
@@ -32443,17 +32458,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode6 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item6" },
+						{ className: 'home-menu item6' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode6,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode6Title,
 								' '
@@ -32672,23 +32687,21 @@ var Player = React.createClass({
 				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
 				// En mode lecture, mise à jour des valeurs du tampon
-				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
-					//bufferLength();
-				}
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
 			});
 		});
 	},
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: "player-container" },
+			{ className: 'player-container' },
 			React.createElement(
 				'nav',
-				{ className: "h-nav" },
+				{ className: 'h-nav' },
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.prevRoute,
-						className: "left-nav" },
+						className: 'left-nav' },
 					' ',
 					this.state.prevRoute,
 					' '
@@ -32696,7 +32709,7 @@ var Player = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.nextRoute,
-						className: "right-nav" },
+						className: 'right-nav' },
 					' ',
 					this.state.nextRoute,
 					' '
@@ -32704,90 +32717,90 @@ var Player = React.createClass({
 			),
 			React.createElement(
 				'nav',
-				{ className: "v-nav" },
+				{ className: 'v-nav' },
 				React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
-					className: "top-nav" }),
+					className: 'top-nav' }),
 				React.createElement(
 					Link,
 					{ to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
-						className: "bottom-nav" },
+						className: 'bottom-nav' },
 					' '
 				)
 			),
 			React.createElement(
 				'section',
-				{ className: "carousel slide" },
+				{ className: 'carousel slide' },
 				React.createElement(
 					'div',
-					{ className: "carousel-inner", role: "listbox" },
+					{ className: 'carousel-inner', role: 'listbox' },
 					React.createElement(
 						'div',
-						{ className: "item" },
+						{ className: 'item' },
 						React.createElement('video', { poster: this.state.prevPoster })
 					),
 					React.createElement(
 						'div',
-						{ className: "item active" },
+						{ className: 'item active' },
 						React.createElement(
 							'video',
-							{ id: "video",
+							{ id: 'video',
 								poster: this.state.currentPoster,
-								preload: "metadata" },
+								preload: 'metadata' },
 							React.createElement('source', { src: this.state.currentVideo,
-								type: "video/mp4" }),
-							React.createElement('source', { src: "movie-hd.mp4",
-								type: "video/mp4" })
+								type: 'video/mp4' }),
+							React.createElement('source', { src: 'movie-hd.mp4',
+								type: 'video/mp4' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "item" },
+						{ className: 'item' },
 						React.createElement('video', { poster: this.state.nextPoster })
 					)
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: "player",
+				{ className: 'player',
 					onClick: this.handleClickPause },
-				React.createElement('div', { className: "play",
+				React.createElement('div', { className: 'play',
 					onClick: this.handleClickPlay }),
 				React.createElement(
 					'div',
-					{ className: "n-progress js-progress" },
+					{ className: 'n-progress js-progress' },
 					React.createElement(
 						'div',
-						{ className: "n-progress-bar js-progress-bar",
+						{ className: 'n-progress-bar js-progress-bar',
 							onMouseDown: this.handleProgressBarMouseDown },
-						React.createElement('div', { className: "mask" }),
+						React.createElement('div', { className: 'mask' }),
 						React.createElement(
 							'div',
-							{ className: "button-holder" },
+							{ className: 'button-holder' },
 							React.createElement(
 								'div',
-								{ className: "js-progress-button progress-button" },
+								{ className: 'js-progress-button progress-button' },
 								' '
 							)
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "time" },
+						{ className: 'time' },
 						React.createElement(
 							'span',
-							{ className: "ctime" },
+							{ className: 'ctime' },
 							'00:00'
 						),
 						React.createElement(
 							'span',
-							{ className: "ttime" },
+							{ className: 'ttime' },
 							' 00:00 '
 						)
 					)
 				),
 				React.createElement(
 					'div',
-					{ className: "volume" },
+					{ className: 'volume' },
 					' '
 				)
 			)
@@ -32797,6 +32810,8 @@ var Player = React.createClass({
 
 exports['default'] = Player;
 module.exports = exports['default'];
+
+//bufferLength();
 
 },{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],205:[function(require,module,exports){
 'use strict';
