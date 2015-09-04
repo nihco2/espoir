@@ -125,14 +125,20 @@ let Player = React.createClass({
 			$('#video').parents('.item').addClass('active');
 		}.bind(this));
 	},
+    
+    initHTML(){
+      $('.carousel').carousel({
+        interval: false
+      });
+      $('.player-container').height(window.innerHeight);
+    },
 
 	componentDidMount: function () {
 		var self = this;
 		window.addEventListener('hashchange', this.hashDidChanged);
-		this.initRoutes();
-		$('.carousel').carousel({
-			interval: false
-		});
+		self.initRoutes();
+        self.initHTML();
+		
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
