@@ -1,9 +1,10 @@
 {
-  "backespoir":"retour au récit",
-  "title":"Fusion de l’EGA et des CFDJ",
-  "exergue":"La frontière entre les activités de l’EGA et des CFDJ est mince",
-  "bloctexte1":"En 1950, lors de sa réorientation en tant que foyer de semi-liberté, c’est encore l’association de l’Enfant au Grand Air qui s’occupe de la maison de Vitry. Marie Magdeleine et Louis REVON sont alors à la direction aussi bien du CFDJ que de l’EGA. A l’époque on ne parle pas encore de foyer de semi-liberté mais de « Centre Familial de Jeunes Apprentis ». La frontière entre les activités de l’EGA (réduites au foyer de Vitry) et celle des CFDJ est donc mince. La décision de fusionner les deux associations va de soi. A partir de 1953, l’Enfant au Grand Air prend le nom de Centre Familial de Jeunes. La fusion a eu un impact sur les CFDJ : avec le changement des deux premiers articles de ses statuts, le CFDJ insiste désormais sur l’action familiale et morale auprès des jeunes.",
-  "image1":"../../../../assets/P1_E_F05_I01_statuts.jpg",
-  "image2":"../../../../assets/images/P1_E_F05_I02_decret.jpg",
-  "footer":"Chapitre 1, Entre temps de guerre et éducation populaire - Fusion de l’EGA et des CFDJ"
+	"type": "1",
+	"backespoir": "retour au récit",
+	"title": "Fusion de l’EGA et des CFDJ",
+	"exergue": "La frontière entre les activités de l’EGA et des CFDJ est mince",
+	"bloctexte1": "En 1950, lors de sa réorientation en tant que foyer de semi-liberté, c’est encore l’association de l’Enfant au Grand Air qui s’occupe de la maison de Vitry. Marie Magdeleine et Louis REVON sont alors à la direction aussi bien du CFDJ que de l’EGA. A l’époque on ne parle pas encore de foyer de semi-liberté mais de « Centre Familial de Jeunes Apprentis ». La frontière entre les activités de l’EGA (réduites au foyer de Vitry) et celle des CFDJ est donc mince. La décision de fusionner les deux associations va de soi. A partir de 1953, l’Enfant au Grand Air prend le nom de Centre Familial de Jeunes. La fusion a eu un impact sur les CFDJ : avec le changement des deux premiers articles de ses statuts, le CFDJ insiste désormais sur l’action familiale et morale auprès des jeunes.",
+	"image1": "../../../../assets/images/P1_E_F05_I01_statuts.jpg",
+	"image2": "../../../../assets/images/P1_E_F05_I02_decret.jpg",
+	"footer": "Chapitre 1, Entre temps de guerre et éducation populaire - Fusion de l’EGA et des CFDJ"
 }

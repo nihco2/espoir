@@ -1,22 +1,15 @@
 {
-  "backespoir":"retour au récit",
-  "title":"Les œuvres des GRUMBACH",
-  "exergue":"La Seconde Guerre Mondiale chamboule la vie de l’association… et de Mme GRUMBACH",
-  "bloctexte1":"Henri Joseph GRUMBACH (1862-1934) travaille dans l’industrie du textile à Paris. Face aux conséquences de la Grande Guerre sur les familles laissées à l’arrière, il fonde en 1914, avec sa femme Thérèse GRUMBACH (date inconnue-1963), née LEVY, les Œuvres de Guerre. Henri et Marie-Thérèse dirigeront ces œuvres de manière bénévole jusqu’en 1919.",
-  "bloctexte2":"De 1914 à 1919, le couple GRUMBACH a organisé et mis sur pied :
-	⁃	Une distribution régulière de soupe ;
-	⁃	Deux cantines-refuges ;
-	⁃	Un foyer pour enfants de mobilisés et orphelins de guerre ;
-	⁃	Un foyer pour réformés ;
-	⁃	Une maison familiale du permissionnaire belge ;
-	⁃	Cinq colonies de vacances pour les enfants de mobilisés et orphelins de guerre ;
-	⁃	Un placement familial pendant les bombardements.
-Les journées d’hébergement se comptent en centaine de milliers, les repas distribués en millions…",
-  "bloctexte3":"A la fin de la Première Guerre Mondiale, les cantines-refuges et les foyers cessent peu à peu leurs activités. Le secours aux enfants victimes de guerre et la santé de l’enfance restent tout de même au centre de l’attention du couple GRUMBACH. Ils poursuivent donc leur assistance envers l’enfance avec la création de l’association l’Enfant au Grand Air en 1920. En plus de faire perdurer les colonies de vacances en région parisienne et en province, ils ouvrent la colonie permanente du domaine Malakoff à Vaux-sur-Mer près de Royan.",
-  "bloctexte4":"Ces actes de solidarité vaudront à Henri GRUMBACH la décoration de la Légion d’Honneur en 1922. Il poursuivra ses œuvres jusqu’à son décès en 1934. Marie-Thérèse reprend naturellement le flambeau de la direction de l’EGA.",
-  "bloctexte5":"La Seconde Guerre Mondiale bouleverse la vie de l’association… et de Mme GRUMBACH. Pendant l’été 1940, l’exode interne provoque l’afflux d’une centaine de femmes et d’enfants au domaine Malakoff, mais celui-ci est réquisitionné peu de temps après. A cause de ses origines juives, Thérèse doit fuir avant l’arrivée des allemands. Elle démissionne alors. du conseil d’administration de l’EGA.",
-  "bloctexte6":"Si tôt la fuite de l’armée allemande, Madame GRUMBACH revient à l’EGA, mais en tant que membre d’honneur du conseil d’administration. Elle y restera jusqu’à son décès en 1964.",
-  "image1":"../../../../assets/images/P1_E_F02_I01_Malakoff.jpg",
-  "image2":"../../../../assets/images/P1_E_F02_I02_Malakoff.jpg",
-  "footer":"Chapitre 1, Entre temps de guerre et éducation populaire - Les œuvres des GRUMBACH"
+	"type": "1",
+	"backespoir": "retour au récit",
+	"title": "Les œuvres des GRUMBACH",
+	"exergue": "La Seconde Guerre Mondiale chamboule la vie de l’association… et de Mme GRUMBACH",
+	"bloctexte1": "Henri Joseph GRUMBACH (1862-1934) travaille dans l’industrie du textile à Paris. Face aux conséquences de la Grande Guerre sur les familles laissées à l’arrière, il fonde en 1914, avec sa femme Thérèse GRUMBACH (date inconnue-1963), née LEVY, les Œuvres de Guerre. Henri et Marie-Thérèse dirigeront ces œuvres de manière bénévole jusqu’en 1919.",
+	"bloctexte2": "De 1914 à 1919, le couple GRUMBACH a organisé et mis sur pied :<br>- Une distribution régulière de soupe;<br>⁃ Deux cantines - refuges ; <br> ⁃Un foyer pour enfants de mobilisés et orphelins de guerre ; <br> ⁃Un foyer pour réformés ;<br> ⁃Une maison familiale du permissionnaire belge ; <br> ⁃ Cinq colonies de vacances pour les enfants de mobilisés et orphelins de guerre ; <br> ⁃ Un placement familial pendant les bombardements.Les journées d’ hébergement se comptent en centaine de milliers, les repas distribués en millions…",
+	"bloctexte3": "A la fin de la Première Guerre Mondiale, les cantines-refuges et les foyers cessent peu à peu leurs activités. Le secours aux enfants victimes de guerre et la santé de l’enfance restent tout de même au centre de l’attention du couple GRUMBACH. Ils poursuivent donc leur assistance envers l’enfance avec la création de l’association l’Enfant au Grand Air en 1920. En plus de faire perdurer les colonies de vacances en région parisienne et en province, ils ouvrent la colonie permanente du domaine Malakoff à Vaux-sur-Mer près de Royan.",
+	"bloctexte4": "Ces actes de solidarité vaudront à Henri GRUMBACH la décoration de la Légion d’Honneur en 1922. Il poursuivra ses œuvres jusqu’à son décès en 1934. Marie-Thérèse reprend naturellement le flambeau de la direction de l’EGA.",
+	"bloctexte5": "La Seconde Guerre Mondiale bouleverse la vie de l’association… et de Mme GRUMBACH. Pendant l’été 1940, l’exode interne provoque l’afflux d’une centaine de femmes et d’enfants au domaine Malakoff, mais celui-ci est réquisitionné peu de temps après. A cause de ses origines juives, Thérèse doit fuir avant l’arrivée des allemands. Elle démissionne alors. du conseil d’administration de l’EGA.",
+	"bloctexte6": "Si tôt la fuite de l’armée allemande, Madame GRUMBACH revient à l’EGA, mais en tant que membre d’honneur du conseil d’administration. Elle y restera jusqu’à son décès en 1964.",
+	"image1": "../../../../assets/images/P1_E_F02_I01_Malakoff.jpg",
+	"image2": "../../../../assets/images/P1_E_F02_I02_Malakoff.jpg",
+	"footer": "Chapitre 1, Entre temps de guerre et éducation populaire - Les œuvres des GRUMBACH"
 }

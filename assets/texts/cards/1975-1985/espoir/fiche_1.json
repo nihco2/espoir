@@ -1,24 +1,11 @@
 {
-  "backespoir":"retour au récit",
-  "title":"L'Action Educative en Milieu Ouvert (AEMO)",
-  "video":"../../../../assets/videos/name.mp4",
-  "bloctexte1":"L’Action Éducative en Milieu Ouvert, qui découle de l’Ordonnance du 23 décembre 1958, est une mesure judiciaire prononcée par le juge des enfants. Cette méthode éducative consiste à accompagner l’enfant en difficulté sociale au sein de sa famille. C’est une décision réputée comme étant moins brutale que le placement en internat, bien souvent éloigné du foyer.",
-  "bloctexte2":"En 1968, l’association ESPOIR CFDJ effectue une demande d’agrément auprès du Ministère des Affaires Sociales. En attendant l’accord du ministère, l’association reçoit une subvention du Secours Catholique pour démarrer la nouvelle activité. A partir du siège et dés fin 1968, une assistante et une éducatrice commencent à analyser leur terrain d’intervention à Paris. L’agrément officiel est accordé en 1970, permettant à l’équipe AEMO d’intervenir dans 4 arrondissements de Paris auprès d’une cinquantaine de jeunes.",
-  "citation1":"« La mesure d’éducation en milieu ouvert permet d’offrir au mineur un choix dans la façon d’établir une relation. Celle-ci peut aboutir :
-  ⁃ au rétablissement d’une meilleure relation parent-enfant ;
-  ⁃ à un rattrapage scolaire ;
-  ⁃ à des loisirs organisés ;
-  ⁃ à la recherche d’un travail, d’un apprentissage, d’une orientation scolaire ;
-  ⁃ à des traitements médicaux ou médico-psychologiques,
-qui cherchent à conduire peu à peu le jeune vers une réinsertion sociale.
-[…]
-Les jeunes sont confiés pour des raisons très diverses, en général lors :
-  ⁃ de fugues ;
-  ⁃ d’incidents dans le milieu familial ;
-  ⁃ de prostitution ou danger de prostitution ;
-  ⁃ à la suite d’un placement spécialisé ;
-  ⁃ mais aussi en cas de toxicomanie ou de délits mineurs. »
-Rapport moral d’ESPOIR CFDJ, 1971",
-  "bloctexte":"Aujourd'hui, ESPOIR CFDJ gère 5 services d'AEMO à Paris et en Seine-et-Marne.",
-  "footer":"Chapitre 4, Protéger l'enfance maltraitée - L'Action Educative en Milieu Ouvert (AEMO)"
+	"type": "2",
+	"backespoir": "retour au récit",
+	"title": "L'Action Educative en Milieu Ouvert (AEMO)",
+	"video": "../../../../assets/videos/name.mp4",
+	"bloctexte1": "L’Action Éducative en Milieu Ouvert, qui découle de l’Ordonnance du 23 décembre 1958, est une mesure judiciaire prononcée par le juge des enfants. Cette méthode éducative consiste à accompagner l’enfant en difficulté sociale au sein de sa famille. C’est une décision réputée comme étant moins brutale que le placement en internat, bien souvent éloigné du foyer.",
+	"bloctexte2": "En 1968, l’association ESPOIR CFDJ effectue une demande d’agrément auprès du Ministère des Affaires Sociales. En attendant l’accord du ministère, l’association reçoit une subvention du Secours Catholique pour démarrer la nouvelle activité. A partir du siège et dés fin 1968, une assistante et une éducatrice commencent à analyser leur terrain d’intervention à Paris. L’agrément officiel est accordé en 1970, permettant à l’équipe AEMO d’intervenir dans 4 arrondissements de Paris auprès d’une cinquantaine de jeunes.",
+	"citation1": "« La mesure d’éducation en milieu ouvert permet d’offrir au mineur un choix dans la façon d’établir une relation. Celle-ci peut aboutir :<br>⁃ au rétablissement d’une meilleure relation parent-enfant ;<br>⁃ à un rattrapage scolaire ;<br>⁃ à des loisirs organisés ;<br>⁃ à la recherche d’un travail, d’un apprentissage, d’une orientation scolaire ;<br>⁃ à des traitements médicaux ou médico-psychologiques, qui cherchent à conduire peu à peu le jeune vers une réinsertion sociale.[…]<br>Les jeunes sont confiés pour des raisons très diverses, en général lors :<br>⁃ de fugues ;<br>⁃ d’incidents dans le milieu familial ;<br>⁃ de prostitution ou danger de prostitution ;<br>⁃ à la suite d’un placement spécialisé ;<br>⁃ mais aussi en cas de toxicomanie ou de délits mineurs. »<br>Rapport moral d’ESPOIR CFDJ, 1971",
+	"bloctexte": "Aujourd'hui, ESPOIR CFDJ gère 5 services d'AEMO à Paris et en Seine-et-Marne.",
+	"footer": "Chapitre 4, Protéger l'enfance maltraitée - L'Action Educative en Milieu Ouvert (AEMO)"
 }

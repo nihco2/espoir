@@ -144,7 +144,7 @@ let Player = React.createClass({
 				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
 				// Le temps actuel de la vidéo, basé sur la barre de progression
-				var time = Math.round((document.querySelector('.js-progress-bar').offsetWidth / progWidth) * self.getDuration());
+				var time = Math.round(($('.js-progress-bar').width() / progWidth) * self.getDuration());
 
 				// Le temps "réel" de la vidéo
 				var curTime = self.getVideo().currentTime;

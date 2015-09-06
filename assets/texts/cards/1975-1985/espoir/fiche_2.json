@@ -1,28 +1,24 @@
 {
-  "backespoir":"retour au récit",
-  "title":"Les enfants du foyer de Vignely",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I01.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I02.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I03.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I04.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I05.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I06.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I07.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I08.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I09.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I10.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I11.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I12.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I13.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I14.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I15.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I16.jpg",
-  "diapo":"../../../../assets/images/diapo_vignely/P4_E_F02_I17.jpg",
-  "bloctexte1":"En 1959, grâce à un don important, l’association des CFDJ s’agrandit en achetant une propriété à Vignely en Seine-et-Marne. Inauguré en 1960 et dirigé par M. SALOME, ancien éducateur au foyer de Vitry, ce centre deviendra le deuxième foyer de semi-liberté géré par l’association.
-Alors que le foyer de Vitry a pour vocation d’insérer les jeunes en difficulté sociale grâce à la professionnalisation, la mission du foyer de Vignely est de proposer une insertion par la scolarisation. Les résidents sont donc plus jeunes (8-14 ans), mais néanmoins fragiles : 1/3 y sont placés via la justice des mineurs, les deux autres tiers y sont placés via l’assistance sociale. Les enfants de Vignely vont en classe dans les écoles locales et bénéficient de cours du soir en guise de rattrapage scolaire et de permanences pour se préparer aux examens. La vie para-scolaire s’apparente tout de même aux activités mises en place à Vitry : clubs, jardinage, bricolage, séjours en province, etc. Ici aussi, il y a un suivi psychothérapeutique .
-
-Afin de poursuivre l’accompagnement scolaire apporté aux enfants, un service de placement familial spécialisé (PFS) voit le jour en 1974. M. TURLAN dirige le foyer et le PFS. A partir de la fin des années 80, la structure du foyer de semi-liberté s’ouvre : les enfants sont désormais incités à l’autonomie grâce à la mise en place de plusieurs hébergements, d’un « centre de jour », d’une « structure éclatée » et d’un placement familial spécialisé.
-
-Avec Vitry, Vignely est dans les années d'après guerre une structure phare d'ESPOIR CFDJ. L'album photo de ces années-là montre à quel point les jeunes y étaient accueillis avec beaucoup de professionnalisme, bienveillance et dans une ambiance familiale.",
-"footer":"Chapitre 4, Protéger l'enfance maltraitée - Les enfants du foyer de Vignely"
+	"type": "3",
+	"backespoir": "retour au récit",
+	"title": "Les enfants du foyer de Vignely",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I01.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I02.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I03.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I04.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I05.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I06.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I07.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I08.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I09.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I10.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I11.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I12.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I13.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I14.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I15.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I16.jpg",
+	"diapo": "../../../../assets/images/diapo_vignely/P4_E_F02_I17.jpg",
+	"bloctexte1": "En 1959, grâce à un don important, l’association des CFDJ s’agrandit en achetant une propriété à Vignely en Seine-et-Marne. Inauguré en 1960 et dirigé par M. SALOME, ancien éducateur au foyer de Vitry, ce centre deviendra le deuxième foyer de semi-liberté géré par l’association.<br> Alors que le foyer de Vitry a pour vocation d’ insérer les jeunes en difficulté sociale grâce à la professionnalisation,la mission du foyer de Vignely est de proposer une insertion par la scolarisation.Les résidents sont donc plus jeunes(8 - 14 ans), mais néanmoins fragiles : 1 / 3 y sont placés via la justice des mineurs, les deux autres tiers y sont placés via l’ assistance sociale.Les enfants de Vignely vont en classe dans les écoles locales et bénéficient de cours du soir en guise de rattrapage scolaire et de permanences pour se préparer aux examens.La vie para - scolaire s’ apparente tout de même aux activités mises en place à Vitry : clubs, jardinage,bricolage, séjours en province,etc.Ici aussi,il y a un suivi psychothérapeutique. Afin de poursuivre l’ accompagnement scolaire apporté aux enfants,un service de placement familial spécialisé(PFS) voit le jour en 1974. M.TURLAN dirige le foyer et le PFS.A partir de la fin des années 80,la structure du foyer de semi - liberté s’ ouvre : les enfants sont désormais incités à l’ autonomie grâce à la mise en place de plusieurs hébergements, d’ un«  centre de jour », d’ une«  structure éclatée » et d’ un placement familial spécialisé.Avec Vitry,Vignely est dans les années d 'après guerre une structure phare d' ESPOIR CFDJ.L 'album photo de ces années-là montre à quel point les jeunes y étaient accueillis avec beaucoup de professionnalisme, bienveillance et dans une ambiance familiale.",
+	"footer": "Chapitre 4, Protéger l'enfance maltraitée - Les enfants du foyer de Vignely"
 }

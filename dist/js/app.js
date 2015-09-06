@@ -32078,16 +32078,16 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
   Route,
   { handler: App },
-  _react2['default'].createElement(Route, { path: 'player/:periode',
+  _react2['default'].createElement(Route, { path: "player/:periode",
     handler: _componentsPlayerJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'resources',
+  _react2['default'].createElement(Route, { path: "resources",
     handler: _componentsResourcesJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'cards/:periode/:nav/:card',
+  _react2['default'].createElement(Route, { path: "cards/:periode/:nav/:card",
     handler: _componentsCardJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'credits',
+  _react2['default'].createElement(Route, { path: "credits",
     handler: _componentsCreditsJsx2['default']
   }),
   _react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
@@ -32106,11 +32106,108 @@ _reactRouter2['default'].run(routes, function (Root) {
   _react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
 
-},{"./components/card.jsx":201,"./components/credits.jsx":202,"./components/homepage.jsx":203,"./components/player.jsx":204,"./components/resources.jsx":205,"jquery":5,"react":199,"react-router":30}],201:[function(require,module,exports){
+},{"./components/card.jsx":201,"./components/credits.jsx":208,"./components/homepage.jsx":209,"./components/player.jsx":210,"./components/resources.jsx":211,"jquery":5,"react":199,"react-router":30}],201:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var _componentsCardsType1Jsx = require('../components/cards/type1.jsx');
+
+var _componentsCardsType1Jsx2 = _interopRequireDefault(_componentsCardsType1Jsx);
+
+var _componentsCardsType2Jsx = require('../components/cards/type2.jsx');
+
+var _componentsCardsType2Jsx2 = _interopRequireDefault(_componentsCardsType2Jsx);
+
+var _componentsCardsType3Jsx = require('../components/cards/type3.jsx');
+
+var _componentsCardsType3Jsx2 = _interopRequireDefault(_componentsCardsType3Jsx);
+
+var _componentsCardsType4Jsx = require('../components/cards/type4.jsx');
+
+var _componentsCardsType4Jsx2 = _interopRequireDefault(_componentsCardsType4Jsx);
+
+var _componentsCardsType5Jsx = require('../components/cards/type5.jsx');
+
+var _componentsCardsType5Jsx2 = _interopRequireDefault(_componentsCardsType5Jsx);
+
+var _componentsCardsType6Jsx = require('../components/cards/type6.jsx');
+
+var _componentsCardsType6Jsx2 = _interopRequireDefault(_componentsCardsType6Jsx);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	mixins: [_reactRouter2['default'].State],
+	getInitialState: function getInitialState() {
+		return {
+			texts: null
+		};
+	},
+	componentWillMount: function componentWillMount() {
+		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.getParams().nav + '/' + this.getParams().card + '.json', (function (result) {
+			console.log('*****', result);
+			if (this.isMounted()) {
+				this.setState({
+					texts: result
+				});
+			}
+		}).bind(this));
+	},
+
+	render: function render() {
+		if (this.state.texts) {
+			switch (this.state.texts.type) {
+				case '1':
+					return React.createElement(_componentsCardsType1Jsx2['default'], { texts: this.state.texts });
+					break;
+				case '2':
+					return React.createElement(_componentsCardsType2Jsx2['default'], { texts: this.state.texts });
+					break;
+				case '3':
+					return React.createElement(_componentsCardsType3Jsx2['default'], { texts: this.state.texts });
+					break;
+				case '4':
+					return React.createElement(_componentsCardsType4Jsx2['default'], { texts: this.state.texts });
+					break;
+				case '5':
+					return React.createElement(_componentsCardsType5Jsx2['default'], { texts: this.state.texts });
+					break;
+				case '6':
+					return React.createElement(_componentsCardsType6Jsx2['default'], { texts: this.state.texts });
+					break;
+				default:
+					return React.createElement(_componentsCardsType1Jsx2['default'], null);
+			}
+		}
+		return React.createElement(
+			'div',
+			null,
+			'Loading...'
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"../components/cards/type1.jsx":202,"../components/cards/type2.jsx":203,"../components/cards/type3.jsx":204,"../components/cards/type4.jsx":205,"../components/cards/type5.jsx":206,"../components/cards/type6.jsx":207,"react":199,"react-router":30}],202:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -32124,173 +32221,679 @@ var React = require('react');
 var Link = _reactRouter2['default'].Link;
 
 var Cards = React.createClass({
-  displayName: 'Cards',
+	displayName: 'Cards',
 
-  mixins: [_reactRouter2['default'].State],
-  getInitialState: function getInitialState() {
-    return {
-      texts: null
-    };
-  },
-  componentWillMount: function componentWillMount() {
-    $.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.getParams().nav + '/' + this.getParams().card + '.json', (function (result) {
-      if (this.isMounted()) {
-        this.setState({
-          texts: result
-        });
-      }
-    }).bind(this));
-  },
-  render: function render() {
-    if (this.state.texts) {
-      return React.createElement(
-        'div',
-        { id: 'card' },
-        React.createElement(
-          'header',
-          null,
-          React.createElement(
-            'nav',
-            null,
-            React.createElement(
-              'ul',
-              null,
-              React.createElement(
-                'li',
-                { className: 'back-btn' },
-                React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
-                ' '
-              ),
-              React.createElement(
-                'li',
-                null,
-                'retour au récit'
-              )
-            )
-          ),
-          React.createElement(
-            'h1',
-            null,
-            this.state.texts.title
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'container' },
-          React.createElement(
-            'div',
-            { className: 'row row-centered' },
-            React.createElement(
-              'div',
-              { className: 'col-xs-6 col-centered col-fixed' },
-              React.createElement(
-                'div',
-                { className: 'sep sep-1 sep-left' },
-                ' '
-              ),
-              React.createElement(
-                'p',
-                null,
-                'En 1934, Marie-Magdeleine REVON (née Vavin) (1909-1985) créé à Paris les premiers Cercles Familiaux de Jeunes. Son mari, Louis REVON (1898-1991), est ingénieur en chef à la SNCF. Il profite de son poste dans la structure pour mettre à disposition plusieurs locaux aux CFDJ.'
-              ),
-              React.createElement('br', null),
-              React.createElement('br', null),
-              React.createElement(
-                'p',
-                null,
-                'Le couple REVON deviendra un véritable pilier de l\'histoire des trois associations. Durant toute l\'existence des CFDJ, de 1934 à 1941, Marie-Magdeleine REVON assurera le secrétariat général. Louis en sera le président. Le couple conserve ses fonctions lors de la fusion entre l\'EGA et les CFDJ, puis lors de la refonte de l\'association en ESPOIR-CFDJ. Louis et Marie-Magdeleine poursuivront respectivement leur rôle de président et de secrétaire générale d\'ESPOIR-CFDJ jusqu\'en 1968. Ils restent cependant membres du conseil d\'administration jusqu\'en 1983.'
-              ),
-              React.createElement(
-                'div',
-                { className: 'sep sep-1 sep-right' },
-                ' '
-              ),
-              React.createElement(
-                'div',
-                { id: 'border-1' },
-                ' ',
-                React.createElement('img', { src: 'img/agnes-revon.jpg', alt: 'revon' })
-              )
-            ),
-            React.createElement(
-              'div',
-              { className: 'col-xs-6 col-centered col-fixed' },
-              React.createElement(
-                'div',
-                { id: 'border-2' },
-                ' ',
-                React.createElement('img', { src: 'img/photo2.jpg', alt: 'revon' })
-              ),
-              React.createElement(
-                'div',
-                { id: 'quote' },
-                React.createElement(
-                  'div',
-                  { className: 'sep sep-2 sep-left' },
-                  ' '
-                ),
-                React.createElement(
-                  'p',
-                  null,
-                  '« On y entrait parfois',
-                  React.createElement('br', null),
-                  'à 12 ans, pour n\'en sortir',
-                  React.createElement('br', null),
-                  'qu\'à l\'âge de la majorité...',
-                  React.createElement('br', null),
-                  'Soit 21 ans à l\'époque.»'
-                ),
-                React.createElement(
-                  'div',
-                  { className: 'sep sep-2 sep-right' },
-                  ' '
-                )
-              ),
-              React.createElement(
-                'p',
-                null,
-                'L\'implication des REVON dans l\'histoire des associations est inestimable : ils assurent la survie de l\'EGA en transférant biens et enfants au domaine de Garancière en 1940, ils sont acteurs principaux de la fusion entre EGA et CFDJ, ils sont à l\'origine de l\'ouverture du foyer de semi-liberté à Vitry avec Jean CHAZAL, ils impulsent l\'ouverture du deuxième foyer de semi-liberté à Vignely ainsi que le premier club de prévention à Paris, et ils participent activement à l\'opération ESPOIR financé par RTL…',
-                React.createElement('br', null),
-                React.createElement('br', null),
-                'Parmi leurs 6 enfants, leur fille Agnès s\'impliquera également dans l\'association en tant qu\'accompagnatrice pédagogique au foyer de semi-liberté de Vitry-sur-Seine et membre active de l\'association.'
-              ),
-              React.createElement(
-                'div',
-                { className: 'sep sep-3 sep-left' },
-                ' '
-              )
-            )
-          )
-        ),
-        React.createElement(
-          'footer',
-          null,
-          React.createElement(
-            'p',
-            null,
-            'Épsiode 1 - ',
-            React.createElement(
-              'span',
-              null,
-              'Les bagnes pour enfant'
-            ),
-            ' - Fiche : les couples Revon - Retour au film'
-          )
-        )
-      );
-    }
-    return React.createElement(
-      'div',
-      null,
-      'Loading...'
-    );
-  }
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
 });
 
 exports['default'] = Cards;
 module.exports = exports['default'];
 
-},{"react":199,"react-router":30}],202:[function(require,module,exports){
+},{"react":199,"react-router":30}],203:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":30}],204:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":30}],205:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":30}],206:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":30}],207:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Cards = React.createClass({
+	displayName: 'Cards',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ id: "card" },
+			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					null,
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				),
+				React.createElement(
+					'h1',
+					null,
+					this.props.texts.title
+				),
+				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+			),
+			React.createElement(
+				'div',
+				{ className: "container" },
+				React.createElement(
+					'div',
+					{ className: "row row-centered" },
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-left" },
+							' '
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-1 sep-right" },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ id: "border-1" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-xs-6 col-centered col-fixed" },
+						React.createElement(
+							'div',
+							{ id: "border-2" },
+							' ',
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+						),
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
+						React.createElement(
+							'div',
+							{ className: "sep sep-3 sep-left" },
+							' '
+						)
+					)
+				)
+			),
+			React.createElement(
+				'footer',
+				null,
+				React.createElement(
+					'p',
+					null,
+					this.props.texts.footer
+				)
+			)
+		);
+	}
+});
+
+exports['default'] = Cards;
+module.exports = exports['default'];
+
+},{"react":199,"react-router":30}],208:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32325,7 +32928,7 @@ var Credits = React.createClass({
 exports['default'] = Credits;
 module.exports = exports['default'];
 
-},{"../../assets/texts.json":3,"react":199,"react-router":30}],203:[function(require,module,exports){
+},{"../../assets/texts.json":3,"react":199,"react-router":30}],209:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32356,7 +32959,7 @@ var Homepage = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: 'homepage' },
+			{ className: "homepage" },
 			' ',
 			React.createElement(
 				'nav',
@@ -32364,14 +32967,14 @@ var Homepage = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/resources' },
+					{ to: '\/resources' },
 					' ',
 					texts.resources,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '/credits' },
+					{ to: '\/credits' },
 					texts.credits
 				),
 				' '
@@ -32379,15 +32982,15 @@ var Homepage = React.createClass({
 			'  ',
 			React.createElement(
 				'div',
-				{ className: 'home' },
+				{ className: "home" },
 				' ',
 				React.createElement(
 					'div',
-					{ className: 'container' },
+					{ className: "container" },
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'intro' },
+						{ className: "intro" },
 						' ',
 						React.createElement(
 							'h1',
@@ -32431,7 +33034,7 @@ var Homepage = React.createClass({
 						' ',
 						React.createElement(
 							Link,
-							{ to: '/player/' + this.state.firstPeriode, className: 'go' },
+							{ to: '/player/' + this.state.firstPeriode, className: "go" },
 							texts.go
 						),
 						' '
@@ -32442,13 +33045,13 @@ var Homepage = React.createClass({
 			' ',
 			React.createElement(
 				'div',
-				{ className: 'menutitle' },
+				{ className: "menutitle" },
 				' ',
 				texts.periodes,
 				' ',
 				React.createElement(
 					'span',
-					{ className: 'arrow' },
+					{ className: "arrow" },
 					' '
 				)
 			),
@@ -32463,17 +33066,17 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'home-menu item1' },
+						{ className: "home-menu item1" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode1,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode1Title,
 								' '
@@ -32487,17 +33090,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode2 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item2' },
+						{ className: "home-menu item2" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode2,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode2Title,
 								' '
@@ -32512,17 +33115,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode3 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item3' },
+						{ className: "home-menu item3" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode3,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode3Title,
 								' '
@@ -32537,17 +33140,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode4 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item4' },
+						{ className: "home-menu item4" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode4,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode4Title,
 								' '
@@ -32562,17 +33165,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode5 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item5' },
+						{ className: "home-menu item5" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode5,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode5Title,
 								' '
@@ -32587,17 +33190,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode6 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item6' },
+						{ className: "home-menu item6" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode6,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode6Title,
 								' '
@@ -32617,7 +33220,7 @@ var Homepage = React.createClass({
 exports['default'] = Homepage;
 module.exports = exports['default'];
 
-},{"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],204:[function(require,module,exports){
+},{"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],210:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -32771,7 +33374,7 @@ var Player = React.createClass({
 				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
 				// Le temps actuel de la vidéo, basé sur la barre de progression
-				var time = Math.round(document.querySelector('.js-progress-bar').offsetWidth / progWidth * self.getDuration());
+				var time = Math.round($('.js-progress-bar').width() / progWidth * self.getDuration());
 
 				// Le temps "réel" de la vidéo
 				var curTime = self.getVideo().currentTime;
@@ -32822,21 +33425,23 @@ var Player = React.createClass({
 				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
 				// En mode lecture, mise à jour des valeurs du tampon
-				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
+					//bufferLength();
+				}
 			});
 		});
 	},
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: 'player-container' },
+			{ className: "player-container" },
 			React.createElement(
 				'nav',
-				{ className: 'h-nav' },
+				{ className: "h-nav" },
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.prevRoute,
-						className: 'left-nav' },
+						className: "left-nav" },
 					' ',
 					this.state.prevRoute,
 					' '
@@ -32844,7 +33449,7 @@ var Player = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/player/' + this.state.nextRoute,
-						className: 'right-nav' },
+						className: "right-nav" },
 					' ',
 					this.state.nextRoute,
 					' '
@@ -32852,90 +33457,90 @@ var Player = React.createClass({
 			),
 			React.createElement(
 				'nav',
-				{ className: 'v-nav' },
+				{ className: "v-nav" },
 				React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
-					className: 'top-nav' }),
+					className: "top-nav" }),
 				React.createElement(
 					Link,
 					{ to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
-						className: 'bottom-nav' },
+						className: "bottom-nav" },
 					' '
 				)
 			),
 			React.createElement(
 				'section',
-				{ className: 'carousel slide' },
+				{ className: "carousel slide" },
 				React.createElement(
 					'div',
-					{ className: 'carousel-inner', role: 'listbox' },
+					{ className: "carousel-inner", role: "listbox" },
 					React.createElement(
 						'div',
-						{ className: 'item' },
+						{ className: "item" },
 						React.createElement('video', { poster: this.state.prevPoster })
 					),
 					React.createElement(
 						'div',
-						{ className: 'item active' },
+						{ className: "item active" },
 						React.createElement(
 							'video',
-							{ id: 'video',
+							{ id: "video",
 								poster: this.state.currentPoster,
-								preload: 'metadata' },
+								preload: "metadata" },
 							React.createElement('source', { src: this.state.currentVideo,
-								type: 'video/mp4' }),
-							React.createElement('source', { src: 'movie-hd.mp4',
-								type: 'video/mp4' })
+								type: "video/mp4" }),
+							React.createElement('source', { src: "movie-hd.mp4",
+								type: "video/mp4" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'item' },
+						{ className: "item" },
 						React.createElement('video', { poster: this.state.nextPoster })
 					)
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'player',
+				{ className: "player",
 					onClick: this.handleClickPause },
-				React.createElement('div', { className: 'play',
+				React.createElement('div', { className: "play",
 					onClick: this.handleClickPlay }),
 				React.createElement(
 					'div',
-					{ className: 'n-progress js-progress' },
+					{ className: "n-progress js-progress" },
 					React.createElement(
 						'div',
-						{ className: 'n-progress-bar js-progress-bar',
+						{ className: "n-progress-bar js-progress-bar",
 							onMouseDown: this.handleProgressBarMouseDown },
-						React.createElement('div', { className: 'mask' }),
+						React.createElement('div', { className: "mask" }),
 						React.createElement(
 							'div',
-							{ className: 'button-holder' },
+							{ className: "button-holder" },
 							React.createElement(
 								'div',
-								{ className: 'js-progress-button progress-button' },
+								{ className: "js-progress-button progress-button" },
 								' '
 							)
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'time' },
+						{ className: "time" },
 						React.createElement(
 							'span',
-							{ className: 'ctime' },
+							{ className: "ctime" },
 							'00:00'
 						),
 						React.createElement(
 							'span',
-							{ className: 'ttime' },
+							{ className: "ttime" },
 							' 00:00 '
 						)
 					)
 				),
 				React.createElement(
 					'div',
-					{ className: 'volume' },
+					{ className: "volume" },
 					' '
 				)
 			)
@@ -32946,9 +33551,7 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-//bufferLength();
-
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],205:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":199,"react-router":30}],211:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

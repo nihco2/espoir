@@ -1,17 +1,10 @@
 {
-  "backhistoire":"retour au récit",
-  "title":"Décentralisation de l'action sociale et protection de l'enfance",
-  "chapeau":"L'aide sociale à l'enfance (ASE) désigne, en France, une politique sociale menée au sein de l'action sociale et dont la prévention spécialisée est l’une des missions.",
-  "bloctexte1":"Dans le cadre de l’Acte I des lois de décentralisation (1983 puis 2003) de nombreuses compétences, dont l’action sociale, sont transférées de l’Etat aux conseils généraux. L’Acte I de la décentralisation donne donc à ces conseils généraux la compétence de droit commun en matière d’aide sociale. Autrement dit, toutes les compétences d’aide sociale légales, de planification, de tarification et de contrôle des établissements ou services habilités à fournir de l’aide sociale sont transférées aux départements. Celui-ci est ainsi responsable :
-	⁃	de l’aide sociale à l’enfance ;
-	⁃	de l’aide aux personnes handicapées adultes (aide à domicile, allocation compensatrice pour tierce personne) ;
-	⁃	de l’aide aux personnes âgées ;
-	⁃	de la protection sanitaire de la famille et de l’enfance ;
-	⁃	de la lutte contre les fléaux sociaux.
-L’Etat n’est responsable que de la prise en charge des personnes déracinées (en situation d’errance ou sans domicile de secours au sens de l’aide sociale), des aides qui relèvent de la solidarité internationale et de le mise en place des Établissements et services d’aide par le travail (Esat).",
-  "bloctexte2":"Cette décentralisation de l’aide sociale s’accompagne d’un transfert des ressources et d’un partage des services (avec par exemple le transfert des deux tiers des effectifs des DDASS).
-
-L’Acte II des lois de décentralisation en 2003 reconnaît au département un rôle de chef de file en matière sociale et médico-sociale. Il revient en effet au département de définir et de mettre en oeuvre la politique d’action sociale : élaboration du schéma départemental de l’organisation sociale et médico-sociale, financement et gestion des fonds d’aide aux jeunes en difficulté et des fonds de solidarité pour le logement, autorisation et financement des centres locaux d’information et de coordination (CLIC).",
-  "image1":"../../../../assets/images/P4_H_F05_I01_decentralisation-action-sociale.jpg",
-  "footer":"Chapitre 4, Protéger l'enfance maltraitée - Décentralisation de l'action sociale et protection de l'enfance"
+	"type": "5",
+	"backhistoire": "retour au récit",
+	"title": "Décentralisation de l'action sociale et protection de l'enfance",
+	"chapeau": "L'aide sociale à l'enfance (ASE) désigne, en France, une politique sociale menée au sein de l'action sociale et dont la prévention spécialisée est l’une des missions.",
+	"bloctexte1": "Dans le cadre de l’Acte I des lois de décentralisation (1983 puis 2003) de nombreuses compétences, dont l’action sociale, sont transférées de l’Etat aux conseils généraux. L’Acte I de la décentralisation donne donc à ces conseils généraux la compétence de droit commun en matière d’aide sociale. Autrement dit, toutes les compétences d’aide sociale légales, de planification, de tarification et de contrôle des établissements ou services habilités à fournir de l’aide sociale sont transférées aux départements. Celui-ci est ainsi responsable :<br>⁃ de l’ aide sociale à l’ enfance ;<br>⁃ de l’ aide aux personnes handicapées adultes (aide à domicile, allocation compensatrice pour tierce personne) ;<br>⁃ de l’ aide aux personnes âgées ;<br>⁃ de la protection sanitaire de la famille et de l’ enfance ;<br>⁃ de la lutte contre les fléaux sociaux.<br>L’ Etat n’ est responsable que de la prise en charge des personnes déracinées(en situation d’ errance ou sans domicile de secours au sens de l’ aide sociale), des aides qui relèvent de la solidarité internationale et de le mise en place des Établissements et services d’ aide par le travail(Esat).",
+	"bloctexte2": "Cette décentralisation de l’aide sociale s’accompagne d’un transfert des ressources et d’un partage des services (avec par exemple le transfert des deux tiers des effectifs des DDASS).<br>L’ Acte II des lois de décentralisation en 2003 reconnaît au département un rôle de chef de file en matière sociale et médico - sociale.Il revient en effet au département de définir et de mettre en oeuvre la politique d’ action sociale : élaboration du schéma départemental de l’ organisation sociale et médico - sociale, financement et gestion des fonds d’ aide aux jeunes en difficulté et des fonds de solidarité pour le logement, autorisation et financement des centres locaux d’ information et de coordination(CLIC).",
+	"image1": "../../../../assets/images/P4_H_F05_I01_decentralisation-action-sociale.jpg",
+	"footer": "Chapitre 4, Protéger l'enfance maltraitée - Décentralisation de l'action sociale et protection de l'enfance"
 }

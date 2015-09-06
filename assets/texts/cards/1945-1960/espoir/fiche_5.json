@@ -1,38 +1,24 @@
 {
-  "backespoir":"retour au récit",
-  "title":"Méthodes éducatives du foyer de Vitry",
-  "video":"assets/images/nom-image.jpg",
-  "exergue":"Réconcilier le jeune avec lui-même, puis avec la société",
-  "bloctexte1":"Les différents thérapeutes historiques du foyer (Hubert Flavigny, psychiatre, Claude Martin, psychologue, Stanislaw Tomkiewicz, psychiatre, Joe Finder, éducateur) ont pu expérimenter de nombreuses méthodes éducatives qui ont fait la réputation du CFDJ de Vitry.",
-  "h2":"La sociothérapie",
-  "bloctexte2":"La sociothérapie est une technique basée sur les relations humaines pour réduire les troubles affectifs et comportementaux. La philosophie du foyer reposait donc sur la croyance que chaque résident pouvait participer au bien être de l’autre. L’atmosphère sociothérapeutique du foyer a été favorisée notamment par l’ensemble des activités sociales, l’esprit familial et la dynamique de groupe :
-  ⁃ Clubs d’écriture, de musique, d’électronique, de photo… ;
-  ⁃ Invitation des anciens à jouer le rôle de « béquilles » pour les nouveaux (2 anciens prennent en charge un nouveau résident et lui apprennent les règles du foyer) ;
-  ⁃ Publicités socio-éducatives (petites pensées illustrées) ;
-  ⁃ Cabarets CFDJ.",
-  "h2":"La psychothérapie",
-  "bloctexte3":"A Vitry « il fallait, avant tout, favoriser l’épanouissement des ces adolescents souffrant de graves carences affectives, les adapter à eux-mêmes […] » (Jean Chazal, Livre sonore 59-60 CFDJ). A l’ouverture du foyer la psychothérapie pour les adolescents en danger était encore inexistante. Pourtant, de 1950 à 1983, pour pallier au manque d’amour des parents ou à leur indifférence, les soutiens psychothérapeutiques se sont déclinés sous différentes formes :
-  ⁃ Les entretiens individuels avec l’éducateur et/ou avec le psychiatre ;
-  ⁃ Le Rêve Éveillé Dirigé (aussi appelé la thérapie couchée ou thérapie corporelle), initié par Flavigny, appliqué par Finder puis affiné par Tomkiewicz ;
-  ⁃ La psychothérapie « findérienne » (basé sur la confiance et sur la liberté d’expression verbale et corporelle totale) ;
-  ⁃ Les entretiens groupés avec le sociodrame notamment.
-
-Toutes ces méthodes psychothérapeutiques visaient essentiellement à répondre à des besoins récurrents chez les adolescents « fragiles » :
-  ⁃ La lutte contre les pulsions sexuelles obsédantes ;
-  ⁃ La lutte contre les comportements violents et instables ;
-  ⁃ La lutte contre la dysmorphophobie ou la peur d’être « mal-foutu(e) » / laid(e) ;
-  ⁃ La réconciliation avec la famille ou le processus de restauration ;
-  ⁃ La revalorisation de l’enfant et la confiance en soi.",
-  "h2":"Le photodrame",
-  "bloctexte4":"Mis en place au début des années 60 pour lutter contre la dysmorphophobie et le rejet de sa propre image, le photodrame est une technique photographique centré sur le corps de l’enfant. Il s’agit d’une séance de psychothérapie où l’adolescent est pris en photo sous différentes expressions, postures et dynamiques corporelles, suivi d’un dialogue avec le « photothérapeute ». Avec l’accord du jeune, certains clichés peuvent être affichés publiquement dans le foyer.",
-  "h2":"Le vidéodrame",
-  "bloctexte5":"Dans la continuité du photodrame, s’est développé le vidéodrame ou l’entretien individuel psychologique filmé. Au cours de cet entretien d’une quinzaine de minutes, le jeune voit son image en simultané instaurant volontairement une attitude non naturelle. Après l’interview, commence un dialogue basé sur le visionnage de l’entretien filmé. Selon la volonté du jeune, la vidéo était directement effacée après l’entretien. Cet exercice était notamment destiné à travailler sur l’extériorisation et sur la verbalisation des pensées du jeune.",
-  "h2":"Le sociodrame",
-  "bloctexte6":"Exercice thérapeutique dérivé du psychodrame (simulation d’une situation particulière où chaque participant joue son propre rôle) et importée des Etats-Unis par Jean Ughetto, directeur de 53 à 56 du foyer de Vitry. Le sociodrame est une improvisation dramatique à thème réaliste et social ou chaque participant joue le rôle autre que le sien. La thérapie commence avant (lors de la discussion préalable qui définit les règles et le contexte du thème abordé) et après l’improvisation (via une discussion individuelle ou de groupe).",
-  "h2":"L'art-thérapie",
-  "bloctexte7":"Les séances de dessin ont prit une place importante dans les activités de groupe à Vitry. Détectée comme étant une activité généralement abandonnée lors de la préadolescence et vue comme une activité futile (soit une corvée, soit pour remplir les temps morts), le dessin a été revalorisé en tant que moyen d’expression et de communication pouvant palier aux difficultés de verbalisation. Les résultats graphiques sont aussi tout autant d’indices permettant de mieux comprendre la psychologie du jeune.",
-  "image1":"../../../../assets/images/P2_E_F05_I01_perche.jpg",
-  "image2":"../../../../assets/images/P2_E_F05_I02_volley.jpg",
-  "image3":"../../../../assets/images/P2_E_F05_I03_camera.jpg",
-  "footer":"Chapitre 2, Le juge pour enfants et la semi-liberté - Méthodes éducatives du foyer de Vitry"
+	"type": "2",
+	"backespoir": "retour au récit",
+	"title": "Méthodes éducatives du foyer de Vitry",
+	"video": "assets/images/nom-image.jpg",
+	"exergue": "Réconcilier le jeune avec lui-même, puis avec la société",
+	"bloctexte1": "Les différents thérapeutes historiques du foyer (Hubert Flavigny, psychiatre, Claude Martin, psychologue, Stanislaw Tomkiewicz, psychiatre, Joe Finder, éducateur) ont pu expérimenter de nombreuses méthodes éducatives qui ont fait la réputation du CFDJ de Vitry.",
+	"h2": "La sociothérapie",
+	"bloctexte2": "La sociothérapie est une technique basée sur les relations humaines pour réduire les troubles affectifs et comportementaux. La philosophie du foyer reposait donc sur la croyance que chaque résident pouvait participer au bien être de l’autre. L’atmosphère sociothérapeutique du foyer a été favorisée notamment par l’ensemble des activités sociales, l’esprit familial et la dynamique de groupe : ⁃ Clubs d’ écriture, de musique, d’ électronique, de photo… ;⁃Invitation des anciens à jouer le rôle de «  béquilles » pour les nouveaux(2 anciens prennent en charge un nouveau résident et lui apprennent les règles du foyer) ;⁃Publicités socio - éducatives(petites pensées illustrées) ; ⁃Cabarets CFDJ.",
+	"h2": "La psychothérapie",
+	"bloctexte3": "A Vitry « il fallait, avant tout, favoriser l’épanouissement des ces adolescents souffrant de graves carences affectives, les adapter à eux-mêmes […] » (Jean Chazal, Livre sonore 59-60 CFDJ). A l’ouverture du foyer la psychothérapie pour les adolescents en danger était encore inexistante. Pourtant, de 1950 à 1983, pour pallier au manque d’amour des parents ou à leur indifférence, les soutiens psychothérapeutiques se sont déclinés sous différentes formes :<br>⁃ Les entretiens individuels avec l’ éducateur et / ou avec le psychiatre ;<br>⁃ Le Rêve Éveillé Dirigé(aussi appelé la thérapie couchée ou thérapie corporelle), initié par Flavigny, appliqué par Finder puis affiné par Tomkiewicz ;<br>⁃ La psychothérapie«  findérienne »(basé sur la confiance et sur la liberté d’ expression verbale et corporelle totale) ;<br>⁃ Les entretiens groupés avec le sociodrame notamment.<br> Toutes ces méthodes psychothérapeutiques visaient essentiellement à répondre à des besoins récurrents chez les adolescents«  fragiles » : <br>⁃ La lutte contre les pulsions sexuelles obsédantes ;<br>⁃ La lutte contre les comportements violents et instables ;<br> ⁃La lutte contre la dysmorphophobie ou la peur d’ être «  mal - foutu(e) » /  laid(e) ;<br>⁃ La réconciliation avec la famille ou le processus de restauration ;<br>⁃ La revalorisation de l’ enfant et la confiance en soi.",
+	"h2": "Le photodrame",
+	"bloctexte4": "Mis en place au début des années 60 pour lutter contre la dysmorphophobie et le rejet de sa propre image, le photodrame est une technique photographique centré sur le corps de l’enfant. Il s’agit d’une séance de psychothérapie où l’adolescent est pris en photo sous différentes expressions, postures et dynamiques corporelles, suivi d’un dialogue avec le « photothérapeute ». Avec l’accord du jeune, certains clichés peuvent être affichés publiquement dans le foyer.",
+	"h2": "Le vidéodrame",
+	"bloctexte5": "Dans la continuité du photodrame, s’est développé le vidéodrame ou l’entretien individuel psychologique filmé. Au cours de cet entretien d’une quinzaine de minutes, le jeune voit son image en simultané instaurant volontairement une attitude non naturelle. Après l’interview, commence un dialogue basé sur le visionnage de l’entretien filmé. Selon la volonté du jeune, la vidéo était directement effacée après l’entretien. Cet exercice était notamment destiné à travailler sur l’extériorisation et sur la verbalisation des pensées du jeune.",
+	"h2": "Le sociodrame",
+	"bloctexte6": "Exercice thérapeutique dérivé du psychodrame (simulation d’une situation particulière où chaque participant joue son propre rôle) et importée des Etats-Unis par Jean Ughetto, directeur de 53 à 56 du foyer de Vitry. Le sociodrame est une improvisation dramatique à thème réaliste et social ou chaque participant joue le rôle autre que le sien. La thérapie commence avant (lors de la discussion préalable qui définit les règles et le contexte du thème abordé) et après l’improvisation (via une discussion individuelle ou de groupe).",
+	"h2": "L'art-thérapie",
+	"bloctexte7": "Les séances de dessin ont prit une place importante dans les activités de groupe à Vitry. Détectée comme étant une activité généralement abandonnée lors de la préadolescence et vue comme une activité futile (soit une corvée, soit pour remplir les temps morts), le dessin a été revalorisé en tant que moyen d’expression et de communication pouvant palier aux difficultés de verbalisation. Les résultats graphiques sont aussi tout autant d’indices permettant de mieux comprendre la psychologie du jeune.",
+	"image1": "../../../../assets/images/P2_E_F05_I01_perche.jpg",
+	"image2": "../../../../assets/images/P2_E_F05_I02_volley.jpg",
+	"image3": "../../../../assets/images/P2_E_F05_I03_camera.jpg",
+	"footer": "Chapitre 2, Le juge pour enfants et la semi-liberté - Méthodes éducatives du foyer de Vitry"
 }
