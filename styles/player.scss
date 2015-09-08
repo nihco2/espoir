@@ -40,11 +40,13 @@ $white:#fff;
 			margin-top: -40px;
 			width: 80%;
 			.left-nav {
+				cursor: pointer;
 				&:before {
 					background-position: -180px -30px;
 				}
 			}
 			.right-nav {
+				cursor: pointer;
 				right: 0;
 				&:before {
 					background-position: -246px -30px;
@@ -148,15 +150,7 @@ $white:#fff;
 	}
 }
 #video {
-	position: absolute;
-	top: 50%;
-	left: 50%;
 	min-width: 100%;
-	min-height: 100%;
-	width: auto;
-	height: auto;
-	z-index: -100;
-	@include transform(translateX(-50%) translateY(0));
 }
 .carousel,
 .carousel-inner {

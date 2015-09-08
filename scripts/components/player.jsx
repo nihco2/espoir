@@ -4,25 +4,27 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 var routes = require('../../assets/routes.json');
 var texts = require('../../assets/texts.json');
+var Slider = require('react-slick');
+var Navigation = require('react-router').Navigation;
 
 let Player = React.createClass({
-	getCurrentRoute: function () {
-		return location.hash.split('/').pop();
-	},
+	mixins: [Navigation],
 
 	initRoutes: function (prevOrNext) {
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
-		var current = this.getCurrentRoute();
-		var currentIndex = routesArray.indexOf(current);
+		var currentRoute = this.props.params.periode;
+		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-		var currentRoute = routesArray[currentIndex] ? routesArray[currentIndex] : undefined;
 		var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
 		var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
 		var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
 		var nextPoster, prevPoster;
-
+		
+		
+		console.log('current',this.props.params.periode,currentRoute)
+		
 		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
 		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
 
@@ -99,45 +101,15 @@ let Player = React.createClass({
 
 		this.getVideo().currentTime = currentTime;
 	},
-
-	hashDidChanged: function (event) {
-		var oldURL = parseInt(event.oldURL.split('/').pop());
-		var newURL = parseInt(event.newURL.split('/').pop());
-
-		if (isNaN(oldURL) || isNaN(newURL)) {
-			//$('.carousel').addClass('vertical');
-			$('.h-nav').hide();
-		} else {
-			//$('.carousel').removeClass('vertical');
-			$('.h-nav').show();
-		}
-
-		if (oldURL > newURL) {
-			$('.carousel').carousel('prev');
-		} else {
-			$('.carousel').carousel('next');
-		}
-		$('.carousel').on('slid.bs.carousel', function () {
-
-			this.setState(this.initRoutes());
-
-			$('.active').removeClass('active');
-			$('#video').parents('.item').addClass('active');
-		}.bind(this));
-	},
     
-    initHTML(){
-      $('.carousel').carousel({
-        interval: false
-      });
-      $('.player-container').height(window.innerHeight);
-    },
+	initHTML(){
+		$('.player-container').height(window.innerHeight);
+	},
 
 	componentDidMount: function () {
-		var self = this;
-		window.addEventListener('hashchange', this.hashDidChanged);
+	var self = this;
 		self.initRoutes();
-        self.initHTML();
+    self.initHTML();
 		
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
@@ -201,8 +173,111 @@ let Player = React.createClass({
 			});
 		});
 	},
+	handleClick:function(e){
+		switch($(e.target).attr('class')){
+			case 'left-nav':$('.slick-prev').trigger('click');
+			break;
+			case 'right-nav':$('.slick-next').trigger('click');
+			break;
+		}
+	},
+	statics: {
+    willTransitionTo: function (transition, params, query, next) {
+			console.log(params)
+			next();
+    }
+	},
 	render() {
-		return (<div className = "player-container" >
+	  var self = this;
+    var settings = {
+        dots: false,
+        infinite: true,
+        arrows: true,
+        speed: 500,
+        slidesToShow: 1,
+				initialSlide: 2,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        afterChange: function(event){
+            var path = event.toString();
+						self.transitionTo('player',{
+							periode:self.state.nextRoute
+						});
+						
+        }
+
+    };
+    return (
+			<div className = "player-container" >
+				<nav className="h-nav">
+					<a onClick={this.handleClick} className = "left-nav" ></a>
+					<a onClick={this.handleClick} className = "right-nav" ></a>
+				</nav> 
+        <nav className = "v-nav">
+            <Link to = {
+            `\/cards\/${this.state.currentRoute}/espoir/${this.state.currentCard}`
+            }
+            className = "top-nav">
+            </Link> 
+            <Link to = {
+            `\/cards\/${this.state.currentRoute}/histoire/${this.state.currentCard}`
+            }
+            className = "bottom-nav"> </Link> 
+        </nav>
+				<section>
+					<Slider {...settings}>
+							<div className = "item">
+								<video id = "video"
+								poster = {
+										this.state.currentPoster
+								}
+								preload = "metadata" >
+								<source src = {
+										this.state.currentVideo
+								}
+								type = "video/mp4" / >
+								<source src = "movie-hd.mp4"
+									type = "video/mp4" / >
+								</video>
+							</div >
+							<div className = "item">
+							<video poster = {
+									this.state.nextPoster
+							}>
+						 </video>
+						</div >
+					</Slider>
+				</section>
+				<div className = "player"
+          onClick = {
+              this.handleClickPause
+          }> 
+            <div className = "play"
+            onClick = {
+                this.handleClickPlay
+            } > 
+            </div>
+            <div className = "n-progress js-progress"> 
+              <div className = "n-progress-bar js-progress-bar"
+		        onMouseDown = {
+				this.handleProgressBarMouseDown
+			   }>
+                <div className = "mask"></div>
+                <div className = "button-holder"> 
+                  <div className = "js-progress-button progress-button"> </div> 
+                </div> 
+              </div> 
+            <div className = "time"> 
+              <span className = "ctime">00:00</span> 
+              <span className = "ttime"> 00:00 </span>
+            </div> 
+          </div> 
+          <div className = "volume"> </div> 
+        </div> 
+			</div>
+    );
+		/*return (
+		{<div className = "player-container" >
 			<nav className="h-nav">
               <Link to = {
                 `\/player\/${this.state.prevRoute}`
@@ -284,8 +359,8 @@ let Player = React.createClass({
           </div> 
           <div className = "volume"> </div> 
         </div> 
-      </div>
-	);
+      </div>}
+	);*/
 }
 });
 

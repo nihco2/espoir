@@ -1,4 +1,5 @@
 var React = require('react');
+
 import ReactRouter from 'react-router';
 
 import Type1 from '../components/cards/type1.jsx';
