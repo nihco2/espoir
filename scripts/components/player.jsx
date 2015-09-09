@@ -10,10 +10,10 @@ var Navigation = require('react-router').Navigation;
 let Player = React.createClass({
 	mixins: [Navigation],
 
-	initRoutes: function (prevOrNext) {
+	initRoutes: function (periode) {
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
-		var currentRoute = this.props.params.periode;
+        var currentRoute = periode ? periode : this.props.params.periode;
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
@@ -23,8 +23,9 @@ let Player = React.createClass({
 		var nextPoster, prevPoster;
 		
 		
-		console.log('current',this.props.params.periode,currentRoute)
-		
+		console.log('current',this.props.params.periode)
+		console.log('next!!!',nextRoute)		
+
 		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
 		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
 
@@ -103,75 +104,79 @@ let Player = React.createClass({
 	},
     
 	initHTML(){
-		$('.player-container').height(window.innerHeight);
+      var self = this;
+      $('.player-container').height(window.innerHeight).on('route:change',function(e, params){
+        console.log(e,params)
+        self.setState(self.initRoutes(params.periode));  
+      });
 	},
 
 	componentDidMount: function () {
-	var self = this;
-		self.initRoutes();
-    self.initHTML();
+      var self = this;
+      self.initRoutes();
+      self.initHTML();
 		
-		self.getVideo().addEventListener('loadedmetadata', function () {
-			self.getVideo().addEventListener('timeupdate', function () {
-				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
+      self.getVideo().addEventListener('loadedmetadata', function () {
+          self.getVideo().addEventListener('timeupdate', function () {
+              var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
-				// Le temps actuel de la vidéo, basé sur la barre de progression
-				var time = Math.round(($('.js-progress-bar').width() / progWidth) * self.getDuration());
+              // Le temps actuel de la vidéo, basé sur la barre de progression
+              var time = Math.round(($('.js-progress-bar').width() / progWidth) * self.getDuration());
 
-				// Le temps "réel" de la vidéo
-				var curTime = self.getVideo().currentTime;
+              // Le temps "réel" de la vidéo
+              var curTime = self.getVideo().currentTime;
 
-				// Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
-				// tminutes et tseconds sont les minutes et secondes totales
-				var seconds = 0,
-					minutes = Math.floor(self.getVideo().currentTime / 60), //Math.floor(time / 60),
-					tminutes = Math.round(self.getDuration() / 60),
-					tseconds = Math.round((self.getDuration()) - (tminutes * 60));
+              // Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
+              // tminutes et tseconds sont les minutes et secondes totales
+              var seconds = 0,
+                  minutes = Math.floor(self.getVideo().currentTime / 60), //Math.floor(time / 60),
+                  tminutes = Math.round(self.getDuration() / 60),
+                  tseconds = Math.round((self.getDuration()) - (tminutes * 60));
 
-				// Si le temps existe (enfin, la durée de la vidéo !)
-				if (time) {
-					// Les secondes valent la durée moins les minutes
-					seconds = Math.floor(self.getVideo().currentTime) - (60 * minutes);
+              // Si le temps existe (enfin, la durée de la vidéo !)
+              if (time) {
+                  // Les secondes valent la durée moins les minutes
+                  seconds = Math.floor(self.getVideo().currentTime) - (60 * minutes);
 
-					// Si nous avons plus de 59 secondes
-					if (seconds > 59) {
-						// On augmente les minutes et on soustrait les secondes en trop
-						seconds = Math.round(time) - (60 * minutes);
-						if (seconds == 60) {
-							minutes = Math.round(time / 60);
-							seconds = 0;
-						}
-					}
+                  // Si nous avons plus de 59 secondes
+                  if (seconds > 59) {
+                      // On augmente les minutes et on soustrait les secondes en trop
+                      seconds = Math.round(time) - (60 * minutes);
+                      if (seconds == 60) {
+                          minutes = Math.round(time / 60);
+                          seconds = 0;
+                      }
+                  }
 
-				}
+              }
 
-				// Mise à jour de la barre de progression
-				var updProgWidth = (curTime / self.getDuration()) * progWidth
+              // Mise à jour de la barre de progression
+              var updProgWidth = (curTime / self.getDuration()) * progWidth
 
-				// Ajout des zéros initiaux pour les valeurs inférieures à 10
-				if (seconds < 10) {
-					seconds = '0' + seconds;
-				}
-				if (minutes < 10) {
-					minutes = '0' + minutes;
-				}
-				if (tseconds < 10) {
-					tseconds = '0' + tseconds;
-				}
+              // Ajout des zéros initiaux pour les valeurs inférieures à 10
+              if (seconds < 10) {
+                  seconds = '0' + seconds;
+              }
+              if (minutes < 10) {
+                  minutes = '0' + minutes;
+              }
+              if (tseconds < 10) {
+                  tseconds = '0' + tseconds;
+              }
 
-				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
+              //document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
+              document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
 
-				// Ajustement des durées
-				document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
-				document.querySelector('.ttime').innerHTML = (tminutes + ':' + tseconds);
+              // Ajustement des durées
+              document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
+              document.querySelector('.ttime').innerHTML = (tminutes + ':' + tseconds);
 
-				// En mode lecture, mise à jour des valeurs du tampon
-				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
-					//bufferLength();
-				}
-			});
-		});
+              // En mode lecture, mise à jour des valeurs du tampon
+              if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
+                  //bufferLength();
+              }
+          });
+      });
 	},
 	handleClick:function(e){
 		switch($(e.target).attr('class')){
@@ -182,30 +187,30 @@ let Player = React.createClass({
 		}
 	},
 	statics: {
-    willTransitionTo: function (transition, params, query, next) {
-			console.log(params)
-			next();
-    }
+      willTransitionTo: function (transition, params, query, next) {
+        console.log('YOOOO')
+        $('.player-container').trigger('route:change', params);
+        next();
+      }
 	},
 	render() {
 	  var self = this;
-    var settings = {
-        dots: false,
-        infinite: true,
-        arrows: true,
-        speed: 500,
-        slidesToShow: 1,
-				initialSlide: 2,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        afterChange: function(event){
+      var settings = {
+          dots: false,
+          infinite: true,
+          arrows: true,
+          speed: 500,
+          slidesToShow: 1,
+          initialSlide:0,
+          slidesToScroll: 1,
+          afterChange: function(event){
             var path = event.toString();
-						self.transitionTo('player',{
-							periode:self.state.nextRoute
-						});
-						
-        }
-
+            console.log('next',self.state.currentRoute)
+            console.log(self.props)
+            self.transitionTo('player',{
+                periode:self.state.nextRoute
+            });					
+          }
     };
     return (
 			<div className = "player-container" >

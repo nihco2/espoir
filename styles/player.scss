@@ -149,8 +149,9 @@ $white:#fff;
 		height: 100%;
 	}
 }
-#video {
-	min-width: 100%;
+video {
+  width: 100%    !important;
+  height: auto   !important;
 }
 .carousel,
 .carousel-inner {

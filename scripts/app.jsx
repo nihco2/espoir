@@ -35,7 +35,7 @@ var routes = ( < Route handler = {
   }
   />
   <DefaultRoute handler = {
-  Homepage
+    Homepage
   }
   />
 </Route>
