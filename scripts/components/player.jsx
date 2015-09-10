@@ -81,17 +81,24 @@ let Player = React.createClass({
 	handleClickPause: function () {
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
-			$('.play').show();
+				$('.play').css('opacity',1);
 		} else {
 			this.getVideo().play();
-			$('.play').hide();
+				$('.play').css('opacity',0);
 		}
 	},
 
 	handleClickPlay: function (event) {
 		event.stopPropagation();
-		this.getVideo().play();
-		$('.play').hide();
+		if (this.getVideo().paused){
+			this.getVideo().play();
+			$('.play').css('opacity',0);
+		}
+		else{
+			this.getVideo().pause();
+			$('.play').css('opacity',1);
+		}
+		
 	},
 
 	handleProgressBarMouseDown: function (e) {
@@ -202,6 +209,7 @@ let Player = React.createClass({
       });
 	},
 	handleClick:function(e){
+		this.getVideo().pause();
 		switch($(e.target).attr('class')){
 			case 'left-nav':$('.slick-prev').trigger('click');
 			break;
@@ -223,11 +231,11 @@ let Player = React.createClass({
           arrows: true,
           speed: 500,
           slidesToShow: 1,
-          initialSlide:0,
+          initialSlide:routes.periodes.indexOf(this.props.params.periode),
           slidesToScroll: 1,
           afterChange: function(event){
             $('.h-nav').show();
-            console.log('next',event)
+						$('.play').css('opacity',1);
             self.transitionTo('player',{
 							periode: routes.periodes[event]
             });					
