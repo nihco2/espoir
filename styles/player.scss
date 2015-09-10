@@ -150,8 +150,8 @@ $white:#fff;
 	}
 }
 video {
-  width: 100%    !important;
-  height: auto   !important;
+	min-width: 100% !important;
+	//height: auto   !important;
 }
 .carousel,
 .carousel-inner {

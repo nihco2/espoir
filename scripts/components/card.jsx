@@ -20,7 +20,6 @@ let Cards = React.createClass({
 	},
   componentWillMount:function(){
  $.get(`../../assets/texts/cards/${this.getParams().periode}/${this.getParams().nav}/${this.getParams().card}.json`, function(result) {
- 			console.log('*****',result);
       if (this.isMounted()) {
         this.setState({
           texts: result

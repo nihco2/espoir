@@ -7,6 +7,8 @@ var texts = require('../../assets/texts.json');
 var Slider = require('react-slick');
 var Navigation = require('react-router').Navigation;
 
+import Video from '../components/video.jsx';
+
 let Player = React.createClass({
 	mixins: [Navigation],
 
@@ -53,7 +55,10 @@ let Player = React.createClass({
 	},
 
 	getInitialState: function () {
-		return this.initRoutes();
+		return {
+			asssets: null,
+			routes: null
+		}
 	},
 
 	getDuration: function () {
@@ -107,15 +112,26 @@ let Player = React.createClass({
       var self = this;
       $('.player-container').height(window.innerHeight).on('route:change',function(e, params){
         console.log(e,params)
-        self.setState(self.initRoutes(params.periode));  
+				//self.setState(self.initRoutes(params.periode));
+		
       });
 	},
-
+	componentWillMount:function(){
+	console.log(':::::',assets)
+		this.setState({
+			video1: assets.videos[0],
+			video2: assets.videos[1],
+			video3: assets.videos[2],
+			video4: assets.videos[3],
+			video5: assets.videos[4],
+			video6: assets.videos[5],
+			routes: routes
+		});
+	},
 	componentDidMount: function () {
       var self = this;
       self.initRoutes();
       self.initHTML();
-		
       self.getVideo().addEventListener('loadedmetadata', function () {
           self.getVideo().addEventListener('timeupdate', function () {
               var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
@@ -188,7 +204,6 @@ let Player = React.createClass({
 	},
 	statics: {
       willTransitionTo: function (transition, params, query, next) {
-        console.log('YOOOO')
         $('.player-container').trigger('route:change', params);
         next();
       }
@@ -205,10 +220,9 @@ let Player = React.createClass({
           slidesToScroll: 1,
           afterChange: function(event){
             var path = event.toString();
-            console.log('next',self.state.currentRoute)
-            console.log(self.props)
+            console.log('next',event)
             self.transitionTo('player',{
-                periode:self.state.nextRoute
+						periode: event === 1 ? self.state.nextRoute : self.state.prevRoute 
             });					
           }
     };
@@ -231,26 +245,12 @@ let Player = React.createClass({
         </nav>
 				<section>
 					<Slider {...settings}>
-							<div className = "item">
-								<video id = "video"
-								poster = {
-										this.state.currentPoster
-								}
-								preload = "metadata" >
-								<source src = {
-										this.state.currentVideo
-								}
-								type = "video/mp4" / >
-								<source src = "movie-hd.mp4"
-									type = "video/mp4" / >
-								</video>
-							</div >
-							<div className = "item">
-							<video poster = {
-									this.state.nextPoster
-							}>
-						 </video>
-						</div >
+						<Video video={this.state.video1} />
+						<Video video={this.state.video2} />
+						<Video video={this.state.video3} />
+						<Video video={this.state.video4} />
+						<Video video={this.state.video5} />
+						<Video video={this.state.video6} />
 					</Slider>
 				</section>
 				<div className = "player"
@@ -281,92 +281,7 @@ let Player = React.createClass({
         </div> 
 			</div>
     );
-		/*return (
-		{<div className = "player-container" >
-			<nav className="h-nav">
-              <Link to = {
-                `\/player\/${this.state.prevRoute}`
-              }
-              className = "left-nav" > {
-                  this.state.prevRoute
-              } < /Link > 
-              <Link to = {
-              `\/player\/${this.state.nextRoute}`
-              }
-              className = "right-nav" > {
-                  this.state.nextRoute
-              } < /Link >  
-            </nav> 
-            <nav className = "v-nav">
-            <Link to = {
-            `\/cards\/${this.state.currentRoute}/espoir/${this.state.currentCard}`
-            }
-            className = "top-nav">
-            </Link> 
-            <Link to = {
-            `\/cards\/${this.state.currentRoute}/histoire/${this.state.currentCard}`
-            }
-            className = "bottom-nav"> </Link> 
-            </nav> 
-            <section className = "carousel slide">
-		    <div className = "carousel-inner" role = "listbox">
-              <div className = "item">
-                <video poster = {
-                    this.state.prevPoster
-                }>
-                </video>
-              </div>
-              <div className = "item active">
-                <video id = "video"
-                poster = {
-                    this.state.currentPoster
-                }
-                preload = "metadata" >
-                <source src = {
-                    this.state.currentVideo
-                }
-                type = "video/mp4" / >
-                <source src = "movie-hd.mp4"
-                  type = "video/mp4" / >
-                </video>
-              </div >
-              <div className = "item">
-                <video poster = {
-                    this.state.nextPoster
-                }>
-               </video>
-              </div >
-		    </div> 
-          </section>
-          <div className = "player"
-          onClick = {
-              this.handleClickPause
-          }> 
-            <div className = "play"
-            onClick = {
-                this.handleClickPlay
-            } > 
-            </div>
-            <div className = "n-progress js-progress"> 
-              <div className = "n-progress-bar js-progress-bar"
-		        onMouseDown = {
-				this.handleProgressBarMouseDown
-			   }>
-                <div className = "mask"></div>
-                <div className = "button-holder"> 
-                  <div className = "js-progress-button progress-button"> </div> 
-                </div> 
-              </div> 
-            <div className = "time"> 
-              <span className = "ctime">00:00</span> 
-              <span className = "ttime"> 00:00 </span>
-            </div> 
-          </div> 
-          <div className = "volume"> </div> 
-        </div> 
-      </div>}
-	);*/
-}
+		}
 });
 
 export default Player;

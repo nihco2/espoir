@@ -2,27 +2,33 @@
 module.exports={
 	"videos": [
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video1",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster1.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video2",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster2.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video3",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster3.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video4",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster4.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video5",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster5.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video6",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster6.jpg"
 		}
 		]
@@ -34114,16 +34120,16 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
   Route,
   { handler: App },
-  _react2['default'].createElement(Route, { name: 'player', path: 'player/:periode',
+  _react2['default'].createElement(Route, { name: "player", path: "player/:periode",
     handler: _componentsPlayerJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'resources',
+  _react2['default'].createElement(Route, { path: "resources",
     handler: _componentsResourcesJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'cards/:periode/:nav/:card',
+  _react2['default'].createElement(Route, { path: "cards/:periode/:nav/:card",
     handler: _componentsCardJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: 'credits',
+  _react2['default'].createElement(Route, { path: "credits",
     handler: _componentsCreditsJsx2['default']
   }),
   _react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
@@ -34194,7 +34200,6 @@ var Cards = React.createClass({
 	},
 	componentWillMount: function componentWillMount() {
 		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.getParams().nav + '/' + this.getParams().card + '.json', (function (result) {
-			console.log('*****', result);
 			if (this.isMounted()) {
 				this.setState({
 					texts: result
@@ -34262,7 +34267,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34274,8 +34279,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34294,45 +34299,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34377,7 +34382,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34389,8 +34394,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34409,45 +34414,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34492,7 +34497,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34504,8 +34509,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34524,45 +34529,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34607,7 +34612,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34619,8 +34624,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34639,45 +34644,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34722,7 +34727,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34734,8 +34739,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34754,45 +34759,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34837,7 +34842,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: 'card' },
+			{ id: "card" },
 			React.createElement(
 				'header',
 				null,
@@ -34849,8 +34854,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: 'back-btn' },
-							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -34869,45 +34874,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: 'container' },
+				{ className: "container" },
 				React.createElement(
 					'div',
-					{ className: 'row row-centered' },
+					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-left' },
+							{ className: "sep sep-1 sep-left" },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-1 sep-right' },
+							{ className: "sep sep-1 sep-right" },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: 'border-1' },
+							{ id: "border-1" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'col-xs-6 col-centered col-fixed' },
+						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: 'border-2' },
+							{ id: "border-2" },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
+							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: 'sep sep-3 sep-left' },
+							{ className: "sep sep-3 sep-left" },
 							' '
 						)
 					)
@@ -34995,7 +35000,7 @@ var Homepage = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: 'homepage' },
+			{ className: "homepage" },
 			' ',
 			React.createElement(
 				'nav',
@@ -35003,14 +35008,14 @@ var Homepage = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '/resources' },
+					{ to: '\/resources' },
 					' ',
 					texts.resources,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '/credits' },
+					{ to: '\/credits' },
 					texts.credits
 				),
 				' '
@@ -35018,15 +35023,15 @@ var Homepage = React.createClass({
 			'  ',
 			React.createElement(
 				'div',
-				{ className: 'home' },
+				{ className: "home" },
 				' ',
 				React.createElement(
 					'div',
-					{ className: 'container' },
+					{ className: "container" },
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'intro' },
+						{ className: "intro" },
 						' ',
 						React.createElement(
 							'h1',
@@ -35070,7 +35075,7 @@ var Homepage = React.createClass({
 						' ',
 						React.createElement(
 							Link,
-							{ to: '/player/' + this.state.firstPeriode, className: 'go' },
+							{ to: '/player/' + this.state.firstPeriode, className: "go" },
 							texts.go
 						),
 						' '
@@ -35081,13 +35086,13 @@ var Homepage = React.createClass({
 			' ',
 			React.createElement(
 				'div',
-				{ className: 'menutitle' },
+				{ className: "menutitle" },
 				' ',
 				texts.periodes,
 				' ',
 				React.createElement(
 					'span',
-					{ className: 'arrow' },
+					{ className: "arrow" },
 					' '
 				)
 			),
@@ -35102,17 +35107,17 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						'div',
-						{ className: 'home-menu item1' },
+						{ className: "home-menu item1" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode1,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode1Title,
 								' '
@@ -35126,17 +35131,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode2 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item2' },
+						{ className: "home-menu item2" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode2,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode2Title,
 								' '
@@ -35151,17 +35156,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode3 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item3' },
+						{ className: "home-menu item3" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode3,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode3Title,
 								' '
@@ -35176,17 +35181,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode4 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item4' },
+						{ className: "home-menu item4" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode4,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode4Title,
 								' '
@@ -35201,17 +35206,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode5 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item5' },
+						{ className: "home-menu item5" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode5,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode5Title,
 								' '
@@ -35226,17 +35231,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode6 },
 					React.createElement(
 						'div',
-						{ className: 'home-menu item6' },
+						{ className: "home-menu item6" },
 						' ',
 						React.createElement(
 							'span',
-							{ className: 'periode' },
+							{ className: "periode" },
 							' ',
 							texts.periode6,
 							' ',
 							React.createElement(
 								'span',
-								{ className: 'periodeTitle' },
+								{ className: "periodeTitle" },
 								' ',
 								texts.periode6Title,
 								' '
@@ -35260,8 +35265,15 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _componentsVideoJsx = require('../components/video.jsx');
+
+var _componentsVideoJsx2 = _interopRequireDefault(_componentsVideoJsx);
+
 var React = require('react');
 var assets = require('../../assets/assets.json');
 var ReactRouter = require('react-router');
@@ -35272,399 +35284,312 @@ var Slider = require('react-slick');
 var Navigation = require('react-router').Navigation;
 
 var Player = React.createClass({
-  displayName: 'Player',
+	displayName: 'Player',
 
-  mixins: [Navigation],
+	mixins: [Navigation],
 
-  initRoutes: function initRoutes(periode) {
-    var routesArray = routes.periodes;
-    var cardsArray = routes.cards;
-    var currentRoute = periode ? periode : this.props.params.periode;
-    var currentIndex = routesArray.indexOf(currentRoute);
-    var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
-    var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-    var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
-    var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
-    var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
-    var nextPoster, prevPoster;
+	initRoutes: function initRoutes(periode) {
+		var routesArray = routes.periodes;
+		var cardsArray = routes.cards;
+		var currentRoute = periode ? periode : this.props.params.periode;
+		var currentIndex = routesArray.indexOf(currentRoute);
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
+		var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
+		var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
+		var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
+		var nextPoster, prevPoster;
 
-    console.log('current', this.props.params.periode);
-    console.log('next!!!', nextRoute);
+		console.log('current', this.props.params.periode);
+		console.log('next!!!', nextRoute);
 
-    prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
-    nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
+		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
+		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
 
-    if (!prevRoute) {
-      $('.left-nav').hide();
-    } else if ($('.left-nav').is(':hidden')) {
-      $('.left-nav').show();
-    }
-    if (!nextRoute) {
-      $('.right-nav').hide();
-    } else if ($('.right-nav').is(':hidden')) {
-      $('.right-nav').show();
-    }
+		if (!prevRoute) {
+			$('.left-nav').hide();
+		} else if ($('.left-nav').is(':hidden')) {
+			$('.left-nav').show();
+		}
+		if (!nextRoute) {
+			$('.right-nav').hide();
+		} else if ($('.right-nav').is(':hidden')) {
+			$('.right-nav').show();
+		}
 
-    return {
-      prevRoute: prevRoute,
-      nextRoute: nextRoute,
-      currentRoute: currentRoute,
-      currentVideo: currentVideo,
-      currentPoster: currentPoster,
-      nextPoster: nextPoster,
-      prevPoster: prevPoster,
-      currentCard: currentCard
-    };
-  },
+		return {
+			prevRoute: prevRoute,
+			nextRoute: nextRoute,
+			currentRoute: currentRoute,
+			currentVideo: currentVideo,
+			currentPoster: currentPoster,
+			nextPoster: nextPoster,
+			prevPoster: prevPoster,
+			currentCard: currentCard
+		};
+	},
 
-  getInitialState: function getInitialState() {
-    return this.initRoutes();
-  },
+	getInitialState: function getInitialState() {
+		return {
+			asssets: null,
+			routes: null
+		};
+	},
 
-  getDuration: function getDuration() {
-    return this.getVideo().duration;
-  },
+	getDuration: function getDuration() {
+		return this.getVideo().duration;
+	},
 
-  getBuffered: function getBuffered() {
-    return this.getVideo().buffered;
-  },
+	getBuffered: function getBuffered() {
+		return this.getVideo().buffered;
+	},
 
-  getVolume: function getVolume() {
-    return this.getVideo().volume;
-  },
+	getVolume: function getVolume() {
+		return this.getVideo().volume;
+	},
 
-  getVideo: function getVideo() {
-    return document.getElementById('video');
-  },
+	getVideo: function getVideo() {
+		return document.getElementById('video');
+	},
 
-  handleClickPause: function handleClickPause() {
-    if (!this.getVideo().paused) {
-      this.getVideo().pause();
-      $('.play').show();
-    } else {
-      this.getVideo().play();
-      $('.play').hide();
-    }
-  },
+	handleClickPause: function handleClickPause() {
+		if (!this.getVideo().paused) {
+			this.getVideo().pause();
+			$('.play').show();
+		} else {
+			this.getVideo().play();
+			$('.play').hide();
+		}
+	},
 
-  handleClickPlay: function handleClickPlay(event) {
-    event.stopPropagation();
-    this.getVideo().play();
-    $('.play').hide();
-  },
+	handleClickPlay: function handleClickPlay(event) {
+		event.stopPropagation();
+		this.getVideo().play();
+		$('.play').hide();
+	},
 
-  handleProgressBarMouseDown: function handleProgressBarMouseDown(e) {
+	handleProgressBarMouseDown: function handleProgressBarMouseDown(e) {
 
-    if (!this.getVideo().paused) {
-      this.getVideo().pause();
-    }
+		if (!this.getVideo().paused) {
+			this.getVideo().pause();
+		}
 
-    // Position x de la souris lors du clic
-    var x = e.pageX - $('.js-progress').offset().left - 50;
-    var progWidth = document.querySelector('.js-progress').offsetWidth;
-    // Mise à jour du temps actuel
-    var currentTime = x / progWidth * this.getDuration();
+		// Position x de la souris lors du clic
+		var x = e.pageX - $('.js-progress').offset().left - 50;
+		var progWidth = document.querySelector('.js-progress').offsetWidth;
+		// Mise à jour du temps actuel
+		var currentTime = x / progWidth * this.getDuration();
 
-    this.getVideo().currentTime = currentTime;
-  },
+		this.getVideo().currentTime = currentTime;
+	},
 
-  initHTML: function initHTML() {
-    var self = this;
-    $('.player-container').height(window.innerHeight).on('route:change', function (e, params) {
-      console.log(e, params);
-      self.setState(self.initRoutes(params.periode));
-    });
-  },
+	initHTML: function initHTML() {
+		var self = this;
+		$('.player-container').height(window.innerHeight).on('route:change', function (e, params) {
+			console.log(e, params);
+			//self.setState(self.initRoutes(params.periode));
+		});
+	},
+	componentWillMount: function componentWillMount() {
+		console.log(':::::', assets);
+		this.setState({
+			video1: assets.videos[0],
+			video2: assets.videos[1],
+			video3: assets.videos[2],
+			video4: assets.videos[3],
+			video5: assets.videos[4],
+			video6: assets.videos[5],
+			routes: routes
+		});
+	},
+	componentDidMount: function componentDidMount() {
+		var self = this;
+		self.initRoutes();
+		self.initHTML();
+		self.getVideo().addEventListener('loadedmetadata', function () {
+			self.getVideo().addEventListener('timeupdate', function () {
+				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
-  componentDidMount: function componentDidMount() {
-    var self = this;
-    self.initRoutes();
-    self.initHTML();
+				// Le temps actuel de la vidéo, basé sur la barre de progression
+				var time = Math.round($('.js-progress-bar').width() / progWidth * self.getDuration());
 
-    self.getVideo().addEventListener('loadedmetadata', function () {
-      self.getVideo().addEventListener('timeupdate', function () {
-        var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
+				// Le temps "réel" de la vidéo
+				var curTime = self.getVideo().currentTime;
 
-        // Le temps actuel de la vidéo, basé sur la barre de progression
-        var time = Math.round($('.js-progress-bar').width() / progWidth * self.getDuration());
+				// Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
+				// tminutes et tseconds sont les minutes et secondes totales
+				var seconds = 0,
+				    minutes = Math.floor(self.getVideo().currentTime / 60),
+				    //Math.floor(time / 60),
+				tminutes = Math.round(self.getDuration() / 60),
+				    tseconds = Math.round(self.getDuration() - tminutes * 60);
 
-        // Le temps "réel" de la vidéo
-        var curTime = self.getVideo().currentTime;
+				// Si le temps existe (enfin, la durée de la vidéo !)
+				if (time) {
+					// Les secondes valent la durée moins les minutes
+					seconds = Math.floor(self.getVideo().currentTime) - 60 * minutes;
 
-        // Les secondes sont initialisées à 0 par défaut, les minutes correspondent à la durée divisée par 60
-        // tminutes et tseconds sont les minutes et secondes totales
-        var seconds = 0,
-            minutes = Math.floor(self.getVideo().currentTime / 60),
-            //Math.floor(time / 60),
-        tminutes = Math.round(self.getDuration() / 60),
-            tseconds = Math.round(self.getDuration() - tminutes * 60);
+					// Si nous avons plus de 59 secondes
+					if (seconds > 59) {
+						// On augmente les minutes et on soustrait les secondes en trop
+						seconds = Math.round(time) - 60 * minutes;
+						if (seconds == 60) {
+							minutes = Math.round(time / 60);
+							seconds = 0;
+						}
+					}
+				}
 
-        // Si le temps existe (enfin, la durée de la vidéo !)
-        if (time) {
-          // Les secondes valent la durée moins les minutes
-          seconds = Math.floor(self.getVideo().currentTime) - 60 * minutes;
+				// Mise à jour de la barre de progression
+				var updProgWidth = curTime / self.getDuration() * progWidth;
 
-          // Si nous avons plus de 59 secondes
-          if (seconds > 59) {
-            // On augmente les minutes et on soustrait les secondes en trop
-            seconds = Math.round(time) - 60 * minutes;
-            if (seconds == 60) {
-              minutes = Math.round(time / 60);
-              seconds = 0;
-            }
-          }
-        }
+				// Ajout des zéros initiaux pour les valeurs inférieures à 10
+				if (seconds < 10) {
+					seconds = '0' + seconds;
+				}
+				if (minutes < 10) {
+					minutes = '0' + minutes;
+				}
+				if (tseconds < 10) {
+					tseconds = '0' + tseconds;
+				}
 
-        // Mise à jour de la barre de progression
-        var updProgWidth = curTime / self.getDuration() * progWidth;
+				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
+				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
 
-        // Ajout des zéros initiaux pour les valeurs inférieures à 10
-        if (seconds < 10) {
-          seconds = '0' + seconds;
-        }
-        if (minutes < 10) {
-          minutes = '0' + minutes;
-        }
-        if (tseconds < 10) {
-          tseconds = '0' + tseconds;
-        }
+				// Ajustement des durées
+				document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
+				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
-        //document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-        document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
-
-        // Ajustement des durées
-        document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
-        document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
-
-        // En mode lecture, mise à jour des valeurs du tampon
-        if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
-      });
-    });
-  },
-  handleClick: function handleClick(e) {
-    switch ($(e.target).attr('class')) {
-      case 'left-nav':
-        $('.slick-prev').trigger('click');
-        break;
-      case 'right-nav':
-        $('.slick-next').trigger('click');
-        break;
-    }
-  },
-  statics: {
-    willTransitionTo: function willTransitionTo(transition, params, query, next) {
-      console.log('YOOOO');
-      $('.player-container').trigger('route:change', params);
-      next();
-    }
-  },
-  render: function render() {
-    var self = this;
-    var settings = {
-      dots: false,
-      infinite: true,
-      arrows: true,
-      speed: 500,
-      slidesToShow: 1,
-      initialSlide: 0,
-      slidesToScroll: 1,
-      afterChange: function afterChange(event) {
-        var path = event.toString();
-        console.log('next', self.state.currentRoute);
-        console.log(self.props);
-        self.transitionTo('player', {
-          periode: self.state.nextRoute
-        });
-      }
-    };
-    return React.createElement(
-      'div',
-      { className: 'player-container' },
-      React.createElement(
-        'nav',
-        { className: 'h-nav' },
-        React.createElement('a', { onClick: this.handleClick, className: 'left-nav' }),
-        React.createElement('a', { onClick: this.handleClick, className: 'right-nav' })
-      ),
-      React.createElement(
-        'nav',
-        { className: 'v-nav' },
-        React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
-          className: 'top-nav' }),
-        React.createElement(
-          Link,
-          { to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
-            className: 'bottom-nav' },
-          ' '
-        )
-      ),
-      React.createElement(
-        'section',
-        null,
-        React.createElement(
-          Slider,
-          settings,
-          React.createElement(
-            'div',
-            { className: 'item' },
-            React.createElement(
-              'video',
-              { id: 'video',
-                poster: this.state.currentPoster,
-                preload: 'metadata' },
-              React.createElement('source', { src: this.state.currentVideo,
-                type: 'video/mp4' }),
-              React.createElement('source', { src: 'movie-hd.mp4',
-                type: 'video/mp4' })
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'item' },
-            React.createElement('video', { poster: this.state.nextPoster })
-          )
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'player',
-          onClick: this.handleClickPause },
-        React.createElement('div', { className: 'play',
-          onClick: this.handleClickPlay }),
-        React.createElement(
-          'div',
-          { className: 'n-progress js-progress' },
-          React.createElement(
-            'div',
-            { className: 'n-progress-bar js-progress-bar',
-              onMouseDown: this.handleProgressBarMouseDown },
-            React.createElement('div', { className: 'mask' }),
-            React.createElement(
-              'div',
-              { className: 'button-holder' },
-              React.createElement(
-                'div',
-                { className: 'js-progress-button progress-button' },
-                ' '
-              )
-            )
-          ),
-          React.createElement(
-            'div',
-            { className: 'time' },
-            React.createElement(
-              'span',
-              { className: 'ctime' },
-              '00:00'
-            ),
-            React.createElement(
-              'span',
-              { className: 'ttime' },
-              ' 00:00 '
-            )
-          )
-        ),
-        React.createElement(
-          'div',
-          { className: 'volume' },
-          ' '
-        )
-      )
-    );
-    /*return (
-    {<div className = "player-container" >
-    	<nav className="h-nav">
-                <Link to = {
-                  `\/player\/${this.state.prevRoute}`
-                }
-                className = "left-nav" > {
-                    this.state.prevRoute
-                } < /Link > 
-                <Link to = {
-                `\/player\/${this.state.nextRoute}`
-                }
-                className = "right-nav" > {
-                    this.state.nextRoute
-                } < /Link >  
-              </nav> 
-              <nav className = "v-nav">
-              <Link to = {
-              `\/cards\/${this.state.currentRoute}/espoir/${this.state.currentCard}`
-              }
-              className = "top-nav">
-              </Link> 
-              <Link to = {
-              `\/cards\/${this.state.currentRoute}/histoire/${this.state.currentCard}`
-              }
-              className = "bottom-nav"> </Link> 
-              </nav> 
-              <section className = "carousel slide">
-        <div className = "carousel-inner" role = "listbox">
-                <div className = "item">
-                  <video poster = {
-                      this.state.prevPoster
-                  }>
-                  </video>
-                </div>
-                <div className = "item active">
-                  <video id = "video"
-                  poster = {
-                      this.state.currentPoster
-                  }
-                  preload = "metadata" >
-                  <source src = {
-                      this.state.currentVideo
-                  }
-                  type = "video/mp4" / >
-                  <source src = "movie-hd.mp4"
-                    type = "video/mp4" / >
-                  </video>
-                </div >
-                <div className = "item">
-                  <video poster = {
-                      this.state.nextPoster
-                  }>
-                 </video>
-                </div >
-        </div> 
-            </section>
-            <div className = "player"
-            onClick = {
-                this.handleClickPause
-            }> 
-              <div className = "play"
-              onClick = {
-                  this.handleClickPlay
-              } > 
-              </div>
-              <div className = "n-progress js-progress"> 
-                <div className = "n-progress-bar js-progress-bar"
-            onMouseDown = {
-    		this.handleProgressBarMouseDown
-    	   }>
-                  <div className = "mask"></div>
-                  <div className = "button-holder"> 
-                    <div className = "js-progress-button progress-button"> </div> 
-                  </div> 
-                </div> 
-              <div className = "time"> 
-                <span className = "ctime">00:00</span> 
-                <span className = "ttime"> 00:00 </span>
-              </div> 
-            </div> 
-            <div className = "volume"> </div> 
-          </div> 
-        </div>}
-    );*/
-  }
+				// En mode lecture, mise à jour des valeurs du tampon
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
+					//bufferLength();
+				}
+			});
+		});
+	},
+	handleClick: function handleClick(e) {
+		switch ($(e.target).attr('class')) {
+			case 'left-nav':
+				$('.slick-prev').trigger('click');
+				break;
+			case 'right-nav':
+				$('.slick-next').trigger('click');
+				break;
+		}
+	},
+	statics: {
+		willTransitionTo: function willTransitionTo(transition, params, query, next) {
+			$('.player-container').trigger('route:change', params);
+			next();
+		}
+	},
+	render: function render() {
+		var self = this;
+		var settings = {
+			dots: false,
+			infinite: true,
+			arrows: true,
+			speed: 500,
+			slidesToShow: 1,
+			initialSlide: 0,
+			slidesToScroll: 1,
+			afterChange: function afterChange(event) {
+				var path = event.toString();
+				console.log('next', event);
+				self.transitionTo('player', {
+					periode: event === 1 ? self.state.nextRoute : self.state.prevRoute
+				});
+			}
+		};
+		return React.createElement(
+			'div',
+			{ className: "player-container" },
+			React.createElement(
+				'nav',
+				{ className: "h-nav" },
+				React.createElement('a', { onClick: this.handleClick, className: "left-nav" }),
+				React.createElement('a', { onClick: this.handleClick, className: "right-nav" })
+			),
+			React.createElement(
+				'nav',
+				{ className: "v-nav" },
+				React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
+					className: "top-nav" }),
+				React.createElement(
+					Link,
+					{ to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
+						className: "bottom-nav" },
+					' '
+				)
+			),
+			React.createElement(
+				'section',
+				null,
+				React.createElement(
+					Slider,
+					settings,
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video1 }),
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video2 }),
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video3 }),
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video4 }),
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video5 }),
+					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video6 })
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: "player",
+					onClick: this.handleClickPause },
+				React.createElement('div', { className: "play",
+					onClick: this.handleClickPlay }),
+				React.createElement(
+					'div',
+					{ className: "n-progress js-progress" },
+					React.createElement(
+						'div',
+						{ className: "n-progress-bar js-progress-bar",
+							onMouseDown: this.handleProgressBarMouseDown },
+						React.createElement('div', { className: "mask" }),
+						React.createElement(
+							'div',
+							{ className: "button-holder" },
+							React.createElement(
+								'div',
+								{ className: "js-progress-button progress-button" },
+								' '
+							)
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "time" },
+						React.createElement(
+							'span',
+							{ className: "ctime" },
+							'00:00'
+						),
+						React.createElement(
+							'span',
+							{ className: "ttime" },
+							' 00:00 '
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: "volume" },
+					' '
+				)
+			)
+		);
+	}
 });
 
 exports['default'] = Player;
 module.exports = exports['default'];
 
-//bufferLength();
-
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"react":221,"react-router":30,"react-slick":48}],233:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/video.jsx":234,"react":221,"react-router":30,"react-slick":48}],233:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -35699,4 +35624,43 @@ var Resources = React.createClass({
 exports['default'] = Resources;
 module.exports = exports['default'];
 
-},{"../../assets/texts.json":3,"react":221,"react-router":30}]},{},[222]);
+},{"../../assets/texts.json":3,"react":221,"react-router":30}],234:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _reactRouter = require('react-router');
+
+var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var React = require('react');
+
+var Link = _reactRouter2['default'].Link;
+
+var Video = React.createClass({
+	displayName: 'Video',
+
+	render: function render() {
+		return React.createElement(
+			'div',
+			{ className: "item" },
+			React.createElement(
+				'video',
+				{ id: this.props.video.id,
+					poster: this.props.video.poster,
+					preload: "metadata" },
+				React.createElement('source', { src: this.props.video.src,
+					type: "video/mp4" })
+			)
+		);
+	}
+});
+
+exports['default'] = Video;
+module.exports = exports['default'];
+
+},{"react":221,"react-router":30}]},{},[222]);

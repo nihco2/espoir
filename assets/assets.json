@@ -1,27 +1,33 @@
 {
 	"videos": [
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video1",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster1.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video2",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster2.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video3",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster3.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video4",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster4.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video5",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster5.jpg"
 		},
 		{
-			"video": "assets/videos/sociodrame.mp4",
+			"id": "video6",
+			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster6.jpg"
 		}
 		]
