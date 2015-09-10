@@ -57,7 +57,8 @@ let Player = React.createClass({
 	getInitialState: function () {
 		return {
 			asssets: null,
-			routes: null
+			routes: null,
+            currentVideoId:null
 		}
 	},
 
@@ -74,7 +75,7 @@ let Player = React.createClass({
 	},
 
 	getVideo() {
-		return document.getElementById('video');
+		return document.getElementById(this.state.currentVideoId);
 	},
 
 	handleClickPause: function () {
@@ -112,20 +113,21 @@ let Player = React.createClass({
       var self = this;
       $('.player-container').height(window.innerHeight).on('route:change',function(e, params){
         console.log(e,params)
-				//self.setState(self.initRoutes(params.periode));
+        //self.setState(self.initRoutes(params.periode));
 		
       });
 	},
 	componentWillMount:function(){
-	console.log(':::::',assets)
-		this.setState({
-			video1: assets.videos[0],
-			video2: assets.videos[1],
-			video3: assets.videos[2],
-			video4: assets.videos[3],
-			video5: assets.videos[4],
-			video6: assets.videos[5],
-			routes: routes
+		console.log(this.props.params)
+        this.setState({
+			video1: assets.videos[routes.periodes[0]],
+			video2: assets.videos[routes.periodes[1]],
+			video3: assets.videos[routes.periodes[2]],
+			video4: assets.videos[routes.periodes[3]],
+			video5: assets.videos[routes.periodes[4]],
+			video6: assets.videos[routes.periodes[5]],
+			routes: routes,
+            currentVideoId:assets.videos[this.props.params.periode].id
 		});
 	},
 	componentDidMount: function () {

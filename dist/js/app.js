@@ -1,39 +1,38 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
-	"videos": [
-		{
-			"id": "video1",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
-		},
-		{
-			"id": "video2",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster2.jpg"
-		},
-		{
-			"id": "video3",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster3.jpg"
-		},
-		{
-			"id": "video4",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster4.jpg"
-		},
-		{
-			"id": "video5",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster5.jpg"
-		},
-		{
-			"id": "video6",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster6.jpg"
-		}
-		]
+  "videos": {
+      "1914-1945":{
+          "id": "video1",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster1.jpg"
+      },
+      "1945-1960":{
+          "id": "video2",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster2.jpg"
+      },
+      "1960-1975":{
+          "id": "video3",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster3.jpg"
+      },
+      "1975-1985":{
+          "id": "video4",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster4.jpg"
+      },
+      "1985-2002":{
+          "id": "video5",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster5.jpg"
+      },
+      "2002-2015":{
+          "id": "video6",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster6.jpg"
+      }
+  }
 }
-
 },{}],2:[function(require,module,exports){
 module.exports={
 	"periodes": ["1914-1945", "1945-1960", "1960-1975", "1975-1985", "1985-2002", "2002-2015"],
@@ -34120,16 +34119,16 @@ window.jQuery = require('jquery');
 var routes = _react2['default'].createElement(
   Route,
   { handler: App },
-  _react2['default'].createElement(Route, { name: "player", path: "player/:periode",
+  _react2['default'].createElement(Route, { name: 'player', path: 'player/:periode',
     handler: _componentsPlayerJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "resources",
+  _react2['default'].createElement(Route, { path: 'resources',
     handler: _componentsResourcesJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "cards/:periode/:nav/:card",
+  _react2['default'].createElement(Route, { path: 'cards/:periode/:nav/:card',
     handler: _componentsCardJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "credits",
+  _react2['default'].createElement(Route, { path: 'credits',
     handler: _componentsCreditsJsx2['default']
   }),
   _react2['default'].createElement(DefaultRoute, { handler: _componentsHomepageJsx2['default']
@@ -34267,7 +34266,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34279,8 +34278,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34299,45 +34298,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -34382,7 +34381,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34394,8 +34393,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34414,45 +34413,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -34497,7 +34496,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34509,8 +34508,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34529,45 +34528,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -34612,7 +34611,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34624,8 +34623,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34644,45 +34643,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -34727,7 +34726,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34739,8 +34738,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34759,45 +34758,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -34842,7 +34841,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: 'card' },
 			React.createElement(
 				'header',
 				null,
@@ -34854,8 +34853,8 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: 'back-btn' },
+							React.createElement('img', { src: '../assets/images/back-btn.png', alt: 'back' }),
 							' '
 						),
 						React.createElement(
@@ -34874,45 +34873,45 @@ var Cards = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "container" },
+				{ className: 'container' },
 				React.createElement(
 					'div',
-					{ className: "row row-centered" },
+					{ className: 'row row-centered' },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
+							{ className: 'sep sep-1 sep-left' },
 							' '
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
+							{ className: 'sep sep-1 sep-right' },
 							' '
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
+							{ id: 'border-1' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image1, alt: 'revon' })
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: 'col-xs-6 col-centered col-fixed' },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
+							{ id: 'border-2' },
 							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							React.createElement('img', { src: this.props.texts.image2, alt: 'revon' })
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: 'sep sep-3 sep-left' },
 							' '
 						)
 					)
@@ -35000,7 +34999,7 @@ var Homepage = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: "homepage" },
+			{ className: 'homepage' },
 			' ',
 			React.createElement(
 				'nav',
@@ -35008,14 +35007,14 @@ var Homepage = React.createClass({
 				' ',
 				React.createElement(
 					Link,
-					{ to: '\/resources' },
+					{ to: '/resources' },
 					' ',
 					texts.resources,
 					' '
 				),
 				React.createElement(
 					Link,
-					{ to: '\/credits' },
+					{ to: '/credits' },
 					texts.credits
 				),
 				' '
@@ -35023,15 +35022,15 @@ var Homepage = React.createClass({
 			'  ',
 			React.createElement(
 				'div',
-				{ className: "home" },
+				{ className: 'home' },
 				' ',
 				React.createElement(
 					'div',
-					{ className: "container" },
+					{ className: 'container' },
 					' ',
 					React.createElement(
 						'div',
-						{ className: "intro" },
+						{ className: 'intro' },
 						' ',
 						React.createElement(
 							'h1',
@@ -35075,7 +35074,7 @@ var Homepage = React.createClass({
 						' ',
 						React.createElement(
 							Link,
-							{ to: '/player/' + this.state.firstPeriode, className: "go" },
+							{ to: '/player/' + this.state.firstPeriode, className: 'go' },
 							texts.go
 						),
 						' '
@@ -35086,13 +35085,13 @@ var Homepage = React.createClass({
 			' ',
 			React.createElement(
 				'div',
-				{ className: "menutitle" },
+				{ className: 'menutitle' },
 				' ',
 				texts.periodes,
 				' ',
 				React.createElement(
 					'span',
-					{ className: "arrow" },
+					{ className: 'arrow' },
 					' '
 				)
 			),
@@ -35107,17 +35106,17 @@ var Homepage = React.createClass({
 					' ',
 					React.createElement(
 						'div',
-						{ className: "home-menu item1" },
+						{ className: 'home-menu item1' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode1,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode1Title,
 								' '
@@ -35131,17 +35130,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode2 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item2" },
+						{ className: 'home-menu item2' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode2,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode2Title,
 								' '
@@ -35156,17 +35155,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode3 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item3" },
+						{ className: 'home-menu item3' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode3,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode3Title,
 								' '
@@ -35181,17 +35180,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode4 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item4" },
+						{ className: 'home-menu item4' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode4,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode4Title,
 								' '
@@ -35206,17 +35205,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode5 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item5" },
+						{ className: 'home-menu item5' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode5,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode5Title,
 								' '
@@ -35231,17 +35230,17 @@ var Homepage = React.createClass({
 					{ to: '/player/' + this.state.texts.periode6 },
 					React.createElement(
 						'div',
-						{ className: "home-menu item6" },
+						{ className: 'home-menu item6' },
 						' ',
 						React.createElement(
 							'span',
-							{ className: "periode" },
+							{ className: 'periode' },
 							' ',
 							texts.periode6,
 							' ',
 							React.createElement(
 								'span',
-								{ className: "periodeTitle" },
+								{ className: 'periodeTitle' },
 								' ',
 								texts.periode6Title,
 								' '
@@ -35332,7 +35331,8 @@ var Player = React.createClass({
 	getInitialState: function getInitialState() {
 		return {
 			asssets: null,
-			routes: null
+			routes: null,
+			currentVideoId: null
 		};
 	},
 
@@ -35349,7 +35349,7 @@ var Player = React.createClass({
 	},
 
 	getVideo: function getVideo() {
-		return document.getElementById('video');
+		return document.getElementById(this.state.currentVideoId);
 	},
 
 	handleClickPause: function handleClickPause() {
@@ -35387,19 +35387,19 @@ var Player = React.createClass({
 		var self = this;
 		$('.player-container').height(window.innerHeight).on('route:change', function (e, params) {
 			console.log(e, params);
-			//self.setState(self.initRoutes(params.periode));
 		});
 	},
 	componentWillMount: function componentWillMount() {
-		console.log(':::::', assets);
+		console.log(this.props.params);
 		this.setState({
-			video1: assets.videos[0],
-			video2: assets.videos[1],
-			video3: assets.videos[2],
-			video4: assets.videos[3],
-			video5: assets.videos[4],
-			video6: assets.videos[5],
-			routes: routes
+			video1: assets.videos[routes.periodes[0]],
+			video2: assets.videos[routes.periodes[1]],
+			video3: assets.videos[routes.periodes[2]],
+			video4: assets.videos[routes.periodes[3]],
+			video5: assets.videos[routes.periodes[4]],
+			video6: assets.videos[routes.periodes[5]],
+			routes: routes,
+			currentVideoId: assets.videos[this.props.params.periode].id
 		});
 	},
 	componentDidMount: function componentDidMount() {
@@ -35462,9 +35462,7 @@ var Player = React.createClass({
 				document.querySelector('.ttime').innerHTML = tminutes + ':' + tseconds;
 
 				// En mode lecture, mise à jour des valeurs du tampon
-				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
-					//bufferLength();
-				}
+				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
 			});
 		});
 	},
@@ -35504,22 +35502,22 @@ var Player = React.createClass({
 		};
 		return React.createElement(
 			'div',
-			{ className: "player-container" },
+			{ className: 'player-container' },
 			React.createElement(
 				'nav',
-				{ className: "h-nav" },
-				React.createElement('a', { onClick: this.handleClick, className: "left-nav" }),
-				React.createElement('a', { onClick: this.handleClick, className: "right-nav" })
+				{ className: 'h-nav' },
+				React.createElement('a', { onClick: this.handleClick, className: 'left-nav' }),
+				React.createElement('a', { onClick: this.handleClick, className: 'right-nav' })
 			),
 			React.createElement(
 				'nav',
-				{ className: "v-nav" },
+				{ className: 'v-nav' },
 				React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
-					className: "top-nav" }),
+					className: 'top-nav' }),
 				React.createElement(
 					Link,
 					{ to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
-						className: "bottom-nav" },
+						className: 'bottom-nav' },
 					' '
 				)
 			),
@@ -35539,46 +35537,46 @@ var Player = React.createClass({
 			),
 			React.createElement(
 				'div',
-				{ className: "player",
+				{ className: 'player',
 					onClick: this.handleClickPause },
-				React.createElement('div', { className: "play",
+				React.createElement('div', { className: 'play',
 					onClick: this.handleClickPlay }),
 				React.createElement(
 					'div',
-					{ className: "n-progress js-progress" },
+					{ className: 'n-progress js-progress' },
 					React.createElement(
 						'div',
-						{ className: "n-progress-bar js-progress-bar",
+						{ className: 'n-progress-bar js-progress-bar',
 							onMouseDown: this.handleProgressBarMouseDown },
-						React.createElement('div', { className: "mask" }),
+						React.createElement('div', { className: 'mask' }),
 						React.createElement(
 							'div',
-							{ className: "button-holder" },
+							{ className: 'button-holder' },
 							React.createElement(
 								'div',
-								{ className: "js-progress-button progress-button" },
+								{ className: 'js-progress-button progress-button' },
 								' '
 							)
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "time" },
+						{ className: 'time' },
 						React.createElement(
 							'span',
-							{ className: "ctime" },
+							{ className: 'ctime' },
 							'00:00'
 						),
 						React.createElement(
 							'span',
-							{ className: "ttime" },
+							{ className: 'ttime' },
 							' 00:00 '
 						)
 					)
 				),
 				React.createElement(
 					'div',
-					{ className: "volume" },
+					{ className: 'volume' },
 					' '
 				)
 			)
@@ -35588,6 +35586,9 @@ var Player = React.createClass({
 
 exports['default'] = Player;
 module.exports = exports['default'];
+//self.setState(self.initRoutes(params.periode));
+
+//bufferLength();
 
 },{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/video.jsx":234,"react":221,"react-router":30,"react-slick":48}],233:[function(require,module,exports){
 'use strict';
@@ -35647,14 +35648,14 @@ var Video = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ className: "item" },
+			{ className: 'item' },
 			React.createElement(
 				'video',
 				{ id: this.props.video.id,
 					poster: this.props.video.poster,
-					preload: "metadata" },
+					preload: 'metadata' },
 				React.createElement('source', { src: this.props.video.src,
-					type: "video/mp4" })
+					type: 'video/mp4' })
 			)
 		);
 	}

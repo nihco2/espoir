@@ -1,34 +1,34 @@
 {
-	"videos": [
-		{
-			"id": "video1",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
-		},
-		{
-			"id": "video2",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster2.jpg"
-		},
-		{
-			"id": "video3",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster3.jpg"
-		},
-		{
-			"id": "video4",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster4.jpg"
-		},
-		{
-			"id": "video5",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster5.jpg"
-		},
-		{
-			"id": "video6",
-			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster6.jpg"
-		}
-		]
+  "videos": {
+      "1914-1945":{
+          "id": "video1",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster1.jpg"
+      },
+      "1945-1960":{
+          "id": "video2",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster2.jpg"
+      },
+      "1960-1975":{
+          "id": "video3",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster3.jpg"
+      },
+      "1975-1985":{
+          "id": "video4",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster4.jpg"
+      },
+      "1985-2002":{
+          "id": "video5",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster5.jpg"
+      },
+      "2002-2015":{
+          "id": "video6",
+          "src": "assets/videos/sociodrame.mp4",
+          "poster": "assets/images/poster6.jpg"
+      }
+  }
 }
