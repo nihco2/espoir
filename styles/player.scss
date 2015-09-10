@@ -7,13 +7,14 @@ $grayDark:#737373;
 $white:#fff;
 .player-container {
 	height: 100%;
+	overflow: hidden;
 	nav {
 		position: absolute;
 		z-index: 1;
 		margin: 0 auto;
 		a {
 			display: block;
-			position: absolute;
+			position: relative;
 			width: 100px;
 			height: 50px;
 			color: $white;
@@ -41,13 +42,14 @@ $white:#fff;
 			width: 80%;
 			.left-nav {
 				cursor: pointer;
+				float: left;
 				&:before {
 					background-position: -180px -30px;
 				}
 			}
 			.right-nav {
 				cursor: pointer;
-				right: 0;
+				float: right;
 				&:before {
 					background-position: -246px -30px;
 				}
@@ -58,6 +60,7 @@ $white:#fff;
 			height: 100%;
 			left: 50%;
 			margin-left: -50px;
+			position: absolute;
 			.top-nav {
 				top: 0;
 				&:before {
@@ -65,7 +68,8 @@ $white:#fff;
 				}
 			}
 			.bottom-nav {
-				bottom: 0;
+				//TODO
+				display: none;
 				&:before {
 					background-position: -300px -30px;
 				}
@@ -150,8 +154,7 @@ $white:#fff;
 	}
 }
 video {
-  min-width: 100% !important;
-	//height: auto   !important;
+	float: left;
 }
 .carousel,
 .carousel-inner {
@@ -189,6 +192,13 @@ video {
 }
 .carousel.vertical .item {
 	left: 0;
+}
+.slick-prev,
+.slick-next {
+	display: none !important;
+}
+.slick-slider {
+	margin-bottom: 0;
 }
 @include keyframes(slide) {
 	from {

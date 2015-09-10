@@ -15,7 +15,7 @@ let Player = React.createClass({
 	initRoutes: function (periode) {
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
-        var currentRoute = periode ? periode : this.props.params.periode;
+    var currentRoute = periode ? periode : this.props.params.periode;
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
@@ -111,6 +111,7 @@ let Player = React.createClass({
     
 	initHTML(){
       var self = this;
+			$('video').width(window.innerWidth);
       $('.player-container').height(window.innerHeight).on('route:change',function(e, params){
         console.log(e,params)
         //self.setState(self.initRoutes(params.periode));
@@ -118,16 +119,20 @@ let Player = React.createClass({
       });
 	},
 	componentWillMount:function(){
-		console.log(this.props.params)
-        this.setState({
+		var routesArray = routes.periodes;
+		var cardsArray = routes.cards;
+    var currentRoute = this.props.params.periode;
+		var currentIndex = routesArray.indexOf(currentRoute);
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
+    this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
 			video3: assets.videos[routes.periodes[2]],
 			video4: assets.videos[routes.periodes[3]],
 			video5: assets.videos[routes.periodes[4]],
 			video6: assets.videos[routes.periodes[5]],
-			routes: routes,
-            currentVideoId:assets.videos[this.props.params.periode].id
+      currentVideoId:assets.videos[this.props.params.periode].id
 		});
 	},
 	componentDidMount: function () {
@@ -221,12 +226,15 @@ let Player = React.createClass({
           initialSlide:0,
           slidesToScroll: 1,
           afterChange: function(event){
-            var path = event.toString();
+            $('.h-nav').show();
             console.log('next',event)
             self.transitionTo('player',{
-						periode: event === 1 ? self.state.nextRoute : self.state.prevRoute 
+							periode: routes.periodes[event]
             });					
-          }
+          },
+					beforeChange:function(){
+						$('.h-nav').hide();
+					}
     };
     return (
 			<div className = "player-container" >
