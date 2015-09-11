@@ -1,8 +1,4 @@
 @import 'bourbon';
-@font-face {
-	font-family: DancingScriptOT;
-	src: url("../../assets/fonts/DancingScript-Regular.otf") format('truetype');
-}
 $grayDark:#737373;
 $white:#fff;
 .player-container {
@@ -20,7 +16,7 @@ $white:#fff;
 			text-align: center;
 			color: $white;
 			text-decoration: none;
-			font-family: DancingScriptOT;
+			font-family: $typo1;
 			&:before {
 				content: " ";
 				margin: 0 auto;
@@ -41,6 +37,8 @@ $white:#fff;
 			margin-left: -40px;
 			margin-top: -40px;
 			width: 80%;
+			font-size: 16px;
+			line-height: 40px;
 			.left-nav {
 				cursor: pointer;
 				float: left;
@@ -84,18 +82,49 @@ $white:#fff;
 	position: absolute;
 	top: 0;
 	cursor: pointer;
-	.play {
-		background: url('../../assets/images/sprite.png') no-repeat;
-		background-position: 10px 10px;
-		width: 170px;
-		height: 170px;
+	.play-container {
 		position: absolute;
+		display: table;
 		top: 50%;
 		left: 50%;
 		margin-top: -85px;
-		margin-left: -85px;
+		margin-left: -400px;
 		cursor: pointer;
 		z-index: 10;
+		width: 700px;
+		.play {
+			display: table-cell;
+			background: url('../../assets/images/sprite.png') no-repeat;
+			background-position: 10px 10px;
+			width: 170px;
+			height: 170px;
+		}
+		.desc {
+			display: table-cell;
+			vertical-align: middle;
+			font-family: $typo1;
+			padding-left: 60px;
+			padding-top: 30px;
+			.youwatch {
+				font-size: 20px;
+				background: url('../../assets/images/double-sep.png') no-repeat;
+				background-position: 0px 7px;
+				background-size: contain;
+				width: 116px;
+				text-align: center;
+			}
+			.videoTitle {
+				font-size: 40px;
+				background: url('../../assets/images/sep-player.png') no-repeat;
+				background-position: bottom;
+				height: 75px;
+			}
+			small {
+				float: right;
+				padding-right: 14px;
+				font-size: 15px;
+			}
+		}
 	}
 	.n-progress {
 		width: 100%;
@@ -132,7 +161,7 @@ $white:#fff;
 			right: 0;
 			top: -10px;
 			left: -20px;
-			font-family: DancingScriptOT;
+			font-family: $typo1;
 			.stime {
 				float: left;
 			}

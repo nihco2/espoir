@@ -35307,6 +35307,13 @@ var Player = React.createClass({
 		return this.getVideo().volume;
 	},
 
+	hidePlay: function hidePlay() {
+		$('.play-container').css('opacity', 0);
+	},
+	showPlay: function showPlay() {
+		$('.play-container').css('opacity', 1);
+	},
+
 	getVideo: function getVideo() {
 		return document.getElementById(this.state.currentVideoId);
 	},
@@ -35314,10 +35321,10 @@ var Player = React.createClass({
 	handleClickPause: function handleClickPause() {
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
-			$('.play').css('opacity', 1);
+			this.showPlay();
 		} else {
 			this.getVideo().play();
-			$('.play').css('opacity', 0);
+			this.hidePlay();
 		}
 	},
 
@@ -35325,10 +35332,10 @@ var Player = React.createClass({
 		event.stopPropagation();
 		if (this.getVideo().paused) {
 			this.getVideo().play();
-			$('.play').css('opacity', 0);
+			this.hidePlay();
 		} else {
 			this.getVideo().pause();
-			$('.play').css('opacity', 1);
+			this.showPlay();
 		}
 	},
 
@@ -35484,7 +35491,7 @@ var Player = React.createClass({
 			slidesToScroll: 1,
 			afterChange: function afterChange(index) {
 				$('.h-nav').show();
-				$('.play').css('opacity', 1);
+				self.showPlay();
 				if (index === 0) {
 					$('.left-nav').hide();
 				} else {
@@ -35559,8 +35566,31 @@ var Player = React.createClass({
 						React.createElement('div', { className: "mask" })
 					)
 				),
-				React.createElement('div', { className: "play",
-					onClick: this.handleClickPlay }),
+				React.createElement(
+					'div',
+					{ className: "play-container" },
+					React.createElement('div', { className: "play",
+						onClick: this.handleClickPlay }),
+					React.createElement(
+						'div',
+						{ className: "desc" },
+						React.createElement(
+							'p',
+							{ className: "youwatch" },
+							'Vous regardez'
+						),
+						React.createElement(
+							'p',
+							{ className: "videoTitle" },
+							'Le bagne pour les enfants'
+						),
+						React.createElement(
+							'small',
+							null,
+							'Retour à l\'accueil'
+						)
+					)
+				),
 				React.createElement(
 					'div',
 					{ className: "n-progress js-progress" },

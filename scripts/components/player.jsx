@@ -31,6 +31,13 @@ let Player = React.createClass({
 	getVolume: function () {
 		return this.getVideo().volume;
 	},
+	
+	hidePlay(){
+		$('.play-container').css('opacity',0);
+	},
+	showPlay(){
+		$('.play-container').css('opacity',1);
+	},
 
 	getVideo() {
 		return document.getElementById(this.state.currentVideoId);
@@ -39,10 +46,10 @@ let Player = React.createClass({
 	handleClickPause: function () {
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
-				$('.play').css('opacity',1);
+			this.showPlay();
 		} else {
 			this.getVideo().play();
-				$('.play').css('opacity',0);
+			this.hidePlay();
 		}
 	},
 
@@ -50,11 +57,11 @@ let Player = React.createClass({
 		event.stopPropagation();
 		if (this.getVideo().paused){
 			this.getVideo().play();
-			$('.play').css('opacity',0);
+			this.hidePlay();
 		}
 		else{
 			this.getVideo().pause();
-			$('.play').css('opacity',1);
+			this.showPlay();
 		}
 		
 	},
@@ -211,7 +218,7 @@ let Player = React.createClass({
           slidesToScroll: 1,
           afterChange: function(index){
             $('.h-nav').show();
-						$('.play').css('opacity',1);
+						self.showPlay();
 						if(index===0){
 							$('.left-nav').hide();
 						}
@@ -269,11 +276,18 @@ let Player = React.createClass({
 								<div className = "mask"></div> 
              	</div>  
           	</div>
-            <div className = "play"
-            onClick = {
-                this.handleClickPlay
-            } > 
-            </div>
+						<div className="play-container">
+							<div className = "play"
+								onClick = {
+										this.handleClickPlay
+								} > 
+							</div>
+							<div className="desc">
+								<p className="youwatch">Vous regardez</p>
+								<p className="videoTitle">Le bagne pour les enfants</p>
+								<small>Retour à l'accueil</small>
+							</div>
+						</div>
             <div className = "n-progress js-progress"> 
               <div className = "n-progress-bar js-progress-bar"
 								onMouseDown = {
