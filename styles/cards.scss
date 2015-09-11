@@ -81,7 +81,7 @@
 	}
 	#border-1 {
 		width: 476px;
-	/*	height: 396px;*/
+		/*	height: 396px;*/
 		background: url(../../assets/images/border1.png) no-repeat center center;
 	}
 	#border-1 img {
@@ -119,13 +119,13 @@
 		font-size: 1.5em;
 	}
 }
+
 /* modif bootstrap*/
 
 .col-xs-6 {
 	padding-left: 28px!important;
 	padding-right: 28px!important;
 }
-
 @media (max-width: 1200px) {
 	.col-xs-1,
 	.col-xs-10,

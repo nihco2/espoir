@@ -1,4 +1,5 @@
 var React = require('react');
+
 import ReactRouter from 'react-router';
 
 import Type1 from '../components/cards/type1.jsx';
@@ -19,7 +20,6 @@ let Cards = React.createClass({
 	},
   componentWillMount:function(){
  $.get(`../../assets/texts/cards/${this.getParams().periode}/${this.getParams().nav}/${this.getParams().card}.json`, function(result) {
- 			console.log('*****',result);
       if (this.isMounted()) {
         this.setState({
           texts: result

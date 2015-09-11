@@ -14,11 +14,11 @@ window.jQuery = require('jquery');
 var routes = ( < Route handler = {
 	App
 } >
-<Route path = "player/:periode"
-handler = {
-	Player
-}
-/>
+<Route name="player" path = "player/:periode"
+	handler = {
+		Player
+	}
+	/>
   <Route path = "resources"
   handler = {
       Resources
@@ -35,7 +35,7 @@ handler = {
   }
   />
   <DefaultRoute handler = {
-  Homepage
+    Homepage
   }
   />
 </Route>
