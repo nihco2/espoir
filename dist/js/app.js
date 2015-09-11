@@ -35287,47 +35287,6 @@ var Player = React.createClass({
 
 	mixins: [Navigation],
 
-	initRoutes: function initRoutes(periode) {
-		var routesArray = routes.periodes;
-		var cardsArray = routes.cards;
-		var currentRoute = periode ? periode : this.props.params.periode;
-		var currentIndex = routesArray.indexOf(currentRoute);
-		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
-		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-		var currentVideo = assets.videos[currentIndex] ? assets.videos[currentIndex].video : undefined;
-		var currentPoster = assets.videos[currentIndex] ? assets.videos[currentIndex].poster : undefined;
-		var currentCard = cardsArray[currentIndex] ? cardsArray[currentIndex] : undefined;
-		var nextPoster, prevPoster;
-
-		console.log('current', this.props.params.periode);
-		console.log('next!!!', nextRoute);
-
-		prevPoster = assets.videos[currentIndex - 1] ? assets.videos[currentIndex - 1].poster : undefined;
-		nextPoster = assets.videos[currentIndex + 1] ? assets.videos[currentIndex + 1].poster : undefined;
-
-		if (!prevRoute) {
-			$('.left-nav').hide();
-		} else if ($('.left-nav').is(':hidden')) {
-			$('.left-nav').show();
-		}
-		if (!nextRoute) {
-			$('.right-nav').hide();
-		} else if ($('.right-nav').is(':hidden')) {
-			$('.right-nav').show();
-		}
-
-		return {
-			prevRoute: prevRoute,
-			nextRoute: nextRoute,
-			currentRoute: currentRoute,
-			currentVideo: currentVideo,
-			currentPoster: currentPoster,
-			nextPoster: nextPoster,
-			prevPoster: prevPoster,
-			currentCard: currentCard
-		};
-	},
-
 	getInitialState: function getInitialState() {
 		return {
 			asssets: null,
@@ -35395,6 +35354,13 @@ var Player = React.createClass({
 			console.log(e, params);
 			//self.setState(self.initRoutes(params.periode));
 		});
+
+		if (this.props.params.periode == routes.periodes[0]) {
+			$('.left-nav').hide();
+		}
+		if (this.props.params.periode == routes.periodes[5]) {
+			$('.right-nav').hide();
+		}
 	},
 	componentWillMount: function componentWillMount() {
 		var routesArray = routes.periodes;
@@ -35403,6 +35369,7 @@ var Player = React.createClass({
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
+
 		this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -35415,7 +35382,7 @@ var Player = React.createClass({
 	},
 	componentDidMount: function componentDidMount() {
 		var self = this;
-		self.initRoutes();
+
 		self.initHTML();
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
@@ -35500,20 +35467,30 @@ var Player = React.createClass({
 		var self = this;
 		var settings = {
 			dots: false,
-			infinite: true,
+			infinite: false,
 			arrows: true,
 			speed: 500,
 			slidesToShow: 1,
 			initialSlide: routes.periodes.indexOf(this.props.params.periode),
 			slidesToScroll: 1,
-			afterChange: function afterChange(event) {
+			afterChange: function afterChange(index) {
 				$('.h-nav').show();
 				$('.play').css('opacity', 1);
+				if (index === 0) {
+					$('.left-nav').hide();
+				} else {
+					$('.left-nav').show();
+				}
+				if (index === 5) {
+					$('.right-nav').hide();
+				} else {
+					$('.right-nav').show();
+				}
 				self.transitionTo('player', {
-					periode: routes.periodes[event]
+					periode: routes.periodes[index]
 				});
 			},
-			beforeChange: function beforeChange() {
+			beforeChange: function beforeChange(index) {
 				$('.h-nav').hide();
 			}
 		};
