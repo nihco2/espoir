@@ -17,6 +17,7 @@ $white:#fff;
 			position: relative;
 			width: 100px;
 			height: 50px;
+			text-align: center;
 			color: $white;
 			text-decoration: none;
 			font-family: DancingScriptOT;
@@ -109,6 +110,9 @@ $white:#fff;
 		margin-left: -35%;
 		position: absolute;
 		width: 990px;
+		&.bar-top {
+			top: 50px;
+		}
 		.n-progress-bar {
 			background: url('../../assets/images/sprite.png') no-repeat;
 			background-position: 0px -268px;

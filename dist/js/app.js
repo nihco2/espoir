@@ -35350,10 +35350,10 @@ var Player = React.createClass({
 	initHTML: function initHTML() {
 		var self = this;
 		$('video').width(window.innerWidth);
-		$('.player-container').height(window.innerHeight).on('route:change', function (e, params) {
-			console.log(e, params);
-			//self.setState(self.initRoutes(params.periode));
+		$(window).on('hashchange', function () {
+			self.setCurrentState();
 		});
+		$('.player-container').height(window.innerHeight).on('route:change', function (e) {});
 
 		if (this.props.params.periode == routes.periodes[0]) {
 			$('.left-nav').hide();
@@ -35362,14 +35362,14 @@ var Player = React.createClass({
 			$('.right-nav').hide();
 		}
 	},
-	componentWillMount: function componentWillMount() {
+	setCurrentState: function setCurrentState() {
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
 		var currentRoute = this.props.params.periode;
 		var currentIndex = routesArray.indexOf(currentRoute);
-		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
-		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : '';
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : '';
+		console.log(nextRoute, prevRoute);
 		this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -35377,8 +35377,14 @@ var Player = React.createClass({
 			video4: assets.videos[routes.periodes[3]],
 			video5: assets.videos[routes.periodes[4]],
 			video6: assets.videos[routes.periodes[5]],
-			currentVideoId: assets.videos[this.props.params.periode].id
+			currentVideoId: assets.videos[this.props.params.periode].id,
+			currentRoute: this.props.params.periode,
+			prevRoute: prevRoute,
+			nextRoute: nextRoute
 		});
+	},
+	componentWillMount: function componentWillMount() {
+		this.setCurrentState();
 	},
 	componentDidMount: function componentDidMount() {
 		var self = this;
@@ -35459,8 +35465,11 @@ var Player = React.createClass({
 	},
 	statics: {
 		willTransitionTo: function willTransitionTo(transition, params, query, next) {
-			$('.player-container').trigger('route:change', params);
+
 			next();
+		},
+		willTransitionFrom: function willTransitionFrom(transition, component) {
+			//$('.player-container').trigger('route:change');
 		}
 	},
 	render: function render() {
@@ -35500,8 +35509,16 @@ var Player = React.createClass({
 			React.createElement(
 				'nav',
 				{ className: "h-nav" },
-				React.createElement('a', { onClick: this.handleClick, className: "left-nav" }),
-				React.createElement('a', { onClick: this.handleClick, className: "right-nav" })
+				React.createElement(
+					'a',
+					{ onClick: this.handleClick, className: "left-nav" },
+					this.state.prevRoute
+				),
+				React.createElement(
+					'a',
+					{ onClick: this.handleClick, className: "right-nav" },
+					this.state.nextRoute
+				)
 			),
 			React.createElement(
 				'nav',
@@ -35533,6 +35550,15 @@ var Player = React.createClass({
 				'div',
 				{ className: "player",
 					onClick: this.handleClickPause },
+				React.createElement(
+					'div',
+					{ className: "n-progress bar-top js-progress" },
+					React.createElement(
+						'div',
+						{ className: "n-progress-bar js-progress-bar" },
+						React.createElement('div', { className: "mask" })
+					)
+				),
 				React.createElement('div', { className: "play",
 					onClick: this.handleClickPlay }),
 				React.createElement(

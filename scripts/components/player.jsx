@@ -77,10 +77,11 @@ let Player = React.createClass({
 	initHTML(){
       var self = this;
 			$('video').width(window.innerWidth);
-      $('.player-container').height(window.innerHeight).on('route:change',function(e, params){
-        console.log(e,params)
-        //self.setState(self.initRoutes(params.periode));
-		
+			$(window).on('hashchange', function() {
+				self.setCurrentState();
+			});
+      $('.player-container').height(window.innerHeight).on('route:change',function(e){
+			
       });
 					
 		if(this.props.params.periode==routes.periodes[0]){
@@ -90,14 +91,14 @@ let Player = React.createClass({
 			$('.right-nav').hide();
 		}
 	},
-	componentWillMount:function(){
+	setCurrentState:function(){
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
     var currentRoute = this.props.params.periode;
 		var currentIndex = routesArray.indexOf(currentRoute);
-		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : undefined;
-		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : undefined;
-
+		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : '';
+		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : '';
+		console.log(nextRoute,prevRoute)
     this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -105,8 +106,14 @@ let Player = React.createClass({
 			video4: assets.videos[routes.periodes[3]],
 			video5: assets.videos[routes.periodes[4]],
 			video6: assets.videos[routes.periodes[5]],
-      currentVideoId:assets.videos[this.props.params.periode].id
+      currentVideoId:assets.videos[this.props.params.periode].id,
+			currentRoute:this.props.params.periode,
+			prevRoute:prevRoute,
+			nextRoute:nextRoute
 		});
+	},
+	componentWillMount:function(){
+		this.setCurrentState();
 	},
 	componentDidMount: function () {
       var self = this;
@@ -185,9 +192,12 @@ let Player = React.createClass({
 	},
 	statics: {
       willTransitionTo: function (transition, params, query, next) {
-        $('.player-container').trigger('route:change', params);
+        
         next();
-      }
+      },
+			willTransitionFrom: function (transition, component) {
+			//$('.player-container').trigger('route:change');
+			}
 	},
 	render() {
 	  var self = this;
@@ -216,7 +226,8 @@ let Player = React.createClass({
 						}
             self.transitionTo('player',{
 							periode: routes.periodes[index]
-            });					
+            });
+						
           },
 					beforeChange:function(index){
 						$('.h-nav').hide();
@@ -225,8 +236,8 @@ let Player = React.createClass({
     return (
 			<div className = "player-container" >
 				<nav className="h-nav">
-					<a onClick={this.handleClick} className = "left-nav" ></a>
-					<a onClick={this.handleClick} className = "right-nav" ></a>
+					<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
+					<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
 				</nav> 
         <nav className = "v-nav">
             <Link to = {
@@ -252,7 +263,12 @@ let Player = React.createClass({
 				<div className = "player"
           onClick = {
               this.handleClickPause
-          }> 
+          }>
+					<div className = "n-progress bar-top js-progress"> 
+              <div className = "n-progress-bar js-progress-bar">
+								<div className = "mask"></div> 
+             	</div>  
+          	</div>
             <div className = "play"
             onClick = {
                 this.handleClickPlay
@@ -260,19 +276,19 @@ let Player = React.createClass({
             </div>
             <div className = "n-progress js-progress"> 
               <div className = "n-progress-bar js-progress-bar"
-		        onMouseDown = {
-				this.handleProgressBarMouseDown
-			   }>
-                <div className = "mask"></div>
-                <div className = "button-holder"> 
-                  <div className = "js-progress-button progress-button"> </div> 
-                </div> 
-              </div> 
-            <div className = "time"> 
-              <span className = "ctime">00:00</span> 
-              <span className = "ttime"> 00:00 </span>
-            </div> 
-          </div> 
+								onMouseDown = {
+									this.handleProgressBarMouseDown
+						 		}>
+								<div className = "mask"></div>
+								<div className = "button-holder"> 
+									<div className = "js-progress-button progress-button"> </div> 
+								</div> 
+             	</div> 
+							<div className = "time"> 
+								<span className = "ctime">00:00</span> 
+								<span className = "ttime"> 00:00 </span>
+							</div> 
+          	</div> 
           <div className = "volume"> </div> 
         </div> 
 			</div>
