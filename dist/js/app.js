@@ -34125,7 +34125,7 @@ var routes = _react2['default'].createElement(
   _react2['default'].createElement(Route, { path: "resources",
     handler: _componentsResourcesJsx2['default']
   }),
-  _react2['default'].createElement(Route, { path: "cards/:periode/:nav/:card",
+  _react2['default'].createElement(Route, { name: "cards", path: "cards/:periode/:nav/:card",
     handler: _componentsCardJsx2['default']
   }),
   _react2['default'].createElement(Route, { path: "credits",
@@ -34198,7 +34198,7 @@ var Cards = React.createClass({
 		};
 	},
 	componentWillMount: function componentWillMount() {
-		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.getParams().nav + '/' + this.getParams().card + '.json', (function (result) {
+		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + this.props.card + '.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
 					texts: result
@@ -34263,6 +34263,10 @@ var Link = _reactRouter2['default'].Link;
 var Cards = React.createClass({
 	displayName: 'Cards',
 
+	handleClick: function handleClick() {
+		$('.bottom-nav').trigger('click');
+	},
+
 	render: function render() {
 		return React.createElement(
 			'div',
@@ -34278,7 +34282,7 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
+							{ className: "back-btn", onClick: this.handleClick },
 							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
@@ -34319,9 +34323,17 @@ var Cards = React.createClass({
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							{ className: "photo-container" },
+							React.createElement(
+								'div',
+								{ className: "border" },
+								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+							),
+							React.createElement(
+								'div',
+								{ className: "photo" },
+								React.createElement('img', { src: this.props.texts.image1 })
+							)
 						)
 					),
 					React.createElement(
@@ -34329,19 +34341,28 @@ var Cards = React.createClass({
 						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							{ className: "photo-container" },
+							React.createElement(
+								'div',
+								{ className: "border border-2" },
+								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+							),
+							React.createElement(
+								'div',
+								{ className: "photo" },
+								React.createElement('img', { src: this.props.texts.image2 })
+							)
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ classNameName: "sep sep-3 sep-left" },
 							' '
 						)
 					)
 				)
 			),
+			React.createElement('div', { className: "spacer" }),
 			React.createElement(
 				'footer',
 				null,
@@ -35273,6 +35294,10 @@ var _componentsVideoJsx = require('../components/video.jsx');
 
 var _componentsVideoJsx2 = _interopRequireDefault(_componentsVideoJsx);
 
+var _componentsCardJsx = require('../components/card.jsx');
+
+var _componentsCardJsx2 = _interopRequireDefault(_componentsCardJsx);
+
 var React = require('react');
 var assets = require('../../assets/assets.json');
 var ReactRouter = require('react-router');
@@ -35353,10 +35378,14 @@ var Player = React.createClass({
 
 		this.getVideo().currentTime = currentTime;
 	},
-
+	handleResize: function handleResize() {
+		$('video').width(window.innerWidth);
+		$('.cards,.player-container,#slider').height(window.innerHeight);
+	},
 	initHTML: function initHTML() {
 		var self = this;
-		$('video').width(window.innerWidth);
+		this.handleResize();
+		$(window).on('resize', this.handleResize);
 		$(window).on('hashchange', function () {
 			self.setCurrentState();
 		});
@@ -35368,6 +35397,40 @@ var Player = React.createClass({
 		if (this.props.params.periode == routes.periodes[5]) {
 			$('.right-nav').hide();
 		}
+		$('#slider').cycle({
+			fx: 'scrollVert',
+			prev: '.bottom-nav',
+			next: '.top-nav',
+			timeout: 0,
+			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
+				if (zeroBasedSlideIndex !== 0) {
+					$('.player').hide();
+				} else {
+					$('.cards-container').fadeOut();
+				}
+			},
+			after: function after(currSlideElement, nextSlideElement, options, forwardFlag) {
+				if (forwardFlag === 0 || forwardFlag === true) {
+					$('.player').show();
+					$('.cards-container').hide();
+				} else {
+					$('.cards-container').fadeIn();
+					$('.border').each(function () {
+						var borderHeight = 50;
+						if ($(this).hasClass('border-2')) {
+							borderHeight = 80;
+						}
+						$(this).css({
+							width: $(this).parent().find('.photo img').width() + 45 + 'px',
+							height: $(this).parent().find('.photo img').height() + borderHeight + 'px'
+						});
+
+						var posY = $(this).find('img').height();
+						$(this).parent().find('.photo').css({ 'margin-top': '-' + (posY - borderHeight / 2) + 'px', 'margin-left': '22px' });
+					});
+				}
+			}
+		});
 	},
 	setCurrentState: function setCurrentState() {
 		var routesArray = routes.periodes;
@@ -35397,6 +35460,7 @@ var Player = React.createClass({
 		var self = this;
 
 		self.initHTML();
+
 		self.getVideo().addEventListener('loadedmetadata', function () {
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
@@ -35514,49 +35578,56 @@ var Player = React.createClass({
 			'div',
 			{ className: "player-container" },
 			React.createElement(
-				'nav',
-				{ className: "h-nav" },
+				'div',
+				{ id: "slider" },
 				React.createElement(
-					'a',
-					{ onClick: this.handleClick, className: "left-nav" },
-					this.state.prevRoute
+					'section',
+					{ className: "slides" },
+					React.createElement(
+						Slider,
+						settings,
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video1 }),
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video2 }),
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video3 }),
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video4 }),
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video5 }),
+						React.createElement(_componentsVideoJsx2['default'], { video: this.state.video6 })
+					)
 				),
 				React.createElement(
-					'a',
-					{ onClick: this.handleClick, className: "right-nav" },
-					this.state.nextRoute
-				)
-			),
-			React.createElement(
-				'nav',
-				{ className: "v-nav" },
-				React.createElement(Link, { to: '/cards/' + this.state.currentRoute + '/espoir/' + this.state.currentCard,
-					className: "top-nav" }),
-				React.createElement(
-					Link,
-					{ to: '/cards/' + this.state.currentRoute + '/histoire/' + this.state.currentCard,
-						className: "bottom-nav" },
-					' '
-				)
-			),
-			React.createElement(
-				'section',
-				null,
-				React.createElement(
-					Slider,
-					settings,
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video1 }),
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video2 }),
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video3 }),
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video4 }),
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video5 }),
-					React.createElement(_componentsVideoJsx2['default'], { video: this.state.video6 })
+					'section',
+					{ className: "cards" },
+					React.createElement(
+						'div',
+						{ className: "cards-container" },
+						React.createElement(_componentsCardJsx2['default'], { nav: "espoir", card: "fiche_1" })
+					)
 				)
 			),
 			React.createElement(
 				'div',
 				{ className: "player",
 					onClick: this.handleClickPause },
+				React.createElement(
+					'nav',
+					{ className: "h-nav" },
+					React.createElement(
+						'a',
+						{ onClick: this.handleClick, className: "left-nav" },
+						this.state.prevRoute
+					),
+					React.createElement(
+						'a',
+						{ onClick: this.handleClick, className: "right-nav" },
+						this.state.nextRoute
+					)
+				),
+				React.createElement(
+					'nav',
+					{ className: "v-nav" },
+					React.createElement('a', { onClick: this.handleClick, className: "top-nav" }),
+					React.createElement('a', { onClick: this.handleClick, className: "bottom-nav" })
+				),
 				React.createElement(
 					'div',
 					{ className: "n-progress bar-top js-progress" },
@@ -35637,7 +35708,7 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/video.jsx":234,"react":221,"react-router":30,"react-slick":48}],233:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":223,"../components/video.jsx":234,"react":221,"react-router":30,"react-slick":48}],233:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

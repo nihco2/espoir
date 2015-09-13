@@ -19,14 +19,14 @@ let Cards = React.createClass({
       };
 	},
   componentWillMount:function(){
- $.get(`../../assets/texts/cards/${this.getParams().periode}/${this.getParams().nav}/${this.getParams().card}.json`, function(result) {
+ 		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${this.props.card}.json`, function(result) {
       if (this.isMounted()) {
         this.setState({
           texts: result
         });
         }
       }.bind(this));
-    },
+  },
 
 	render() {
     if(this.state.texts){

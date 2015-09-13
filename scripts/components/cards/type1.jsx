@@ -4,6 +4,9 @@ import ReactRouter from 'react-router';
 var Link = ReactRouter.Link;
 
 let Cards = React.createClass({
+	handleClick:function(){
+		$('.bottom-nav').trigger('click');
+	},
 
 	render() {
       return (
@@ -11,7 +14,7 @@ let Cards = React.createClass({
 				<header>
 					<nav>
 						<ul>
-              <li className="back-btn"><img src="../assets/images/back-btn.png" alt="back"/> </li>
+						<li className="back-btn" onClick={this.handleClick}><img src="../assets/images/back-btn.png" alt="back"/> </li>
 							<li>{this.props.texts.backespoir}</li>
 						</ul>
 					</nav>
@@ -21,20 +24,34 @@ let Cards = React.createClass({
 				 <div className="container">
 				 	<div className="row row-centered">
 						<div className="col-xs-6 col-centered col-fixed"> 
-  						  <div className="sep sep-1 sep-left"> </div>
-								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
-								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
-								<div className="sep sep-1 sep-right"> </div>
-								<div id="border-1"> <img src={this.props.texts.image1} alt="revon"/></div>
+							<div className="sep sep-1 sep-left"> </div>
+							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
+							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
+							<div className="sep sep-1 sep-right"> </div>
+							<div className="photo-container">
+								<div className="border">
+									<img src="../assets/images/border2.png" alt="revon"/>
 								</div>
-								<div className="col-xs-6 col-centered col-fixed">
-								<div id="border-2"> <img src={this.props.texts.image2} alt="revon"/></div>
-					
-								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte3}}></p>
-							<div className="sep sep-3 sep-left"> </div>
+								<div className="photo">
+									<img src={this.props.texts.image1} />
+								</div>
+							</div>
+						</div>
+						<div className="col-xs-6 col-centered col-fixed">
+							<div className="photo-container">
+								<div className="border border-2">
+									<img src="../assets/images/border2.png" alt="revon"/>
+								</div>
+								<div className="photo">
+									<img src={this.props.texts.image2} />
+								</div>
+							</div>
+							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte3}}></p>
+							<div classNameName="sep sep-3 sep-left"> </div>
          		</div>
 					</div>
 				 </div>
+				<div className="spacer"></div>
 				<footer>
 				<p>{this.props.texts.footer}</p>
 				</footer>

@@ -8,6 +8,7 @@ var Slider = require('react-slick');
 var Navigation = require('react-router').Navigation;
 
 import Video from '../components/video.jsx';
+import Cards from '../components/card.jsx';
 
 let Player = React.createClass({
 	mixins: [Navigation],
@@ -16,7 +17,7 @@ let Player = React.createClass({
 		return {
 			asssets: null,
 			routes: null,
-            currentVideoId:null
+      currentVideoId:null
 		}
 	},
 
@@ -80,10 +81,14 @@ let Player = React.createClass({
 
 		this.getVideo().currentTime = currentTime;
 	},
-    
+	handleResize:function(){
+		$('video').width(window.innerWidth);
+		$('.cards,.player-container,#slider').height(window.innerHeight);
+	}, 
 	initHTML(){
       var self = this;
-			$('video').width(window.innerWidth);
+			this.handleResize();
+			$(window).on('resize', this.handleResize);
 			$(window).on('hashchange', function() {
 				self.setCurrentState();
 			});
@@ -97,6 +102,43 @@ let Player = React.createClass({
 		if(this.props.params.periode==routes.periodes[5]){
 			$('.right-nav').hide();
 		}
+		$('#slider').cycle({ 
+			fx:     'scrollVert', 
+			prev:   '.bottom-nav', 
+			next:   '.top-nav', 
+			timeout: 0,
+			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
+				if(zeroBasedSlideIndex!==0){
+					$('.player').hide();
+				}
+				else{
+					$('.cards-container').fadeOut();
+				}
+				
+			},
+			after:function(currSlideElement, nextSlideElement,options, forwardFlag){
+				if(forwardFlag===0 || forwardFlag===true){
+					$('.player').show();
+					$('.cards-container').hide();
+				}
+				else{
+					$('.cards-container').fadeIn();
+					$('.border').each(function(){
+						var borderHeight = 50;
+						if($(this).hasClass('border-2')){
+							borderHeight = 80;
+						}
+						$(this).css({
+							width: $(this).parent().find('.photo img').width()+45+'px',
+							height: $(this).parent().find('.photo img').height()+borderHeight+'px'  
+						});
+						
+						var posY = $(this).find('img').height();
+						$(this).parent().find('.photo').css({ 'margin-top':'-'+(posY-borderHeight/2)+'px' , 'margin-left': '22px'});
+				 });
+				}
+			}
+		});
 	},
 	setCurrentState:function(){
 		var routesArray = routes.periodes;
@@ -126,6 +168,7 @@ let Player = React.createClass({
       var self = this;
 			
       self.initHTML();
+			
       self.getVideo().addEventListener('loadedmetadata', function () {
           self.getVideo().addEventListener('timeupdate', function () {
               var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
@@ -242,35 +285,36 @@ let Player = React.createClass({
     };
     return (
 			<div className = "player-container" >
-				<nav className="h-nav">
-					<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
-					<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
-				</nav> 
-        <nav className = "v-nav">
-            <Link to = {
-            `\/cards\/${this.state.currentRoute}/espoir/${this.state.currentCard}`
-            }
-            className = "top-nav">
-            </Link> 
-            <Link to = {
-            `\/cards\/${this.state.currentRoute}/histoire/${this.state.currentCard}`
-            }
-            className = "bottom-nav"> </Link> 
-        </nav>
-				<section>
-					<Slider {...settings}>
-						<Video video={this.state.video1} />
-						<Video video={this.state.video2} />
-						<Video video={this.state.video3} />
-						<Video video={this.state.video4} />
-						<Video video={this.state.video5} />
-						<Video video={this.state.video6} />
-					</Slider>
-				</section>
+				
+				<div id="slider">
+						<section className="slides">
+							<Slider {...settings}>
+								<Video video={this.state.video1} />
+								<Video video={this.state.video2} />
+								<Video video={this.state.video3} />
+								<Video video={this.state.video4} />
+								<Video video={this.state.video5} />
+								<Video video={this.state.video6} />
+							</Slider>
+						</section>
+						<section className="cards">
+							<div className="cards-container">
+								<Cards nav="espoir" card="fiche_1"/>
+							</div>
+						</section>
+				</div>
 				<div className = "player"
           onClick = {
               this.handleClickPause
           }>
+					<nav className="h-nav">
+						<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
+						<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
+					</nav> 
+					<nav className = "v-nav">
+							<a onClick={this.handleClick} className = "top-nav" ></a>
+							<a onClick={this.handleClick} className = "bottom-nav" ></a>
+					</nav>
 					<div className = "n-progress bar-top js-progress"> 
               <div className = "n-progress-bar js-progress-bar">
 								<div className = "mask"></div> 

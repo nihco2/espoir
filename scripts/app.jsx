@@ -24,7 +24,7 @@ var routes = ( < Route handler = {
       Resources
   }
   /> 
-  <Route path = "cards/:periode/:nav/:card"
+  <Route name="cards" path = "cards/:periode/:nav/:card"
   handler = {
       Card
   }
