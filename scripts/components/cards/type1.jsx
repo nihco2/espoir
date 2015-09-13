@@ -39,7 +39,7 @@ let Cards = React.createClass({
 						</div>
 						<div className="col-xs-6 col-centered col-fixed">
 							<div className="photo-container">
-								<div className="border border-2">
+								<div className="border">
 									<img src="../assets/images/border2.png" alt="revon"/>
 								</div>
 								<div className="photo">

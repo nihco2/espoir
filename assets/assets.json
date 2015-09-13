@@ -1,34 +1,60 @@
 {
-  "videos": {
-      "1914-1945":{
-          "id": "video1",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster1.jpg"
-      },
-      "1945-1960":{
-          "id": "video2",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster2.jpg"
-      },
-      "1960-1975":{
-          "id": "video3",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster3.jpg"
-      },
-      "1975-1985":{
-          "id": "video4",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster4.jpg"
-      },
-      "1985-2002":{
-          "id": "video5",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster5.jpg"
-      },
-      "2002-2015":{
-          "id": "video6",
-          "src": "assets/videos/sociodrame.mp4",
-          "poster": "assets/images/poster6.jpg"
-      }
-  }
+	"videos": {
+		"1914-1945": {
+			"id": "video1",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster1.jpg"
+		},
+		"1945-1960": {
+			"id": "video2",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster2.jpg"
+		},
+		"1960-1975": {
+			"id": "video3",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster3.jpg"
+		},
+		"1975-1985": {
+			"id": "video4",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster4.jpg"
+		},
+		"1985-2002": {
+			"id": "video5",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster5.jpg"
+		},
+		"2002-2015": {
+			"id": "video6",
+			"src": "assets/videos/sociodrame.mp4",
+			"poster": "assets/images/poster6.jpg"
+		}
+	},
+	"cards": {
+		"1914-1945": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3", "fiche_4", "fiche_5"],
+			"histoire": ["fiche_1", "fiche_2", "fiche_3", "fiche_4"]
+		},
+		"1945-1960": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3", "fiche_4", "fiche_5", "fiche_6", "fiche_7"],
+			"histoire": ["fiche_1", "fiche_2", "fiche_3", "fiche_4", "fiche_5"]
+		},
+		"1960-1975": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3", "fiche_4", "fiche_5"],
+			"histoire": ["fiche_1", "fiche_2", "fiche_3"]
+		},
+		"1975-1985": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3"],
+			"histoire": ["fiche_1", "fiche_2", "fiche_3", "fiche_4", "fiche_5"]
+		},
+		"1985-2002": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3"],
+			"histoire": ["fiche_1", "fiche_2"]
+		},
+		"2002-2015": {
+			"espoir": ["fiche_1", "fiche_2", "fiche_3"],
+			"histoire": ["fiche_1", "fiche_2", "fiche_3", "fiche_4"]
+		}
+	}
 }

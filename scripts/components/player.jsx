@@ -48,10 +48,7 @@ let Player = React.createClass({
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
 			this.showPlay();
-		} else {
-			this.getVideo().play();
-			this.hidePlay();
-		}
+		} 
 	},
 
 	handleClickPlay: function (event) {
@@ -87,6 +84,7 @@ let Player = React.createClass({
 	}, 
 	initHTML(){
       var self = this;
+			var index = 0;
 			this.handleResize();
 			$(window).on('resize', this.handleResize);
 			$(window).on('hashchange', function() {
@@ -108,6 +106,7 @@ let Player = React.createClass({
 			next:   '.top-nav', 
 			timeout: 0,
 			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
+				index = zeroBasedSlideIndex;
 				if(zeroBasedSlideIndex!==0){
 					$('.player').hide();
 				}
@@ -117,7 +116,8 @@ let Player = React.createClass({
 				
 			},
 			after:function(currSlideElement, nextSlideElement,options, forwardFlag){
-				if(forwardFlag===0 || forwardFlag===true){
+			console.log(index)
+				if((index === 0 || forwardFlag===true)){
 					$('.player').show();
 					$('.cards-container').hide();
 				}
@@ -125,7 +125,7 @@ let Player = React.createClass({
 					$('.cards-container').fadeIn();
 					$('.border').each(function(){
 						var borderHeight = 50;
-						if($(this).hasClass('border-2')){
+						if($(this).parent().find('.photo img').height()>$(this).parent().find('.photo img').width()){
 							borderHeight = 80;
 						}
 						$(this).css({
@@ -147,7 +147,13 @@ let Player = React.createClass({
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : '';
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : '';
-		console.log(nextRoute,prevRoute)
+		
+		//TODO
+		var currentEspoirCard = 0;
+		var currentHistoireCard = 0;
+		
+		console.log(this.props.params.periode)
+		
     this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -158,7 +164,9 @@ let Player = React.createClass({
       currentVideoId:assets.videos[this.props.params.periode].id,
 			currentRoute:this.props.params.periode,
 			prevRoute:prevRoute,
-			nextRoute:nextRoute
+			nextRoute:nextRoute,
+			currentEspoirCard : assets.cards[this.props.params.periode].espoir[currentEspoirCard],
+			currentHistoireCard : assets.cards[this.props.params.periode].histoire[currentHistoireCard]
 		});
 	},
 	componentWillMount:function(){
@@ -277,7 +285,8 @@ let Player = React.createClass({
             self.transitionTo('player',{
 							periode: routes.periodes[index]
             });
-						
+			
+						self.setCurrentState();
           },
 					beforeChange:function(index){
 						$('.h-nav').hide();
@@ -299,7 +308,12 @@ let Player = React.createClass({
 						</section>
 						<section className="cards">
 							<div className="cards-container">
-								<Cards nav="espoir" card="fiche_1"/>
+							<Cards nav="espoir" card={this.state.currentEspoirCard} />
+							</div>
+						</section>
+						<section className="cards">
+							<div className="cards-container">
+							<Cards nav="histoire" card={this.state.currentHistoireCard} />
 							</div>
 						</section>
 				</div>
@@ -317,8 +331,12 @@ let Player = React.createClass({
 					</nav>
 					<div className = "n-progress bar-top js-progress"> 
               <div className = "n-progress-bar js-progress-bar">
-								<div className = "mask"></div> 
-             	</div>  
+								<div className = "mask"></div>
+								<div className = "button-holder"> 
+									<div className = "progress-button"> </div> 
+								</div>
+             	</div>
+							
           	</div>
 						<div className="play-container">
 							<div className = "play"
