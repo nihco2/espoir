@@ -18,15 +18,28 @@ let Cards = React.createClass({
         texts:null
       };
 	},
-  componentWillMount:function(){
- 		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${this.props.card}.json`, function(result) {
+	updateCard:function(){
+		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${this.props.card}.json`, function(result) {
       if (this.isMounted()) {
         this.setState({
-          texts: result
+          texts: result,
+					periode: this.getParams().periode
         });
         }
       }.bind(this));
+	},
+  componentWillMount:function(){
+ 		this.updateCard();
   },
+	shouldComponentUpdate(params,props){
+		if(this.state.periode!==this.getParams().periode){
+			this.updateCard();
+			return true;
+		}
+		else{
+			return false;
+		}
+	},
 
 	render() {
     if(this.state.texts){

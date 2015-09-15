@@ -116,7 +116,6 @@ let Player = React.createClass({
 				
 			},
 			after:function(currSlideElement, nextSlideElement,options, forwardFlag){
-			console.log(index)
 				if((index === 0 || forwardFlag===true)){
 					$('.player').show();
 					$('.cards-container').hide();
@@ -151,9 +150,7 @@ let Player = React.createClass({
 		//TODO
 		var currentEspoirCard = 0;
 		var currentHistoireCard = 0;
-		
-		console.log(this.props.params.periode)
-		
+			
     this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -287,6 +284,7 @@ let Player = React.createClass({
             });
 			
 						self.setCurrentState();
+						
           },
 					beforeChange:function(index){
 						$('.h-nav').hide();

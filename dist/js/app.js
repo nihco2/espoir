@@ -25010,14 +25010,26 @@ var Cards = React.createClass({
 			texts: null
 		};
 	},
-	componentWillMount: function componentWillMount() {
+	updateCard: function updateCard() {
 		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + this.props.card + '.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
-					texts: result
+					texts: result,
+					periode: this.getParams().periode
 				});
 			}
 		}).bind(this));
+	},
+	componentWillMount: function componentWillMount() {
+		this.updateCard();
+	},
+	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
+		if (this.state.periode !== this.getParams().periode) {
+			this.updateCard();
+			return true;
+		} else {
+			return false;
+		}
 	},
 
 	render: function render() {
@@ -26172,7 +26184,6 @@ var Player = React.createClass({
 				}
 			},
 			after: function after(currSlideElement, nextSlideElement, options, forwardFlag) {
-				console.log(index);
 				if (index === 0 || forwardFlag === true) {
 					$('.player').show();
 					$('.cards-container').hide();
@@ -26206,8 +26217,6 @@ var Player = React.createClass({
 		//TODO
 		var currentEspoirCard = 0;
 		var currentHistoireCard = 0;
-
-		console.log(this.props.params.periode);
 
 		this.setState({
 			video1: assets.videos[routes.periodes[0]],
