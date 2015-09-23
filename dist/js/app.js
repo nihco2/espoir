@@ -4,32 +4,38 @@ module.exports={
 		"1914-1945": {
 			"id": "video1",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
+			"poster": "assets/images/poster1.jpg",
+			"timecodes": [15, 20, 30, 35, 45]
 		},
 		"1945-1960": {
 			"id": "video2",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster2.jpg"
+			"poster": "assets/images/poster2.jpg",
+			"timecodes": [10, 15, 20, 30, 35, 40, 45]
 		},
 		"1960-1975": {
 			"id": "video3",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster3.jpg"
+			"poster": "assets/images/poster3.jpg",
+			"timecodes": [15, 20, 30, 35, 45]
 		},
 		"1975-1985": {
 			"id": "video4",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster4.jpg"
+			"poster": "assets/images/poster4.jpg",
+			"timecodes": [15, 20, 35]
 		},
 		"1985-2002": {
 			"id": "video5",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster5.jpg"
+			"poster": "assets/images/poster5.jpg",
+			"timecodes": [15, 20, 35]
 		},
 		"2002-2015": {
 			"id": "video6",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster6.jpg"
+			"poster": "assets/images/poster6.jpg",
+			"timecodes": [15, 20, 35]
 		}
 	},
 	"cards": {
@@ -88,7 +94,9 @@ module.exports={
 	"periode6": "2002-2015",
 	"periode6Title": "Lorem ipsum dolor",
 	"periodes": "Les periodes",
-	"portrait": "Portait des revons"
+	"portrait": "Portait des revons",
+	"back": "Retour à l'accueil",
+	"youwatch": "Vous regardez"
 }
 
 },{}],4:[function(require,module,exports){
@@ -25010,12 +25018,13 @@ var Cards = React.createClass({
 			texts: null
 		};
 	},
-	updateCard: function updateCard() {
-		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + this.props.card + '.json', (function (result) {
+	updateCard: function updateCard(card) {
+		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + card + '.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
 					texts: result,
-					periode: this.getParams().periode
+					periode: this.getParams().periode,
+					card: this.props.card
 				});
 			}
 		}).bind(this));
@@ -25024,8 +25033,9 @@ var Cards = React.createClass({
 		this.updateCard();
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
-		if (this.state.periode !== this.getParams().periode) {
-			this.updateCard();
+		console.log(this.state.card, params.card, this.state.card !== params.card);
+		if (this.state.periode !== this.getParams().periode || this.state.card !== params.card) {
+			this.updateCard(params.card);
 			return true;
 		} else {
 			return false;
@@ -25146,20 +25156,24 @@ var Cards = React.createClass({
 							{ className: "sep sep-1 sep-right" },
 							' '
 						),
-						React.createElement(
-							'div',
-							{ className: "photo-container" },
-							React.createElement(
-								'div',
-								{ className: "border" },
-								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
-							),
-							React.createElement(
-								'div',
-								{ className: "photo" },
-								React.createElement('img', { src: this.props.texts.image1 })
-							)
-						)
+						(function () {
+							if (this.props.texts.image1) {
+								return React.createElement(
+									'div',
+									{ className: "photo-container" },
+									React.createElement(
+										'div',
+										{ className: "border" },
+										React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+									),
+									React.createElement(
+										'div',
+										{ className: "photo" },
+										React.createElement('img', { src: this.props.texts.image1 })
+									)
+								);
+							}
+						}).call(this)
 					),
 					React.createElement(
 						'div',
@@ -25342,6 +25356,15 @@ var Link = _reactRouter2['default'].Link;
 var Cards = React.createClass({
 	displayName: 'Cards',
 
+	componentDidMount: function componentDidMount() {
+		$('#border-4').cycle({
+			fx: 'fade',
+			speed: 'fast',
+			timeout: 0,
+			next: '#btn-next',
+			prev: '#btn-last'
+		});
+	},
 	render: function render() {
 		return React.createElement(
 			'div',
@@ -25383,41 +25406,53 @@ var Cards = React.createClass({
 					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: "text-center" },
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-left" },
-							' '
+							{ id: "border-4" },
+							React.createElement('img', { src: this.props.texts.diapo1 }),
+							React.createElement('img', { src: this.props.texts.diapo2 }),
+							React.createElement('img', { src: this.props.texts.diapo3 }),
+							React.createElement('img', { src: this.props.texts.diapo4 }),
+							React.createElement('img', { src: this.props.texts.diapo5 }),
+							React.createElement('img', { src: this.props.texts.diapo6 }),
+							React.createElement('img', { src: this.props.texts.diapo7 }),
+							React.createElement('img', { src: this.props.texts.diapo8 }),
+							React.createElement('img', { src: this.props.texts.diapo9 }),
+							React.createElement('img', { src: this.props.texts.diapo10 }),
+							React.createElement('img', { src: this.props.texts.diapo11 }),
+							React.createElement('img', { src: this.props.texts.diapo12 }),
+							React.createElement('img', { src: this.props.texts.diapo13 }),
+							React.createElement('img', { src: this.props.texts.diapo14 }),
+							React.createElement('img', { src: this.props.texts.diapo15 }),
+							React.createElement('img', { src: this.props.texts.diapo16 }),
+							React.createElement('img', { src: this.props.texts.diapo17 })
 						),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
-							' '
+							{ id: "bottom-nav" },
+							React.createElement(
+								'div',
+								{ id: "last-next" },
+								React.createElement('div', { id: "btn-last" }),
+								React.createElement('div', { id: "btn-next" })
+							),
+							React.createElement(
+								'div',
+								{ id: "page-num" },
+								'1/8'
+							)
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							{ className: "sep sep-4 sep-center " },
+							' '
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
-						React.createElement(
-							'div',
-							{ id: "border-2" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
-						),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
-						React.createElement(
-							'div',
-							{ className: "sep sep-3 sep-left" },
-							' '
-						)
+						{ className: "col-xs-4 col-centered text-justify custom-width" },
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } })
 					)
 				)
 			),
@@ -25458,7 +25493,7 @@ var Cards = React.createClass({
 	displayName: 'Cards',
 
 	handleClick: function handleClick() {
-		$('.top-nav').trigger('click');
+		$('.bottom-nav').trigger('click');
 	},
 
 	render: function render() {
@@ -25634,6 +25669,10 @@ var Link = _reactRouter2['default'].Link;
 var Cards = React.createClass({
 	displayName: 'Cards',
 
+	handleClick: function handleClick() {
+		$('.bottom-nav').trigger('click');
+	},
+
 	render: function render() {
 		return React.createElement(
 			'div',
@@ -25649,7 +25688,7 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
+							{ className: "back-btn", onClick: this.handleClick },
 							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
@@ -25688,31 +25727,52 @@ var Cards = React.createClass({
 							{ className: "sep sep-1 sep-right" },
 							' '
 						),
-						React.createElement(
-							'div',
-							{ id: "border-1" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
-						)
+						(function () {
+							if (this.props.texts.image1) {
+								return React.createElement(
+									'div',
+									{ className: "photo-container" },
+									React.createElement(
+										'div',
+										{ className: "border" },
+										React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+									),
+									React.createElement(
+										'div',
+										{ className: "photo" },
+										React.createElement('img', { src: this.props.texts.image1 })
+									)
+								);
+							}
+						}).call(this)
 					),
 					React.createElement(
 						'div',
 						{ className: "col-xs-6 col-centered col-fixed" },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							{ className: "photo-container" },
+							React.createElement(
+								'div',
+								{ className: "border" },
+								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+							),
+							React.createElement(
+								'div',
+								{ className: "photo" },
+								React.createElement('img', { src: this.props.texts.image2 })
+							)
 						),
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ classNameName: "sep sep-3 sep-left" },
 							' '
 						)
 					)
 				)
 			),
+			React.createElement('div', { className: "spacer" }),
 			React.createElement(
 				'footer',
 				null,
@@ -26091,7 +26151,8 @@ var Player = React.createClass({
 		return {
 			asssets: null,
 			routes: null,
-			currentVideoId: null
+			currentVideoId: null,
+			texts: texts
 		};
 	},
 
@@ -26160,7 +26221,7 @@ var Player = React.createClass({
 		this.handleResize();
 		$(window).on('resize', this.handleResize);
 		$(window).on('hashchange', function () {
-			self.setCurrentState();
+			self.setCurrentState(0, 0);
 		});
 		$('.player-container').height(window.innerHeight).on('route:change', function (e) {});
 
@@ -26173,7 +26234,7 @@ var Player = React.createClass({
 		$('#slider').cycle({
 			fx: 'scrollVert',
 			prev: '.bottom-nav',
-			next: '.top-nav',
+			next: '.top-nav, .cardLink',
 			timeout: 0,
 			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
 				index = zeroBasedSlideIndex;
@@ -26206,17 +26267,13 @@ var Player = React.createClass({
 			}
 		});
 	},
-	setCurrentState: function setCurrentState() {
+	setCurrentState: function setCurrentState(currentEspoirCard, currentHistoireCard) {
 		var routesArray = routes.periodes;
 		var cardsArray = routes.cards;
 		var currentRoute = this.props.params.periode;
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : '';
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : '';
-
-		//TODO
-		var currentEspoirCard = 0;
-		var currentHistoireCard = 0;
 
 		this.setState({
 			video1: assets.videos[routes.periodes[0]],
@@ -26230,11 +26287,12 @@ var Player = React.createClass({
 			prevRoute: prevRoute,
 			nextRoute: nextRoute,
 			currentEspoirCard: assets.cards[this.props.params.periode].espoir[currentEspoirCard],
-			currentHistoireCard: assets.cards[this.props.params.periode].histoire[currentHistoireCard]
+			currentHistoireCard: assets.cards[this.props.params.periode].histoire[currentHistoireCard],
+			currentTimecodes: assets.videos[this.props.params.periode].timecodes
 		});
 	},
 	componentWillMount: function componentWillMount() {
-		this.setCurrentState();
+		this.setCurrentState(0, 0);
 	},
 	componentDidMount: function componentDidMount() {
 		var self = this;
@@ -26323,6 +26381,11 @@ var Player = React.createClass({
 			//$('.player-container').trigger('route:change');
 		}
 	},
+
+	setCurrentCard: function setCurrentCard(e) {
+		var key = $(e.target).data('key');
+		this.setCurrentState(key, 0);
+	},
 	render: function render() {
 		var self = this;
 		var settings = {
@@ -26349,8 +26412,6 @@ var Player = React.createClass({
 				self.transitionTo('player', {
 					periode: routes.periodes[index]
 				});
-
-				self.setCurrentState();
 			},
 			beforeChange: function beforeChange(index) {
 				$('.h-nav').hide();
@@ -26426,15 +26487,13 @@ var Player = React.createClass({
 						'div',
 						{ className: "n-progress-bar js-progress-bar" },
 						React.createElement('div', { className: "mask" }),
-						React.createElement(
-							'div',
-							{ className: "button-holder" },
-							React.createElement(
+						Object.keys(this.state.currentTimecodes).map(function (key) {
+							return React.createElement(
 								'div',
-								{ className: "progress-button" },
+								{ onMouseDown: this.setCurrentCard, 'data-key': key, className: "progress-button cardLink", key: key, style: { left: this.state.currentTimecodes[key] * 10 + 'px' } },
 								' '
-							)
-						)
+							);
+						}, this)
 					)
 				),
 				React.createElement(
@@ -26448,7 +26507,7 @@ var Player = React.createClass({
 						React.createElement(
 							'p',
 							{ className: "youwatch" },
-							'Vous regardez'
+							this.state.texts.youwatch
 						),
 						React.createElement(
 							'p',
@@ -26458,7 +26517,7 @@ var Player = React.createClass({
 						React.createElement(
 							'small',
 							null,
-							'Retour à l\'accueil'
+							this.state.texts.back
 						)
 					)
 				),

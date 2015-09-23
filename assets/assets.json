@@ -3,32 +3,38 @@
 		"1914-1945": {
 			"id": "video1",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster1.jpg"
+			"poster": "assets/images/poster1.jpg",
+			"timecodes": [15, 20, 30, 35, 45]
 		},
 		"1945-1960": {
 			"id": "video2",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster2.jpg"
+			"poster": "assets/images/poster2.jpg",
+			"timecodes": [10, 15, 20, 30, 35, 40, 45]
 		},
 		"1960-1975": {
 			"id": "video3",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster3.jpg"
+			"poster": "assets/images/poster3.jpg",
+			"timecodes": [15, 20, 30, 35, 45]
 		},
 		"1975-1985": {
 			"id": "video4",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster4.jpg"
+			"poster": "assets/images/poster4.jpg",
+			"timecodes": [15, 20, 35]
 		},
 		"1985-2002": {
 			"id": "video5",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster5.jpg"
+			"poster": "assets/images/poster5.jpg",
+			"timecodes": [15, 20, 35]
 		},
 		"2002-2015": {
 			"id": "video6",
 			"src": "assets/videos/sociodrame.mp4",
-			"poster": "assets/images/poster6.jpg"
+			"poster": "assets/images/poster6.jpg",
+			"timecodes": [15, 20, 35]
 		}
 	},
 	"cards": {

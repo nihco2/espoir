@@ -5,7 +5,7 @@ var Link = ReactRouter.Link;
 
 let Cards = React.createClass({
 	handleClick:function(){
-		$('.top-nav').trigger('click');
+		$('.bottom-nav').trigger('click');
 	},
 
 	render() {

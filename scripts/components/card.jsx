@@ -18,12 +18,13 @@ let Cards = React.createClass({
         texts:null
       };
 	},
-	updateCard:function(){
-		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${this.props.card}.json`, function(result) {
+	updateCard:function(card){
+		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${card}.json`, function(result) {
       if (this.isMounted()) {
         this.setState({
           texts: result,
-					periode: this.getParams().periode
+					periode: this.getParams().periode,
+					card: this.props.card
         });
         }
       }.bind(this));
@@ -32,8 +33,9 @@ let Cards = React.createClass({
  		this.updateCard();
   },
 	shouldComponentUpdate(params,props){
-		if(this.state.periode!==this.getParams().periode){
-			this.updateCard();
+	console.log(this.state.card,params.card,this.state.card!==params.card)
+		if(this.state.periode!==this.getParams().periode || this.state.card!==params.card){
+			this.updateCard(params.card);
 			return true;
 		}
 		else{

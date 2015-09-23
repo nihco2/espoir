@@ -28,7 +28,9 @@ let Cards = React.createClass({
 							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
 							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
 							<div className="sep sep-1 sep-right"> </div>
-							<div className="photo-container">
+							{function(){
+								if (this.props.texts.image1) {
+									return <div className="photo-container">
 								<div className="border">
 									<img src="../assets/images/border2.png" alt="revon"/>
 								</div>
@@ -36,6 +38,9 @@ let Cards = React.createClass({
 									<img src={this.props.texts.image1} />
 								</div>
 							</div>
+								}
+							}.call(this)}
+							
 						</div>
 						<div className="col-xs-6 col-centered col-fixed">
 							<div className="photo-container">
