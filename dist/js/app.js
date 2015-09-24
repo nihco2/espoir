@@ -25356,13 +25356,24 @@ var Link = _reactRouter2['default'].Link;
 var Cards = React.createClass({
 	displayName: 'Cards',
 
+	getInitialState: function getInitialState() {
+		return {
+			index: 1
+		};
+	},
 	componentDidMount: function componentDidMount() {
+		var self = this;
 		$('#border-4').cycle({
 			fx: 'fade',
 			speed: 'fast',
 			timeout: 0,
 			next: '#btn-next',
-			prev: '#btn-last'
+			prev: '#btn-last',
+			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
+				self.setState({
+					index: zeroBasedSlideIndex + 1
+				});
+			}
 		});
 	},
 	render: function render() {
@@ -25413,19 +25424,24 @@ var Cards = React.createClass({
 							React.createElement('img', { src: this.props.texts.diapo1 }),
 							React.createElement('img', { src: this.props.texts.diapo2 }),
 							React.createElement('img', { src: this.props.texts.diapo3 }),
+							React.createElement('img', { src: this.props.texts.diapo3bis }),
 							React.createElement('img', { src: this.props.texts.diapo4 }),
+							React.createElement('img', { src: this.props.texts.diapo4bis }),
 							React.createElement('img', { src: this.props.texts.diapo5 }),
+							React.createElement('img', { src: this.props.texts.diapo5bis }),
 							React.createElement('img', { src: this.props.texts.diapo6 }),
 							React.createElement('img', { src: this.props.texts.diapo7 }),
 							React.createElement('img', { src: this.props.texts.diapo8 }),
 							React.createElement('img', { src: this.props.texts.diapo9 }),
 							React.createElement('img', { src: this.props.texts.diapo10 }),
+							React.createElement('img', { src: this.props.texts.diapo10bis }),
 							React.createElement('img', { src: this.props.texts.diapo11 }),
 							React.createElement('img', { src: this.props.texts.diapo12 }),
 							React.createElement('img', { src: this.props.texts.diapo13 }),
 							React.createElement('img', { src: this.props.texts.diapo14 }),
 							React.createElement('img', { src: this.props.texts.diapo15 }),
 							React.createElement('img', { src: this.props.texts.diapo16 }),
+							React.createElement('img', { src: this.props.texts.diapo16bis }),
 							React.createElement('img', { src: this.props.texts.diapo17 })
 						),
 						React.createElement(
@@ -25440,7 +25456,8 @@ var Cards = React.createClass({
 							React.createElement(
 								'div',
 								{ id: "page-num" },
-								'1/8'
+								this.state.index,
+								'/22'
 							)
 						),
 						React.createElement(
@@ -25451,18 +25468,18 @@ var Cards = React.createClass({
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-4 col-centered text-justify custom-width" },
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } })
+						{ className: "row" },
+						React.createElement(
+							'div',
+							{ className: "col-md-6 text-justify" },
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } })
+						),
+						React.createElement(
+							'div',
+							{ className: "col-md-6 text-justify" },
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } })
+						)
 					)
-				)
-			),
-			React.createElement(
-				'footer',
-				null,
-				React.createElement(
-					'p',
-					null,
-					this.props.texts.footer
 				)
 			)
 		);
