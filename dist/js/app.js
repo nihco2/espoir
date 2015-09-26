@@ -25030,10 +25030,9 @@ var Cards = React.createClass({
 		}).bind(this));
 	},
 	componentWillMount: function componentWillMount() {
-		this.updateCard();
+		this.updateCard(this.props.card);
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
-		console.log(this.state.card, params.card, this.state.card !== params.card);
 		if (this.state.periode !== this.getParams().periode || this.state.card !== params.card) {
 			this.updateCard(params.card);
 			return true;
@@ -25055,7 +25054,7 @@ var Cards = React.createClass({
 					return React.createElement(_componentsCardsType3Jsx2['default'], { texts: this.state.texts });
 					break;
 				case '4':
-					return React.createElement(_componentsCardsType4Jsx2['default'], { texts: this.state.texts });
+					return React.createElement(_componentsCardsType4Jsx2['default'], { texts: this.state.texts, isEspoir: this.props.isEspoir });
 					break;
 				case '5':
 					return React.createElement(_componentsCardsType5Jsx2['default'], { texts: this.state.texts });
@@ -25361,6 +25360,10 @@ var Cards = React.createClass({
 			index: 1
 		};
 	},
+	handleClick: function handleClick() {
+		$('.bottom-nav').trigger('click');
+	},
+
 	componentDidMount: function componentDidMount() {
 		var self = this;
 		$('#border-4').cycle({
@@ -25391,7 +25394,7 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
+							{ className: "back-btn", onClick: this.handleClick },
 							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
@@ -25510,7 +25513,11 @@ var Cards = React.createClass({
 	displayName: 'Cards',
 
 	handleClick: function handleClick() {
-		$('.bottom-nav').trigger('click');
+		if (this.props.isEspoir) {
+			$('.bottom-nav').trigger('click');
+		} else {
+			$('.top-nav').trigger('click');
+		}
 	},
 
 	render: function render() {
@@ -25571,10 +25578,14 @@ var Link = _reactRouter2['default'].Link;
 var Cards = React.createClass({
 	displayName: 'Cards',
 
+	handleClick: function handleClick() {
+		$('.top-nav').trigger('click');
+	},
+
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "histoire" },
 			React.createElement(
 				'header',
 				null,
@@ -25586,23 +25597,22 @@ var Cards = React.createClass({
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn" },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							{ className: "back-btn", onClick: this.handleClick },
+							React.createElement('img', { src: "../assets/images/back-btn-dark.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
 							'li',
 							null,
-							this.props.texts.backespoir
+							this.props.texts.backhistoire
 						)
 					)
 				),
 				React.createElement(
 					'h1',
 					null,
-					this.props.texts.title
-				),
-				React.createElement('h2', { dangerouslySetInnerHTML: { __html: this.props.texts.exergue } })
+					'ESPOIR'
+				)
 			),
 			React.createElement(
 				'div',
@@ -25612,39 +25622,96 @@ var Cards = React.createClass({
 					{ className: "row row-centered" },
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: "col-lg-12 col-centered" },
 						React.createElement(
-							'div',
-							{ className: "sep sep-1 sep-left" },
-							' '
-						),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } }),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
-						React.createElement(
-							'div',
-							{ className: "sep sep-1 sep-right" },
-							' '
+							'h2',
+							null,
+							this.props.texts.title
 						),
 						React.createElement(
 							'div',
-							{ id: "border-1" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image1, alt: "revon" })
+							{ className: "lettrine" },
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.chapeau } })
+						),
+						React.createElement(
+							'div',
+							{ className: "sep sep-5 " },
+							' '
+						),
+						React.createElement(
+							'div',
+							{ className: "col-lg-12" },
+							React.createElement(
+								'div',
+								{ className: "col3" },
+								React.createElement(
+									'p',
+									null,
+									React.createElement(
+										'span',
+										{ className: "italic" },
+										this.props.texts.question1
+									)
+								),
+								React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.citation1 } }),
+								React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte1 } })
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: "col-lg-12 col-centered middle" },
+							React.createElement(
+								'div',
+								{ className: "col-lg-8 " },
+								React.createElement('img', { src: this.props.texts.image1 }),
+								' '
+							),
+							React.createElement(
+								'div',
+								{ className: "col-lg-5 col-centered " },
+								React.createElement(
+									'p',
+									null,
+									React.createElement(
+										'span',
+										{ className: "italic" },
+										this.props.texts.question2
+									)
+								),
+								React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+								React.createElement(
+									'p',
+									null,
+									React.createElement(
+										'span',
+										{ className: "italic" },
+										this.props.texts.question3
+									)
+								),
+								React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } })
+							)
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: "col-xs-6 col-centered col-fixed" },
+						{ className: "col-lg-12 col-centered " },
 						React.createElement(
 							'div',
-							{ id: "border-2" },
-							' ',
-							React.createElement('img', { src: this.props.texts.image2, alt: "revon" })
+							{ className: "col3" },
+							React.createElement(
+								'p',
+								null,
+								React.createElement(
+									'span',
+									{ className: "italic" },
+									this.props.texts.question4
+								)
+							),
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte4 } })
 						),
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte3 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-3 sep-left" },
+							{ className: "sep sep-6 " },
 							' '
 						)
 					)
@@ -26460,7 +26527,7 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "cards-container" },
-						React.createElement(_componentsCardJsx2['default'], { nav: "espoir", card: this.state.currentEspoirCard })
+						React.createElement(_componentsCardJsx2['default'], { nav: "espoir", card: this.state.currentEspoirCard, isEspoir: true })
 					)
 				),
 				React.createElement(
@@ -26469,7 +26536,7 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "cards-container" },
-						React.createElement(_componentsCardJsx2['default'], { nav: "histoire", card: this.state.currentHistoireCard })
+						React.createElement(_componentsCardJsx2['default'], { nav: "histoire", card: this.state.currentHistoireCard, isEspoir: false })
 					)
 				)
 			),
@@ -26534,7 +26601,11 @@ var Player = React.createClass({
 						React.createElement(
 							'small',
 							null,
-							this.state.texts.back
+							React.createElement(
+								Link,
+								{ to: "/" },
+								this.state.texts.back
+							)
 						)
 					)
 				),

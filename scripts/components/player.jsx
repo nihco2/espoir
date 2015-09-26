@@ -307,12 +307,12 @@ let Player = React.createClass({
 						</section>
 						<section className="cards">
 							<div className="cards-container">
-							<Cards nav="espoir" card={this.state.currentEspoirCard} />
+							<Cards nav="espoir" card={this.state.currentEspoirCard} isEspoir={true}/>
 							</div>
 						</section>
 						<section className="cards">
 							<div className="cards-container">
-							<Cards nav="histoire" card={this.state.currentHistoireCard} />
+							<Cards nav="histoire" card={this.state.currentHistoireCard} isEspoir={false} />
 							</div>
 						</section>
 				</div>
@@ -349,7 +349,7 @@ let Player = React.createClass({
 						<div className="desc">
 							<p className="youwatch">{this.state.texts.youwatch}</p>
 							<p className="videoTitle">Le bagne pour les enfants</p>
-							<small>{this.state.texts.back}</small>
+							<small><Link to = "/">{this.state.texts.back}</Link></small>
 						</div>
 					</div>
 					<div className = "n-progress js-progress"> 

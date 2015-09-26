@@ -5,7 +5,12 @@ var Link = ReactRouter.Link;
 
 let Cards = React.createClass({
 	handleClick:function(){
-		$('.bottom-nav').trigger('click');
+		if(this.props.isEspoir){
+			$('.bottom-nav').trigger('click');
+		}
+		else{
+			$('.top-nav').trigger('click');
+		}	
 	},
 
 	render() {

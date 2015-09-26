@@ -9,6 +9,10 @@ let Cards = React.createClass({
 		index:1
 		}
 	},
+	handleClick:function(){
+		$('.bottom-nav').trigger('click');
+	},
+
 	componentDidMount(){
 		var self=this;
 		$('#border-4').cycle({ 
@@ -30,7 +34,7 @@ let Cards = React.createClass({
 				<header>
 					<nav>
 						<ul>
-              <li className="back-btn"><img src="../assets/images/back-btn.png" alt="back"/> </li>
+              <li className="back-btn" onClick={this.handleClick}><img src="../assets/images/back-btn.png" alt="back"/> </li>
 							<li>{this.props.texts.backespoir}</li>
 						</ul>
 					</nav>

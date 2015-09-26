@@ -30,10 +30,9 @@ let Cards = React.createClass({
       }.bind(this));
 	},
   componentWillMount:function(){
- 		this.updateCard();
+ 		this.updateCard(this.props.card);
   },
 	shouldComponentUpdate(params,props){
-	console.log(this.state.card,params.card,this.state.card!==params.card)
 		if(this.state.periode!==this.getParams().periode || this.state.card!==params.card){
 			this.updateCard(params.card);
 			return true;
@@ -52,7 +51,7 @@ let Cards = React.createClass({
 				break;
 				case '3' : return (<Type3 texts={this.state.texts} />);
 				break;
-				case '4' : return (<Type4 texts={this.state.texts} />);
+				case '4' : return (<Type4 texts={this.state.texts} isEspoir={this.props.isEspoir} />);
 				break;
 				case '5' : return (<Type5 texts={this.state.texts} />);
 				break;

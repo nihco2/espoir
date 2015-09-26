@@ -31,13 +31,13 @@ let Cards = React.createClass({
 							{function(){
 								if (this.props.texts.image1) {
 									return <div className="photo-container">
-								<div className="border">
-									<img src="../assets/images/border2.png" alt="revon"/>
-								</div>
-								<div className="photo">
-									<img src={this.props.texts.image1} />
-								</div>
-							</div>
+										<div className="border">
+											<img src="../assets/images/border2.png" alt="revon"/>
+										</div>
+										<div className="photo">
+											<img src={this.props.texts.image1} />
+										</div>
+									</div>
 								}
 							}.call(this)}
 							

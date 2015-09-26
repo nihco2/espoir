@@ -13,12 +13,12 @@ $white:#fff;
 		}
 		.cards {
 			width: 100%;
-			background-image: url(../../assets/images/chalkboard.jpg);
-			background-color: black;
-			background-position: center;
-			background-size: cover;
-			background-repeat: no-repeat;
 			overflow-y: scroll;
+		}
+	}
+	small {
+		a {
+			color: white;
 		}
 	}
 	nav {
