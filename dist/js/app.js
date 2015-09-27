@@ -26891,6 +26891,130 @@ var Resources = React.createClass({
 						null,
 						this.state.texts.title
 					)
+				),
+				React.createElement(
+					'div',
+					{ className: "row text-center grid" },
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource1
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource2
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource3
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: "row text-center grid" },
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource4
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource5
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource6
+						)
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: "row text-center grid" },
+					React.createElement(
+						'div',
+						{ className: "col-md-4" },
+						React.createElement(
+							'button',
+							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							this.state.texts.ressource7
+						)
+					)
+				)
+			),
+			React.createElement(
+				'div',
+				{ className: "modal fade", id: "modal", tabindex: "-1", role: "dialog", 'aria-labelledby': "myModalLabel" },
+				React.createElement(
+					'div',
+					{ className: "modal-dialog", role: "document" },
+					React.createElement(
+						'div',
+						{ className: "modal-content" },
+						React.createElement(
+							'div',
+							{ className: "modal-header" },
+							React.createElement(
+								'button',
+								{ type: "button", className: "close", 'data-dismiss': "modal", 'aria-label': "Close" },
+								React.createElement(
+									'span',
+									{ 'aria-hidden': "true" },
+									'×'
+								)
+							),
+							React.createElement(
+								'h4',
+								{ className: "modal-title", id: "myModalLabel" },
+								'Modal title'
+							)
+						),
+						React.createElement(
+							'div',
+							{ 'class': "modal-body" },
+							'...'
+						),
+						React.createElement(
+							'div',
+							{ className: "modal-footer" },
+							React.createElement(
+								'button',
+								{ type: "button", className: "btn btn-default", 'data-dismiss': "modal" },
+								'Close'
+							),
+							React.createElement(
+								'button',
+								{ type: "button", className: "btn btn-primary" },
+								'Save changes'
+							)
+						)
+					)
 				)
 			)
 		);

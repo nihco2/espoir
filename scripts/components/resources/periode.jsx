@@ -47,9 +47,37 @@ let Resources = React.createClass({
 				</nav>
 				<h2>{this.state.texts.title}</h2>
 			</header>
-			
+			<div className="row text-center grid">
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource1}</button></div>
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource2}</button></div>
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource3}</button></div>
+			</div>
+			<div className="row text-center grid">
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource4}</button></div>
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource5}</button></div>
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource6}</button></div>
+			</div>
+			<div className="row text-center grid">
+				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource7}</button></div>
+			</div>
 		</div>
-		
+		<div className="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div className="modal-dialog" role="document">
+				<div className="modal-content">
+					<div className="modal-header">
+						<button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 className="modal-title" id="myModalLabel">Modal title</h4>
+					</div>
+					<div class="modal-body">
+						...
+					</div>
+					<div className="modal-footer">
+						<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" className="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		</section> );
 		}
 	});
