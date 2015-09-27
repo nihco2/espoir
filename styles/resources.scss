@@ -1,0 +1,65 @@
+#resources {
+	background-image: url(../../assets/images/chalkboard.jpg);
+	background-color: black;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	.back {
+		font-family: $typo2;
+		font-size: 30px;
+		margin: 20px;
+		display: inline-block;
+		color: white;
+	}
+	.resources-container {
+		max-width: 1024px;
+		margin: 0 auto;
+	}
+	header {
+		h1 {
+			font-family: $typo1;
+			text-align: center;
+			font-size: 72px;
+			background: url(../../assets/images/filet-title.png)no-repeat center center;
+			margin: 0;
+			&.periode {
+				padding-right: 120px;
+			}
+		}
+		h2 {
+			text-align: center;
+			font-family: $typo1;
+			font-size: 42px;
+		}
+	}
+	.menu {
+		background: url(../../assets/images/resources-bkg.png) no-repeat center center;
+		width: 770px;
+		height: 850px;
+		margin: 0 auto;
+		div {
+			margin: 0;
+		}
+	}
+	nav {
+		position: relative;
+		font-family: $typo2;
+		font-size: 24px;
+		a {
+			color: white;
+		}
+	}
+	.left-nav {
+		float: left;
+		margin-top: 20px;
+	}
+	.right-nav {
+		float: right;
+		position: absolute;
+		right: 0;
+		top: 20px;
+	}
+}

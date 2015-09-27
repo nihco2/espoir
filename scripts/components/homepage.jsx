@@ -1,5 +1,5 @@
 var React = require('react');
-var texts = require('../../assets/texts.json');
+var texts = require('../../assets/texts/home/texts.json');
 var routes = require('../../assets/routes.json');
 import ReactRouter from 'react-router';
 
@@ -25,9 +25,9 @@ let Homepage = React.createClass({
 		texts.h3
 	} < /h3> < h4 > {
 	texts.h4
-} < /h4>  < p > {
-texts.description
-} < /p> <Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > < div className = "menutitle" > {
+} < /h4> 
+<p dangerouslySetInnerHTML={{__html:this.state.texts.description}}></p>
+<Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > < div className = "menutitle" > {
 texts.periodes
 } < span className = "arrow" > < /span>< /div > < aside > < Link to = {
 		`\/player\/${this.state.texts.periode1}`
