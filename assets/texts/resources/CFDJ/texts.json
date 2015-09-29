@@ -9,13 +9,16 @@
 	"structuresuivante": "EGA - CFDJ",
 	"back": "retour à l'accueil",
 	"ressource1": "Carnet de liaison du CFDJ",
-	"popin1": "../../assets/images/Carnet_CFDJ_1.jpg",
-	"popin1": "../../assets/images/Carnet_CFDJ_2.jpg",
+	"ressource1thumb": "../../assets/images/thumbs/cfdj-1.png",
+	"popin1-1": "../../assets/images/Carnet_CFDJ_1.jpg",
+	"popin1-2": "../../assets/images/Carnet_CFDJ_2.jpg",
 	"ressource2": "Prospectus du CFDJ de Vitry",
-	"popin2": "../../assets/images/Ressources/Prospectus_CFDJ_1.jpg",
-	"popin2": "../../assets/images/Ressources/Prospectus_CFDJ_2.jpg",
-	"popin2": "../../assets/images/Ressources/Prospectus_CFDJ_3.jpg",
+	"ressource2thumb": "../../assets/images/thumbs/cfdj-2.png",
+	"popin2-1": "../../assets/images/Ressources/Prospectus_CFDJ_1.jpg",
+	"popin2-2": "../../assets/images/Ressources/Prospectus_CFDJ_2.jpg",
+	"popin2-3": "../../assets/images/Ressources/Prospectus_CFDJ_3.jpg",
 	"ressource3": "Réorientation de l'EGA",
-	"popin3": "../../assets/images/Ressources/EGA_a_CFDJ_1.jpg",
-	"popin3": "../../assets/images/Ressources/EGA_a_CFDJ_2.jpg"
+	"ressource3thumb": "../../assets/images/thumbs/cfdj-3.png",
+	"popin3-1": "../../assets/images/Ressources/EGA_a_CFDJ_1.jpg",
+	"popin3-2": "../../assets/images/Ressources/EGA_a_CFDJ_2.jpg"
 }
