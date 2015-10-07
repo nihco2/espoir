@@ -135,14 +135,14 @@ module.exports={
 },{}],5:[function(require,module,exports){
 module.exports={
 	"h1": "Ressources",
-	"h2": "1915-1953",
-	"h3": "L'Enfant au Grand Air",
-	"h2": "1932-1953",
-	"h3": "les Centres Familiaux de Jeunes",
-	"h2": "1953-1964",
-	"h3": "EGA - CFDJ",
-	"h2": "1964-…",
-	"h3": "ESPOIR CFDJ",
+	"periode1": "1915-1953",
+	"periode1Title": "L'Enfant au Grand Air",
+	"periode2": "1932-1953",
+	"periode2Title": "les Centres Familiaux de Jeunes",
+	"periode3": "1953-1964",
+	"periode3Title": "EGA - CFDJ",
+	"periode4": "1964-…",
+	"periode4Title": "ESPOIR CFDJ",
 	"back": "retour à l'accueil"
 }
 },{}],6:[function(require,module,exports){
@@ -26752,7 +26752,16 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '\/resources\/EGA' },
-							React.createElement('img', { src: "../../assets/images/item1.png", alt: "item1" })
+							React.createElement(
+								'div',
+								{ className: "periode" },
+								this.state.texts.periode1
+							),
+							React.createElement(
+								'div',
+								{ className: "periodeTitle" },
+								this.state.texts.periode1Title
+							)
 						)
 					),
 					React.createElement(
@@ -26761,7 +26770,16 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '\/resources\/EGA-CFDJ' },
-							React.createElement('img', { src: "../../assets/images/item2.png", alt: "item2" })
+							React.createElement(
+								'div',
+								{ className: "periode" },
+								this.state.texts.periode2
+							),
+							React.createElement(
+								'div',
+								{ className: "periodeTitle" },
+								this.state.texts.periode2Title
+							)
 						)
 					)
 				),
@@ -26774,7 +26792,16 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '\/resources\/CFDJ' },
-							React.createElement('img', { src: "../../assets/images/item3.png", alt: "item3" })
+							React.createElement(
+								'div',
+								{ className: "periode" },
+								this.state.texts.periode3
+							),
+							React.createElement(
+								'div',
+								{ className: "periodeTitle" },
+								this.state.texts.periode3Title
+							)
 						)
 					),
 					React.createElement(
@@ -26783,7 +26810,16 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '\/resources\/ESPOIR-CFDJ' },
-							React.createElement('img', { src: "../../assets/images/item4.png", alt: "item4" })
+							React.createElement(
+								'div',
+								{ className: "periode" },
+								this.state.texts.periode4
+							),
+							React.createElement(
+								'div',
+								{ className: "periodeTitle" },
+								this.state.texts.periode4Title
+							)
 						)
 					)
 				)

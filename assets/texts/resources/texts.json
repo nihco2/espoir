@@ -1,12 +1,12 @@
 {
 	"h1": "Ressources",
-	"h2": "1915-1953",
-	"h3": "L'Enfant au Grand Air",
-	"h2": "1932-1953",
-	"h3": "les Centres Familiaux de Jeunes",
-	"h2": "1953-1964",
-	"h3": "EGA - CFDJ",
-	"h2": "1964-…",
-	"h3": "ESPOIR CFDJ",
+	"periode1": "1915-1953",
+	"periode1Title": "L'Enfant au Grand Air",
+	"periode2": "1932-1953",
+	"periode2Title": "les Centres Familiaux de Jeunes",
+	"periode3": "1953-1964",
+	"periode3Title": "EGA - CFDJ",
+	"periode4": "1964-…",
+	"periode4Title": "ESPOIR CFDJ",
 	"back": "retour à l'accueil"
 }

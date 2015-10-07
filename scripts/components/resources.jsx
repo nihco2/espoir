@@ -20,12 +20,32 @@ let Resources = React.createClass({
 		</div>
 		<div className="menu">
 			<div className="row">
-			<div className="col-md-6"><Link to={'\/resources\/EGA'}><img src="../../assets/images/item1.png" alt="item1" /></Link></div>
-				<div className="col-md-6"><Link to={'\/resources\/EGA-CFDJ'}><img src="../../assets/images/item2.png" alt="item2" /></Link></div>
+			<div className="col-md-6">
+				<Link to={'\/resources\/EGA'}>
+					<div className="periode">{this.state.texts.periode1}</div>
+					<div className="periodeTitle">{this.state.texts.periode1Title}</div>
+				</Link>
+			</div>
+			<div className="col-md-6">
+				<Link to={'\/resources\/EGA-CFDJ'}>
+					<div className="periode">{this.state.texts.periode2}</div>
+					<div className="periodeTitle">{this.state.texts.periode2Title}</div>
+				</Link>
+			</div>
 			</div>
 			<div className="row">
-				<div className="col-md-6"><Link to={'\/resources\/CFDJ'}><img src="../../assets/images/item3.png" alt="item3" /></Link></div>
-				<div className="col-md-6"><Link to={'\/resources\/ESPOIR-CFDJ'}><img src="../../assets/images/item4.png" alt="item4" /></Link></div>
+				<div className="col-md-6">
+					<Link to={'\/resources\/CFDJ'}>
+						<div className="periode">{this.state.texts.periode3}</div>
+						<div className="periodeTitle">{this.state.texts.periode3Title}</div>
+					</Link>
+				</div>
+				<div className="col-md-6">
+					<Link to={'\/resources\/ESPOIR-CFDJ'}>
+					<div className="periode">{this.state.texts.periode4}</div>
+					<div className="periodeTitle">{this.state.texts.periode4Title}</div>
+					</Link>
+				</div>
 			</div>
 		</div>
 		</section> );
