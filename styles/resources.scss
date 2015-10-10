@@ -7,6 +7,16 @@
 	position: absolute;
 	min-width: 100%;
 	min-height: 100%;
+	hr {
+		background: url("../../assets/images/sprite.png") no-repeat;
+		background-position: 0 -268px;
+		bottom: 10px;
+		width: 990px;
+		height: 15px;
+		margin: 0 auto;
+		border: none;
+		margin-bottom: 30px;
+	}
 	.back {
 		font-family: $typo2;
 		font-size: 30px;
@@ -35,6 +45,10 @@
 			font-size: 42px;
 		}
 	}
+	span {
+		font-family: $typo2;
+		font-size: 18px;
+	}
 	.menu {
 		background: url(../../assets/images/resources-bkg.png) no-repeat center center;
 		width: 770px;
@@ -50,6 +64,9 @@
 		font-size: 24px;
 		a {
 			color: white;
+			span {
+				font-size: 24px;
+			}
 		}
 	}
 	.left-nav {
@@ -68,5 +85,94 @@
 	button {
 		background: transparent;
 		outline: 0;
+	}
+	.tiroir {
+		display: block;
+		height: 370px;
+		width: 100%;
+		font-family: $typo2;
+		font-size: 25px;
+		text-align: center;
+		padding-top: 80px;
+		text-decoration: none;
+		&.tiroir1 {
+			.periode {
+				margin-top: 30px;
+				margin-left: 22px;
+			}
+			.periodeTitle {
+				margin-top: 80px;
+				margin-left: 25px;
+			}
+		}
+		&.tiroir2 {
+			width: 285px;
+			.periode {
+				margin-top: 30px;
+				margin-left: 0px;
+			}
+			.periodeTitle {
+				margin-top: 62px;
+				margin-left: 0px;
+			}
+		}
+		&.tiroir3 {
+			.periode {
+				margin-top: 8px;
+				margin-left: 22px;
+			}
+			.periodeTitle {
+				margin-top: 60px;
+				margin-left: 25px;
+			}
+		}
+		&.tiroir4 {
+			width: 285px;
+			.periode {
+				margin-top: 8px;
+				margin-left: -10px;
+			}
+			.periodeTitle {
+				margin-top: 60px;
+				margin-left: 0px;
+			}
+		}
+	}
+	.modal-title span {
+		color: #333;
+	}
+	.modal-header {
+		border-bottom: none;
+	}
+	.modal-content {
+		border-radius: 0;
+	}
+	.close {
+		opacity: 1;
+		span {
+			color: black;
+		}
+	}
+	.modal-footer {
+		border: none;
+	}
+	#last-next {
+		margin: 0 25px;
+	}
+	#last-next div {
+		float: left;
+	}
+	#btn-next,
+	#btn-last {
+		width: 64px;
+		height: 32px;
+		cursor: pointer;
+	}
+	#btn-next {
+		background: url(../../assets/images/btn-next-2.png)no-repeat center center;
+		float: right !important;
+	}
+	#btn-last {
+		background: url(../../assets/images/btn-last-2.png)no-repeat center center;
 	}
 }

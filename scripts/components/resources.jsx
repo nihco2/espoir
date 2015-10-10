@@ -21,27 +21,27 @@ let Resources = React.createClass({
 		<div className="menu">
 			<div className="row">
 			<div className="col-md-6">
-				<Link to={'\/resources\/EGA'}>
+				<Link to={'\/resources\/EGA'} className="tiroir tiroir1">
 					<div className="periode">{this.state.texts.periode1}</div>
 					<div className="periodeTitle">{this.state.texts.periode1Title}</div>
 				</Link>
 			</div>
 			<div className="col-md-6">
-				<Link to={'\/resources\/EGA-CFDJ'}>
+				<Link to={'\/resources\/EGA-CFDJ'} className="tiroir tiroir2">
 					<div className="periode">{this.state.texts.periode2}</div>
-					<div className="periodeTitle">{this.state.texts.periode2Title}</div>
+					<div className="periodeTitle" dangerouslySetInnerHTML={{__html:this.state.texts.periode2Title}}></div>
 				</Link>
 			</div>
 			</div>
 			<div className="row">
 				<div className="col-md-6">
-					<Link to={'\/resources\/CFDJ'}>
+					<Link to={'\/resources\/CFDJ'} className="tiroir tiroir3">
 						<div className="periode">{this.state.texts.periode3}</div>
 						<div className="periodeTitle">{this.state.texts.periode3Title}</div>
 					</Link>
 				</div>
 				<div className="col-md-6">
-					<Link to={'\/resources\/ESPOIR-CFDJ'}>
+					<Link to={'\/resources\/ESPOIR-CFDJ'} className="tiroir tiroir4">
 					<div className="periode">{this.state.texts.periode4}</div>
 					<div className="periodeTitle">{this.state.texts.periode4Title}</div>
 					</Link>

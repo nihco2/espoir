@@ -138,10 +138,10 @@ module.exports={
 	"periode1": "1915-1953",
 	"periode1Title": "L'Enfant au Grand Air",
 	"periode2": "1932-1953",
-	"periode2Title": "les Centres Familiaux de Jeunes",
+	"periode2Title": "les Centres Familiaux<br>de Jeunes",
 	"periode3": "1953-1964",
 	"periode3Title": "EGA - CFDJ",
-	"periode4": "1964-…",
+	"periode4": "1964-2015",
 	"periode4Title": "ESPOIR CFDJ",
 	"back": "retour à l'accueil"
 }
@@ -25015,7 +25015,7 @@ _reactRouter2['default'].run(routes, function (Root) {
   _react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
 
-},{"./components/card.jsx":224,"./components/credits.jsx":231,"./components/homepage.jsx":232,"./components/player.jsx":233,"./components/resources.jsx":234,"./components/resources/periode.jsx":235,"react":222,"react-router":31}],224:[function(require,module,exports){
+},{"./components/card.jsx":224,"./components/credits.jsx":231,"./components/homepage.jsx":232,"./components/player.jsx":233,"./components/resources.jsx":234,"./components/resources/periode.jsx":236,"react":222,"react-router":31}],224:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -25210,7 +25210,7 @@ var Cards = React.createClass({
 									React.createElement(
 										'div',
 										{ className: "border" },
-										React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+										React.createElement('img', { src: "../assets/images/border2.png" })
 									),
 									React.createElement(
 										'div',
@@ -25230,7 +25230,7 @@ var Cards = React.createClass({
 							React.createElement(
 								'div',
 								{ className: "border" },
-								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+								React.createElement('img', { src: "../assets/images/border2.png" })
 							),
 							React.createElement(
 								'div',
@@ -26694,7 +26694,7 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":224,"../components/video.jsx":236,"react":222,"react-router":31,"react-slick":49}],234:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":224,"../components/video.jsx":237,"react":222,"react-router":31,"react-slick":49}],234:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -26751,7 +26751,7 @@ var Resources = React.createClass({
 						{ className: "col-md-6" },
 						React.createElement(
 							Link,
-							{ to: '\/resources\/EGA' },
+							{ to: '\/resources\/EGA', className: "tiroir tiroir1" },
 							React.createElement(
 								'div',
 								{ className: "periode" },
@@ -26769,17 +26769,13 @@ var Resources = React.createClass({
 						{ className: "col-md-6" },
 						React.createElement(
 							Link,
-							{ to: '\/resources\/EGA-CFDJ' },
+							{ to: '\/resources\/EGA-CFDJ', className: "tiroir tiroir2" },
 							React.createElement(
 								'div',
 								{ className: "periode" },
 								this.state.texts.periode2
 							),
-							React.createElement(
-								'div',
-								{ className: "periodeTitle" },
-								this.state.texts.periode2Title
-							)
+							React.createElement('div', { className: "periodeTitle", dangerouslySetInnerHTML: { __html: this.state.texts.periode2Title } })
 						)
 					)
 				),
@@ -26791,7 +26787,7 @@ var Resources = React.createClass({
 						{ className: "col-md-6" },
 						React.createElement(
 							Link,
-							{ to: '\/resources\/CFDJ' },
+							{ to: '\/resources\/CFDJ', className: "tiroir tiroir3" },
 							React.createElement(
 								'div',
 								{ className: "periode" },
@@ -26809,7 +26805,7 @@ var Resources = React.createClass({
 						{ className: "col-md-6" },
 						React.createElement(
 							Link,
-							{ to: '\/resources\/ESPOIR-CFDJ' },
+							{ to: '\/resources\/ESPOIR-CFDJ', className: "tiroir tiroir4" },
 							React.createElement(
 								'div',
 								{ className: "periode" },
@@ -26835,6 +26831,36 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var React = require('react');
+
+var Diaporama = React.createClass({
+  displayName: 'Diaporama',
+
+  render: function render() {
+    function item(itemText) {
+      return React.createElement(
+        'li',
+        null,
+        itemText
+      );
+    };
+    return React.createElement(
+      'ul',
+      null,
+      this.props.popin
+    );
+  }
+});
+
+exports['default'] = Diaporama;
+module.exports = exports['default'];
+
+},{"react":222}],236:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 
@@ -26843,6 +26869,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 var _reactRouter = require('react-router');
 
 var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+var _diaporamaJsx = require('./diaporama.jsx');
+
+var _diaporamaJsx2 = _interopRequireDefault(_diaporamaJsx);
 
 var React = require('react');
 var texts = require('../../../assets/texts/home/texts.json');
@@ -26855,17 +26885,19 @@ var Resources = React.createClass({
 	mixins: [_reactRouter2['default'].State],
 	getInitialState: function getInitialState() {
 		return {
-			texts: texts
+			texts: texts,
+			nav: null,
+			current: '',
+			currentPopin: {}
 		};
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
-		console.log(this.getParams(), this.state.nav);
+
 		if (this.getParams().nav !== this.state.nav) {
-			console.log('UPDATE');
 			this.updateResource();
 			return true;
 		} else {
-			return false;
+			return true;
 		}
 	},
 	updateResource: function updateResource() {
@@ -26880,6 +26912,27 @@ var Resources = React.createClass({
 	},
 	componentWillMount: function componentWillMount() {
 		this.updateResource();
+	},
+	componentDidMount: function componentDidMount() {
+		var self = this;
+		$('diaporama').cycle({
+			fx: 'fade',
+			speed: 'fast',
+			timeout: 0,
+			next: '#btn-next',
+			prev: '#btn-last',
+			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
+				self.setState({
+					index: zeroBasedSlideIndex + 1
+				});
+			}
+		});
+	},
+	handleClick: function handleClick(e) {
+		this.setState({
+			current: $(e.currentTarget).data('resource'),
+			currentPopin: $(e.currentTarget).data('popin')
+		});
 	},
 	render: function render() {
 		return React.createElement(
@@ -26928,6 +26981,7 @@ var Resources = React.createClass({
 						this.state.texts.title
 					)
 				),
+				React.createElement('hr', null),
 				React.createElement(
 					'div',
 					{ className: "row text-center grid" },
@@ -26936,7 +26990,9 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-popin': this.state.texts.popin1, 'data-resource': this.state.texts.ressource1, 'data-toggle': "modal", 'data-target': "#modal" },
+							React.createElement('img', { src: this.state.texts.ressource1thumb }),
+							React.createElement('br', null),
 							this.state.texts.ressource1
 						)
 					),
@@ -26945,7 +27001,9 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-popin': this.state.texts.popin2, 'data-resource': this.state.texts.ressource2, 'data-toggle': "modal", 'data-target': "#modal" },
+							React.createElement('img', { src: this.state.texts.ressource2thumb }),
+							React.createElement('br', null),
 							this.state.texts.ressource2
 						)
 					),
@@ -26954,59 +27012,87 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource3, 'data-popin': this.state.texts.popin3, 'data-toggle': "modal", 'data-target': "#modal" },
+							React.createElement('img', { src: this.state.texts.ressource3thumb }),
+							React.createElement('br', null),
 							this.state.texts.ressource3
 						)
-					)
+					),
+					';'
 				),
 				React.createElement(
 					'div',
 					{ className: "row text-center grid" },
-					React.createElement(
-						'div',
-						{ className: "col-md-4" },
-						React.createElement(
-							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
-							this.state.texts.ressource4
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: "col-md-4" },
-						React.createElement(
-							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
-							this.state.texts.ressource5
-						)
-					),
-					React.createElement(
-						'div',
-						{ className: "col-md-4" },
-						React.createElement(
-							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
-							this.state.texts.ressource6
-						)
-					)
+					(function () {
+						if (this.state.texts.ressource4thumb) {
+							return React.createElement(
+								'div',
+								{ className: "col-md-4" },
+								React.createElement(
+									'button',
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource4, 'data-popin': this.state.texts.popin4, 'data-toggle': "modal", 'data-target': "#modal" },
+									React.createElement('img', { src: this.state.texts.ressource4thumb }),
+									React.createElement('br', null),
+									this.state.texts.ressource4
+								)
+							);
+						}
+					}).call(this),
+					(function () {
+						if (this.state.texts.ressource5thumb) {
+							return React.createElement(
+								'div',
+								{ className: "col-md-4" },
+								React.createElement(
+									'button',
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource5, 'data-popin': this.state.texts.popin5, 'data-toggle': "modal", 'data-target': "#modal" },
+									React.createElement('img', { src: this.state.texts.ressource5thumb }),
+									React.createElement('br', null),
+									this.state.texts.ressource5
+								)
+							);
+						}
+					}).call(this),
+					(function () {
+						if (this.state.texts.ressource6thumb) {
+							return React.createElement(
+								'div',
+								{ className: "col-md-4" },
+								React.createElement(
+									'button',
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource6, 'data-popin': this.state.texts.popin6, 'data-toggle': "modal", 'data-target': "#modal" },
+									React.createElement('img', { src: this.state.texts.ressource6thumb }),
+									React.createElement('br', null),
+									this.state.texts.ressource6
+								)
+							);
+						}
+					}).call(this)
 				),
 				React.createElement(
 					'div',
 					{ className: "row text-center grid" },
-					React.createElement(
-						'div',
-						{ className: "col-md-4" },
-						React.createElement(
-							'button',
-							{ 'data-toggle': "modal", 'data-target': "#modal" },
-							this.state.texts.ressource7
-						)
-					)
-				)
+					(function () {
+						if (this.state.texts.ressource7thumb) {
+							return React.createElement(
+								'div',
+								{ className: "col-md-4" },
+								React.createElement(
+									'button',
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource7, 'data-popin': this.state.texts.popin7, 'data-toggle': "modal", 'data-target': "#modal" },
+									React.createElement('img', { src: this.state.texts.ressource7thumb }),
+									React.createElement('br', null),
+									this.state.texts.ressource7
+								)
+							);
+						}
+					}).call(this)
+				),
+				React.createElement('hr', null)
 			),
 			React.createElement(
 				'div',
-				{ className: "modal fade", id: "modal", tabindex: "-1", role: "dialog", 'aria-labelledby': "myModalLabel" },
+				{ className: "modal fade", id: "modal", tabIndex: "-1", role: "dialog", 'aria-labelledby': "myModalLabel" },
 				React.createElement(
 					'div',
 					{ className: "modal-dialog", role: "document" },
@@ -27028,26 +27114,24 @@ var Resources = React.createClass({
 							React.createElement(
 								'h4',
 								{ className: "modal-title", id: "myModalLabel" },
-								'Modal title'
+								this.state.texts.title,
+								':',
+								this.state.current
 							)
 						),
 						React.createElement(
 							'div',
-							{ 'class': "modal-body" },
-							'...'
+							{ className: "modal-body" },
+							React.createElement(_diaporamaJsx2['default'], { popin: this.state.currentPopin })
 						),
 						React.createElement(
 							'div',
 							{ className: "modal-footer" },
 							React.createElement(
-								'button',
-								{ type: "button", className: "btn btn-default", 'data-dismiss': "modal" },
-								'Close'
-							),
-							React.createElement(
-								'button',
-								{ type: "button", className: "btn btn-primary" },
-								'Save changes'
+								'div',
+								{ id: "last-next" },
+								React.createElement('div', { id: "btn-last" }),
+								React.createElement('div', { id: "btn-next" })
 							)
 						)
 					)
@@ -27060,7 +27144,7 @@ var Resources = React.createClass({
 exports['default'] = Resources;
 module.exports = exports['default'];
 
-},{"../../../assets/texts/home/texts.json":4,"react":222,"react-router":31}],236:[function(require,module,exports){
+},{"../../../assets/texts/home/texts.json":4,"./diaporama.jsx":235,"react":222,"react-router":31}],237:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

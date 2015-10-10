@@ -1,24 +1,27 @@
 var React = require('react');
 var texts = require('../../../assets/texts/home/texts.json');
 import ReactRouter from 'react-router';
+import Diaporama from './diaporama.jsx';
 var Link = ReactRouter.Link;
 
 let Resources = React.createClass({
 	mixins: [ ReactRouter.State ],
 	getInitialState: function () {
 		return {
-			texts: texts
+			texts: texts,
+			nav: null,
+			current:'',
+			currentPopin:{}
 		};
 	},
 	shouldComponentUpdate(params,props){
-	console.log(this.getParams(),this.state.nav)
+
 		if(this.getParams().nav!==this.state.nav){
-		console.log('UPDATE')
 			this.updateResource();
 			return true;
 		}
 		else{
-			return false;
+			return true;
 		}
 	},
 	updateResource:function(){
@@ -34,6 +37,27 @@ let Resources = React.createClass({
   componentWillMount:function(){
  		this.updateResource();
   },
+	componentDidMount:function(){
+ 		var self=this;
+		$('diaporama').cycle({ 
+			fx:     'fade', 
+			speed:  'fast', 
+			timeout: 0, 
+			next:   '#btn-next', 
+			prev:   '#btn-last',
+			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
+				self.setState({
+					index:zeroBasedSlideIndex+1
+				});
+			}
+		});
+  },
+	handleClick:function(e){
+		this.setState({
+			current:$(e.currentTarget).data('resource'),
+			currentPopin:$(e.currentTarget).data('popin')
+		});
+	},
 	render() {
 		return ( 
 		<section id="resources">
@@ -47,33 +71,56 @@ let Resources = React.createClass({
 				</nav>
 				<h2>{this.state.texts.title}</h2>
 			</header>
+			<hr />
 			<div className="row text-center grid">
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource1}</button></div>
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource2}</button></div>
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource3}</button></div>
+			<div className="col-md-4"><button onClick={this.handleClick} data-popin={this.state.texts.popin1} data-resource={this.state.texts.ressource1} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource1thumb} /><br />{this.state.texts.ressource1}</button></div>
+				<div className="col-md-4"><button onClick={this.handleClick} data-popin={this.state.texts.popin2} data-resource={this.state.texts.ressource2} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource2thumb}/><br />{this.state.texts.ressource2}</button></div>
+				<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource3} data-popin={this.state.texts.popin3} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource3thumb}/><br />{this.state.texts.ressource3}</button></div>;
 			</div>
 			<div className="row text-center grid">
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource4}</button></div>
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource5}</button></div>
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource6}</button></div>
+			{function(){
+				if (this.state.texts.ressource4thumb) {
+					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource4} data-popin={this.state.texts.popin4} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource4thumb}/><br />{this.state.texts.ressource4}</button></div>;
+				}
+			}.call(this)}
+			{function(){
+				if (this.state.texts.ressource5thumb) {
+					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource5} data-popin={this.state.texts.popin5} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource5thumb}/><br />{this.state.texts.ressource5}</button></div>;
+				}
+			}.call(this)}
+			{function(){
+				if (this.state.texts.ressource6thumb) {
+					return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource6} data-popin={this.state.texts.popin6} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource6thumb}/><br />{this.state.texts.ressource6}</button></div>;
+				}
+			}.call(this)}
+				
+			
 			</div>
 			<div className="row text-center grid">
-				<div className="col-md-4"><button data-toggle="modal" data-target="#modal">{this.state.texts.ressource7}</button></div>
+				{function(){
+					if (this.state.texts.ressource7thumb) {
+						return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource7} data-popin={this.state.texts.popin7} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource7thumb}/><br />{this.state.texts.ressource7}</button></div>;
+					}
+				}.call(this)}
+				
 			</div>
+			<hr />
 		</div>
-		<div className="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div className="modal fade" id="modal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div className="modal-dialog" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
 						<button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 className="modal-title" id="myModalLabel">Modal title</h4>
+						<h4 className="modal-title" id="myModalLabel">{this.state.texts.title}:{this.state.current}</h4>
 					</div>
-					<div class="modal-body">
-						...
+					<div className="modal-body">
+						<Diaporama popin={this.state.currentPopin}/>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" className="btn btn-primary">Save changes</button>
+						<div id="last-next">
+							<div id="btn-last"></div>
+								<div id="btn-next"></div>
+							</div> 
 					</div>
 				</div>
 			</div>
