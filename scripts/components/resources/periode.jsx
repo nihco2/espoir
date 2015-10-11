@@ -11,7 +11,8 @@ let Resources = React.createClass({
 			texts: texts,
 			nav: null,
 			current:'',
-			currentPopin:{}
+			currentPopin:{},
+			firstTime:false
 		};
 	},
 	shouldComponentUpdate(params,props){
@@ -37,25 +38,12 @@ let Resources = React.createClass({
   componentWillMount:function(){
  		this.updateResource();
   },
-	componentDidMount:function(){
- 		var self=this;
-		$('diaporama').cycle({ 
-			fx:     'fade', 
-			speed:  'fast', 
-			timeout: 0, 
-			next:   '#btn-next', 
-			prev:   '#btn-last',
-			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
-				self.setState({
-					index:zeroBasedSlideIndex+1
-				});
-			}
-		});
-  },
+	
 	handleClick:function(e){
 		this.setState({
 			current:$(e.currentTarget).data('resource'),
-			currentPopin:$(e.currentTarget).data('popin')
+			currentPopin:this.state.texts[$(e.currentTarget).data('popin')],
+			firstTime:true
 		});
 	},
 	render() {
@@ -73,24 +61,24 @@ let Resources = React.createClass({
 			</header>
 			<hr />
 			<div className="row text-center grid">
-			<div className="col-md-4"><button onClick={this.handleClick} data-popin={this.state.texts.popin1} data-resource={this.state.texts.ressource1} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource1thumb} /><br />{this.state.texts.ressource1}</button></div>
-				<div className="col-md-4"><button onClick={this.handleClick} data-popin={this.state.texts.popin2} data-resource={this.state.texts.ressource2} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource2thumb}/><br />{this.state.texts.ressource2}</button></div>
-				<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource3} data-popin={this.state.texts.popin3} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource3thumb}/><br />{this.state.texts.ressource3}</button></div>;
+			<div className="col-md-4"><button onClick={this.handleClick} data-popin="popin1" data-resource={this.state.texts.ressource1} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource1thumb} /><br />{this.state.texts.ressource1}</button></div>
+				<div className="col-md-4"><button onClick={this.handleClick} data-popin="popin2" data-resource={this.state.texts.ressource2} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource2thumb}/><br />{this.state.texts.ressource2}</button></div>
+				<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource3} data-popin="popin3" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource3thumb}/><br />{this.state.texts.ressource3}</button></div>;
 			</div>
 			<div className="row text-center grid">
 			{function(){
 				if (this.state.texts.ressource4thumb) {
-					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource4} data-popin={this.state.texts.popin4} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource4thumb}/><br />{this.state.texts.ressource4}</button></div>;
+					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource4} data-popin="popin4" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource4thumb}/><br />{this.state.texts.ressource4}</button></div>;
 				}
 			}.call(this)}
 			{function(){
 				if (this.state.texts.ressource5thumb) {
-					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource5} data-popin={this.state.texts.popin5} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource5thumb}/><br />{this.state.texts.ressource5}</button></div>;
+					return <div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource5} data-popin="popin5" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource5thumb}/><br />{this.state.texts.ressource5}</button></div>;
 				}
 			}.call(this)}
 			{function(){
 				if (this.state.texts.ressource6thumb) {
-					return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource6} data-popin={this.state.texts.popin6} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource6thumb}/><br />{this.state.texts.ressource6}</button></div>;
+					return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource6} data-popin="popin6" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource6thumb}/><br />{this.state.texts.ressource6}</button></div>;
 				}
 			}.call(this)}
 				
@@ -99,7 +87,7 @@ let Resources = React.createClass({
 			<div className="row text-center grid">
 				{function(){
 					if (this.state.texts.ressource7thumb) {
-						return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource7} data-popin={this.state.texts.popin7} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource7thumb}/><br />{this.state.texts.ressource7}</button></div>;
+						return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource7} data-popin="popin7" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource7thumb}/><br />{this.state.texts.ressource7}</button></div>;
 					}
 				}.call(this)}
 				
@@ -114,7 +102,7 @@ let Resources = React.createClass({
 						<h4 className="modal-title" id="myModalLabel">{this.state.texts.title}:{this.state.current}</h4>
 					</div>
 					<div className="modal-body">
-						<Diaporama popin={this.state.currentPopin}/>
+					<Diaporama popin={this.state.currentPopin} firstTime={this.state.firstTime} />
 					</div>
 					<div className="modal-footer">
 						<div id="last-next">

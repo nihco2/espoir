@@ -26831,27 +26831,58 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-  value: true
+	value: true
 });
 var React = require('react');
 
 var Diaporama = React.createClass({
-  displayName: 'Diaporama',
+	displayName: 'Diaporama',
 
-  render: function render() {
-    function item(itemText) {
-      return React.createElement(
-        'li',
-        null,
-        itemText
-      );
-    };
-    return React.createElement(
-      'ul',
-      null,
-      this.props.popin
-    );
-  }
+	countProperties: function countProperties(obj) {
+		var count = 0;
+
+		for (var property in obj) {
+			if (Object.prototype.hasOwnProperty.call(obj, property)) {
+				count++;
+			}
+		}
+
+		return count;
+	},
+	componentDidUpdate: function componentDidUpdate() {
+		if (this.props.firstTime && this.countProperties(this.props.popin) > 1) {
+			this.props.firstTime = false;
+			console.log('!!!!!!!!!!!!!!!', this.props.firstTime);
+			var self = this;
+			$('#diaporama').cycle({
+				fx: 'fade',
+				speed: 'fast',
+				timeout: 0,
+				next: '#btn-next',
+				prev: '#btn-last',
+				onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
+					self.setState({
+						index: zeroBasedSlideIndex + 1
+					});
+				}
+			});
+		}
+	},
+	render: function render() {
+		console.log('....', this.props.popin);
+		function mapObject(object, callback) {
+			return Object.keys(object).map(function (key) {
+				return callback(key, object[key]);
+			});
+		}
+		return React.createElement(
+			'div',
+			{ id: "diaporama" },
+			mapObject(this.props.popin, function (key, value) {
+				return React.createElement('img', { src: value });
+			})
+		);
+	}
 });
 
 exports['default'] = Diaporama;
@@ -26888,7 +26919,8 @@ var Resources = React.createClass({
 			texts: texts,
 			nav: null,
 			current: '',
-			currentPopin: {}
+			currentPopin: {},
+			firstTime: false
 		};
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
@@ -26913,25 +26945,12 @@ var Resources = React.createClass({
 	componentWillMount: function componentWillMount() {
 		this.updateResource();
 	},
-	componentDidMount: function componentDidMount() {
-		var self = this;
-		$('diaporama').cycle({
-			fx: 'fade',
-			speed: 'fast',
-			timeout: 0,
-			next: '#btn-next',
-			prev: '#btn-last',
-			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
-				self.setState({
-					index: zeroBasedSlideIndex + 1
-				});
-			}
-		});
-	},
+
 	handleClick: function handleClick(e) {
 		this.setState({
 			current: $(e.currentTarget).data('resource'),
-			currentPopin: $(e.currentTarget).data('popin')
+			currentPopin: this.state.texts[$(e.currentTarget).data('popin')],
+			firstTime: true
 		});
 	},
 	render: function render() {
@@ -26990,7 +27009,7 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ onClick: this.handleClick, 'data-popin': this.state.texts.popin1, 'data-resource': this.state.texts.ressource1, 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-popin': "popin1", 'data-resource': this.state.texts.ressource1, 'data-toggle': "modal", 'data-target': "#modal" },
 							React.createElement('img', { src: this.state.texts.ressource1thumb }),
 							React.createElement('br', null),
 							this.state.texts.ressource1
@@ -27001,7 +27020,7 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ onClick: this.handleClick, 'data-popin': this.state.texts.popin2, 'data-resource': this.state.texts.ressource2, 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-popin': "popin2", 'data-resource': this.state.texts.ressource2, 'data-toggle': "modal", 'data-target': "#modal" },
 							React.createElement('img', { src: this.state.texts.ressource2thumb }),
 							React.createElement('br', null),
 							this.state.texts.ressource2
@@ -27012,7 +27031,7 @@ var Resources = React.createClass({
 						{ className: "col-md-4" },
 						React.createElement(
 							'button',
-							{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource3, 'data-popin': this.state.texts.popin3, 'data-toggle': "modal", 'data-target': "#modal" },
+							{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource3, 'data-popin': "popin3", 'data-toggle': "modal", 'data-target': "#modal" },
 							React.createElement('img', { src: this.state.texts.ressource3thumb }),
 							React.createElement('br', null),
 							this.state.texts.ressource3
@@ -27030,7 +27049,7 @@ var Resources = React.createClass({
 								{ className: "col-md-4" },
 								React.createElement(
 									'button',
-									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource4, 'data-popin': this.state.texts.popin4, 'data-toggle': "modal", 'data-target': "#modal" },
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource4, 'data-popin': "popin4", 'data-toggle': "modal", 'data-target': "#modal" },
 									React.createElement('img', { src: this.state.texts.ressource4thumb }),
 									React.createElement('br', null),
 									this.state.texts.ressource4
@@ -27045,7 +27064,7 @@ var Resources = React.createClass({
 								{ className: "col-md-4" },
 								React.createElement(
 									'button',
-									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource5, 'data-popin': this.state.texts.popin5, 'data-toggle': "modal", 'data-target': "#modal" },
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource5, 'data-popin': "popin5", 'data-toggle': "modal", 'data-target': "#modal" },
 									React.createElement('img', { src: this.state.texts.ressource5thumb }),
 									React.createElement('br', null),
 									this.state.texts.ressource5
@@ -27060,7 +27079,7 @@ var Resources = React.createClass({
 								{ className: "col-md-4" },
 								React.createElement(
 									'button',
-									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource6, 'data-popin': this.state.texts.popin6, 'data-toggle': "modal", 'data-target': "#modal" },
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource6, 'data-popin': "popin6", 'data-toggle': "modal", 'data-target': "#modal" },
 									React.createElement('img', { src: this.state.texts.ressource6thumb }),
 									React.createElement('br', null),
 									this.state.texts.ressource6
@@ -27079,7 +27098,7 @@ var Resources = React.createClass({
 								{ className: "col-md-4" },
 								React.createElement(
 									'button',
-									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource7, 'data-popin': this.state.texts.popin7, 'data-toggle': "modal", 'data-target': "#modal" },
+									{ onClick: this.handleClick, 'data-resource': this.state.texts.ressource7, 'data-popin': "popin7", 'data-toggle': "modal", 'data-target': "#modal" },
 									React.createElement('img', { src: this.state.texts.ressource7thumb }),
 									React.createElement('br', null),
 									this.state.texts.ressource7
@@ -27122,7 +27141,7 @@ var Resources = React.createClass({
 						React.createElement(
 							'div',
 							{ className: "modal-body" },
-							React.createElement(_diaporamaJsx2['default'], { popin: this.state.currentPopin })
+							React.createElement(_diaporamaJsx2['default'], { popin: this.state.currentPopin, firstTime: this.state.firstTime })
 						),
 						React.createElement(
 							'div',
