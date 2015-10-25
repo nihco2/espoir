@@ -63,7 +63,7 @@ let Resources = React.createClass({
 			<div className="row text-center grid">
 			<div className="col-md-4"><button onClick={this.handleClick} data-popin="popin1" data-resource={this.state.texts.ressource1} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource1thumb} /><br />{this.state.texts.ressource1}</button></div>
 				<div className="col-md-4"><button onClick={this.handleClick} data-popin="popin2" data-resource={this.state.texts.ressource2} data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource2thumb}/><br />{this.state.texts.ressource2}</button></div>
-				<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource3} data-popin="popin3" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource3thumb}/><br />{this.state.texts.ressource3}</button></div>;
+				<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource3} data-popin="popin3" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource3thumb}/><br />{this.state.texts.ressource3}</button></div>
 			</div>
 			<div className="row text-center grid">
 			{function(){

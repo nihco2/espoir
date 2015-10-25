@@ -14,21 +14,28 @@ let Diaporama = React.createClass({
 	},
 	componentDidUpdate:function(){
 		if(this.props.firstTime && this.countProperties(this.props.popin)>1){
-		this.props.firstTime = false;
-		console.log('!!!!!!!!!!!!!!!',this.props.firstTime)
- 		var self=this;
-		$('#diaporama').cycle({ 
-			fx:     'fade', 
-			speed:  'fast', 
-			timeout: 0, 
-			next:   '#btn-next', 
-			prev:   '#btn-last',
-			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
-				self.setState({
-					index:zeroBasedSlideIndex+1
-				});
-			}
-		});
+			this.props.firstTime = false;
+			var self=this;
+			$('#diaporama').cycle({ 
+				fx:     'fade', 
+				speed:  'fast', 
+				timeout: 0, 
+				next:   '#btn-next', 
+				prev:   '#btn-last',
+				onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
+					self.setState({
+						index:zeroBasedSlideIndex+1
+					});
+				}
+			});
+			$('.modal-footer').removeClass('hide');
+		}
+		else if(this.props.firstTime && this.countProperties(this.props.popin)===1){
+			$('#diaporama img').css({
+				display: 'block',
+				opacity: 1
+			});
+			$('.modal-footer').addClass('hide');
 		}
   },
 	render() {
