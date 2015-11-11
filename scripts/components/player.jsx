@@ -12,7 +12,7 @@ import Cards from '../components/card.jsx';
 
 let Player = React.createClass({
 	mixins: [Navigation],
-	
+
 	getInitialState: function () {
 		return {
 			asssets: null,
@@ -33,7 +33,7 @@ let Player = React.createClass({
 	getVolume: function () {
 		return this.getVideo().volume;
 	},
-	
+
 	hidePlay(){
 		$('.play-container').css('opacity',0);
 	},
@@ -49,7 +49,7 @@ let Player = React.createClass({
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
 			this.showPlay();
-		} 
+		}
 	},
 
 	handleClickPlay: function (event) {
@@ -62,7 +62,7 @@ let Player = React.createClass({
 			this.getVideo().pause();
 			this.showPlay();
 		}
-		
+
 	},
 
 	handleProgressBarMouseDown: function (e) {
@@ -82,7 +82,7 @@ let Player = React.createClass({
 	handleResize:function(){
 		$('video').width(window.innerWidth);
 		$('.cards,.player-container,#slider').height(window.innerHeight);
-	}, 
+	},
 	initHTML(){
       var self = this;
 			var index = 0;
@@ -92,19 +92,19 @@ let Player = React.createClass({
 				self.setCurrentState(0,0);
 			});
       $('.player-container').height(window.innerHeight).on('route:change',function(e){
-			
+
       });
-					
+
 		if(this.props.params.periode==routes.periodes[0]){
 			$('.left-nav').hide();
 		}
 		if(this.props.params.periode==routes.periodes[5]){
 			$('.right-nav').hide();
 		}
-		$('#slider').cycle({ 
-			fx:     'scrollVert', 
-			prev:   '.bottom-nav', 
-			next:   '.top-nav, .cardLink', 
+		$('#slider').cycle({
+			fx:     'scrollVert',
+			prev:   '.bottom-nav',
+			next:   '.top-nav, .cardLink',
 			timeout: 0,
 			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
 				index = zeroBasedSlideIndex;
@@ -114,7 +114,7 @@ let Player = React.createClass({
 				else{
 					$('.cards-container').fadeOut();
 				}
-				
+
 			},
 			after:function(currSlideElement, nextSlideElement,options, forwardFlag){
 				if((index === 0 || forwardFlag===true)){
@@ -122,6 +122,7 @@ let Player = React.createClass({
 					$('.cards-container').hide();
 				}
 				else{
+					self.refs['card'].init();
 					$('.cards-container').fadeIn();
 					$('.border').each(function(){
 						var borderHeight = 50;
@@ -130,9 +131,9 @@ let Player = React.createClass({
 						}
 						$(this).css({
 							width: $(this).parent().find('.photo img').width()+45+'px',
-							height: $(this).parent().find('.photo img').height()+borderHeight+'px'  
+							height: $(this).parent().find('.photo img').height()+borderHeight+'px'
 						});
-						
+
 						var posY = $(this).find('img').height();
 						$(this).parent().find('.photo').css({ 'margin-top':'-'+(posY-borderHeight/2)+'px' , 'margin-left': '22px'});
 				 });
@@ -147,7 +148,7 @@ let Player = React.createClass({
 		var currentIndex = routesArray.indexOf(currentRoute);
 		var prevRoute = routesArray[currentIndex - 1] ? routesArray[currentIndex - 1] : '';
 		var nextRoute = routesArray[currentIndex + 1] ? routesArray[currentIndex + 1] : '';
-		
+
     this.setState({
 			video1: assets.videos[routes.periodes[0]],
 			video2: assets.videos[routes.periodes[1]],
@@ -169,9 +170,9 @@ let Player = React.createClass({
 	},
 	componentDidMount: function () {
       var self = this;
-			
+
       self.initHTML();
-			
+
       self.getVideo().addEventListener('loadedmetadata', function () {
           self.getVideo().addEventListener('timeupdate', function () {
               var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
@@ -245,14 +246,14 @@ let Player = React.createClass({
 	},
 	statics: {
       willTransitionTo: function (transition, params, query, next) {
-        
+
         next();
       },
 			willTransitionFrom: function (transition, component) {
 			//$('.player-container').trigger('route:change');
 			}
 	},
-	
+
 	setCurrentCard(e){
 		var key = $(e.target).data('key');
 		this.setCurrentState(key,0);
@@ -285,7 +286,7 @@ let Player = React.createClass({
             self.transitionTo('player',{
 							periode: routes.periodes[index]
             });
-						
+
           },
 					beforeChange:function(index){
 						$('.h-nav').hide();
@@ -293,7 +294,7 @@ let Player = React.createClass({
     };
     return (
 			<div className = "player-container" >
-				
+
 				<div id="slider">
 						<section className="slides">
 							<Slider {...settings}>
@@ -307,12 +308,12 @@ let Player = React.createClass({
 						</section>
 						<section className="cards">
 							<div className="cards-container">
-							<Cards nav="espoir" card={this.state.currentEspoirCard} isEspoir={true}/>
+							<Cards nav="espoir" card={this.state.currentEspoirCard} isEspoir={true} ref={'card'} />
 							</div>
 						</section>
 						<section className="cards">
 							<div className="cards-container">
-							<Cards nav="histoire" card={this.state.currentHistoireCard} isEspoir={false} />
+							<Cards nav="histoire" card={this.state.currentHistoireCard} isEspoir={false} ref={'card'} />
 							</div>
 						</section>
 				</div>
@@ -323,12 +324,12 @@ let Player = React.createClass({
 					<nav className="h-nav">
 						<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
 						<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
-					</nav> 
+					</nav>
 					<nav className = "v-nav">
 							<a onClick={this.handleClick} className = "top-nav" ></a>
 							<a onClick={this.handleClick} className = "bottom-nav" ></a>
 					</nav>
-					<div className = "n-progress bar-top js-progress"> 
+					<div className = "n-progress bar-top js-progress">
 						<div className = "n-progress-bar js-progress-bar">
 							<div className = "mask"></div>
 							{ Object.keys(this.state.currentTimecodes).map(function (key) {
@@ -336,15 +337,15 @@ let Player = React.createClass({
 								<div onMouseDown={this.setCurrentCard} data-key={key} className = "progress-button cardLink" key={key} style={{left: this.state.currentTimecodes[key]*10 + 'px'}}> </div>
 									);
 							}, this)}
-							 
-						
-						</div>		
+
+
+						</div>
           </div>
 					<div className="play-container">
 						<div className = "play"
 							onClick = {
 									this.handleClickPlay
-							} > 
+							} >
 						</div>
 						<div className="desc">
 							<p className="youwatch">{this.state.texts.youwatch}</p>
@@ -352,23 +353,23 @@ let Player = React.createClass({
 							<small><Link to = "/">{this.state.texts.back}</Link></small>
 						</div>
 					</div>
-					<div className = "n-progress js-progress"> 
+					<div className = "n-progress js-progress">
 						<div className = "n-progress-bar js-progress-bar"
 							onMouseDown = {
 								this.handleProgressBarMouseDown
 							}>
 							<div className = "mask"></div>
-							<div className = "button-holder"> 
-								<div className = "js-progress-button progress-button"> </div> 
-							</div> 
-						</div> 
-						<div className = "time"> 
-							<span className = "ctime">00:00</span> 
+							<div className = "button-holder">
+								<div className = "js-progress-button progress-button"> </div>
+							</div>
+						</div>
+						<div className = "time">
+							<span className = "ctime">00:00</span>
 							<span className = "ttime"> 00:00 </span>
-						</div> 
-					</div> 
-					<div className = "volume"> </div> 
-			</div> 
+						</div>
+					</div>
+					<div className = "volume"> </div>
+			</div>
 		</div>
     );
 		}

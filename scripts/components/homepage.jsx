@@ -25,7 +25,7 @@ let Homepage = React.createClass({
 		texts.h3
 	} < /h3> < h4 > {
 	texts.h4
-} < /h4> 
+} < /h4>
 <p dangerouslySetInnerHTML={{__html:this.state.texts.description}}></p>
 <Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > < div className = "menutitle" > {
 texts.periodes

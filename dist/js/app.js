@@ -25065,8 +25065,14 @@ var Cards = React.createClass({
 			texts: null
 		};
 	},
+	init: function init() {
+		if (this.state.texts.type === '4') {
+			$('#card video').get(0).play();
+		}
+	},
+
 	updateCard: function updateCard(card) {
-		$.get('../../assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + card + '.json', (function (result) {
+		$.get('assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + card + '.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
 					texts: result,
@@ -25101,7 +25107,7 @@ var Cards = React.createClass({
 					return React.createElement(_componentsCardsType3Jsx2['default'], { texts: this.state.texts });
 					break;
 				case '4':
-					return React.createElement(_componentsCardsType4Jsx2['default'], { texts: this.state.texts, isEspoir: this.props.isEspoir });
+					return React.createElement(_componentsCardsType4Jsx2['default'], { texts: this.state.texts, isEspoir: this.props.isEspoir, ref: 'type4' });
 					break;
 				case '5':
 					return React.createElement(_componentsCardsType5Jsx2['default'], { texts: this.state.texts });
@@ -25164,7 +25170,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -25210,7 +25216,7 @@ var Cards = React.createClass({
 									React.createElement(
 										'div',
 										{ className: "border" },
-										React.createElement('img', { src: "../assets/images/border2.png" })
+										React.createElement('img', { src: "assets/images/border2.png" })
 									),
 									React.createElement(
 										'div',
@@ -25230,7 +25236,7 @@ var Cards = React.createClass({
 							React.createElement(
 								'div',
 								{ className: "border" },
-								React.createElement('img', { src: "../assets/images/border2.png" })
+								React.createElement('img', { src: "assets/images/border2.png" })
 							),
 							React.createElement(
 								'div',
@@ -25304,7 +25310,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -25442,7 +25448,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -25560,11 +25566,16 @@ var Cards = React.createClass({
 	displayName: 'Cards',
 
 	handleClick: function handleClick() {
+		$('#cardVideo').get(0).pause();
 		if (this.props.isEspoir) {
 			$('.bottom-nav').trigger('click');
 		} else {
 			$('.top-nav').trigger('click');
 		}
+	},
+
+	componentDidUpdate: function componentDidUpdate() {
+		$('#cardVideo').attr('src', this.props.texts.video);
 	},
 
 	render: function render() {
@@ -25576,7 +25587,7 @@ var Cards = React.createClass({
 				{ className: "type4" },
 				React.createElement(
 					'video',
-					{ controls: true, poster: this.props.texts.image1 },
+					{ id: "cardVideo", controls: true, poster: this.props.texts.image1 },
 					React.createElement('source', { src: this.props.texts.video, type: "video/mp4" })
 				),
 				React.createElement(
@@ -25588,7 +25599,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn-bottom.png", alt: "back" })
+							React.createElement('img', { src: "assets/images/back-btn-bottom.png", alt: "back" })
 						),
 						React.createElement(
 							'li',
@@ -25645,7 +25656,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn-dark.png", alt: "back" }),
+							React.createElement('img', { src: "assets/images/back-btn-dark.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -25820,7 +25831,7 @@ var Cards = React.createClass({
 						React.createElement(
 							'li',
 							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "../assets/images/back-btn.png", alt: "back" }),
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -25866,7 +25877,7 @@ var Cards = React.createClass({
 									React.createElement(
 										'div',
 										{ className: "border" },
-										React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+										React.createElement('img', { src: "assets/images/border2.png", alt: "revon" })
 									),
 									React.createElement(
 										'div',
@@ -25886,7 +25897,7 @@ var Cards = React.createClass({
 							React.createElement(
 								'div',
 								{ className: "border" },
-								React.createElement('img', { src: "../assets/images/border2.png", alt: "revon" })
+								React.createElement('img', { src: "assets/images/border2.png", alt: "revon" })
 							),
 							React.createElement(
 								'div',
@@ -26372,6 +26383,7 @@ var Player = React.createClass({
 					$('.player').show();
 					$('.cards-container').hide();
 				} else {
+					self.refs['card'].init();
 					$('.cards-container').fadeIn();
 					$('.border').each(function () {
 						var borderHeight = 50;
@@ -26566,7 +26578,7 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "cards-container" },
-						React.createElement(_componentsCardJsx2['default'], { nav: "espoir", card: this.state.currentEspoirCard, isEspoir: true })
+						React.createElement(_componentsCardJsx2['default'], { nav: "espoir", card: this.state.currentEspoirCard, isEspoir: true, ref: 'card' })
 					)
 				),
 				React.createElement(
@@ -26575,7 +26587,7 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "cards-container" },
-						React.createElement(_componentsCardJsx2['default'], { nav: "histoire", card: this.state.currentHistoireCard, isEspoir: false })
+						React.createElement(_componentsCardJsx2['default'], { nav: "histoire", card: this.state.currentHistoireCard, isEspoir: false, ref: 'card' })
 					)
 				)
 			),
@@ -26723,7 +26735,7 @@ var Resources = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '\/', className: "back" },
-					React.createElement('img', { src: "../../assets/images/left-nav.png", alt: "back" }),
+					React.createElement('img', { src: "../assets/images/left-nav.png", alt: "back" }),
 					this.state.texts.back
 				)
 			),
@@ -26939,7 +26951,7 @@ var Resources = React.createClass({
 		}
 	},
 	updateResource: function updateResource() {
-		$.get('../../assets/texts/resources/' + this.getParams().nav + '/texts.json', (function (result) {
+		$.get('../assets/texts/resources/' + this.getParams().nav + '/texts.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
 					texts: result,
@@ -26969,7 +26981,7 @@ var Resources = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '\/', className: "back" },
-					React.createElement('img', { src: "../../assets/images/left-nav.png", alt: "back" }),
+					React.createElement('img', { src: "../assets/images/left-nav.png", alt: "back" }),
 					this.state.texts.back
 				)
 			),
@@ -26985,7 +26997,7 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '/resources/' + this.state.texts.prevResource, className: "left-nav" },
-							React.createElement('img', { src: "../../assets/images/left-nav.png", alt: "back" }),
+							React.createElement('img', { src: "../assets/images/left-nav.png", alt: "back" }),
 							this.state.texts.prev
 						),
 						React.createElement(
@@ -26996,7 +27008,7 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '/resources/' + this.state.texts.nextResource, className: "right-nav" },
-							React.createElement('img', { src: "../../assets/images/right-nav.png", alt: "back" }),
+							React.createElement('img', { src: "../assets/images/right-nav.png", alt: "back" }),
 							this.state.texts.next
 						)
 					),

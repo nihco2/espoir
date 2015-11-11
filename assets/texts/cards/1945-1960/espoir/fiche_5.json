@@ -2,7 +2,7 @@
 	"type": "2",
 	"backespoir": "retour au récit",
 	"title": "Méthodes éducatives du foyer de Vitry",
-	"video": "assets/images/nom-image.jpg",
+	"video": "assets/videos/P2/P2E05.mp4",
 	"exergue": "Réconcilier le jeune avec lui-même, puis avec la société",
 	"bloctexte1": "Les différents thérapeutes historiques du foyer (Hubert Flavigny, psychiatre, Claude Martin, psychologue, Stanislaw Tomkiewicz, psychiatre, Joe Finder, éducateur) ont pu expérimenter de nombreuses méthodes éducatives qui ont fait la réputation du CFDJ de Vitry.",
 	"h2": "La sociothérapie",
@@ -17,8 +17,8 @@
 	"bloctexte6": "Exercice thérapeutique dérivé du psychodrame (simulation d’une situation particulière où chaque participant joue son propre rôle) et importée des Etats-Unis par Jean Ughetto, directeur de 53 à 56 du foyer de Vitry. Le sociodrame est une improvisation dramatique à thème réaliste et social ou chaque participant joue le rôle autre que le sien. La thérapie commence avant (lors de la discussion préalable qui définit les règles et le contexte du thème abordé) et après l’improvisation (via une discussion individuelle ou de groupe).",
 	"h2": "L'art-thérapie",
 	"bloctexte7": "Les séances de dessin ont prit une place importante dans les activités de groupe à Vitry. Détectée comme étant une activité généralement abandonnée lors de la préadolescence et vue comme une activité futile (soit une corvée, soit pour remplir les temps morts), le dessin a été revalorisé en tant que moyen d’expression et de communication pouvant palier aux difficultés de verbalisation. Les résultats graphiques sont aussi tout autant d’indices permettant de mieux comprendre la psychologie du jeune.",
-	"image1": "../../../../assets/images/P2_E_F05_I01_perche.jpg",
-	"image2": "../../../../assets/images/P2_E_F05_I02_volley.jpg",
-	"image3": "../../../../assets/images/P2_E_F05_I03_camera.jpg",
+	"image1": "assets/images/P2_E_F05_I01_perche.jpg",
+	"image2": "assets/images/P2_E_F05_I02_volley.jpg",
+	"image3": "assets/images/P2_E_F05_I03_camera.jpg",
 	"footer": "Chapitre 2, Le juge pour enfants et la semi-liberté - Méthodes éducatives du foyer de Vitry"
 }

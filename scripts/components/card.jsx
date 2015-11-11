@@ -18,8 +18,14 @@ let Cards = React.createClass({
         texts:null
       };
 	},
+	init: function(){
+		if(this.state.texts.type === '4'){
+			$('#card video').get(0).play();
+		}
+	},
+
 	updateCard:function(card){
-		$.get(`../../assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${card}.json`, function(result) {
+		$.get(`assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${card}.json`, function(result) {
       if (this.isMounted()) {
         this.setState({
           texts: result,
@@ -51,7 +57,8 @@ let Cards = React.createClass({
 				break;
 				case '3' : return (<Type3 texts={this.state.texts} />);
 				break;
-				case '4' : return (<Type4 texts={this.state.texts} isEspoir={this.props.isEspoir} />);
+				case '4' :
+				return (<Type4 texts={this.state.texts} isEspoir={this.props.isEspoir} ref={'type4'} />);
 				break;
 				case '5' : return (<Type5 texts={this.state.texts} />);
 				break;
@@ -59,7 +66,7 @@ let Cards = React.createClass({
 				break;
 				default: return (<Type1 />);
 				}
-			
+
     }
     return (<div>Loading...</div>);
     }

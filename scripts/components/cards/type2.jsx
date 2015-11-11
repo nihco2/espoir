@@ -14,7 +14,7 @@ let Cards = React.createClass({
 				<header>
 					<nav>
 						<ul>
-						<li className="back-btn" onClick={this.handleClick}><img src="../assets/images/back-btn.png" alt="back"/> </li>
+						<li className="back-btn" onClick={this.handleClick}><img src="assets/images/back-btn.png" alt="back"/> </li>
 							<li>{this.props.texts.backespoir}</li>
 						</ul>
 					</nav>

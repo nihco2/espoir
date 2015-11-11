@@ -13,14 +13,15 @@ var Route = Router.Route;
 var routes = ( < Route handler = {
 	App
 } >
+
 <Route name="player" path = "player/:periode"
 	handler = {
 		Player
 	}
 	/>
   <Route name="resources" path = "resources" handler = {Resources} / >
-	<Route path ="resources/:nav" handler = {ResourcesPeriode} /> 
-  <Route name="cards" path = "cards/:periode/:nav/:card" handler = {Card} /> 
+	<Route path ="resources/:nav" handler = {ResourcesPeriode} />
+  <Route name="cards" path = "cards/:periode/:nav/:card" handler = {Card} />
   <Route path = "credits"
   handler = {
       Credits

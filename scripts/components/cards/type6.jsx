@@ -14,7 +14,7 @@ let Cards = React.createClass({
 				<header>
 					<nav>
 						<ul>
-						<li className="back-btn" onClick={this.handleClick}><img src="../assets/images/back-btn.png" alt="back"/> </li>
+						<li className="back-btn" onClick={this.handleClick}><img src="assets/images/back-btn.png" alt="back"/> </li>
 							<li>{this.props.texts.backespoir}</li>
 						</ul>
 					</nav>
@@ -32,7 +32,7 @@ let Cards = React.createClass({
 								if (this.props.texts.image1) {
 									return <div className="photo-container">
 										<div className="border">
-											<img src="../assets/images/border2.png" alt="revon"/>
+											<img src="assets/images/border2.png" alt="revon"/>
 										</div>
 										<div className="photo">
 											<img src={this.props.texts.image1} />
@@ -45,7 +45,7 @@ let Cards = React.createClass({
 						<div className="col-xs-6 col-centered col-fixed">
 							<div className="photo-container">
 								<div className="border">
-									<img src="../assets/images/border2.png" alt="revon"/>
+									<img src="assets/images/border2.png" alt="revon"/>
 								</div>
 								<div className="photo">
 									<img src={this.props.texts.image2} />

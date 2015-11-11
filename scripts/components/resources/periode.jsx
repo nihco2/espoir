@@ -26,7 +26,7 @@ let Resources = React.createClass({
 		}
 	},
 	updateResource:function(){
-		$.get(`../../assets/texts/resources/${this.getParams().nav}/texts.json`, function(result) {
+		$.get(`../assets/texts/resources/${this.getParams().nav}/texts.json`, function(result) {
       if (this.isMounted()) {
         this.setState({
           texts: result,
@@ -38,7 +38,7 @@ let Resources = React.createClass({
   componentWillMount:function(){
  		this.updateResource();
   },
-	
+
 	handleClick:function(e){
 		this.setState({
 			current:$(e.currentTarget).data('resource'),
@@ -47,15 +47,15 @@ let Resources = React.createClass({
 		});
 	},
 	render() {
-		return ( 
+		return (
 		<section id="resources">
-		<nav><Link to={'\/'} className="back"><img src="../../assets/images/left-nav.png" alt="back" />{this.state.texts.back}</Link></nav>
+		<nav><Link to={'\/'} className="back"><img src="../assets/images/left-nav.png" alt="back" />{this.state.texts.back}</Link></nav>
 		<div className="resources-container">
 			<header>
 				<nav>
-				<Link to={`\/resources\/${this.state.texts.prevResource}`} className="left-nav"><img src="../../assets/images/left-nav.png" alt="back" />{this.state.texts.prev}</Link>
+				<Link to={`\/resources\/${this.state.texts.prevResource}`} className="left-nav"><img src="../assets/images/left-nav.png" alt="back" />{this.state.texts.prev}</Link>
 					<h1 className="periode">{this.state.texts.h1}</h1>
-					<Link to={`\/resources\/${this.state.texts.nextResource}`} className="right-nav"><img src="../../assets/images/right-nav.png" alt="back" />{this.state.texts.next}</Link>
+					<Link to={`\/resources\/${this.state.texts.nextResource}`} className="right-nav"><img src="../assets/images/right-nav.png" alt="back" />{this.state.texts.next}</Link>
 				</nav>
 				<h2>{this.state.texts.title}</h2>
 			</header>
@@ -81,8 +81,8 @@ let Resources = React.createClass({
 					return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource6} data-popin="popin6" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource6thumb}/><br />{this.state.texts.ressource6}</button></div>;
 				}
 			}.call(this)}
-				
-			
+
+
 			</div>
 			<div className="row text-center grid">
 				{function(){
@@ -90,7 +90,7 @@ let Resources = React.createClass({
 						return 	<div className="col-md-4"><button onClick={this.handleClick} data-resource={this.state.texts.ressource7} data-popin="popin7" data-toggle="modal" data-target="#modal"><img src={this.state.texts.ressource7thumb}/><br />{this.state.texts.ressource7}</button></div>;
 					}
 				}.call(this)}
-				
+
 			</div>
 			<hr />
 		</div>
@@ -108,7 +108,7 @@ let Resources = React.createClass({
 						<div id="last-next">
 							<div id="btn-last"></div>
 								<div id="btn-next"></div>
-							</div> 
+							</div>
 					</div>
 				</div>
 			</div>
