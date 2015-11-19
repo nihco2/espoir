@@ -8,6 +8,10 @@ let Cards = React.createClass({
 		$('.bottom-nav').trigger('click');
 	},
 
+	componentDidUpdate:function(){
+		$('#cardVideoType2').attr('src',this.props.texts.video);
+	},
+
 	render() {
       return (
 			<div id="card">
@@ -20,33 +24,41 @@ let Cards = React.createClass({
 					</nav>
 					<h1 dangerouslySetInnerHTML={{__html:this.props.texts.title}}></h1>
 					<h2 dangerouslySetInnerHTML={{__html:this.props.texts.exergue}}></h2>
-				</header>   
+				</header>
 				 <div className="container">
 				 	<div className="row row-centered">
 						<div className="sep sep-1 sep-left"> </div>
-  						<div className="col-xs-6 col-centered col-fixed"> 
-  							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p> 
+  						<div className="col-xs-6 col-centered col-fixed">
+  							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
              	</div>
               <div className="col-xs-6 col-centered col-fixed">
 								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
-
+								<div id="quote">
+                 	<div class="sep sep-2 sep-left"> </div>
+	                 	<p dangerouslySetInnerHTML={{__html:this.props.texts.citation1}}></p>
+	                  <div class="sep sep-2 sep-right"> </div>
+            		</div>
 							</div>
-	
-						 	<video width="946" height="544" controls poster={this.props.texts.image1}>
-								<source src={this.props.texts.video} type="video/mp4" /> 
+
+						 	<video id="cardVideoType2" width="946" height="544" controls poster={this.props.texts.image1}>
+								<source src={this.props.texts.video} type="video/mp4" />
 							 </video>
 
 							 <div className="sep sep-1 sep-left"> </div>
-	
-             <div className="col-xs-6 col-centered col-fixed"> 
+
+             <div className="col-xs-6 col-centered col-fixed">
   							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte3}}></p>
              </div>
-             
+
              <div className="col-xs-6 col-centered col-fixed">
      						<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte4}}></p>
-								<div className="sep sep-1 sep-right"> </div>
+								<div id="quote">
+                 	<div className="sep sep-2 sep-left"> </div>
+	                 	<p dangerouslySetInnerHTML={{__html:this.props.texts.citation2}}></p>
+	                  <div className="sep sep-2 sep-right"> </div>
+            		</div>
 						 </div>
-          	
+
 					</div>
 				 </div>
 				<div className="spacer"></div>

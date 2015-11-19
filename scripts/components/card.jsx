@@ -19,7 +19,7 @@ let Cards = React.createClass({
       };
 	},
 	init: function(){
-		if(this.state.texts.type === '4'){
+		if(this.state.texts && (this.state.texts.type === '4')){
 			$('#card video').get(0).play();
 		}
 	},

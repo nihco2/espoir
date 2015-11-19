@@ -20,10 +20,10 @@ let Cards = React.createClass({
 					</nav>
 					<h1>{this.props.texts.title}</h1>
 					<h2 dangerouslySetInnerHTML={{__html:this.props.texts.exergue}}></h2>
-				</header>   
+				</header>
 				 <div className="container">
 				 	<div className="row row-centered">
-						<div className="col-xs-6 col-centered col-fixed"> 
+						<div className="col-xs-6 col-centered col-fixed">
 							<div className="sep sep-1 sep-left"> </div>
 							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
 							<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
@@ -40,7 +40,7 @@ let Cards = React.createClass({
 									</div>
 								}
 							}.call(this)}
-							
+
 						</div>
 						<div className="col-xs-6 col-centered col-fixed">
 							<div className="photo-container">

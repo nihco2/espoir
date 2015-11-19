@@ -5,37 +5,276 @@ module.exports={
 			"id": "video1",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster1.jpg",
-			"timecodes": [15, 20, 30, 35, 45]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":30,
+				"index":2
+				},
+				{
+				"type":"espoir",
+				"time":35,
+				"index":3
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":4
+				},
+				{
+				"type":"histoire",
+				"time":50,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":60,
+				"index":1
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":3
+				}]
 		},
 		"1945-1960": {
 			"id": "video2",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster2.jpg",
-			"timecodes": [10, 15, 20, 30, 35, 40, 45]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":30,
+				"index":2
+				},
+				{
+				"type":"espoir",
+				"time":35,
+				"index":3
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":4
+				},
+				{
+				"type":"espoir",
+				"time":55,
+				"index":5
+				},
+				{
+				"type":"espoir",
+				"time":65,
+				"index":6
+				},
+				{
+				"type":"histoire",
+				"time":50,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":60,
+				"index":1
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":3
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":4
+				}]
 		},
 		"1960-1975": {
 			"id": "video3",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster3.jpg",
-			"timecodes": [15, 20, 30, 35, 45]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":30,
+				"index":2
+				},
+				{
+				"type":"espoir",
+				"time":35,
+				"index":3
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":4
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":1
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":2
+				}]
 		},
 		"1975-1985": {
 			"id": "video4",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster4.jpg",
-			"timecodes": [15, 20, 35]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":50,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":60,
+				"index":1
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":3
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":4
+				}]
 		},
 		"1985-2002": {
 			"id": "video5",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster5.jpg",
-			"timecodes": [15, 20, 35]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":50,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":1
+				}]
 		},
 		"2002-2015": {
 			"id": "video6",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster6.jpg",
-			"timecodes": [15, 20, 35]
+			"timecodes": [{
+				"type":"espoir",
+				"time":10,
+				"index":0
+				},
+				{
+				"type":"espoir",
+				"time":20,
+				"index":1
+				},
+				{
+				"type":"espoir",
+				"time":45,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":50,
+				"index":0
+				},
+				{
+				"type":"histoire",
+				"time":60,
+				"index":1
+				},
+				{
+				"type":"histoire",
+				"time":65,
+				"index":2
+				},
+				{
+				"type":"histoire",
+				"time":75,
+				"index":3
+				}]
 		}
 	},
 	"cards": {
@@ -25066,7 +25305,7 @@ var Cards = React.createClass({
 		};
 	},
 	init: function init() {
-		if (this.state.texts.type === '4') {
+		if (this.state.texts && this.state.texts.type === '4') {
 			$('#card video').get(0).play();
 		}
 	},
@@ -25294,6 +25533,10 @@ var Cards = React.createClass({
 		$('.bottom-nav').trigger('click');
 	},
 
+	componentDidUpdate: function componentDidUpdate() {
+		$('#cardVideoType2').attr('src', this.props.texts.video);
+	},
+
 	render: function render() {
 		return React.createElement(
 			'div',
@@ -25342,11 +25585,26 @@ var Cards = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "col-xs-6 col-centered col-fixed" },
-						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } })
+						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte2 } }),
+						React.createElement(
+							'div',
+							{ id: "quote" },
+							React.createElement(
+								'div',
+								{ 'class': "sep sep-2 sep-left" },
+								' '
+							),
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.citation1 } }),
+							React.createElement(
+								'div',
+								{ 'class': "sep sep-2 sep-right" },
+								' '
+							)
+						)
 					),
 					React.createElement(
 						'video',
-						{ width: "946", height: "544", controls: true, poster: this.props.texts.image1 },
+						{ id: "cardVideoType2", width: "946", height: "544", controls: true, poster: this.props.texts.image1 },
 						React.createElement('source', { src: this.props.texts.video, type: "video/mp4" })
 					),
 					React.createElement(
@@ -25365,8 +25623,18 @@ var Cards = React.createClass({
 						React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.bloctexte4 } }),
 						React.createElement(
 							'div',
-							{ className: "sep sep-1 sep-right" },
-							' '
+							{ id: "quote" },
+							React.createElement(
+								'div',
+								{ className: "sep sep-2 sep-left" },
+								' '
+							),
+							React.createElement('p', { dangerouslySetInnerHTML: { __html: this.props.texts.citation2 } }),
+							React.createElement(
+								'div',
+								{ className: "sep sep-2 sep-right" },
+								' '
+							)
 						)
 					)
 				)
@@ -26367,8 +26635,8 @@ var Player = React.createClass({
 		}
 		$('#slider').cycle({
 			fx: 'scrollVert',
-			prev: '.bottom-nav',
-			next: '.top-nav, .cardLink',
+			prev: '.bottom-nav, .cardLinkBottom',
+			next: '.top-nav, .cardLinkTop',
 			timeout: 0,
 			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
 				index = zeroBasedSlideIndex;
@@ -26518,8 +26786,13 @@ var Player = React.createClass({
 	},
 
 	setCurrentCard: function setCurrentCard(e) {
-		var key = $(e.target).data('key');
-		this.setCurrentState(key, 0);
+		var index = $(e.target).data('index');
+		var type = $(e.target).data('type');
+		if (type === "espoir") {
+			this.setCurrentState(index, 0);
+		} else {
+			this.setCurrentState(0, index);
+		}
 	},
 	render: function render() {
 		var self = this;
@@ -26621,11 +26894,20 @@ var Player = React.createClass({
 					React.createElement(
 						'div',
 						{ className: "n-progress-bar js-progress-bar" },
-						React.createElement('div', { className: "mask" }),
 						Object.keys(this.state.currentTimecodes).map(function (key) {
+							var time = this.state.currentTimecodes[key].time;
+							var type = this.state.currentTimecodes[key].type;
+							var index = this.state.currentTimecodes[key].index;
+							var classNameLink = function classNameLink() {
+								if (type === 'espoir') {
+									return 'progress-button cardLinkTop';
+								} else {
+									return 'progress-button cardLinkBottom';
+								}
+							};
 							return React.createElement(
 								'div',
-								{ onMouseDown: this.setCurrentCard, 'data-key': key, className: "progress-button cardLink", key: key, style: { left: this.state.currentTimecodes[key] * 10 + 'px' } },
+								{ onMouseDown: this.setCurrentCard, key: key, 'data-index': index, 'data-time': time, 'data-type': type, className: classNameLink(), style: { left: time * 10 + 'px' } },
 								' '
 							);
 						}, this)

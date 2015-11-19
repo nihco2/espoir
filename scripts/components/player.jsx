@@ -103,8 +103,8 @@ let Player = React.createClass({
 		}
 		$('#slider').cycle({
 			fx:     'scrollVert',
-			prev:   '.bottom-nav',
-			next:   '.top-nav, .cardLink',
+			prev:   '.bottom-nav, .cardLinkBottom',
+			next:   '.top-nav, .cardLinkTop',
 			timeout: 0,
 			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
 				index = zeroBasedSlideIndex;
@@ -255,8 +255,14 @@ let Player = React.createClass({
 	},
 
 	setCurrentCard(e){
-		var key = $(e.target).data('key');
-		this.setCurrentState(key,0);
+		let index = $(e.target).data('index');
+		let type = $(e.target).data('type');
+		if(type==="espoir"){
+			this.setCurrentState(index,0);
+		}
+		else{
+			this.setCurrentState(0,index);
+		}
 	},
 	render() {
 	  var self = this;
@@ -331,14 +337,22 @@ let Player = React.createClass({
 					</nav>
 					<div className = "n-progress bar-top js-progress">
 						<div className = "n-progress-bar js-progress-bar">
-							<div className = "mask"></div>
 							{ Object.keys(this.state.currentTimecodes).map(function (key) {
+								let time = this.state.currentTimecodes[key].time;
+								let type = this.state.currentTimecodes[key].type;
+								let index = this.state.currentTimecodes[key].index;
+								let classNameLink =function(){
+									if(type === 'espoir'){
+										return 'progress-button cardLinkTop';
+									}
+									else{
+										return 'progress-button cardLinkBottom';
+									}
+								};
 								return (
-								<div onMouseDown={this.setCurrentCard} data-key={key} className = "progress-button cardLink" key={key} style={{left: this.state.currentTimecodes[key]*10 + 'px'}}> </div>
-									);
+									<div onMouseDown={this.setCurrentCard} key={key} data-index={index} data-time={time} data-type={type} className = {classNameLink()} style={{left: time*10 + 'px'}}> </div>
+								);
 							}, this)}
-
-
 						</div>
           </div>
 					<div className="play-container">
