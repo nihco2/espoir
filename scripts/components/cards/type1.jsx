@@ -10,7 +10,7 @@ let Cards = React.createClass({
 
 	render() {
       return (
-			<div id="card">
+			<div id="card" className="type1">
 				<header>
 					<nav>
 						<ul>

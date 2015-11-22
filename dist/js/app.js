@@ -5,6 +5,7 @@ module.exports={
 			"id": "video1",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster1.jpg",
+			"title": "Entre temps de guerre et éducation populaire",
 			"timecodes": [{
 				"type":"espoir",
 				"time":10,
@@ -53,6 +54,7 @@ module.exports={
 		},
 		"1945-1960": {
 			"id": "video2",
+			"title": "Le juge pour enfants et la semi-libertée",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster2.jpg",
 			"timecodes": [{
@@ -118,6 +120,7 @@ module.exports={
 		},
 		"1960-1975": {
 			"id": "video3",
+			"title": "Des éducateurs dans la rue",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster3.jpg",
 			"timecodes": [{
@@ -163,6 +166,7 @@ module.exports={
 		},
 		"1975-1985": {
 			"id": "video4",
+			"title": "Protéger l'enfance maltraitée",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster4.jpg",
 			"timecodes": [{
@@ -208,6 +212,7 @@ module.exports={
 		},
 		"1985-2002": {
 			"id": "video5",
+			"title": "Grandir en temps de crise",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster5.jpg",
 			"timecodes": [{
@@ -238,6 +243,7 @@ module.exports={
 		},
 		"2002-2015": {
 			"id": "video6",
+			"title": "Accompagner des jeunes d'ici et d'ailleurs",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster6.jpg",
 			"timecodes": [{
@@ -25306,7 +25312,7 @@ var Cards = React.createClass({
 	},
 	init: function init() {
 		if (this.state.texts && this.state.texts.type === '4') {
-			$('#card video').get(0).play();
+			$('#cardVideo').get(0).play();
 		}
 	},
 
@@ -25396,7 +25402,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "type1" },
 			React.createElement(
 				'header',
 				null,
@@ -25540,7 +25546,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "type2" },
 			React.createElement(
 				'header',
 				null,
@@ -25703,7 +25709,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "type3" },
 			React.createElement(
 				'header',
 				null,
@@ -25849,7 +25855,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "type4" },
 			React.createElement(
 				'div',
 				{ className: "type4" },
@@ -25911,7 +25917,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card", className: "histoire" },
+			{ id: "card", className: "histoire type5" },
 			React.createElement(
 				'header',
 				null,
@@ -26086,7 +26092,7 @@ var Cards = React.createClass({
 	render: function render() {
 		return React.createElement(
 			'div',
-			{ id: "card" },
+			{ id: "card", className: "type6" },
 			React.createElement(
 				'header',
 				null,
@@ -26651,7 +26657,10 @@ var Player = React.createClass({
 					$('.player').show();
 					$('.cards-container').hide();
 				} else {
-					self.refs['card'].init();
+					if ($(nextSlideElement).find('#card').hasClass('type4')) {
+						self.refs['card'].init();
+					}
+
 					$('.cards-container').fadeIn();
 					$('.border').each(function () {
 						var borderHeight = 50;
@@ -26685,6 +26694,7 @@ var Player = React.createClass({
 			video4: assets.videos[routes.periodes[3]],
 			video5: assets.videos[routes.periodes[4]],
 			video6: assets.videos[routes.periodes[5]],
+			title: assets.videos[this.props.params.periode].title,
 			currentVideoId: assets.videos[this.props.params.periode].id,
 			currentRoute: this.props.params.periode,
 			prevRoute: prevRoute,
@@ -26929,7 +26939,7 @@ var Player = React.createClass({
 						React.createElement(
 							'p',
 							{ className: "videoTitle" },
-							'Le bagne pour les enfants'
+							this.state.title
 						),
 						React.createElement(
 							'small',

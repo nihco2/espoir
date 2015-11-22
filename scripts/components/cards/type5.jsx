@@ -10,7 +10,7 @@ let Cards = React.createClass({
 
 	render() {
       return (
-			<div id="card" className="histoire">
+			<div id="card" className="histoire type5">
 				<header>
 					<nav>
 						<ul>
@@ -19,7 +19,7 @@ let Cards = React.createClass({
 						</ul>
 					</nav>
 					 <h1>ESPOIR</h1>
-				</header>   
+				</header>
 				 <div className="container">
 				 	<div className="row row-centered">
 						<div className="col-lg-12 col-centered">
@@ -29,7 +29,7 @@ let Cards = React.createClass({
       				</div>
       				<div className="sep sep-5 "> </div>
       				<div className="col-lg-12">
-        				<div className="col3">					
+        				<div className="col3">
 									<p><span className="italic">{this.props.texts.question1}</span></p>
 									<p dangerouslySetInnerHTML={{__html:this.props.texts.citation1}}></p>
 									<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>

@@ -15,11 +15,11 @@ let Cards = React.createClass({
 
 	componentDidMount(){
 		var self=this;
-		$('#border-4').cycle({ 
-			fx:     'fade', 
-			speed:  'fast', 
-			timeout: 0, 
-			next:   '#btn-next', 
+		$('#border-4').cycle({
+			fx:     'fade',
+			speed:  'fast',
+			timeout: 0,
+			next:   '#btn-next',
 			prev:   '#btn-last',
 			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
 			self.setState({
@@ -30,7 +30,7 @@ let Cards = React.createClass({
 	},
 	render() {
       return (
-			<div id="card">
+			<div id="card" className="type3">
 				<header>
 					<nav>
 						<ul>
@@ -40,11 +40,11 @@ let Cards = React.createClass({
 					</nav>
 					<h1>{this.props.texts.title}</h1>
 					<h2 dangerouslySetInnerHTML={{__html:this.props.texts.exergue}}></h2>
-				</header>   
+				</header>
 				 <div className="container">
 				 	<div className="row row-centered">
-						<div className="text-center"> 
-							<div id="border-4"> 
+						<div className="text-center">
+							<div id="border-4">
 								<img src={this.props.texts.diapo1} />
 								<img src={this.props.texts.diapo2} />
 								<img src={this.props.texts.diapo3} />
@@ -67,23 +67,23 @@ let Cards = React.createClass({
 								<img src={this.props.texts.diapo16} />
 								<img src={this.props.texts.diapo16bis} />
 								<img src={this.props.texts.diapo17} />
-							</div> 
-							<div id="bottom-nav"> 
+							</div>
+							<div id="bottom-nav">
 								<div id="last-next">
 									<div id="btn-last"></div>
 									<div id="btn-next"></div>
-								</div> 
+								</div>
 								<div id="page-num">{this.state.index}/22</div>
 							</div>
 						 <div className="sep sep-4 sep-center "> </div>
-                            
-           	</div>   
-      
+
+           	</div>
+
   			 		<div className="row">
-							<div className="col-md-6 text-justify"> 
+							<div className="col-md-6 text-justify">
 								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte1}}></p>
 							</div>
-							<div className="col-md-6 text-justify"> 
+							<div className="col-md-6 text-justify">
 								<p dangerouslySetInnerHTML={{__html:this.props.texts.bloctexte2}}></p>
 							</div>
 						</div>

@@ -4,6 +4,7 @@
 			"id": "video1",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster1.jpg",
+			"title": "Entre temps de guerre et éducation populaire",
 			"timecodes": [{
 				"type":"espoir",
 				"time":10,
@@ -52,6 +53,7 @@
 		},
 		"1945-1960": {
 			"id": "video2",
+			"title": "Le juge pour enfants et la semi-libertée",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster2.jpg",
 			"timecodes": [{
@@ -117,6 +119,7 @@
 		},
 		"1960-1975": {
 			"id": "video3",
+			"title": "Des éducateurs dans la rue",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster3.jpg",
 			"timecodes": [{
@@ -162,6 +165,7 @@
 		},
 		"1975-1985": {
 			"id": "video4",
+			"title": "Protéger l'enfance maltraitée",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster4.jpg",
 			"timecodes": [{
@@ -207,6 +211,7 @@
 		},
 		"1985-2002": {
 			"id": "video5",
+			"title": "Grandir en temps de crise",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster5.jpg",
 			"timecodes": [{
@@ -237,6 +242,7 @@
 		},
 		"2002-2015": {
 			"id": "video6",
+			"title": "Accompagner des jeunes d'ici et d'ailleurs",
 			"src": "assets/videos/sociodrame.mp4",
 			"poster": "assets/images/poster6.jpg",
 			"timecodes": [{

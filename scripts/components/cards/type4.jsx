@@ -20,7 +20,7 @@ let Cards = React.createClass({
 
 	render() {
       return (
-			<div id="card">
+			<div id="card" className="type4">
 				 <div className="type4">
 				 		<video id="cardVideo" controls poster={this.props.texts.image1}>
 								<source src={this.props.texts.video} type="video/mp4" />

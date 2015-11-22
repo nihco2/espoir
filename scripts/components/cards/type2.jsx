@@ -14,7 +14,7 @@ let Cards = React.createClass({
 
 	render() {
       return (
-			<div id="card">
+			<div id="card" className="type2">
 				<header>
 					<nav>
 						<ul>

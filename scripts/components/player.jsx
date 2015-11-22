@@ -122,7 +122,10 @@ let Player = React.createClass({
 					$('.cards-container').hide();
 				}
 				else{
-					self.refs['card'].init();
+					if($(nextSlideElement).find('#card').hasClass('type4')){
+						self.refs['card'].init();
+					}
+
 					$('.cards-container').fadeIn();
 					$('.border').each(function(){
 						var borderHeight = 50;
@@ -156,6 +159,7 @@ let Player = React.createClass({
 			video4: assets.videos[routes.periodes[3]],
 			video5: assets.videos[routes.periodes[4]],
 			video6: assets.videos[routes.periodes[5]],
+			title: assets.videos[this.props.params.periode].title,
       currentVideoId:assets.videos[this.props.params.periode].id,
 			currentRoute:this.props.params.periode,
 			prevRoute:prevRoute,
@@ -363,7 +367,7 @@ let Player = React.createClass({
 						</div>
 						<div className="desc">
 							<p className="youwatch">{this.state.texts.youwatch}</p>
-							<p className="videoTitle">Le bagne pour les enfants</p>
+							<p className="videoTitle">{this.state.title}</p>
 							<small><Link to = "/">{this.state.texts.back}</Link></small>
 						</div>
 					</div>
