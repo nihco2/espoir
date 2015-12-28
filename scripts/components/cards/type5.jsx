@@ -12,9 +12,9 @@ let Cards = React.createClass({
       return (
 			<div id="card" className="histoire type5">
 				<header>
-					<nav>
+					<nav onClick={this.handleClick}>
 						<ul>
-              <li className="back-btn" onClick={this.handleClick}><img src="assets/images/back-btn-dark.png" alt="back"/> </li>
+              <li className="back-btn"><img src="assets/images/back-btn.png" alt="back"/> </li>
 							<li>{this.props.texts.backhistoire}</li>
 						</ul>
 					</nav>

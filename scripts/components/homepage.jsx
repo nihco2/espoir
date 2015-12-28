@@ -13,7 +13,8 @@ let Homepage = React.createClass({
 			};
 		},
 		render() {
-			return ( < div className = "homepage" > < nav > < Link to = {
+			return ( 
+			< div className = "homepage" > < nav > < Link to = {
 					'\/resources'
 				} > {
 					texts.resources
@@ -27,7 +28,7 @@ let Homepage = React.createClass({
 	texts.h4
 } < /h4>
 <p dangerouslySetInnerHTML={{__html:this.state.texts.description}}></p>
-<Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link > < /div>< /div > < /div > < div className = "menutitle" > {
+<Link to={`\/player\/${this.state.firstPeriode}`} className="go">{texts.go}</Link> < /div>< /div > < /div > < div className = "menutitle" > {
 texts.periodes
 } < span className = "arrow" > < /span>< /div > < aside > < Link to = {
 		`\/player\/${this.state.texts.periode1}`

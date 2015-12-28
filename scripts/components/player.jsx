@@ -9,6 +9,7 @@ var Navigation = require('react-router').Navigation;
 
 import Video from '../components/video.jsx';
 import Cards from '../components/card.jsx';
+import ProgressBar from '../components/player/progress-bar.js';
 
 let Player = React.createClass({
 	mixins: [Navigation],
@@ -65,20 +66,6 @@ let Player = React.createClass({
 
 	},
 
-	handleProgressBarMouseDown: function (e) {
-
-		if (!this.getVideo().paused) {
-			this.getVideo().pause();
-		}
-
-		// Position x de la souris lors du clic
-		var x = e.pageX - $('.js-progress').offset().left - 50;
-		var progWidth = document.querySelector('.js-progress').offsetWidth;
-		// Mise à jour du temps actuel
-		var currentTime = (x / progWidth) * this.getDuration();
-
-		this.getVideo().currentTime = currentTime;
-	},
 	handleResize:function(){
 		$('video').width(window.innerWidth);
 		$('.cards,.player-container,#slider').height(window.innerHeight);
@@ -110,6 +97,7 @@ let Player = React.createClass({
 				index = zeroBasedSlideIndex;
 				if(zeroBasedSlideIndex!==0){
 					$('.player').hide();
+					self.getVideo().pause();
 				}
 				else{
 					$('.cards-container').fadeOut();
@@ -239,6 +227,19 @@ let Player = React.createClass({
           });
       });
 	},
+	handleProgressBarMouseDown(e){
+		if (!this.getVideo().paused) {
+			this.getVideo().pause();
+		}
+
+		// Position x de la souris lors du clic
+		var x = e.pageX - $('.js-progress').offset().left - 50;
+		var progWidth = document.querySelector('.js-progress').offsetWidth;
+		// Mise à jour du temps actuel
+		var currentTime = (x / progWidth) * this.getDuration();
+
+		this.getVideo().currentTime = currentTime;
+	},
 	handleClick:function(e){
 		this.getVideo().pause();
 		switch($(e.target).attr('class')){
@@ -339,26 +340,7 @@ let Player = React.createClass({
 							<a onClick={this.handleClick} className = "top-nav" ></a>
 							<a onClick={this.handleClick} className = "bottom-nav" ></a>
 					</nav>
-					<div className = "n-progress bar-top js-progress">
-						<div className = "n-progress-bar js-progress-bar">
-							{ Object.keys(this.state.currentTimecodes).map(function (key) {
-								let time = this.state.currentTimecodes[key].time;
-								let type = this.state.currentTimecodes[key].type;
-								let index = this.state.currentTimecodes[key].index;
-								let classNameLink =function(){
-									if(type === 'espoir'){
-										return 'progress-button cardLinkTop';
-									}
-									else{
-										return 'progress-button cardLinkBottom';
-									}
-								};
-								return (
-									<div onMouseDown={this.setCurrentCard} key={key} data-index={index} data-time={time} data-type={type} className = {classNameLink()} style={{left: time*10 + 'px'}}> </div>
-								);
-							}, this)}
-						</div>
-          </div>
+					<ProgressBar currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
 					<div className="play-container">
 						<div className = "play"
 							onClick = {
@@ -376,7 +358,16 @@ let Player = React.createClass({
 							onMouseDown = {
 								this.handleProgressBarMouseDown
 							}>
-							<div className = "mask"></div>
+							{ Object.keys(this.state.currentTimecodes).map(function (key) {
+								let time = this.state.currentTimecodes[key].time;
+								let type = this.state.currentTimecodes[key].type;
+								let index = this.state.currentTimecodes[key].index;
+	
+								if(type === 'histoire'){
+								return (
+									<div onMouseDown={this.setCurrentCard} key={key} data-index={index} data-time={time} data-type={type} className = 'progress-button cardLinkTop' style={{left: time*10 + 'px'}}> </div>);
+								}
+							}, this)}
 							<div className = "button-holder">
 								<div className = "js-progress-button progress-button"> </div>
 							</div>

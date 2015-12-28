@@ -25260,7 +25260,7 @@ _reactRouter2['default'].run(routes, function (Root) {
   _react2['default'].render(_react2['default'].createElement(Root, null), document.body);
 });
 
-},{"./components/card.jsx":224,"./components/credits.jsx":231,"./components/homepage.jsx":232,"./components/player.jsx":233,"./components/resources.jsx":234,"./components/resources/periode.jsx":236,"react":222,"react-router":31}],224:[function(require,module,exports){
+},{"./components/card.jsx":224,"./components/credits.jsx":231,"./components/homepage.jsx":232,"./components/player.jsx":233,"./components/resources.jsx":235,"./components/resources/periode.jsx":237,"react":222,"react-router":31}],224:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -25857,6 +25857,29 @@ var Cards = React.createClass({
 			'div',
 			{ id: "card", className: "type4" },
 			React.createElement(
+				'header',
+				null,
+				React.createElement(
+					'nav',
+					{ onClick: this.handleClick },
+					React.createElement(
+						'ul',
+						null,
+						React.createElement(
+							'li',
+							{ className: "back-btn" },
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
+							' '
+						),
+						React.createElement(
+							'li',
+							null,
+							this.props.texts.backespoir
+						)
+					)
+				)
+			),
+			React.createElement(
 				'div',
 				{ className: "type4" },
 				React.createElement(
@@ -25923,14 +25946,14 @@ var Cards = React.createClass({
 				null,
 				React.createElement(
 					'nav',
-					null,
+					{ onClick: this.handleClick },
 					React.createElement(
 						'ul',
 						null,
 						React.createElement(
 							'li',
-							{ className: "back-btn", onClick: this.handleClick },
-							React.createElement('img', { src: "assets/images/back-btn-dark.png", alt: "back" }),
+							{ className: "back-btn" },
+							React.createElement('img', { src: "assets/images/back-btn.png", alt: "back" }),
 							' '
 						),
 						React.createElement(
@@ -26541,6 +26564,10 @@ var _componentsCardJsx = require('../components/card.jsx');
 
 var _componentsCardJsx2 = _interopRequireDefault(_componentsCardJsx);
 
+var _componentsPlayerProgressBarJs = require('../components/player/progress-bar.js');
+
+var _componentsPlayerProgressBarJs2 = _interopRequireDefault(_componentsPlayerProgressBarJs);
+
 var React = require('react');
 var assets = require('../../assets/assets.json');
 var ReactRouter = require('react-router');
@@ -26605,20 +26632,6 @@ var Player = React.createClass({
 		}
 	},
 
-	handleProgressBarMouseDown: function handleProgressBarMouseDown(e) {
-
-		if (!this.getVideo().paused) {
-			this.getVideo().pause();
-		}
-
-		// Position x de la souris lors du clic
-		var x = e.pageX - $('.js-progress').offset().left - 50;
-		var progWidth = document.querySelector('.js-progress').offsetWidth;
-		// Mise à jour du temps actuel
-		var currentTime = x / progWidth * this.getDuration();
-
-		this.getVideo().currentTime = currentTime;
-	},
 	handleResize: function handleResize() {
 		$('video').width(window.innerWidth);
 		$('.cards,.player-container,#slider').height(window.innerHeight);
@@ -26648,6 +26661,7 @@ var Player = React.createClass({
 				index = zeroBasedSlideIndex;
 				if (zeroBasedSlideIndex !== 0) {
 					$('.player').hide();
+					self.getVideo().pause();
 				} else {
 					$('.cards-container').fadeOut();
 				}
@@ -26898,31 +26912,7 @@ var Player = React.createClass({
 					React.createElement('a', { onClick: this.handleClick, className: "top-nav" }),
 					React.createElement('a', { onClick: this.handleClick, className: "bottom-nav" })
 				),
-				React.createElement(
-					'div',
-					{ className: "n-progress bar-top js-progress" },
-					React.createElement(
-						'div',
-						{ className: "n-progress-bar js-progress-bar" },
-						Object.keys(this.state.currentTimecodes).map(function (key) {
-							var time = this.state.currentTimecodes[key].time;
-							var type = this.state.currentTimecodes[key].type;
-							var index = this.state.currentTimecodes[key].index;
-							var classNameLink = function classNameLink() {
-								if (type === 'espoir') {
-									return 'progress-button cardLinkTop';
-								} else {
-									return 'progress-button cardLinkBottom';
-								}
-							};
-							return React.createElement(
-								'div',
-								{ onMouseDown: this.setCurrentCard, key: key, 'data-index': index, 'data-time': time, 'data-type': type, className: classNameLink(), style: { left: time * 10 + 'px' } },
-								' '
-							);
-						}, this)
-					)
-				),
+				React.createElement(_componentsPlayerProgressBarJs2['default'], { currentTimecodes: this.state.currentTimecode }),
 				React.createElement(
 					'div',
 					{ className: "play-container" },
@@ -26959,7 +26949,19 @@ var Player = React.createClass({
 						'div',
 						{ className: "n-progress-bar js-progress-bar",
 							onMouseDown: this.handleProgressBarMouseDown },
-						React.createElement('div', { className: "mask" }),
+						Object.keys(this.state.currentTimecodes).map(function (key) {
+							var time = this.state.currentTimecodes[key].time;
+							var type = this.state.currentTimecodes[key].type;
+							var index = this.state.currentTimecodes[key].index;
+
+							if (type === 'histoire') {
+								return React.createElement(
+									'div',
+									{ onMouseDown: this.setCurrentCard, key: key, 'data-index': index, 'data-time': time, 'data-type': type, className: 'progress-button cardLinkTop', style: { left: time * 10 + 'px' } },
+									' '
+								);
+							}
+						}, this),
 						React.createElement(
 							'div',
 							{ className: "button-holder" },
@@ -26998,7 +27000,86 @@ var Player = React.createClass({
 exports['default'] = Player;
 module.exports = exports['default'];
 
-},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":224,"../components/video.jsx":237,"react":222,"react-router":31,"react-slick":49}],234:[function(require,module,exports){
+},{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":224,"../components/player/progress-bar.js":234,"../components/video.jsx":238,"react":222,"react-router":31,"react-slick":49}],234:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var ProgressBar = (function (_React$Component) {
+	_inherits(ProgressBar, _React$Component);
+
+	function ProgressBar() {
+		_classCallCheck(this, ProgressBar);
+
+		_get(Object.getPrototypeOf(ProgressBar.prototype), 'constructor', this).call(this);
+	}
+
+	_createClass(ProgressBar, [{
+		key: 'handleProgressBarMouseDown',
+		value: function handleProgressBarMouseDown(e) {
+			if (!this.getVideo().paused) {
+				this.getVideo().pause();
+			}
+
+			// Position x de la souris lors du clic
+			var x = e.pageX - $('.js-progress').offset().left - 50;
+			var progWidth = document.querySelector('.js-progress').offsetWidth;
+			// Mise à jour du temps actuel
+			var currentTime = x / progWidth * this.getDuration();
+
+			this.getVideo().currentTime = currentTime;
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2['default'].createElement(
+				'div',
+				{ className: "n-progress bar-top js-progress" },
+				_react2['default'].createElement(
+					'div',
+					{ className: "n-progress-bar js-progress-bar",
+						onMouseDown: this.handleProgressBarMouseDown },
+					Object.keys(this.props.currentTimecodes).map(function (key) {
+						var time = this.state.currentTimecodes[key].time;
+						var type = this.state.currentTimecodes[key].type;
+						var index = this.state.currentTimecodes[key].index;
+
+						if (type === 'espoir') {
+							return _react2['default'].createElement(
+								'div',
+								{ onMouseDown: this.setCurrentCard, key: key, 'data-index': index, 'data-time': time, 'data-type': type, className: 'progress-button cardLinkTop', style: { left: time * 10 + 'px' } },
+								' '
+							);
+						}
+					}, this)
+				)
+			);
+		}
+	}]);
+
+	return ProgressBar;
+})(_react2['default'].Component);
+
+exports['default'] = ProgressBar;
+module.exports = exports['default'];
+
+},{"react":222}],235:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -27131,7 +27212,7 @@ var Resources = React.createClass({
 exports['default'] = Resources;
 module.exports = exports['default'];
 
-},{"../../assets/texts/resources/texts.json":5,"react":222,"react-router":31}],235:[function(require,module,exports){
+},{"../../assets/texts/resources/texts.json":5,"react":222,"react-router":31}],236:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -27198,7 +27279,7 @@ var Diaporama = React.createClass({
 exports['default'] = Diaporama;
 module.exports = exports['default'];
 
-},{"react":222}],236:[function(require,module,exports){
+},{"react":222}],237:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -27472,7 +27553,7 @@ var Resources = React.createClass({
 exports['default'] = Resources;
 module.exports = exports['default'];
 
-},{"../../../assets/texts/home/texts.json":4,"./diaporama.jsx":235,"react":222,"react-router":31}],237:[function(require,module,exports){
+},{"../../../assets/texts/home/texts.json":4,"./diaporama.jsx":236,"react":222,"react-router":31}],238:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

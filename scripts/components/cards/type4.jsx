@@ -21,6 +21,14 @@ let Cards = React.createClass({
 	render() {
       return (
 			<div id="card" className="type4">
+				<header>
+					<nav onClick={this.handleClick}>
+						<ul>
+						<li className="back-btn"><img src="assets/images/back-btn.png" alt="back"/> </li>
+							<li>{this.props.texts.backespoir}</li>
+						</ul>
+					</nav>
+				</header>
 				 <div className="type4">
 				 		<video id="cardVideo" controls poster={this.props.texts.image1}>
 								<source src={this.props.texts.video} type="video/mp4" />

@@ -7,13 +7,17 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	margin-top: -57px;
+	padding-top: 100px;
 	header {
 		text-align: center;
 		margin: 0;
 		nav {
-			position: relative;
+			position: fixed;
+			top: 0;
+			right: 40px;
 			font-family: 'IM Fell English SC', serif;
-			font-size: 2em;
+			font-size: 14px;
 			letter-spacing: 0.5px;
 			cursor: pointer;
 		}
@@ -125,6 +129,9 @@
 	footer span {
 		font-size: 1.5em;
 	}
+	&.type4 {
+		padding-top: 0;
+	}
 	.type4 {
 		background: black;
 		video {
@@ -199,6 +206,12 @@
 	color: #333;
 	background-color: #fff;
 	overflow-x: hidden;
+	&.type5 {
+		padding-top: 170px;
+		header nav ul li {
+			color: white !important;
+		}
+	}
 	header {
 		text-align: center;
 		margin: 0;
