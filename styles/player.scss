@@ -110,7 +110,7 @@ $white:#fff;
 		margin-left: -400px;
 		cursor: pointer;
 		z-index: 10;
-		width: 700px;
+		width: 800px;
 		.play {
 			display: table-cell;
 			background: url('../../assets/images/sprite.png') no-repeat;
@@ -121,7 +121,7 @@ $white:#fff;
 			display: table-cell;
 			vertical-align: middle;
 			font-family: $typo1;
-			padding-left: 60px;
+			padding-left: 30px;
 			padding-top: 30px;
 			.youwatch {
 				font-size: 20px;
@@ -140,7 +140,7 @@ $white:#fff;
 			small {
 				float: right;
 				padding-right: 14px;
-				font-size: 15px;
+				font-size: 30px;
 			}
 		}
 	}
