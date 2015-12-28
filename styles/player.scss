@@ -144,6 +144,16 @@ $white:#fff;
 			}
 		}
 	}
+	.categoryTitle{
+		color: white;
+		font-size: 40px;
+		z-index: 4;
+		position: absolute;
+		top: -30px;
+		left: -90px;
+		text-transform: capitalize;
+		font-family: $typo1;
+	}
 	.n-progress {
 		width: 100%;
 		height: 2px;
@@ -157,7 +167,7 @@ $white:#fff;
 		margin-left: -35%;
 		position: absolute;
 		width: 990px;
-		&.bar-top {
+		&.espoir {
 			top: 50px;
 		}
 		.n-progress-bar {

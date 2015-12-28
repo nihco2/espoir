@@ -9,7 +9,7 @@ var Navigation = require('react-router').Navigation;
 
 import Video from '../components/video.jsx';
 import Cards from '../components/card.jsx';
-import ProgressBar from '../components/player/progress-bar.js';
+import ProgressBar from '../components/player/progress-bar.jsx';
 
 let Player = React.createClass({
 	mixins: [Navigation],
@@ -329,9 +329,9 @@ let Player = React.createClass({
 						</section>
 				</div>
 				<div className = "player"
-          onClick = {
-              this.handleClickPause
-          }>
+                  onClick = {
+                      this.handleClickPause
+                  }>
 					<nav className="h-nav">
 						<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
 						<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
@@ -340,7 +340,7 @@ let Player = React.createClass({
 							<a onClick={this.handleClick} className = "top-nav" ></a>
 							<a onClick={this.handleClick} className = "bottom-nav" ></a>
 					</nav>
-					<ProgressBar currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
+					<ProgressBar type="espoir" currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
 					<div className="play-container">
 						<div className = "play"
 							onClick = {
@@ -353,31 +353,8 @@ let Player = React.createClass({
 							<small><Link to = "/">{this.state.texts.back}</Link></small>
 						</div>
 					</div>
-					<div className = "n-progress js-progress">
-						<div className = "n-progress-bar js-progress-bar"
-							onMouseDown = {
-								this.handleProgressBarMouseDown
-							}>
-							{ Object.keys(this.state.currentTimecodes).map(function (key) {
-								let time = this.state.currentTimecodes[key].time;
-								let type = this.state.currentTimecodes[key].type;
-								let index = this.state.currentTimecodes[key].index;
-	
-								if(type === 'histoire'){
-								return (
-									<div onMouseDown={this.setCurrentCard} key={key} data-index={index} data-time={time} data-type={type} className = 'progress-button cardLinkTop' style={{left: time*10 + 'px'}}> </div>);
-								}
-							}, this)}
-							<div className = "button-holder">
-								<div className = "js-progress-button progress-button"> </div>
-							</div>
-						</div>
-						<div className = "time">
-							<span className = "ctime">00:00</span>
-							<span className = "ttime"> 00:00 </span>
-						</div>
-					</div>
-					<div className = "volume"> </div>
+					<ProgressBar type="histoire" currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
+
 			</div>
 		</div>
     );
