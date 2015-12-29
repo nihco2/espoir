@@ -7,7 +7,9 @@ class Mark extends React.Component {
 
 	render() {
 		return(
-			<div onMouseDown={this.props.onMouseDown} key={this.props.key} data-index={this.props.index} data-time={this.props.time} data-type={this.props.type} className = 'progress-button cardLinkTop' style={{left: this.props.time*10 + 'px'}}> </div>
+			<div onMouseDown={this.props.onMouseDown} key={this.props.key} data-index={this.props.index} data-time={this.props.time} data-type={this.props.type} className = 'progress-button' style={{left: this.props.time*10 + 'px'}}>
+				<p>{this.props.title}</p>
+			</div>
 		);
 	}
 }

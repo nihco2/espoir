@@ -14,10 +14,11 @@
 		margin: 0;
 		nav {
 			position: fixed;
-			top: 0;
+			top:20px;
+			line-height: 30px;
+			font-size: 18px;
 			right: 40px;
 			font-family: 'IM Fell English SC', serif;
-			font-size: 14px;
 			letter-spacing: 0.5px;
 			cursor: pointer;
 		}
@@ -42,7 +43,7 @@
 		font-family: 'IM Fell English', serif;
 		font-size: 1.2em;
 		letter-spacing: 0.6px;
-		line-height: 40px;
+		line-height: 30px;
 		padding-left: 25px;
 		margin-top: 30px;
 	}
@@ -295,6 +296,7 @@
 	.italic {
 		color: #333;
 	}
+
 	.sep-1 {
 		background: url(../../assets/images/sep-1.png) no-repeat;
 	}

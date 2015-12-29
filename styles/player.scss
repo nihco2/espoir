@@ -134,7 +134,7 @@ $white:#fff;
 			.videoTitle {
 				font-size: 40px;
 				background: url('../../assets/images/sep-player.png') no-repeat;
-				background-position: bottom;
+				background-position: bottom left;
 				height: 75px;
 			}
 			small {
@@ -164,7 +164,7 @@ $white:#fff;
 		padding: 0;
 		bottom: 50px;
 		left: 50%;
-		margin-left: -35%;
+		margin-left: -495px;
 		position: absolute;
 		width: 990px;
 		&.espoir {

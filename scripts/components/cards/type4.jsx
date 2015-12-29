@@ -1,5 +1,6 @@
 var React = require('react');
 import ReactRouter from 'react-router';
+import Nav from './nav.jsx';
 
 var Link = ReactRouter.Link;
 
@@ -22,12 +23,7 @@ let Cards = React.createClass({
       return (
 			<div id="card" className="type4">
 				<header>
-					<nav onClick={this.handleClick}>
-						<ul>
-						<li className="back-btn"><img src="assets/images/back-btn.png" alt="back"/> </li>
-							<li>{this.props.texts.backespoir}</li>
-						</ul>
-					</nav>
+				<Nav back={this.props.texts.backespoir} callback={this.handleClick} />
 				</header>
 				 <div className="type4">
 				 		<video id="cardVideo" controls poster={this.props.texts.image1}>
