@@ -27282,9 +27282,12 @@ var Diaporama = React.createClass({
 
 		return count;
 	},
+
+	firstTime: true,
+
 	componentDidUpdate: function componentDidUpdate() {
 		if (this.props.firstTime && this.countProperties(this.props.popin) > 1) {
-			this.props.firstTime = false;
+			this.firstTime = false;
 			var self = this;
 			$('#diaporama').cycle({
 				fx: 'fade',
@@ -27299,7 +27302,7 @@ var Diaporama = React.createClass({
 				}
 			});
 			$('.modal-footer').removeClass('hide');
-		} else if (this.props.firstTime && this.countProperties(this.props.popin) === 1) {
+		} else if (this.firstTime && this.countProperties(this.props.popin) === 1) {
 			$('#diaporama img').css({
 				display: 'block',
 				opacity: 1
@@ -27308,7 +27311,6 @@ var Diaporama = React.createClass({
 		}
 	},
 	render: function render() {
-		console.log('....', this.props.popin);
 		function mapObject(object, callback) {
 			return Object.keys(object).map(function (key) {
 				return callback(key, object[key]);
@@ -27318,7 +27320,7 @@ var Diaporama = React.createClass({
 			'div',
 			{ id: 'diaporama' },
 			mapObject(this.props.popin, function (key, value) {
-				return React.createElement('img', { src: value });
+				return React.createElement('img', { key: key, src: value });
 			})
 		);
 	}
