@@ -154,6 +154,24 @@ $white:#fff;
 		text-transform: capitalize;
 		font-family: $typo1;
 	}
+	.cardTitle{
+		position: absolute;
+		width: 300px;
+		text-align: center;
+		top:40px;
+		left: -120px;
+		font-family: $typo2;
+		font-size: 18px;
+		opacity: 0;
+	}
+
+	.histoire .cardTitle{
+		top:-50px;
+	}
+	.mark:hover .cardTitle{
+		opacity: 1;
+		@include transition(all .7s ease-in-out);
+	}
 	.n-progress {
 		width: 100%;
 		height: 2px;

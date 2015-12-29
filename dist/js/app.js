@@ -27012,11 +27012,11 @@ var Mark = (function (_React$Component) {
 		value: function render() {
 			return _react2['default'].createElement(
 				'div',
-				{ onMouseDown: this.props.onMouseDown, key: this.props.key, 'data-index': this.props.index, 'data-time': this.props.time, 'data-type': this.props.type, className: 'progress-button', style: { left: this.props.time * 10 + 'px' } },
+				null,
 				_react2['default'].createElement(
-					'p',
-					null,
-					this.props.title
+					'div',
+					{ onMouseDown: this.props.onMouseDown, key: this.props.key, 'data-index': this.props.index, 'data-time': this.props.time, 'data-type': this.props.type, className: 'progress-button mark', style: { left: this.props.time * 10 + 'px' } },
+					_react2['default'].createElement('p', { className: 'cardTitle', dangerouslySetInnerHTML: { __html: this.props.title } })
 				)
 			);
 		}
@@ -27082,9 +27082,10 @@ var ProgressBar = (function (_React$Component) {
 						var time = this.props.currentTimecodes[key].time;
 						var index = this.props.currentTimecodes[key].index;
 						var type = this.props.currentTimecodes[key].type;
+						var title = this.props.currentTimecodes[key].title;
 
 						if (this.props.type === type) {
-							return _react2['default'].createElement(_markJsx2['default'], { onMouseDown: this.props.setCurrentCard, key: key, index: index, time: time, type: type });
+							return _react2['default'].createElement(_markJsx2['default'], { onMouseDown: this.props.setCurrentCard, key: key, index: index, time: time, type: type, title: title });
 						}
 					}, this),
 					_react2['default'].createElement(

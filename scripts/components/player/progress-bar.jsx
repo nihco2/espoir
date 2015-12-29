@@ -8,7 +8,7 @@ class ProgressBar extends React.Component {
 
 	render() {
 		let progressClassName =`n-progress js-progress ${this.props.type}`;
-		
+
 		return(
 			<div className = {progressClassName}>
 				<div className="categoryTitle">{this.props.type}</div>
@@ -17,13 +17,14 @@ class ProgressBar extends React.Component {
 						let time = this.props.currentTimecodes[key].time;
 						let index = this.props.currentTimecodes[key].index;
 					 	let type = this.props.currentTimecodes[key].type;
-						
+						let title = this.props.currentTimecodes[key].title;
+
 						if(this.props.type === type){
 						return (
-							<Mark onMouseDown={this.props.setCurrentCard} key={key} index={index} time={time} type={type} />
+							<Mark onMouseDown={this.props.setCurrentCard} key={key} index={index} time={time} type={type} title={title} />
 							);
 						}
-						
+
 					}, this)}
           <div className = "button-holder">
 						<div className = "js-progress-button progress-button"> </div>
