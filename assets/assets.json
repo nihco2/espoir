@@ -2,330 +2,331 @@
 	"videos": {
 		"1914-1945": {
 			"id": "video1",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p1_ESPOIR.mp4",
 			"poster": "assets/images/poster1.jpg",
 			"title": "Entre temps de guerre et éducation populaire",
 			"timecodes": [{
 				"title": "L’Enfant au Grand Air",
 				"type":"espoir",
-				"time":10,
+				"time":22,
 				"index":0
 				},
 				{
 				"title": "Les œuvres des GRUMBACH",
 				"type":"espoir",
-				"time":20,
+				"time":73,
 				"index":1
 				},
 				{
 				"title": "Ton avenir est en toi, naissance des CFDJ",
 				"type":"espoir",
-				"time":30,
+				"time":129,
 				"index":2
 				},
 				{
 				"title": "Le couple REVON,<br />un pilier de l’histoire de l’EGA et des CFDJ",
 				"type":"espoir",
-				"time":35,
+				"time":174,
 				"index":3
 				},
 				{
 				"title": "Fusion de l’EGA et des CFDJ",
 				"type":"espoir",
-				"time":45,
+				"time":220,
 				"index":4
 				},
 				{
 				"title": "Les lois de 1912",
 				"type":"histoire",
-				"time":50,
+				"time":139,
 				"index":0
 				},
 				{
 				"title" : "Les bagnes pour enfants",
 				"type":"histoire",
-				"time":60,
+				"time":149,
 				"index":1
 				},
 				{
 				"title":"La révolte de Belle-Île",
 				"type":"histoire",
-				"time":65,
+				"time":154,
 				"index":2
 				},
 				{
+				"title":"Vichy",
 				"type":"histoire",
-				"time":75,
+				"time":177,
 				"index":3
 				}]
 		},
 		"1945-1960": {
 			"id": "video2",
 			"title": "Le juge pour enfants et la semi-libertée",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p2_ESPOIR.mp4",
 			"poster": "assets/images/poster2.jpg",
 			"timecodes": [{
 				"title": "Jean CHAZAL, premier juge pour enfants",
 				"type":"espoir",
-				"time":10,
+				"time":43,
 				"index":0
 				},
 				{
 				"title": "Vitry, un foyer de semi-liberté",
 				"type":"espoir",
-				"time":20,
+				"time":50,
 				"index":1
 				},
 				{
 				"title": "Joe Finder, d'enseignant à<br />directeur de foyer de semi-liberté",
 				"type":"espoir",
-				"time":30,
+				"time":82,
 				"index":2
 				},
 				{
 				"title" : "Lunettes Noires",
 				"type":"espoir",
-				"time":35,
+				"time":118,
 				"index":3
 				},
 				{
 				"title": "Méthodes éducatives du foyer de Vitry",
 				"type":"espoir",
-				"time":45,
+				"time":127,
 				"index":4
 				},
 				{
 				"title": "Stanislaw Tomkiewicz : Un humaniste fantastique",
 				"type":"espoir",
-				"time":55,
+				"time":161,
 				"index":5
 				},
 				{
 				"title": "Le sociodrame",
 				"type":"espoir",
-				"time":65,
+				"time":189,
 				"index":6
 				},
 				{
 				"title": "1945 Juge-enfants",
 				"type":"histoire",
-				"time":50,
+				"time":13,
 				"index":0
 				},
 				{
 				"title": "L’éducation surveillée :<br />une alternative éducative à la prison",
 				"type":"histoire",
-				"time":60,
+				"time":64,
 				"index":1
 				},
 				{
 				"title": "La semi-liberté : une alternative<br />à l’internat et au retour en famille",
 				"type":"histoire",
-				"time":65,
+				"time":80,
 				"index":2
 				},
 				{
 				"title": "L'Ordonnance de 1958",
 				"type":"histoire",
-				"time":75,
+				"time":159,
 				"index":3
 				},
 				{
 				"title": "Educateur : naissance d’un métier",
 				"type":"histoire",
-				"time":75,
+				"time":187,
 				"index":4
 				}]
 		},
 		"1960-1975": {
 			"id": "video3",
 			"title": "Des éducateurs dans la rue",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p3_ESPOIR.mp4",
 			"poster": "assets/images/poster3.jpg",
 			"timecodes": [{
 				"title": "L’Opération ESPOIR de la RTL",
 				"type":"espoir",
-				"time":10,
+				"time":37,
 				"index":0
 				},
 				{
 				"title": "Les Planètes : le premier club de prévention",
 				"type":"espoir",
-				"time":20,
+				"time":82,
 				"index":1
 				},
 				{
 				"title": "Témoignages d'éducateurs d'aujourd'hui",
 				"type":"espoir",
-				"time":30,
+				"time":108,
 				"index":2
 				},
 				{
 				"title": "Le couple MANDINE, l'autre pilier de l'association",
 				"type":"espoir",
-				"time":35,
+				"time":117,
 				"index":3
 				},
 				{
 				"title": "Les autres clubs de prévention : Fresnes, Chevilly, Cachan…",
 				"type":"espoir",
-				"time":45,
+				"time":222,
 				"index":4
 				},
 				{
 				"title": "Naissance d’un métier : l’éducateur de rue",
 				"type":"histoire",
-				"time":65,
+				"time":63,
 				"index":0
 				},
 				{
 				"title": "La loi sur l'autorité parentale",
 				"type":"histoire",
-				"time":75,
+				"time":113,
 				"index":1
 				},
 				{
 				"title": "Un nouvel enjeu : la protection judiciaire des 18-21 ans",
 				"type":"histoire",
-				"time":75,
+				"time":143,
 				"index":2
 				}]
 		},
 		"1975-1985": {
 			"id": "video4",
 			"title": "Protéger l'enfance maltraitée",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p4_ESPOIR.mp4",
 			"poster": "assets/images/poster4.jpg",
 			"timecodes": [{
 				"title": "L'Action Educative en Milieu Ouvert (AEMO)",
 				"type":"espoir",
-				"time":10,
+				"time":48,
 				"index":0
 				},
 				{
 				"title": "Les enfants du foyer de Vignely",
 				"type":"espoir",
-				"time":20,
+				"time":84,
 				"index":1
 				},
 				{
 				"title": "Placement familial, témoignage",
 				"type":"espoir",
-				"time":45,
+				"time":107,
 				"index":2
 				},
 				{
 				"title": "La crise et le chômage des jeunes",
 				"type":"histoire",
-				"time":50,
+				"time":26,
 				"index":0
 				},
 				{
 				"title": "1977, 1992, 2005 : Lois sur l'assistance maternelle",
 				"type":"histoire",
-				"time":60,
+				"time":193,
 				"index":1
 				},
 				{
 				"title": "Placement familial : une histoire typiquement française",
 				"type":"histoire",
-				"time":65,
+				"time":170,
 				"index":2
 				},
 				{
 				"title": "La Marche pour l'égalité et contre le racisme",
 				"type":"histoire",
-				"time":75,
+				"time":200,
 				"index":3
 				},
 				{
 				"title": "Décentralisation de l'action sociale et protection de l'enfance",
 				"type":"histoire",
-				"time":75,
+				"time":253,
 				"index":4
 				}]
 		},
 		"1985-2002": {
 			"id": "video5",
 			"title": "Grandir en temps de crise",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p5_ESPOIR.mp4",
 			"poster": "assets/images/poster5.jpg",
 			"timecodes": [{
 				"title": "Evolution des jeunes de quartiers",
 				"type":"espoir",
-				"time":10,
+				"time":20,
 				"index":0
 				},
 				{
 				"title": "Le service SAVAE de Meaux",
 				"type":"espoir",
-				"time":20,
+				"time":107,
 				"index":1
 				},
 				{
 				"title": "1996-2006, expansion des clubs de prévention",
 				"type":"espoir",
-				"time":45,
+				"time":68,
 				"index":2
 				},
 				{
 				"title": "1987 et 1989 : vote de deux lois<br/>importantes pour les mineurs",
 				"type":"histoire",
-				"time":50,
+				"time":55,
 				"index":0
 				},
 				{
 				"title": "La justice des mineurs :<br />entre sanction et éducation",
 				"type":"histoire",
-				"time":65,
+				"time":99,
 				"index":1
 				}]
 		},
 		"2002-2015": {
 			"id": "video6",
 			"title": "Accompagner des jeunes d'ici et d'ailleurs",
-			"src": "assets/videos/sociodrame.mp4",
+			"src": "assets/videos/p6_ESPOIR.mp4",
 			"poster": "assets/images/poster6.jpg",
 			"timecodes": [{
 				"title": "L'accueil de jour",
 				"type":"espoir",
-				"time":10,
+				"time":46,
 				"index":0
 				},
 				{
 				"title": "Le poste d'intervention sociale en commissariat",
 				"type":"espoir",
-				"time":20,
+				"time":110,
 				"index":1
 				},
 				{
 				"title": "Les incasables",
 				"type":"espoir",
-				"time":45,
+				"time":242,
 				"index":2
 				},
 				{
 				"title": "Lois Perben 1 et 2",
 				"type":"histoire",
-				"time":50,
+				"time":17,
 				"index":0
 				},
 				{
 				"title": "Le diplôme d’Etat d’assistant familial",
 				"type":"histoire",
-				"time":60,
+				"time":144,
 				"index":1
 				},
 				{
 				"title": "La double loi sur la prévention de la délinquance<br />et la protection de l’enfance de mars 2007",
 				"type":"histoire",
-				"time":65,
+				"time":230,
 				"index":2
 				},
 				{
 				"title": "La circulaire « Taubira » relative aux mineurs isolés étrangers",
 				"type":"histoire",
-				"time":75,
+				"time":259,
 				"index":3
 				}]
 		}

@@ -12,7 +12,7 @@ class ProgressBar extends React.Component {
 		return(
 			<div className = {progressClassName}>
 				<div className="categoryTitle">{this.props.type}</div>
-				<div className = "n-progress-bar js-progress-bar" onMouseDown = {this.props.onMouseDown}>
+				<div className = "n-progress-bar js-progress-bar" onMouseDown = {this.props.handleProgressBarMouseDown}>
 					{ Object.keys(this.props.currentTimecodes).map(function (key) {
 						let time = this.props.currentTimecodes[key].time;
 						let index = this.props.currentTimecodes[key].index;

@@ -223,6 +223,10 @@ $white:#fff;
 			height: 50px;
 			margin-top: -3px;
 			position: absolute;
+			&.mark{
+					background: url('../../assets/images/repere.png') no-repeat;
+					top: 7px;
+			}
 		}
 	}
 	.volume {

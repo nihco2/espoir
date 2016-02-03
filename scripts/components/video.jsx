@@ -12,6 +12,9 @@ let Video = React.createClass({
 					poster = {
 							this.props.video.poster
 					}
+					onMouseMove= {
+						this.props.handleMouseMove
+					}
 					preload = "metadata" >
 					<source src = {
 							this.props.video.src

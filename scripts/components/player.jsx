@@ -19,7 +19,8 @@ let Player = React.createClass({
 			asssets: null,
 			routes: null,
       currentVideoId:null,
-			texts:texts
+			texts:texts,
+			isShowingPlayer:false
 		}
 	},
 
@@ -37,6 +38,7 @@ let Player = React.createClass({
 
 	hidePlay(){
 		$('.play-container').css('opacity',0);
+		$('.player').fadeOut();
 	},
 	showPlay(){
 		$('.play-container').css('opacity',1);
@@ -238,7 +240,10 @@ let Player = React.createClass({
 		// Mise à jour du temps actuel
 		var currentTime = (x / progWidth) * this.getDuration();
 
-		this.getVideo().currentTime = currentTime;
+		if(currentTime!==Infinity){
+			this.getVideo().currentTime = currentTime;
+		}
+
 	},
 	handleClick:function(e){
 		this.getVideo().pause();
@@ -247,6 +252,24 @@ let Player = React.createClass({
 			break;
 			case 'right-nav':$('.slick-next').trigger('click');
 			break;
+		}
+	},
+
+	handleMouseMove(){
+		if (!this.getVideo().paused && !this.state.isShowingPlayer) {
+			this.setState({
+				isShowingPlayer: true
+			});
+			$('.player').fadeIn(200,function(){
+				setTimeout(function(){
+					if(!this.getVideo().paused){
+						this.setState({
+							isShowingPlayer: false
+						});
+						$('.player').fadeOut(1500);
+					}
+				}.bind(this),5000);
+			}.bind(this));
 		}
 	},
 	statics: {
@@ -264,9 +287,11 @@ let Player = React.createClass({
 		let type = $(e.target).data('type');
 		if(type==="espoir"){
 			this.setCurrentState(index,0);
+			$('.top-nav').trigger('click');
 		}
 		else{
 			this.setCurrentState(0,index);
+			$('.bottom-nav').trigger('click');
 		}
 	},
 	render() {
@@ -303,18 +328,19 @@ let Player = React.createClass({
 						$('.h-nav').hide();
 					}
     };
+		console.log(this.state.currentHistoireCard);
     return (
 			<div className = "player-container" >
 
 				<div id="slider">
 						<section className="slides">
-							<Slider {...settings}>
-								<Video video={this.state.video1} />
-								<Video video={this.state.video2} />
-								<Video video={this.state.video3} />
-								<Video video={this.state.video4} />
-								<Video video={this.state.video5} />
-								<Video video={this.state.video6} />
+							<Slider  {...settings}>
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video1} />
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video2} />
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video3} />
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video4} />
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video5} />
+								<Video handleMouseMove={this.handleMouseMove} video={this.state.video6} />
 							</Slider>
 						</section>
 						<section className="cards">
@@ -340,12 +366,13 @@ let Player = React.createClass({
 							<a onClick={this.handleClick} className = "top-nav" ></a>
 							<a onClick={this.handleClick} className = "bottom-nav" ></a>
 					</nav>
-					<ProgressBar type="espoir" currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
+					<ProgressBar type="espoir" currentTimecodes={this.state.currentTimecodes} handleProgressBarMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
 					<div className="play-container">
 						<div className = "play"
 							onClick = {
-									this.handleClickPlay
-							} >
+								this.handleClickPlay
+							}
+						 >
 						</div>
 						<div className="desc">
 							<p className="youwatch">{this.state.texts.youwatch}</p>
@@ -353,7 +380,7 @@ let Player = React.createClass({
 							<small><Link to = "/">{this.state.texts.back}</Link></small>
 						</div>
 					</div>
-					<ProgressBar type="histoire" currentTimecodes={this.state.currentTimecodes} onMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
+					<ProgressBar type="histoire" currentTimecodes={this.state.currentTimecodes} handleProgressBarMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
 
 			</div>
 		</div>
