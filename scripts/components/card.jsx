@@ -35,7 +35,7 @@ let Cards = React.createClass({
         }
       }.bind(this));
 	},
-  componentWillMount:function(){
+  componentDidMount:function(){
  		this.updateCard(this.props.card);
   },
 	shouldComponentUpdate(params,props){
@@ -44,7 +44,7 @@ let Cards = React.createClass({
 			return true;
 		}
 		else{
-			return false;
+			return true;
 		}
 	},
 

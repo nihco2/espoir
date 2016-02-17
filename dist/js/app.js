@@ -109,7 +109,7 @@ module.exports={
 				"index":6
 				},
 				{
-				"title": "1945 Juge-enfants",
+				"title": "45 et juge des enfants",
 				"type":"histoire",
 				"time":13,
 				"index":0
@@ -319,7 +319,7 @@ module.exports={
 				"index":1
 				},
 				{
-				"title": "La double loi sur la prévention de la délinquance<br />et la protection de l’enfance de mars 2007",
+				"title": "La double loi de mars 2007",
 				"type":"histoire",
 				"time":230,
 				"index":2
@@ -25208,7 +25208,7 @@ var Cards = React.createClass({
 			}
 		}).bind(this));
 	},
-	componentWillMount: function componentWillMount() {
+	componentDidMount: function componentDidMount() {
 		this.updateCard(this.props.card);
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
@@ -25216,7 +25216,7 @@ var Cards = React.createClass({
 			this.updateCard(params.card);
 			return true;
 		} else {
-			return false;
+			return true;
 		}
 	},
 
@@ -25457,6 +25457,8 @@ var Cards = React.createClass({
 
 	handleClick: function handleClick() {
 		$('.bottom-nav').trigger('click');
+		console.log('!!!!!');
+		$('#cardVideoType2').get(0).pause();
 	},
 
 	componentDidUpdate: function componentDidUpdate() {
@@ -25740,7 +25742,7 @@ var Cards = React.createClass({
 		}
 	},
 
-	componentDidUpdate: function componentDidUpdate() {
+	componentWillMount: function componentWillMount() {
 		$('#cardVideo').attr('src', this.props.texts.video);
 	},
 
@@ -25760,24 +25762,6 @@ var Cards = React.createClass({
 					'video',
 					{ id: 'cardVideo', controls: true, poster: this.props.texts.image1 },
 					React.createElement('source', { src: this.props.texts.video, type: 'video/mp4' })
-				),
-				React.createElement(
-					'nav',
-					null,
-					React.createElement(
-						'ul',
-						null,
-						React.createElement(
-							'li',
-							{ className: 'back-btn', onClick: this.handleClick },
-							React.createElement('img', { src: 'assets/images/back-btn-bottom.png', alt: 'back' })
-						),
-						React.createElement(
-							'li',
-							null,
-							this.props.texts.backespoir
-						)
-					)
 				)
 			)
 		);
@@ -26154,8 +26138,8 @@ var Homepage = React.createClass({
 					' '
 				),
 				React.createElement(
-					Link,
-					{ to: '/credits' },
+					'a',
+					{ className: 'credits-link', 'data-toggle': 'modal', 'data-target': '#credits' },
 					texts.credits
 				),
 				' '
@@ -26385,7 +26369,286 @@ var Homepage = React.createClass({
 				),
 				' '
 			),
-			' '
+			React.createElement(
+				'div',
+				{ className: 'modal fade', id: 'credits', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
+				React.createElement(
+					'div',
+					{ className: 'modal-dialog', role: 'document' },
+					React.createElement(
+						'div',
+						{ className: 'modal-content' },
+						React.createElement(
+							'div',
+							{ className: 'modal-header' },
+							React.createElement(
+								'button',
+								{ type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+								React.createElement(
+									'span',
+									{ 'aria-hidden': 'true' },
+									'×'
+								)
+							),
+							React.createElement(
+								'h4',
+								{ className: 'modal-title', id: 'myModalLabel' },
+								'Crédits'
+							)
+						),
+						React.createElement(
+							'div',
+							{ className: 'modal-body' },
+							React.createElement(
+								'div',
+								{ className: 'row' },
+								React.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									React.createElement(
+										'p',
+										null,
+										'Conçu, écrit et réalisé par :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Chef de projet, Assistant réalisateur :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Produit par :',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Productrice exécutive :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Chargée de production :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Illustré et animé par :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Assistante animation :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Equipe éditoriale :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Image et son :',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Montage :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Etalonnage :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Illustration sonore :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Voix off :',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Enregistrement et mixage :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Webdesign :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Développement :'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Avec le soutien de :',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Comité de pilotage webdoc chez ESPOIR CFDJ :',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Archives :',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' '
+									),
+									React.createElement(
+										'p',
+										null,
+										'Avec les interventions de :',
+										React.createElement('br', null),
+										' ',
+										React.createElement('br', null),
+										' '
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'col-md-6' },
+									React.createElement(
+										'p',
+										null,
+										'Laetitia Moreau'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Nicolas Mantran'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Ségolène Fossard, Circle Line',
+										React.createElement('br', null),
+										'Laëtitia Moreau, Ondaverde'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Myrto Grecos'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Isabel Vendrell'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Aline Rollin'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Flore Vigneron'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Nicolas Mantran, Laëtitia Moreau'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Théo Ivanez, Laetitia Moreau, Nicolas Mantran, Ludovic Fossard, Raphaël Kirgo'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Pierre Simon, Yann Varenne, Mona Flammer'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Luca Casavola'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Leandro Guffanti'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Nathanaël Alimi, Lucille Boudonnat, Cathy Cerda, Nicolas Mantran, Pierre Tissot'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Thomas Houbron, Théo Grand'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Gauthier Mesnil­Blanc'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Nicolas Martin'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Agnès B., Renault, La SNCF, Le Conseil Départemental de Seine ­Et ­Marne, Le Crédit Coopératif, La Fondation Agnès B, La MAIF, Le cabinet Jégard ­ commissaire aux comptes'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Fatima Bennoukh, Dominique Brendel, Henry Colombani, Matthieu Crepon, Marie ­Françoise Leblanc, Alain Monteagle, André Morin'
+									),
+									React.createElement(
+										'p',
+										null,
+										'L’Enfant au Grand Air, Les Centres Familiaux de Jeunes, EGA­CFDJ, ESPOIR CFDJ, Radio Télé Luxembourg, L’Association des foyers CFDJ, Les Amis de Tomkiewicz, Le centre d’exposition « Enfants en Justice, XIX­XXème siècles »'
+									),
+									React.createElement(
+										'p',
+										null,
+										'Jacques Bourquin (Historien, ancien éducateur, fondateur de la RHEI et d’«Enfants en justice, XIX­XXe siècles»), Eric Pierre (Historien de l’enfance et de la jeunesse), Jean­Jacques Yvorel (Historien, chercheur à l’ENPJJ, ancien éducateur), Patrick Dubéchot (Sociologue­démographe, ancien éducateur), Jean­Pierre Rosenczveig (Magistrat, Juge des Enfants, président d’ESPOIR CFDJ), André Morin (Directeur général d’ESPOIR CFDJ, ancien éducateur), Agnès Revon (fille de Marie­Magdeleine et Louis Revon), Georges Rangassami (ancien du foyer de semi­liberté de Vitry­sur­Seine), Alain Buirette (Educateur en placement familial), Christelle Pillon (Educatrice au club de prévention de Fresnes), Sylvie Fabré (Directrice du placement familial de Melun), Marveen Chalmessin (Chef de service au club de prévention de Vitry sur Seine), Nadia Chemli (Chef de service au club de prévention de Villejuif), Blaise Andres­Garay (Cadre technique en AEMO), Houria Taybi (Chef de service en AEMO), Alain Houdy (Psychologue chez ESPOIR CFDJ), Isabelle Désiré (Directrice service accueil de jour), Christelle Bosson (ancienne résidente en placement familial puis en appartement éducatif)'
+									)
+								)
+							)
+						)
+					)
+				)
+			)
 		);
 	}
 });
@@ -26623,7 +26886,7 @@ var Player = React.createClass({
 				}
 
 				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-				document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
+				$('.js-progress-button').style.left = updProgWidth + 'px';
 
 				// Ajustement des durées
 				document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
@@ -26728,7 +26991,6 @@ var Player = React.createClass({
 				$('.h-nav').hide();
 			}
 		};
-		console.log(this.state.currentHistoireCard);
 		return React.createElement(
 			'div',
 			{ className: 'player-container' },
@@ -27005,6 +27267,15 @@ var Resources = React.createClass({
 			texts: texts
 		};
 	},
+	componentDidMount: function componentDidMount() {
+		$.get('assets/texts/resources/texts.json', (function (result) {
+			if (this.isMounted()) {
+				this.setState({
+					texts: result
+				});
+			}
+		}).bind(this));
+	},
 	render: function render() {
 		return React.createElement(
 			'section',
@@ -27015,7 +27286,7 @@ var Resources = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/', className: 'back' },
-					React.createElement('img', { src: '../assets/images/left-nav.png', alt: 'back' }),
+					React.createElement('img', { src: 'assets/images/left-nav.png', alt: 'back' }),
 					this.state.texts.back
 				)
 			),
@@ -27233,7 +27504,7 @@ var Resources = React.createClass({
 		}
 	},
 	updateResource: function updateResource() {
-		$.get('../assets/texts/resources/' + this.getParams().nav + '/texts.json', (function (result) {
+		$.get('assets/texts/resources/' + this.getParams().nav + '/texts.json', (function (result) {
 			if (this.isMounted()) {
 				this.setState({
 					texts: result,
@@ -27263,7 +27534,7 @@ var Resources = React.createClass({
 				React.createElement(
 					Link,
 					{ to: '/', className: 'back' },
-					React.createElement('img', { src: '../assets/images/left-nav.png', alt: 'back' }),
+					React.createElement('img', { src: 'assets/images/left-nav.png', alt: 'back' }),
 					this.state.texts.back
 				)
 			),
@@ -27279,7 +27550,7 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '/resources/' + this.state.texts.prevResource, className: 'left-nav' },
-							React.createElement('img', { src: '../assets/images/left-nav.png', alt: 'back' }),
+							React.createElement('img', { src: 'assets/images/left-nav.png', alt: 'back' }),
 							this.state.texts.prev
 						),
 						React.createElement(
@@ -27290,7 +27561,7 @@ var Resources = React.createClass({
 						React.createElement(
 							Link,
 							{ to: '/resources/' + this.state.texts.nextResource, className: 'right-nav' },
-							React.createElement('img', { src: '../assets/images/right-nav.png', alt: 'back' }),
+							React.createElement('img', { src: 'assets/images/right-nav.png', alt: 'back' }),
 							this.state.texts.next
 						)
 					),

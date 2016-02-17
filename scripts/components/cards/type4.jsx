@@ -15,7 +15,7 @@ let Cards = React.createClass({
 		}
 	},
 
-	componentDidUpdate:function(){
+	componentWillMount:function(){
 		$('#cardVideo').attr('src',this.props.texts.video);
 	},
 
@@ -29,14 +29,6 @@ let Cards = React.createClass({
 				 		<video id="cardVideo" controls poster={this.props.texts.image1}>
 								<source src={this.props.texts.video} type="video/mp4" />
 						</video>
-							<nav>
-							<ul>
-								<li className="back-btn" onClick={this.handleClick}>
-									<img src="assets/images/back-btn-bottom.png" alt="back"/>
-								</li>
-								<li>{this.props.texts.backespoir}</li>
-							</ul>
-						</nav>
 					</div>
 			</div>);
     }

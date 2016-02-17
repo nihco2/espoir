@@ -137,4 +137,24 @@ $white:#fff;
 	aside {
 		margin-top: -50px;
 	}
+	.credits-link{
+		cursor: pointer;
+	}
+}
+#credits{
+	h4{
+		color: #333;
+		font-size: 20px;
+	}
+	p,span{
+		color:#333;
+	}
+	p{
+		margin-bottom: 10px;
+	}
+}
+@media (min-width: 768px){
+	.homepage .home-menu .periode .periodeTitle {
+    bottom: 100px;
+	}
 }

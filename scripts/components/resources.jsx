@@ -9,10 +9,19 @@ let Resources = React.createClass({
 			texts: texts
 		};
 	},
+	componentDidMount(){
+		$.get('assets/texts/resources/texts.json', function(result) {
+			if (this.isMounted()) {
+				this.setState({
+					texts: result
+				});
+				}
+			}.bind(this));
+	},
 	render() {
 		return (
 		<section id="resources">
-		<nav><Link to={'\/'} className="back"><img src="../assets/images/left-nav.png" alt="back" />{this.state.texts.back}</Link></nav>
+		<nav><Link to={'\/'} className="back"><img src="assets/images/left-nav.png" alt="back" />{this.state.texts.back}</Link></nav>
 		<div className="resources-container">
 			<header>
 				<h1>{this.state.texts.h1}</h1>

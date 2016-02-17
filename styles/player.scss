@@ -5,6 +5,7 @@ $white:#fff;
 	position: relative;
 	height: 100%;
 	overflow: hidden;
+	z-index: 4;
 	#slider {
 		.slides {
 			background: black;
@@ -56,6 +57,7 @@ $white:#fff;
 			width: 80%;
 			font-size: 16px;
 			line-height: 40px;
+			z-index: 11;
 			.left-nav {
 				cursor: pointer;
 				float: left;

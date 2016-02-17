@@ -8,39 +8,39 @@
 	"prevResource": "ESPOIR-CFDJ",
 	"nextResource": "CFDJ",
 	"ressource1": "Le Domaine de Malakoff",
-	"ressource1thumb": "../../assets/images/Ressources/thumbs/ega-1.png",
+	"ressource1thumb": "assets/images/Ressources/thumbs/ega-1.png",
 	"popin1": {
-		"popin1-1": "../../assets/images/Ressources/Malakoff_1.jpg",
-		"popin1-2": "../../assets/images/Ressources/Malakoff_2.jpg",
-		"popin1-3": "../../assets/images/Ressources/Malakoff_3.jpg",
-		"popin1-4": "../../assets/images/Ressources/Malakoff_4.jpg",
-		"popin1-5": "../../assets/images/Ressources/Malakoff_6.jpg",
-		"popin1-6": "../../assets/images/Ressources/Malakoff_7.jpg",
-		"popin1-7": "../../assets/images/Ressources/Malakoff_8.jpg",
-		"popin1-8": "../../assets/images/Ressources/Malakoff_9.jpg",
-		"popin1-9": "../../assets/images/Ressources/Malakoff_10.jpg",
-		"popin1-10": "../../assets/images/Ressources/Malakoff_11.jpg",
-		"popin1-11": "../../assets/images/Ressources/Malakoff_12.jpg",
-		"popin1-12": "../../assets/images/Ressources/Malakoff_13.jpg",
-		"popin1-13": "../../assets/images/Ressources/Malakoff_14.jpg",
-		"popin1-14": "../../assets/images/Ressources/Malakoff_15.jpg",
-		"popin1-15": "../../assets/images/Ressources/Malakoff_16.jpg",
-		"popin1-16": "../../assets/images/Ressources/Malakoff_17.jpg",
-		"popin1-17": "../../assets/images/Ressources/Malakoff_18.jpg"
+		"popin1-1": "assets/images/Ressources/Malakoff_1.jpg",
+		"popin1-2": "assets/images/Ressources/Malakoff_2.jpg",
+		"popin1-3": "assets/images/Ressources/Malakoff_3.jpg",
+		"popin1-4": "assets/images/Ressources/Malakoff_4.jpg",
+		"popin1-5": "assets/images/Ressources/Malakoff_6.jpg",
+		"popin1-6": "assets/images/Ressources/Malakoff_7.jpg",
+		"popin1-7": "assets/images/Ressources/Malakoff_8.jpg",
+		"popin1-8": "assets/images/Ressources/Malakoff_9.jpg",
+		"popin1-9": "assets/images/Ressources/Malakoff_10.jpg",
+		"popin1-10": "assets/images/Ressources/Malakoff_11.jpg",
+		"popin1-11": "assets/images/Ressources/Malakoff_12.jpg",
+		"popin1-12": "assets/images/Ressources/Malakoff_13.jpg",
+		"popin1-13": "assets/images/Ressources/Malakoff_14.jpg",
+		"popin1-14": "assets/images/Ressources/Malakoff_15.jpg",
+		"popin1-15": "assets/images/Ressources/Malakoff_16.jpg",
+		"popin1-16": "assets/images/Ressources/Malakoff_17.jpg",
+		"popin1-17": "assets/images/Ressources/Malakoff_18.jpg"
 	},
 	"ressource2": "Emploi du temps, Malakoff",
-	"ressource2thumb": "../../assets/images/Ressources/thumbs/ega-2.png",
+	"ressource2thumb": "assets/images/Ressources/thumbs/ega-2.png",
 	"popin2": {
-		"popin2-1": "../../assets/images/Ressources/Emploi-du-temps-EGA.jpg"
+		"popin2-1": "assets/images/Ressources/Emploi-du-temps-EGA.jpg"
 	},
 	"ressource3": "Historique de l'EGA",
-	"ressource3thumb": "../../assets/images/Ressources/thumbs/ega-3.png",
+	"ressource3thumb": "assets/images/Ressources/thumbs/ega-3.png",
 	"popin3": {
-		"popin3-1": "../../assets/images/Ressources/historique_EGA.jpg"
+		"popin3-1": "assets/images/Ressources/historique_EGA.jpg"
 	},
 	"ressource4": "Statuts de l'EGA",
-	"ressource4thumb": "../../assets/images/Ressources/thumbs/ega-4.png",
+	"ressource4thumb": "assets/images/Ressources/thumbs/ega-4.png",
 	"popin4": {
-		"popin4-1": "../../assets/images/Ressources/Statuts-EGA.jpg"
+		"popin4-1": "assets/images/Ressources/Statuts-EGA.jpg"
 	}
 }

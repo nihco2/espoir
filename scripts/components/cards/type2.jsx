@@ -7,6 +7,8 @@ var Link = ReactRouter.Link;
 let Cards = React.createClass({
 	handleClick:function(){
 		$('.bottom-nav').trigger('click');
+		console.log('!!!!!')
+		$('#cardVideoType2').get(0).pause();
 	},
 
 	componentDidUpdate:function(){

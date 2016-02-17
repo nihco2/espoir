@@ -216,7 +216,7 @@ let Player = React.createClass({
               }
 
               //document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-              document.querySelector('.js-progress-button').style.left = updProgWidth + 'px';
+              $('.js-progress-button').style.left = updProgWidth + 'px';
 
               // Ajustement des durées
               document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
@@ -328,7 +328,6 @@ let Player = React.createClass({
 						$('.h-nav').hide();
 					}
     };
-		console.log(this.state.currentHistoireCard);
     return (
 			<div className = "player-container" >
 
