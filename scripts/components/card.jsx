@@ -23,31 +23,16 @@ let Cards = React.createClass({
 			$('#cardVideo').get(0).play();
 		}
 	},
-
-	updateCard:function(card){
-		$.get(`assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${card}.json`, function(result) {
-      if (this.isMounted()) {
-        this.setState({
-          texts: result,
+	componentWillReceiveProps(nextProps){
+		$.get(`assets/texts/cards/${this.getParams().periode}/${this.props.nav}/${nextProps.card}.json`, function(result) {
+				this.setState({
+					texts: result,
 					periode: this.getParams().periode,
 					card: this.props.card
-        });
-        }
-      }.bind(this));
-	},
-  componentDidMount:function(){
- 		this.updateCard(this.props.card);
-  },
-	shouldComponentUpdate(params,props){
-		if(this.state.periode!==this.getParams().periode || this.state.card!==params.card){
-			this.updateCard(params.card);
+				});
+			}.bind(this));
 			return true;
-		}
-		else{
-			return true;
-		}
 	},
-
 	render() {
     if(this.state.texts){
 			switch(this.state.texts.type){

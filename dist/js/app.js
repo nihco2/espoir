@@ -109,7 +109,7 @@ module.exports={
 				"index":6
 				},
 				{
-				"title": "45 et juge des enfants",
+				"title": "Ordonnance de 45 et juge des enfants",
 				"type":"histoire",
 				"time":13,
 				"index":0
@@ -25196,30 +25196,16 @@ var Cards = React.createClass({
 			$('#cardVideo').get(0).play();
 		}
 	},
-
-	updateCard: function updateCard(card) {
-		$.get('assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + card + '.json', (function (result) {
-			if (this.isMounted()) {
-				this.setState({
-					texts: result,
-					periode: this.getParams().periode,
-					card: this.props.card
-				});
-			}
+	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+		$.get('assets/texts/cards/' + this.getParams().periode + '/' + this.props.nav + '/' + nextProps.card + '.json', (function (result) {
+			this.setState({
+				texts: result,
+				periode: this.getParams().periode,
+				card: this.props.card
+			});
 		}).bind(this));
+		return true;
 	},
-	componentDidMount: function componentDidMount() {
-		this.updateCard(this.props.card);
-	},
-	shouldComponentUpdate: function shouldComponentUpdate(params, props) {
-		if (this.state.periode !== this.getParams().periode || this.state.card !== params.card) {
-			this.updateCard(params.card);
-			return true;
-		} else {
-			return true;
-		}
-	},
-
 	render: function render() {
 		if (this.state.texts) {
 			switch (this.state.texts.type) {
@@ -25741,9 +25727,16 @@ var Cards = React.createClass({
 			$('.top-nav').trigger('click');
 		}
 	},
+	getInitialState: function getInitialState() {
+		return {
+			video: this.props.texts.video
+		};
+	},
 
-	componentWillMount: function componentWillMount() {
-		$('#cardVideo').attr('src', this.props.texts.video);
+	componentWillReceiveProps: function componentWillReceiveProps(nextProps, nextState) {
+		this.setState({
+			video: nextProps.texts.video
+		});
 	},
 
 	render: function render() {
@@ -25758,11 +25751,7 @@ var Cards = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'type4' },
-				React.createElement(
-					'video',
-					{ id: 'cardVideo', controls: true, poster: this.props.texts.image1 },
-					React.createElement('source', { src: this.props.texts.video, type: 'video/mp4' })
-				)
+				React.createElement('video', { id: 'cardVideo', controls: true, poster: this.props.texts.image1, src: this.state.video })
 			)
 		);
 	}

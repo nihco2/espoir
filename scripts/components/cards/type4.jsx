@@ -14,9 +14,16 @@ let Cards = React.createClass({
 			$('.top-nav').trigger('click');
 		}
 	},
+	getInitialState: function () {
+		return {
+				video:this.props.texts.video
+			};
+	},
 
-	componentWillMount:function(){
-		$('#cardVideo').attr('src',this.props.texts.video);
+	componentWillReceiveProps :function(nextProps,nextState){
+		this.setState({
+			video: nextProps.texts.video
+		});
 	},
 
 	render() {
@@ -26,9 +33,7 @@ let Cards = React.createClass({
 				<Nav back={this.props.texts.backespoir} callback={this.handleClick} />
 				</header>
 				 <div className="type4">
-				 		<video id="cardVideo" controls poster={this.props.texts.image1}>
-								<source src={this.props.texts.video} type="video/mp4" />
-						</video>
+				 		<video id="cardVideo" controls poster={this.props.texts.image1} src={this.state.video} />
 					</div>
 			</div>);
     }
