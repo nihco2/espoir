@@ -40,6 +40,13 @@ let Cards = React.createClass({
 				 <div className="container">
 				 	<div className="row row-centered">
 						<div className="text-center">
+						<div id="bottom-nav">
+							<div id="last-next">
+								<div id="btn-last"></div>
+								<div id="btn-next"></div>
+							</div>
+							<div id="page-num">{this.state.index}/22</div>
+						</div>
 							<div id="border-4">
 								<img src={this.props.texts.diapo1} />
 								<img src={this.props.texts.diapo2} />
@@ -63,13 +70,6 @@ let Cards = React.createClass({
 								<img src={this.props.texts.diapo16} />
 								<img src={this.props.texts.diapo16bis} />
 								<img src={this.props.texts.diapo17} />
-							</div>
-							<div id="bottom-nav">
-								<div id="last-next">
-									<div id="btn-last"></div>
-									<div id="btn-next"></div>
-								</div>
-								<div id="page-num">{this.state.index}/22</div>
 							</div>
 						 <div className="sep sep-4 sep-center "> </div>
 

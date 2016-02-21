@@ -25193,7 +25193,7 @@ var Cards = React.createClass({
 	},
 	init: function init() {
 		if (this.state.texts && this.state.texts.type === '4') {
-			$('#cardVideo').get(0).play();
+			this.refs['type4'].init();
 		}
 	},
 	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -25443,7 +25443,6 @@ var Cards = React.createClass({
 
 	handleClick: function handleClick() {
 		$('.bottom-nav').trigger('click');
-		console.log('!!!!!');
 		$('#cardVideoType2').get(0).pause();
 	},
 
@@ -25626,6 +25625,22 @@ var Cards = React.createClass({
 						{ className: 'text-center' },
 						React.createElement(
 							'div',
+							{ id: 'bottom-nav' },
+							React.createElement(
+								'div',
+								{ id: 'last-next' },
+								React.createElement('div', { id: 'btn-last' }),
+								React.createElement('div', { id: 'btn-next' })
+							),
+							React.createElement(
+								'div',
+								{ id: 'page-num' },
+								this.state.index,
+								'/22'
+							)
+						),
+						React.createElement(
+							'div',
 							{ id: 'border-4' },
 							React.createElement('img', { src: this.props.texts.diapo1 }),
 							React.createElement('img', { src: this.props.texts.diapo2 }),
@@ -25649,22 +25664,6 @@ var Cards = React.createClass({
 							React.createElement('img', { src: this.props.texts.diapo16 }),
 							React.createElement('img', { src: this.props.texts.diapo16bis }),
 							React.createElement('img', { src: this.props.texts.diapo17 })
-						),
-						React.createElement(
-							'div',
-							{ id: 'bottom-nav' },
-							React.createElement(
-								'div',
-								{ id: 'last-next' },
-								React.createElement('div', { id: 'btn-last' }),
-								React.createElement('div', { id: 'btn-next' })
-							),
-							React.createElement(
-								'div',
-								{ id: 'page-num' },
-								this.state.index,
-								'/22'
-							)
 						),
 						React.createElement(
 							'div',
@@ -25720,22 +25719,36 @@ var Cards = React.createClass({
 	displayName: 'Cards',
 
 	handleClick: function handleClick() {
-		$('#cardVideo').get(0).pause();
+		if ($('body').hasClass('espoir')) {
+			$('.cards:first #cardVideo').get(0).pause();
+		} else {
+			$('.cards:last-child #cardVideo').get(0).pause();
+		}
 		if (this.props.isEspoir) {
 			$('.bottom-nav').trigger('click');
 		} else {
 			$('.top-nav').trigger('click');
 		}
 	},
+	init: function init() {
+		if ($('body').hasClass('espoir')) {
+			$('.cards:first #cardVideo').get(0).play();
+		} else {
+			$('.cards:last-child #cardVideo').get(0).play();
+		}
+	},
 	getInitialState: function getInitialState() {
 		return {
-			video: this.props.texts.video
+			video: this.props.texts.video,
+			videoId: this.props.texts.videoId,
+			cardVideoName: $('body').hasClass('espoir') ? 'cardVideoEspoir' : 'cardVideoHistoire'
 		};
 	},
-
-	componentWillReceiveProps: function componentWillReceiveProps(nextProps, nextState) {
+	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 		this.setState({
-			video: nextProps.texts.video
+			video: nextProps.texts.video,
+			videoId: nextProps.texts.videoId,
+			cardVideoName: $('body').hasClass('espoir') ? 'cardVideoEspoir' : 'cardVideoHistoire'
 		});
 	},
 
@@ -26652,6 +26665,8 @@ Object.defineProperty(exports, '__esModule', {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _componentsVideoJsx = require('../components/video.jsx');
@@ -26708,6 +26723,7 @@ var Player = React.createClass({
 	},
 	showPlay: function showPlay() {
 		$('.play-container').css('opacity', 1);
+		$('.player').show();
 	},
 
 	getVideo: function getVideo() {
@@ -26718,6 +26734,9 @@ var Player = React.createClass({
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
 			this.showPlay();
+			this.setState({
+				isShowingPlayer: false
+			});
 		}
 	},
 
@@ -26729,6 +26748,9 @@ var Player = React.createClass({
 		} else {
 			this.getVideo().pause();
 			this.showPlay();
+			this.setState({
+				isShowingPlayer: false
+			});
 		}
 	},
 
@@ -26758,6 +26780,11 @@ var Player = React.createClass({
 			next: '.top-nav, .cardLinkTop',
 			timeout: 0,
 			onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
+				if (isNext) {
+					$('body').removeClass().addClass('espoir');
+				} else {
+					$('body').removeClass().addClass('histoire');
+				}
 				index = zeroBasedSlideIndex;
 				if (zeroBasedSlideIndex !== 0) {
 					$('.player').hide();
@@ -26770,6 +26797,7 @@ var Player = React.createClass({
 				if (index === 0 || forwardFlag === true) {
 					$('.player').show();
 					$('.cards-container').hide();
+					self.showPlay();
 				} else {
 					if ($(nextSlideElement).find('#card').hasClass('type4')) {
 						self.refs['card'].init();
@@ -26827,6 +26855,9 @@ var Player = React.createClass({
 		self.initHTML();
 
 		self.getVideo().addEventListener('loadedmetadata', function () {
+			self.getVideo().addEventListener('ended', function () {
+				self.showPlay();
+			});
 			self.getVideo().addEventListener('timeupdate', function () {
 				var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
@@ -26875,7 +26906,9 @@ var Player = React.createClass({
 				}
 
 				//document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-				$('.js-progress-button').style.left = updProgWidth + 'px';
+				if ($('.js-progress-button').length) {
+					$('.js-progress-button').css('left', updProgWidth + 'px');
+				}
 
 				// Ajustement des durées
 				document.querySelector('.ctime').innerHTML = minutes + ':' + seconds;
@@ -26883,12 +26916,16 @@ var Player = React.createClass({
 
 				// En mode lecture, mise à jour des valeurs du tampon
 				if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {}
+				self.setState({
+					isShowingPlayer: false
+				});
 			});
 		});
 	},
 	handleProgressBarMouseDown: function handleProgressBarMouseDown(e) {
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
+			$('.player').show();
 		}
 
 		// Position x de la souris lors du clic
@@ -26899,10 +26936,13 @@ var Player = React.createClass({
 
 		if (currentTime !== Infinity) {
 			this.getVideo().currentTime = currentTime;
+			this.showPlay();
 		}
 	},
 	handleClick: function handleClick(e) {
 		this.getVideo().pause();
+		$('.player').show();
+
 		switch ($(e.target).attr('class')) {
 			case 'left-nav':
 				$('.slick-prev').trigger('click');
@@ -26913,29 +26953,22 @@ var Player = React.createClass({
 		}
 	},
 
+	timeout: null,
+
 	handleMouseMove: function handleMouseMove() {
+		clearTimeout(this.timeout);
+		this.timeout = setTimeout((function () {
+			this.setState({
+				isShowingPlayer: false
+			});
+			$('.player').hide();
+		}).bind(this), 3000);
 		if (!this.getVideo().paused && !this.state.isShowingPlayer) {
 			this.setState({
 				isShowingPlayer: true
 			});
-			$('.player').fadeIn(200, (function () {
-				setTimeout((function () {
-					if (!this.getVideo().paused) {
-						this.setState({
-							isShowingPlayer: false
-						});
-						$('.player').fadeOut(1500);
-					}
-				}).bind(this), 5000);
-			}).bind(this));
+			$('.player').show();
 		}
-	},
-	statics: {
-		willTransitionTo: function willTransitionTo(transition, params, query, next) {
-
-			next();
-		},
-		willTransitionFrom: function willTransitionFrom(transition, component) {}
 	},
 
 	setCurrentCard: function setCurrentCard(e) {
@@ -26991,7 +27024,7 @@ var Player = React.createClass({
 					{ className: 'slides' },
 					React.createElement(
 						Slider,
-						settings,
+						_extends({}, settings, { onClick: this.handleClickPlay }),
 						React.createElement(_componentsVideoJsx2['default'], { handleMouseMove: this.handleMouseMove, video: this.state.video1 }),
 						React.createElement(_componentsVideoJsx2['default'], { handleMouseMove: this.handleMouseMove, video: this.state.video2 }),
 						React.createElement(_componentsVideoJsx2['default'], { handleMouseMove: this.handleMouseMove, video: this.state.video3 }),
@@ -27025,20 +27058,6 @@ var Player = React.createClass({
 					onClick: this.handleClickPause },
 				React.createElement(
 					'nav',
-					{ className: 'h-nav' },
-					React.createElement(
-						'a',
-						{ onClick: this.handleClick, className: 'left-nav' },
-						this.state.prevRoute
-					),
-					React.createElement(
-						'a',
-						{ onClick: this.handleClick, className: 'right-nav' },
-						this.state.nextRoute
-					)
-				),
-				React.createElement(
-					'nav',
 					{ className: 'v-nav' },
 					React.createElement('a', { onClick: this.handleClick, className: 'top-nav' }),
 					React.createElement('a', { onClick: this.handleClick, className: 'bottom-nav' })
@@ -27047,6 +27066,20 @@ var Player = React.createClass({
 				React.createElement(
 					'div',
 					{ className: 'play-container' },
+					React.createElement(
+						'nav',
+						{ className: 'h-nav' },
+						React.createElement(
+							'a',
+							{ onClick: this.handleClick, className: 'left-nav' },
+							this.state.prevRoute
+						),
+						React.createElement(
+							'a',
+							{ onClick: this.handleClick, className: 'right-nav' },
+							this.state.nextRoute
+						)
+					),
 					React.createElement('div', { className: 'play',
 						onClick: this.handleClickPlay
 					}),
@@ -27084,8 +27117,6 @@ exports['default'] = Player;
 module.exports = exports['default'];
 
 //bufferLength();
-
-//$('.player-container').trigger('route:change');
 
 },{"../../assets/assets.json":1,"../../assets/routes.json":2,"../../assets/texts.json":3,"../components/card.jsx":223,"../components/player/progress-bar.jsx":235,"../components/video.jsx":239,"react":221,"react-router":32,"react-slick":50}],234:[function(require,module,exports){
 'use strict';
@@ -27390,57 +27421,61 @@ var React = require('react');
 var Diaporama = React.createClass({
 	displayName: 'Diaporama',
 
-	countProperties: function countProperties(obj) {
-		var count = 0;
-
-		for (var property in obj) {
-			if (Object.prototype.hasOwnProperty.call(obj, property)) {
-				count++;
+	componentDidMount: function componentDidMount() {
+		$('.carousel').carousel({
+			interval: 5000
+		});
+		$('#modal').on('hide.bs.modal', function (e) {
+			if ($('#vimeo').length) {
+				$('#vimeo').attr('src', '');
 			}
-		}
-
-		return count;
+		});
+		$('#modal').on('show.bs.modal', (function (e) {
+			if ($('#vimeo').length) {
+				$('#vimeo').attr('src', this.state.video);
+			}
+		}).bind(this));
 	},
-
-	firstTime: true,
-
+	getInitialState: function getInitialState() {
+		return {
+			video: 'https://player.vimeo.com/video/40408278?title=0&byline=0&portrait=0'
+		};
+	},
 	componentDidUpdate: function componentDidUpdate() {
-		if (this.props.firstTime && this.countProperties(this.props.popin) > 1) {
-			this.firstTime = false;
-			var self = this;
-			$('#diaporama').cycle({
-				fx: 'fade',
-				speed: 'fast',
-				timeout: 0,
-				next: '#btn-next',
-				prev: '#btn-last',
-				onPrevNextEvent: function onPrevNextEvent(isNext, zeroBasedSlideIndex, slideElement) {
-					self.setState({
-						index: zeroBasedSlideIndex + 1
-					});
-				}
-			});
-			$('.modal-footer').removeClass('hide');
-		} else if (this.firstTime && this.countProperties(this.props.popin) === 1) {
-			$('#diaporama img').css({
-				display: 'block',
-				opacity: 1
-			});
-			$('.modal-footer').addClass('hide');
+		if ($('.carousel-inner .item').length < 2) {
+			$('.carousel-control').css('opacity', 0);
+		} else {
+			$('.carousel-control').css('opacity', 1);
 		}
 	},
 	render: function render() {
+		var i = 0;
+		var self = this;
 		function mapObject(object, callback) {
 			return Object.keys(object).map(function (key) {
 				return callback(key, object[key]);
 			});
 		}
+
 		return React.createElement(
 			'div',
-			{ id: 'diaporama' },
-			mapObject(this.props.popin, function (key, value) {
-				return React.createElement('img', { key: key, src: value });
-			})
+			{ id: 'diaporama', className: 'carousel slide' },
+			React.createElement(
+				'div',
+				{ className: 'carousel-inner', role: 'listbox' },
+				mapObject(this.props.popin, function (key, value) {
+					var itemClass = i === 0 ? 'item active' : 'item';
+					i++;
+					if (value === 'https://vimeo.com/40408278') {
+						return React.createElement('iframe', { id: 'vimeo', src: self.state.video, width: '700', height: '525', frameBorder: '0', webkitallowfullscreen: true, mozallowfullscreen: true, allowFullscreen: true });
+					}
+					return React.createElement(
+						'div',
+						{ className: itemClass, key: key },
+						React.createElement('img', { key: key, src: value })
+					);
+				})
+			)
 		);
 	}
 });
@@ -27705,12 +27740,8 @@ var Resources = React.createClass({
 						React.createElement(
 							'div',
 							{ className: 'modal-footer' },
-							React.createElement(
-								'div',
-								{ id: 'last-next' },
-								React.createElement('div', { id: 'btn-last' }),
-								React.createElement('div', { id: 'btn-next' })
-							)
+							React.createElement('div', { id: 'btn-last', className: 'left carousel-control', href: '#diaporama', role: 'button', 'data-slide': 'prev' }),
+							React.createElement('div', { id: 'btn-next', className: 'right carousel-control', href: '#diaporama', role: 'button', 'data-slide': 'next' })
 						)
 					)
 				)

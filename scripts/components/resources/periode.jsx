@@ -105,10 +105,8 @@ let Resources = React.createClass({
 					<Diaporama popin={this.state.currentPopin} firstTime={this.state.firstTime} />
 					</div>
 					<div className="modal-footer">
-						<div id="last-next">
-							<div id="btn-last"></div>
-								<div id="btn-next"></div>
-							</div>
+						<div id="btn-last" className="left carousel-control" href="#diaporama" role="button" data-slide="prev"></div>
+						<div id="btn-next" className="right carousel-control" href="#diaporama" role="button" data-slide="next"></div>
 					</div>
 				</div>
 			</div>

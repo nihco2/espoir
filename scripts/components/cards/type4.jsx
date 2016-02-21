@@ -6,7 +6,12 @@ var Link = ReactRouter.Link;
 
 let Cards = React.createClass({
 	handleClick:function(){
-		$('#cardVideo').get(0).pause();
+		if($('body').hasClass('espoir')){
+			$('.cards:first #cardVideo').get(0).pause();
+		}
+		else{
+			$('.cards:last-child #cardVideo').get(0).pause();
+		}
 		if(this.props.isEspoir){
 			$('.bottom-nav').trigger('click');
 		}
@@ -14,15 +19,26 @@ let Cards = React.createClass({
 			$('.top-nav').trigger('click');
 		}
 	},
-	getInitialState: function () {
-		return {
-				video:this.props.texts.video
-			};
+	init(){
+		if($('body').hasClass('espoir')){
+			$('.cards:first #cardVideo').get(0).play();
+		}
+		else{
+			$('.cards:last-child #cardVideo').get(0).play();
+		}
 	},
-
-	componentWillReceiveProps :function(nextProps,nextState){
+	getInitialState(){
+		return {
+			video: this.props.texts.video,
+			videoId: this.props.texts.videoId,
+			cardVideoName: $('body').hasClass('espoir') ? 'cardVideoEspoir' : 'cardVideoHistoire'
+		}
+	},
+	componentWillReceiveProps :function(nextProps){
 		this.setState({
-			video: nextProps.texts.video
+			video: nextProps.texts.video,
+			videoId: nextProps.texts.videoId,
+			cardVideoName: $('body').hasClass('espoir') ? 'cardVideoEspoir' : 'cardVideoHistoire'
 		});
 	},
 

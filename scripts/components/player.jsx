@@ -42,6 +42,7 @@ let Player = React.createClass({
 	},
 	showPlay(){
 		$('.play-container').css('opacity',1);
+		$('.player').show();
 	},
 
 	getVideo() {
@@ -52,6 +53,9 @@ let Player = React.createClass({
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
 			this.showPlay();
+			this.setState({
+				isShowingPlayer: false
+			});
 		}
 	},
 
@@ -64,6 +68,9 @@ let Player = React.createClass({
 		else{
 			this.getVideo().pause();
 			this.showPlay();
+			this.setState({
+				isShowingPlayer: false
+			});
 		}
 
 	},
@@ -96,6 +103,12 @@ let Player = React.createClass({
 			next:   '.top-nav, .cardLinkTop',
 			timeout: 0,
 			onPrevNextEvent:function(isNext, zeroBasedSlideIndex, slideElement){
+				if(isNext){
+					$('body').removeClass().addClass('espoir');
+				}
+				else{
+					$('body').removeClass().addClass('histoire');
+				}
 				index = zeroBasedSlideIndex;
 				if(zeroBasedSlideIndex!==0){
 					$('.player').hide();
@@ -110,6 +123,7 @@ let Player = React.createClass({
 				if((index === 0 || forwardFlag===true)){
 					$('.player').show();
 					$('.cards-container').hide();
+					self.showPlay();
 				}
 				else{
 					if($(nextSlideElement).find('#card').hasClass('type4')){
@@ -168,6 +182,9 @@ let Player = React.createClass({
       self.initHTML();
 
       self.getVideo().addEventListener('loadedmetadata', function () {
+					self.getVideo().addEventListener('ended', function(){
+						self.showPlay();
+					});
           self.getVideo().addEventListener('timeupdate', function () {
               var progWidth = document.querySelector('.js-progress') ? document.querySelector('.js-progress').offsetWidth - 50 : '';
 
@@ -216,7 +233,9 @@ let Player = React.createClass({
               }
 
               //document.querySelector('.progress-bar').style.width = updProgWidth + 'px';
-              $('.js-progress-button').style.left = updProgWidth + 'px';
+							if(  $('.js-progress-button').length){
+								$('.js-progress-button').css('left', updProgWidth + 'px');
+							}
 
               // Ajustement des durées
               document.querySelector('.ctime').innerHTML = (minutes + ':' + seconds);
@@ -226,12 +245,16 @@ let Player = React.createClass({
               if (self.getVideo().currentTime > 0 && self.getVideo().paused == false && self.getVideo().ended == false) {
                   //bufferLength();
               }
+							self.setState({
+								isShowingPlayer: false
+							})
           });
       });
 	},
 	handleProgressBarMouseDown(e){
 		if (!this.getVideo().paused) {
 			this.getVideo().pause();
+			$('.player').show();
 		}
 
 		// Position x de la souris lors du clic
@@ -242,11 +265,14 @@ let Player = React.createClass({
 
 		if(currentTime!==Infinity){
 			this.getVideo().currentTime = currentTime;
+			this.showPlay();
 		}
 
 	},
 	handleClick:function(e){
 		this.getVideo().pause();
+		$('.player').show();
+
 		switch($(e.target).attr('class')){
 			case 'left-nav':$('.slick-prev').trigger('click');
 			break;
@@ -255,31 +281,22 @@ let Player = React.createClass({
 		}
 	},
 
+	timeout:null,
+
 	handleMouseMove(){
+		clearTimeout(this.timeout);
+		this.timeout = setTimeout(function() {
+			this.setState({
+				isShowingPlayer: false
+			});
+			$('.player').hide();
+		}.bind(this), 3000);
 		if (!this.getVideo().paused && !this.state.isShowingPlayer) {
 			this.setState({
 				isShowingPlayer: true
 			});
-			$('.player').fadeIn(200,function(){
-				setTimeout(function(){
-					if(!this.getVideo().paused){
-						this.setState({
-							isShowingPlayer: false
-						});
-						$('.player').fadeOut(1500);
-					}
-				}.bind(this),5000);
-			}.bind(this));
+			$('.player').show();
 		}
-	},
-	statics: {
-      willTransitionTo: function (transition, params, query, next) {
-
-        next();
-      },
-			willTransitionFrom: function (transition, component) {
-			//$('.player-container').trigger('route:change');
-			}
 	},
 
 	setCurrentCard(e){
@@ -333,7 +350,9 @@ let Player = React.createClass({
 
 				<div id="slider">
 						<section className="slides">
-							<Slider  {...settings}>
+							<Slider  {...settings} onClick = {
+								this.handleClickPlay
+							}>
 								<Video handleMouseMove={this.handleMouseMove} video={this.state.video1} />
 								<Video handleMouseMove={this.handleMouseMove} video={this.state.video2} />
 								<Video handleMouseMove={this.handleMouseMove} video={this.state.video3} />
@@ -357,16 +376,17 @@ let Player = React.createClass({
                   onClick = {
                       this.handleClickPause
                   }>
-					<nav className="h-nav">
-						<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
-						<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
-					</nav>
 					<nav className = "v-nav">
 							<a onClick={this.handleClick} className = "top-nav" ></a>
 							<a onClick={this.handleClick} className = "bottom-nav" ></a>
 					</nav>
 					<ProgressBar type="espoir" currentTimecodes={this.state.currentTimecodes} handleProgressBarMouseDown={this.handleProgressBarMouseDown} setCurrentCard={this.setCurrentCard} />
 					<div className="play-container">
+						<nav className="h-nav">
+							<a onClick={this.handleClick} className = "left-nav" >{this.state.prevRoute}</a>
+							<a onClick={this.handleClick} className = "right-nav" >{this.state.nextRoute}</a>
+						</nav>
+
 						<div className = "play"
 							onClick = {
 								this.handleClickPlay

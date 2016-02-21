@@ -177,5 +177,10 @@
 	}
 	#btn-last {
 		background: url(../../assets/images/btn-last-2.png)no-repeat center center;
+		display: inline-block !important;
+		float: left;
+	}
+	.carousel-control{
+		position: static;
 	}
 }

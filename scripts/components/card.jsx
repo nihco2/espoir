@@ -20,7 +20,7 @@ let Cards = React.createClass({
 	},
 	init: function(){
 		if(this.state.texts && (this.state.texts.type === '4')){
-			$('#cardVideo').get(0).play();
+			this.refs['type4'].init();
 		}
 	},
 	componentWillReceiveProps(nextProps){
